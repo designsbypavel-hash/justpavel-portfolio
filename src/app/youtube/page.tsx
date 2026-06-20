@@ -1,11 +1,13 @@
+import Image from "next/image";
+
 const videos = [
   {
     title: "I Switched My AI Tool as a Designer - Here's Why",
-    gradient: "from-purple-700 via-indigo-700 to-black",
+    image: "/site-assets/youtube-ai-tools.png",
   },
   {
     title: "How I Use Mobbin Every Day as a Product Designer",
-    gradient: "from-indigo-800 via-blue-900 to-black",
+    image: "/site-assets/youtube-mobbin.jpg",
   },
 ];
 
@@ -19,9 +21,9 @@ export default function YoutubePage() {
         <div className="grid gap-8 sm:grid-cols-2">
           {videos.map((video) => (
             <div key={video.title}>
-              <div
-                className={`mb-4 aspect-video rounded-xl bg-gradient-to-br ${video.gradient} border border-white/10`}
-              />
+              <div className="relative mb-4 aspect-video overflow-hidden rounded-xl border border-white/10">
+                <Image src={video.image} alt={video.title} fill className="object-cover" />
+              </div>
               <p className="font-medium">{video.title}</p>
             </div>
           ))}

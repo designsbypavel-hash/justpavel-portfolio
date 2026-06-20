@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const featuredWorks = [
@@ -6,30 +7,30 @@ const featuredWorks = [
     description:
       "Enterprise teams had the AI. They had no way to validate it before go-live — not against their own scenarios, not without engineering.",
     tag: "B2B SaaS",
-    gradient: "from-blue-500/30 via-indigo-500/20 to-slate-900",
+    image: "/site-assets/ai-control-layer.png",
   },
   {
     title: "B2C Payments Checkout — SonyLIV",
     description: "Reduce drop-offs and increase successful checkouts (UPI-first, failure-recovery).",
     tag: "B2C Mobile",
-    gradient: "from-emerald-500/30 via-slate-700/20 to-slate-900",
+    image: "/site-assets/sonyliv-checkout.jpg",
   },
   {
     title: "AI Fintech Collections (B2B SaaS)",
     description: "Faster decision-making and fewer missed follow-ups with AI-assisted workflows.",
     tag: "B2B SaaS",
-    gradient: "from-orange-500/30 via-amber-700/20 to-slate-900",
+    image: "/site-assets/ai-fintech-collections.jpg",
   },
 ];
 
 const videos = [
   {
     title: "I Switched My AI Tool as a Designer - Here's Why",
-    gradient: "from-purple-700 via-indigo-700 to-black",
+    image: "/site-assets/youtube-ai-tools.png",
   },
   {
     title: "How I Use Mobbin Every Day as a Product Designer",
-    gradient: "from-indigo-800 via-blue-900 to-black",
+    image: "/site-assets/youtube-mobbin.jpg",
   },
 ];
 
@@ -75,9 +76,14 @@ export default function Home() {
           <div className="space-y-16">
             {featuredWorks.map((work) => (
               <div key={work.title} className="grid gap-6 sm:grid-cols-2 sm:items-center">
-                <div
-                  className={`aspect-[4/3] w-full rounded-xl bg-gradient-to-br ${work.gradient} border border-white/10`}
-                />
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-white/10">
+                  <Image
+                    src={work.image}
+                    alt={work.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
                 <div>
                   <span className="mb-2 inline-block text-xs uppercase tracking-widest text-white/50">
                     {work.tag}
@@ -107,9 +113,14 @@ export default function Home() {
           <div className="grid gap-6 sm:grid-cols-2">
             {videos.map((video) => (
               <div key={video.title}>
-                <div
-                  className={`mb-4 aspect-video rounded-xl bg-gradient-to-br ${video.gradient} border border-white/10`}
-                />
+                <div className="relative mb-4 aspect-video overflow-hidden rounded-xl border border-white/10">
+                  <Image
+                    src={video.image}
+                    alt={video.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
                 <p className="font-medium">{video.title}</p>
               </div>
             ))}

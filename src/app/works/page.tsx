@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const projects = [
   {
     title: "Designing the control layer for enterprise AI agents",
@@ -5,7 +7,7 @@ const projects = [
       "Platform enabling enterprise teams to validate AI before deployment against their own scenarios, without engineering support.",
     category: "B2B SaaS",
     tags: ["AI", "Enterprise", "Validation", "Governance"],
-    gradient: "from-blue-500/30 via-indigo-500/20 to-slate-900",
+    image: "/site-assets/ai-control-layer.png",
   },
   {
     title: "B2C Payments Checkout — SonyLIV",
@@ -13,7 +15,7 @@ const projects = [
       "UPI-focused checkout redesign reducing transaction failures and drop-offs through improved payment flows and failure recovery.",
     category: "B2C Mobile",
     tags: ["Payments", "Checkout", "Conversion Optimization"],
-    gradient: "from-emerald-500/30 via-slate-700/20 to-slate-900",
+    image: "/site-assets/sonyliv-checkout.jpg",
   },
   {
     title: "Fintech AI-Assisted Collections (B2B SaaS)",
@@ -21,7 +23,7 @@ const projects = [
       "AI-assisted workflows improving decision velocity and reducing missed follow-ups in collections operations.",
     category: "B2B SaaS",
     tags: ["AI", "Fintech", "Collections", "Workflow"],
-    gradient: "from-orange-500/30 via-amber-700/20 to-slate-900",
+    image: "/site-assets/ai-fintech-collections.jpg",
   },
   {
     title: "B2C Subscription Growth — SonyLIV",
@@ -29,14 +31,14 @@ const projects = [
       "Subscription journey overhaul emphasizing plan transparency to lower abandonment and boost conversion rates.",
     category: "B2C Mobile",
     tags: ["Subscriptions", "Conversion", "UX"],
-    gradient: "from-rose-500/30 via-slate-700/20 to-slate-900",
+    image: "/site-assets/sonyliv-subscription.jpg",
   },
   {
     title: "OTT Search & Discovery (Mobile)",
     description: "Mobile search interface enabling faster content discovery and playback at scale.",
     category: "B2C Mobile",
     tags: ["Search", "Discovery", "Streaming"],
-    gradient: "from-cyan-500/30 via-slate-700/20 to-slate-900",
+    image: "/site-assets/sonyliv-search.jpg",
   },
 ];
 
@@ -50,9 +52,9 @@ export default function WorksPage() {
         <div className="space-y-16">
           {projects.map((project) => (
             <div key={project.title} className="grid gap-6 sm:grid-cols-2 sm:items-center">
-              <div
-                className={`aspect-[4/3] w-full rounded-xl bg-gradient-to-br ${project.gradient} border border-white/10`}
-              />
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-white/10">
+                <Image src={project.image} alt={project.title} fill className="object-cover" />
+              </div>
               <div>
                 <span className="mb-2 inline-block text-xs uppercase tracking-widest text-white/50">
                   {project.category}

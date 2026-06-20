@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const competencies = [
   {
     title: "Efficient Workflow",
@@ -20,6 +22,9 @@ export default function AboutPage() {
         <h1 className="mb-8 font-(family-name:--font-heading) text-4xl font-extrabold leading-tight sm:text-5xl">
           I turn complex problems into products that feel effortless.
         </h1>
+        <div className="relative mb-10 aspect-video w-full overflow-hidden rounded-xl border border-white/10">
+          <Image src="/site-assets/about-image.jpg" alt="Pavel at work" fill className="object-cover" />
+        </div>
         <p className="mb-4 text-lg text-white/70">
           Based in London with 7+ years spanning B2B SaaS and B2C work. Led UX for an AI platform
           enabling teams to build and manage AI-powered experiences.
