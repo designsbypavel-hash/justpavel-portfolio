@@ -1,27 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import { projects } from "@/data/projects";
 
-const featuredWorks = [
-  {
-    title: "Designing the control layer for enterprise AI agents",
-    description:
-      "Enterprise teams had the AI. They had no way to validate it before go-live — not against their own scenarios, not without engineering.",
-    tag: "B2B SaaS",
-    image: "/site-assets/ai-control-layer.png",
-  },
-  {
-    title: "B2C Payments Checkout — SonyLIV",
-    description: "Reduce drop-offs and increase successful checkouts (UPI-first, failure-recovery).",
-    tag: "B2C Mobile",
-    image: "/site-assets/sonyliv-checkout.jpg",
-  },
-  {
-    title: "AI Fintech Collections (B2B SaaS)",
-    description: "Faster decision-making and fewer missed follow-ups with AI-assisted workflows.",
-    tag: "B2B SaaS",
-    image: "/site-assets/ai-fintech-collections.jpg",
-  },
-];
+const featuredWorks = projects.slice(0, 3);
 
 const videos = [
   {
@@ -75,8 +56,12 @@ export default function Home() {
           </h2>
           <div className="space-y-16">
             {featuredWorks.map((work) => (
-              <div key={work.title} className="grid gap-6 sm:grid-cols-2 sm:items-center">
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-white/10">
+              <Link
+                key={work.slug}
+                href={`/works/${work.slug}`}
+                className="group grid gap-6 sm:grid-cols-2 sm:items-center"
+              >
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-white/10 transition group-hover:border-white/30">
                   <Image
                     src={work.image}
                     alt={work.title}
@@ -86,12 +71,14 @@ export default function Home() {
                 </div>
                 <div>
                   <span className="mb-2 inline-block text-xs uppercase tracking-widest text-white/50">
-                    {work.tag}
+                    {work.category}
                   </span>
-                  <h3 className="mb-2 text-2xl font-semibold">{work.title}</h3>
+                  <h3 className="mb-2 text-2xl font-semibold transition group-hover:text-white/80">
+                    {work.title}
+                  </h3>
                   <p className="text-white/60">{work.description}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
           <div className="mt-16 flex justify-center">
