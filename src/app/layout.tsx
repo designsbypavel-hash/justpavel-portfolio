@@ -16,9 +16,24 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.justpaveldesign.com"),
   title: "Pavel | Product Designer in London",
   description:
-    "Senior Product Designer crafting AI-first B2B SaaS and high-conversion B2C mobile experiences.",
+    "Senior Product Designer in London building AI-first B2B SaaS and high-conversion B2C mobile experiences, case studies, process, and measurable impact.",
+  openGraph: {
+    type: "website",
+    title: "Pavel | Product Designer in London",
+    description:
+      "Senior Product Designer in London building AI-first B2B SaaS and high-conversion B2C mobile experiences, case studies, process, and measurable impact.",
+    images: ["/site-assets/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pavel | Product Designer in London",
+    description:
+      "Senior Product Designer in London building AI-first B2B SaaS and high-conversion B2C mobile experiences, case studies, process, and measurable impact.",
+    images: ["/site-assets/og-image.png"],
+  },
 };
 
 export default function RootLayout({

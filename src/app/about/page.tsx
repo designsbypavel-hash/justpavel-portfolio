@@ -1,4 +1,10 @@
 import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About | Pavel",
+  description: "Senior Product Designer in London, 7+ years across B2B SaaS and B2C mobile.",
+};
 
 const competencies = [
   {

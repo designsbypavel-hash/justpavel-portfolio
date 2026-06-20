@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SocialLinks from "@/components/SocialLinks";
 
 export default function Footer() {
   return (
@@ -13,15 +14,7 @@ export default function Footer() {
           <Link href="/about" className="hover:text-white">about</Link>
           <Link href="/contact" className="hover:text-white">contact</Link>
         </nav>
-        <a
-          href="https://adplist.org/mentors/pavel-mondal"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex h-9 w-9 items-center justify-center rounded border border-white/30 text-white/70 hover:text-white"
-          aria-label="LinkedIn"
-        >
-          in
-        </a>
+        <SocialLinks />
       </div>
     </footer>
   );

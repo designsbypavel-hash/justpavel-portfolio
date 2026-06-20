@@ -1,4 +1,10 @@
 import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Youtube | Pavel",
+  description: "Videos on AI tools, design workflows, and product design practice.",
+};
 
 const videos = [
   {
