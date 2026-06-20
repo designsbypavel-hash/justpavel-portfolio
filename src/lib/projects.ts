@@ -1,3 +1,20 @@
+export type ImpactStat = {
+  value: string;
+  label: string;
+};
+
+export type Decision = {
+  title: string;
+  why: string;
+  whatChanged: string[];
+  result: string;
+};
+
+export type Section = {
+  heading: string;
+  paragraphs: string[];
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -5,79 +22,405 @@ export type Project = {
   category: string;
   tags: string[];
   image: string;
-  problem: string;
-  approach: string;
-  outcome: string;
+  role: string;
+  platform: string;
+  team: string;
+  duration?: string;
+  stats: ImpactStat[];
+  tldrProblem: string;
+  tldrWhatIDid: string;
+  tldrImpact: string;
+  context: Section[];
+  decisions: Decision[];
+  closingSections: Section[];
 };
 
 export const projects: Project[] = [
   {
-    slug: "enterprise-ai-control-layer",
+    slug: "agent-ai",
     title: "Designing the control layer for enterprise AI agents",
     description:
-      "Platform enabling enterprise teams to validate AI before deployment against their own scenarios, without engineering support.",
+      "Kai is a no-code AI agent platform that enables businesses to create, train, and deploy AI assistants without technical expertise.",
     category: "B2B SaaS",
     tags: ["AI", "Enterprise", "Validation", "Governance"],
     image: "/site-assets/ai-control-layer.png",
-    problem:
-      "Enterprise teams had the AI. They had no way to validate it before go-live — not against their own scenarios, not without engineering.",
-    approach:
-      "Designed a self-serve playground where non-technical teams could write instructions, test assistant behavior against real scenarios, and iterate without filing engineering tickets.",
-    outcome:
-      "Teams could validate and ship AI assistant changes independently, cutting the validation cycle from weeks of engineering back-and-forth to same-day testing.",
+    role: "Lead Product Designer (End-to-end)",
+    platform: "Enterprise B2B SaaS · AI Agent",
+    team: "1 designer · 2 PMs · 3 engineers",
+    stats: [
+      { value: "22%", label: "AI containment uplift" },
+      { value: "45s", label: "Average handle time" },
+      { value: "250k+", label: "Monthly sessions" },
+    ],
+    tldrProblem:
+      "Enterprise teams couldn't test Kai before going live. Every validation required engineering, a separate environment, or putting AI in front of customers and seeing what happened.",
+    tldrWhatIDid:
+      "Designed a persistent Playground embedded beside every config tab, so teams could change instructions, training data, or rules and immediately see the effect — no save cycle, no redeploy.",
+    tldrImpact:
+      "Buyers stopped asking 'can it do the job?' and started asking better questions, because they could find out for themselves. The Playground became the answer to 'what happens when it gets it wrong?'",
+    context: [
+      {
+        heading: "The Opportunity",
+        paragraphs: [
+          "As AI adoption accelerated, many businesses wanted to leverage AI assistants to automate support, generate leads, and improve operational efficiency. However, existing solutions often required technical expertise, complex configuration, and engineering support.",
+          "Through stakeholder discussions and discovery activities, we identified a common challenge: users understood the outcomes they wanted from AI but struggled to understand how to create, train, and deploy AI assistants effectively.",
+          "The opportunity was not to build another AI platform — it was to make AI accessible, understandable, and actionable for non-technical users. The challenge became: how might we help businesses create and deploy AI assistants confidently without requiring technical expertise?",
+        ],
+      },
+      {
+        heading: "Research Finding",
+        paragraphs: [
+          "Capability was never the problem, but perceived risk was. \"What happens when Kai gets it wrong?\" was said in some form in every enterprise evaluation session — 8 of 8 interviews.",
+          "I'd expected questions about accuracy benchmarks and resolution rates. Instead, every evaluation turned to failure. Not \"can Kai answer?\" but \"what happens when it gets it wrong, and who's accountable?\" They weren't worried Kai couldn't do the job — they were worried they'd find out it couldn't in front of a customer. Risk is a feeling before it's a fact.",
+          "Before, the only fallback was engineering-gated: ops spots a gap, files a ticket, a developer makes the change, with limited validation — or worse, deploy and find out, escalating only if it goes wrong. For a contact-centre ops manager accountable for CSAT, that was not an option.",
+          "3 of 4 active enterprise prospects had stalled at exactly this point. The AI worked. The product had no answer to \"can we test it before we go live?\"",
+        ],
+      },
+      {
+        heading: "Organisational Complexity",
+        paragraphs: [
+          "Five roles needed access to the same Playground for different reasons, with five different definitions of what \"trusted\" means. Designing it wasn't a UI problem — it was an organisational trust problem.",
+          "Key findings from research: users focused on business outcomes rather than AI terminology, struggling with concepts like models, prompts, knowledge bases, and agent configuration. Trust was critical to adoption — users were willing to spend more time setting up assistants if they felt confident about where information came from and how responses were generated. And users wanted guidance rather than flexibility, preferring a structured workflow that reduced uncertainty.",
+          "The category pattern was clear: enterprise AI tools treated testing as a separate, privileged activity, not something woven into daily configuration work.",
+        ],
+      },
+    ],
+    decisions: [
+      {
+        title: "Make the Playground available on every config tab, not just Instructions",
+        why: "My first instinct was to scope the Playground to the Instructions tab. But training uploads, saved prompts, and completion criteria all affect Kai's responses. If the Playground isn't visible when those change, teams can't catch regressions there — they surface in production. AI Trainers needed immediate feedback when uploading knowledge documents; a bad upload only surfaced when a customer hit a wrong answer, days later.",
+        whatChanged: [
+          "Playground persists across Details, Instructions, Training, and Prompts tabs",
+          "Same conversation thread as you navigate — test a full flow, not just one isolated response",
+          "Collapsed on smaller screens; always expanded on desktop where config work happens",
+        ],
+        result:
+          "AI Trainers tested knowledge quality. Ops tested escalation logic. Both in the same session without context switching. Training regressions were discovered at the point of change instead of after customer-facing impact.",
+      },
+      {
+        title: "Build a role-based permission model around the Playground itself",
+        why: "The Playground itself required a permission model. IT Admins needed control over who could run tests and who could push changes live.",
+        whatChanged: [
+          "Roles defined directly from research were implemented: Super Admin, Admin, Operator, Trainer, Viewer",
+          "Access Management governs who can configure, test, and deploy",
+        ],
+        result:
+          "Testing became testable the moment a change was made, not after it was deployed — with the right people able to do the right things.",
+      },
+    ],
+    closingSections: [
+      {
+        heading: "Impact",
+        paragraphs: [
+          "Changed the buyer question, then the production numbers. The Playground's first measurable impact wasn't in the metrics — it was in the sales conversation, removing the single biggest blocker to enterprise deals closing.",
+          "22% AI containment uplift, 45 second average handle time, and 250k+ monthly sessions followed once teams could validate confidently before go-live.",
+        ],
+      },
+      {
+        heading: "What's Next",
+        paragraphs: [
+          "Automatic regression testing on config changes: right now testing is manual. After every training upload or instruction change, the saved scenario set should run automatically, flagging anything that changed before an ops manager even opens the Playground.",
+          "Shareable session links: currently one person tests and reports back. The AI Trainer who knows the edge cases and the Ops Manager who owns the KPIs need to review together — a shareable session link would make pre-launch sign-off collaborative without a screen-share meeting.",
+          "A shared failure-pattern library: teams build their own scenario sets in isolation, but failure patterns repeat across enterprise accounts. A shared library built from anonymised cross-account failures would give every new account a head start on what to test for.",
+        ],
+      },
+      {
+        heading: "Reflection",
+        paragraphs: [
+          "Designing Kai taught me that successful AI experiences are not defined by the sophistication of the technology, but by how confidently the people responsible for it can answer the question: what happens when it gets it wrong?",
+        ],
+      },
+    ],
   },
   {
-    slug: "sonyliv-payments-checkout",
-    title: "B2C Payments Checkout — SonyLIV",
-    description: "Reduce drop-offs and increase successful checkouts (UPI-first, failure-recovery).",
+    slug: "sonyliv-check",
+    title: "High-Conversion Checkout Experience",
+    description:
+      "SonyLIV's checkout needed to support India's diverse payment habits, without sacrificing speed or trust.",
     category: "B2C Mobile",
     tags: ["Payments", "Checkout", "Conversion Optimization"],
     image: "/site-assets/sonyliv-checkout.jpg",
-    problem:
-      "A large share of subscription purchases were failing or being abandoned at the payment step, with UPI users hit hardest by silent failures.",
-    approach:
-      "Redesigned the checkout flow to lead with UPI as the primary payment method, added clear failure states, and built a recovery flow that re-engaged users after a failed attempt.",
-    outcome: "Reduced payment drop-offs and increased successful checkout completion across UPI users.",
+    role: "Product Designer (End-to-end)",
+    platform: "Mobile",
+    team: "PM, PO, 3 Engineers",
+    duration: "2 months",
+    stats: [
+      { value: "+28%", label: "UPI adoption" },
+      { value: "-14%", label: "Failed payments" },
+      { value: "-21%", label: "Time to complete" },
+    ],
+    tldrProblem:
+      "Checkout had too many competing options and trust gaps, leading to hesitation and failed payments at the most conversion-critical moment.",
+    tldrWhatIDid:
+      "I simplified decision-making, prioritised high-success payment paths, and redesigned failure/retry states so users always knew what to do next.",
+    tldrImpact:
+      "+28% UPI adoption, -14% failed payments, -21% time to complete checkout.",
+    context: [
+      {
+        heading: "Context",
+        paragraphs: [
+          "SonyLIV supports a wide range of payment methods — UPI, cards, wallets, netbanking, and partner offers — because users in India pay in very different ways. But when everything looks equal, users slow down. Payment is a moment where confidence matters more than exploration.",
+        ],
+      },
+      {
+        heading: "What I Learned",
+        paragraphs: [
+          "To ground decisions, I combined heuristic evaluation to spot friction patterns, benchmarking from Prime Video, Hotstar, PhonePe, Paytm and similar products, and payment UX research specific to Indian users' habits and trust signals.",
+        ],
+      },
+    ],
+    decisions: [
+      {
+        title: "Lead with UPI, without forcing it",
+        why: "UPI is familiar and fast for many users, and it has high adoption potential. If we make it the smoothest path, users complete faster without feeling pushed.",
+        whatChanged: [
+          "UPI surfaced more clearly in the hierarchy",
+          "Shortened the path from selection → payment initiation",
+          "Reduced competing noise around it",
+        ],
+        result: "UPI adoption increased by 28%. We prioritised UPI visually and structurally to reduce decision time.",
+      },
+      {
+        title: "Reduce choice overload with clearer hierarchy",
+        why: "When everything looks equal, users slow down. Payment is a moment where confidence matters more than exploration.",
+        whatChanged: [
+          "Grouped payment methods logically",
+          "\"Recommended / most used\" sits first",
+          "Long-tail options remain available but not dominant",
+        ],
+        result: "Checkout time reduced by 21%. Hierarchy reduces thinking — users move forward with confidence.",
+      },
+      {
+        title: "Make offers feel effortless, not risky",
+        why: "Offers can improve conversion, but unclear offers create mistrust: users hesitate if they don't understand whether it applied or what changed.",
+        whatChanged: [
+          "Clear \"applied\" state",
+          "Eligibility explained in plain language",
+          "Total cost always visible and consistent",
+        ],
+        result: "Higher confidence and fewer drop-offs during offer selection — offer clarity builds trust, users don't feel surprised at the last step.",
+      },
+      {
+        title: "Design for failure recovery, because payments fail",
+        why: "A failed payment is emotionally charged. If the next step isn't obvious, users abandon.",
+        whatChanged: [
+          "Calm failure messaging",
+          "Clear retry path",
+          "Smart fallbacks — choose another method without restarting everything",
+        ],
+        result: "Failed payments reduced by 14%. Recovery is part of the product — we designed it to feel safe and guided.",
+      },
+    ],
+    closingSections: [],
   },
   {
-    slug: "ai-fintech-collections",
-    title: "AI Fintech Collections (B2B SaaS)",
-    description: "Faster decision-making and fewer missed follow-ups with AI-assisted workflows.",
+    slug: "fintech-autonomous",
+    title: "Designing for Faster Collections in Autonomous Collections with AI",
+    description:
+      "Redesigned the core collections workflow so AR analysts could act faster, combining AI insights, in-app calling, automated summaries, and a structured follow-up system.",
     category: "B2B SaaS",
     tags: ["AI", "Fintech", "Collections", "Workflow"],
     image: "/site-assets/ai-fintech-collections.jpg",
-    problem:
-      "Collections agents managed hundreds of accounts manually, with no prioritization, leading to missed follow-ups and slow decisions.",
-    approach:
-      "Built an AI-assisted worklist that prioritizes accounts by risk and aging, paired with an in-context assistant that surfaces next actions and drafts outreach.",
-    outcome: "Faster decision-making and fewer missed follow-ups across collections operations.",
+    role: "Product Designer (End-to-end)",
+    platform: "Fintech & AI, B2B SaaS",
+    team: "1 designer, 2 PMs, 4 engineers (2 FE, 2 BE)",
+    stats: [
+      { value: "Fewer", label: "Missed follow-ups" },
+      { value: "Less", label: "Manual effort" },
+      { value: "Faster", label: "DSO" },
+    ],
+    tldrProblem:
+      "AR analysts manage hundreds of accounts per cycle, but the workflow was fragmented across tools, leading to manual work, errors, and missed follow-ups that impacted DSO.",
+    tldrWhatIDid:
+      "Redesigned the end-to-end collections workflow by integrating AI-assisted insights, in-app calling, automated summaries, and a post-call follow-up system.",
+    tldrImpact: "Fewer missed follow-ups, less manual effort, faster DSO.",
+    context: [
+      {
+        heading: "Discovery",
+        paragraphs: [
+          "Outcomes need structure — if they aren't captured in a consistent format, they get lost. An empathy map built from the discoveries showed analysts switching between tools constantly, losing context between prep, the call itself, and the follow-up.",
+        ],
+      },
+    ],
+    decisions: [
+      {
+        title: "Unify the workflow in one place",
+        why: "Fragmentation created context switching and missed follow-ups.",
+        whatChanged: ["Core dashboard now supports prep → call → log → next steps in one continuous flow"],
+        result: "Reduced manual effort and friction, both qualitatively and in time spent per account.",
+      },
+      {
+        title: "Bring calling inside the product",
+        why: "Calls are central, but the work after calls was the real bottleneck.",
+        whatChanged: ["In-app calling with call context visible during the interaction"],
+        result: "Analysts no longer lost context switching between a separate dialer and the workflow tool.",
+      },
+      {
+        title: "Automate summaries to remove admin work",
+        why: "Notes and summaries were repetitive and inconsistent across analysts.",
+        whatChanged: ["Automated call summaries that analysts can review and edit quickly"],
+        result: "Consistent, structured call records without the manual write-up.",
+      },
+      {
+        title: "Make follow-ups structured",
+        why: "Missed follow-ups directly impacted DSO, and ad-hoc reminders weren't reliable.",
+        whatChanged: ["A structured post-call follow-up system tied to the worklist"],
+        result: "Fewer missed follow-ups and faster days-sales-outstanding across the collections operation.",
+      },
+    ],
+    closingSections: [],
   },
   {
-    slug: "sonyliv-subscription-growth",
-    title: "B2C Subscription Growth — SonyLIV",
+    slug: "sonyliv-ott-subscription",
+    title: "Redefining SonyLIV's Android TV Subscription Flow",
     description:
-      "Subscription journey overhaul emphasizing plan transparency to lower abandonment and boost conversion rates.",
+      "SonyLIV was growing fast, but subscription conversions weren't scaling at the same pace. Redesigned the plan selection → payment journey to reduce confusion and increase purchase confidence.",
     category: "B2C Mobile",
     tags: ["Subscriptions", "Conversion", "UX"],
     image: "/site-assets/sonyliv-subscription.jpg",
-    problem:
-      "Users abandoned the subscription flow when plan comparisons were unclear, particularly across multiple pricing tiers and durations.",
-    approach:
-      "Rebuilt the plan-selection screen with a clear feature comparison table and transparent pricing across durations, reducing the cognitive load of choosing a plan.",
-    outcome: "Lower abandonment in the subscription flow and improved conversion across plan tiers.",
+    role: "Product Designer (End-to-end)",
+    platform: "OTT, B2C",
+    team: "1 Product Designer · 1 PM · 3 Engineers",
+    stats: [
+      { value: "+", label: "Paid subscriptions" },
+      { value: "−", label: "Checkout drop-offs" },
+      { value: "Faster", label: "Plan decision-making" },
+      { value: "Higher", label: "Plan selection engagement" },
+    ],
+    tldrProblem:
+      "Users were dropping because plan selection felt unclear and pricing differentiation wasn't obvious.",
+    tldrWhatIDid:
+      "Built clearer plan comparisons, added pricing/upsell clarity, and streamlined selection → checkout.",
+    tldrImpact: "More subscriptions, fewer drop-offs, faster decisions, higher engagement with plan selection.",
+    context: [
+      {
+        heading: "Context",
+        paragraphs: [
+          "SonyLIV's Android TV subscription flow asked users to compare plans with unclear feature differentiation and pricing that wasn't easy to compare at a glance — on a 10-foot interface where every extra decision costs more attention than on mobile.",
+        ],
+      },
+    ],
+    decisions: [
+      {
+        title: "Build clearer plan comparison",
+        why: "Pricing differentiation wasn't obvious, so users couldn't tell what they'd actually be paying for.",
+        whatChanged: ["Side-by-side plan comparison with feature checklists", "Clear pricing per duration option"],
+        result: "Faster, more confident plan decisions.",
+      },
+      {
+        title: "Streamline selection straight through to checkout",
+        why: "Extra steps between choosing a plan and completing payment increased drop-off on a remote-control interface.",
+        whatChanged: ["Reduced steps from plan selection to payment confirmation"],
+        result: "Fewer checkout drop-offs and more completed, paid subscriptions.",
+      },
+    ],
+    closingSections: [],
   },
   {
-    slug: "ott-search-discovery",
-    title: "OTT Search & Discovery (Mobile)",
-    description: "Mobile search interface enabling faster content discovery and playback at scale.",
+    slug: "sonyliv-search",
+    title: "Enhancing Search for Seamless Discovery for 350M+ SonyLIV Users",
+    description:
+      "Search is the gateway to discovering Originals, Live Sports, Movies, and TV Shows for 350M+ users. The legacy search experience created friction finding relevant results.",
     category: "B2C Mobile",
     tags: ["Search", "Discovery", "Streaming"],
     image: "/site-assets/sonyliv-search.jpg",
-    problem:
-      "Users struggled to find specific shows and movies quickly across a large content catalog, leading to drop-off before playback.",
-    approach:
-      "Designed a search experience with popular categories, trending searches, and visual content cards to help users land on playback faster.",
-    outcome: "Faster content discovery and playback at scale across the catalog.",
+    role: "Product Designer (End-to-end)",
+    platform: "Fintech & AI, B2B SaaS",
+    team: "1 Designer, 1 PM, 1 PO, 3 Engineers",
+    stats: [
+      { value: "Faster", label: "Time to relevant result" },
+      { value: "Clearer", label: "Query refinement" },
+      { value: "Scaled", label: "Across devices & tiers" },
+    ],
+    tldrProblem:
+      "Legacy search made it hard to surface relevant results, refine queries, and navigate content at scale.",
+    tldrWhatIDid:
+      "Redesigned the experience using failure patterns, user complaints, and global benchmarking — then validated changes through prototypes and quick feedback loops.",
+    tldrImpact:
+      "Faster, clearer, more intelligent search that scales across Android, iOS, tablets, and low-end devices.",
+    context: [
+      {
+        heading: "Context",
+        paragraphs: [
+          "SonyLIV serves 350M+ users, and search is the gateway to discovering Originals, Live Sports, Movies, and TV Shows. The legacy experience created friction: people struggled to find relevant results, refine queries, and navigate a massive library.",
+        ],
+      },
+      {
+        heading: "Approach",
+        paragraphs: [
+          "I grounded the redesign in failure patterns pulled from analytics, real user complaints, and benchmarking against global streaming search experiences, then validated each change through prototypes and quick feedback loops rather than a single big-bang release.",
+        ],
+      },
+    ],
+    decisions: [
+      {
+        title: "Design for scale across device tiers",
+        why: "A search experience that only works well on flagship phones excludes a large share of SonyLIV's actual user base on low-end Android devices and tablets.",
+        whatChanged: ["Layouts and interactions validated across Android, iOS, tablets, and low-end devices"],
+        result: "Consistent search experience regardless of device tier.",
+      },
+    ],
+    closingSections: [],
+  },
+  {
+    slug: "connected-places",
+    title: "Designing the intelligence layer for connected places",
+    description:
+      "A zero-to-one platform unifying live sensor data, operational analytics, and public digital experiences — built for the organisations running the places people actually use.",
+    category: "B2B SaaS",
+    tags: ["Zero-to-one", "Design System", "Admin Portal"],
+    image: "/site-assets/ai-control-layer.png",
+    role: "Lead Product Designer (End-to-end)",
+    platform: "Admin Portal · Web",
+    team: "Councils · Destinations · Estates",
+    duration: "2 months",
+    stats: [
+      { value: "0", label: "Product modules designed end-to-end" },
+      { value: "0", label: "Critical UX findings resolved pre-launch" },
+      { value: "0", label: "Design system powering full product" },
+    ],
+    tldrProblem:
+      "No platform existed that connected live operational data, analytics, content management, and public digital experience in one governed system for place operators.",
+    tldrWhatIDid:
+      "Designed a zero-to-one admin portal split into clearly labelled operational zones, backed by a design system built in parallel.",
+    tldrImpact:
+      "Reduced cognitive overload for operators managing live incidents, with a design system powering the full product end-to-end.",
+    context: [
+      {
+        heading: "The Gap",
+        paragraphs: [
+          "No platform existed that connected live operational data, analytics, content management, and public digital experience in one governed system for place operators.",
+        ],
+      },
+      {
+        heading: "The Audience",
+        paragraphs: [
+          "Risk-aware, governance-focused organisations — councils, destination management bodies, and estate operators — who needed trust and delivery confidence, not just software features.",
+        ],
+      },
+      {
+        heading: "Design System",
+        paragraphs: [
+          "Built in parallel with the product: colour tokens, component variants, interaction patterns, locked helper text, and handoff docs.",
+        ],
+      },
+    ],
+    decisions: [
+      {
+        title: "Separate operational monitoring from analytical reporting",
+        why: "The dashboard was doing two fundamentally different jobs on one page: live status monitoring and trend analysis. An operator checking a live incident is not in the same headspace as an analyst reviewing monthly footfall. Combining them created noise at exactly the wrong moment.",
+        whatChanged: ["Split the surface into three labelled zones, each with its own visual language and priority level"],
+        result: "Reduced cognitive overload for operators managing live incidents — the right information at the right time, not everything at once.",
+      },
+    ],
+    closingSections: [
+      {
+        heading: "Key Decisions",
+        paragraphs: [
+          "Five decisions shaped the platform overall. Each one is grounded in a real audit finding, and each annotation maps directly to the element it changed — with the reasoning included, not just the outcome.",
+        ],
+      },
+    ],
   },
 ];
 

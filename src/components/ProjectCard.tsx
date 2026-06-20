@@ -14,7 +14,7 @@ export default function ProjectCard({
   const TitleTag = titleAs;
   return (
     <Link
-      href={`/works/${project.slug}`}
+      href={`/work/${project.slug}`}
       className="group grid gap-6 sm:grid-cols-2 sm:items-center"
     >
       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-white/10 transition group-hover:border-white/30">
