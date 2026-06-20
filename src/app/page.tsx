@@ -49,9 +49,9 @@ export default function Home() {
             </h2>
           </FadeInSection>
           <div className="space-y-16">
-            {featuredWorks.map((work) => (
+            {featuredWorks.map((work, index) => (
               <FadeInSection key={work.slug}>
-                <ProjectCard project={work} />
+                <ProjectCard project={work} priority={index === 0} />
               </FadeInSection>
             ))}
           </div>
