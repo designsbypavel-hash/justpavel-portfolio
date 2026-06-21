@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
+import { sectionReveal } from "@/lib/motion";
 
 export default function FadeInSection({
   children,
@@ -12,10 +13,10 @@ export default function FadeInSection({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial="hidden"
+      whileInView="visible"
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      variants={sectionReveal}
       className={className}
     >
       {children}

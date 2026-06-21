@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { motion } from "framer-motion";
+import { buttonHover } from "@/lib/motion";
 
 export default function ContactForm() {
   const [name, setName] = useState("");
@@ -63,12 +65,17 @@ export default function ContactForm() {
         className="mb-6 w-full resize-y rounded-md border border-white/10 bg-white/5 px-4 py-3 text-sm placeholder:text-white/40 focus:outline-none focus:ring-1 focus:ring-white/40"
       />
 
-      <button
+      <motion.button
         type="submit"
-        className="w-full rounded-md border border-white/20 bg-white/10 py-3 text-sm font-medium transition hover:bg-white hover:text-black"
+        initial="rest"
+        whileHover="hover"
+        whileTap="tap"
+        animate="rest"
+        variants={buttonHover}
+        className="w-full rounded-md border border-white/20 bg-white/10 py-3 text-sm font-medium transition-colors duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-white hover:text-black hover:shadow-[0_12px_30px_-12px_rgba(255,255,255,0.25)]"
       >
         Send Message
-      </button>
+      </motion.button>
     </form>
   );
 }

@@ -16,8 +16,13 @@ export default function NextProjectCTA({
         href={`/work/${slug}`}
         className="group flex items-center justify-between gap-4 text-xl font-semibold sm:text-2xl"
       >
-        <span className="transition group-hover:text-white/70">{title}</span>
-        <span aria-hidden className="text-white/40 transition group-hover:translate-x-1 group-hover:text-white">
+        <span className="transition-colors duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-white/70">
+          {title}
+        </span>
+        <span
+          aria-hidden
+          className="text-white/40 transition-all duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1 group-hover:text-white"
+        >
           →
         </span>
       </Link>

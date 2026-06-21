@@ -9,10 +9,20 @@ export default function Footer() {
           pavel
         </span>
         <nav className="flex gap-6 text-sm text-white/60">
-          <Link href="/works" className="hover:text-white">works</Link>
-          <Link href="/youtube" className="hover:text-white">youtube</Link>
-          <Link href="/about" className="hover:text-white">about</Link>
-          <Link href="/contact" className="hover:text-white">contact</Link>
+          {[
+            { href: "/works", label: "works" },
+            { href: "/youtube", label: "youtube" },
+            { href: "/about", label: "about" },
+            { href: "/contact", label: "contact" },
+          ].map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="relative py-1 transition-colors duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-white after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-white after:transition-all after:duration-400 after:ease-[cubic-bezier(0.22,1,0.36,1)] hover:after:w-full"
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
         <SocialLinks />
       </div>
