@@ -13,21 +13,21 @@ const sen = Sen({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.justpaveldesign.com"),
-  title: "Pavel | Product Designer in London",
+  title: "Pavel - Product Designer and YouTuber",
   description:
-    "Senior Product Designer in London building AI-first B2B SaaS and high-conversion B2C mobile experiences, case studies, process, and measurable impact.",
+    "I'm a London-based Product Designer building AI-first B2B SaaS and high-conversion B2C mobile experiences. I also share design process and AI workflows on YouTube.",
   openGraph: {
     type: "website",
-    title: "Pavel | Product Designer in London",
+    title: "Pavel - Product Designer and YouTuber",
     description:
-      "Senior Product Designer in London building AI-first B2B SaaS and high-conversion B2C mobile experiences, case studies, process, and measurable impact.",
+      "I'm a London-based Product Designer building AI-first B2B SaaS and high-conversion B2C mobile experiences. I also share design process and AI workflows on YouTube.",
     images: ["/site-assets/og-image.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pavel | Product Designer in London",
+    title: "Pavel - Product Designer and YouTuber",
     description:
-      "Senior Product Designer in London building AI-first B2B SaaS and high-conversion B2C mobile experiences, case studies, process, and measurable impact.",
+      "I'm a London-based Product Designer building AI-first B2B SaaS and high-conversion B2C mobile experiences. I also share design process and AI workflows on YouTube.",
     images: ["/site-assets/og-image.png"],
   },
 };
