@@ -230,10 +230,6 @@ p, span, a, li, label, input, textarea, button {
   }
 }
 
-.glow-card:hover::before {
-  opacity: 0.75;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .glow-card::before,
   .glow-card::after {
