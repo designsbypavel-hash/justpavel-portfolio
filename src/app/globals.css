@@ -163,89 +163,89 @@ p, span, a, li, label, input, textarea, button {
   }
 }
 
-/* Apple-style glowing gradient-edge card. Reuses the same proven technique
-   as .gradient-text-loop below: an oversized linear gradient animated via
-   background-position, masked into a thin ring matching the card's border
-   radius. background-position animation has universal browser support, no
-   @property or rotation-distortion concerns on non-square cards. */
+/* Apple M1-style atmospheric glow card.
+   ::before = large blurred glow layer behind the card (the soft colour bloom)
+   ::after  = a thin, subtle gradient border on top
+   Both cycle through the M1 palette (blue -> purple -> pink -> orange -> red)
+   slowly via background-position on an oversized gradient -- universal
+   browser support, no @property or rotation-distortion concerns. */
 .glow-card {
   position: relative;
   isolation: isolate;
-  background: rgba(255, 255, 255, 0.03);
-  box-shadow:
-    0 0 40px -10px rgba(124, 147, 232, 0.18),
-    0 0 60px -20px rgba(224, 122, 63, 0.15);
-  transition: box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  background: #0a0a0a;
 }
 
 .glow-card::before {
   content: "";
   position: absolute;
-  inset: -6px;
+  inset: -18px;
+  z-index: -1;
   border-radius: inherit;
-  padding: 7px;
+  filter: blur(28px);
+  opacity: 0.55;
+  background-image: linear-gradient(
+    115deg,
+    #5b7fff 0%,
+    #8c5bff 16%,
+    #d65bdb 32%,
+    #ff5b9c 48%,
+    #ff7a45 64%,
+    #ff4d4d 80%,
+    #5b7fff 100%
+  );
+  background-size: 250% 250%;
+  animation: glow-drift 11s ease-in-out infinite;
+  animation-delay: var(--glow-delay, 0s);
+  pointer-events: none;
+}
+
+.glow-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
-  filter: blur(8px);
   background-image: linear-gradient(
-    90deg,
-    rgba(124, 147, 232, 0.7) 0%,
-    rgba(217, 154, 78, 0.7) 20%,
-    rgba(224, 122, 63, 0.7) 30%,
-    rgba(255, 255, 255, 0) 50%,
-    rgba(124, 147, 232, 0.7) 70%,
-    rgba(217, 154, 78, 0.7) 90%,
-    rgba(224, 122, 63, 0.7) 100%
+    115deg,
+    #5b7fff 0%,
+    #8c5bff 16%,
+    #d65bdb 32%,
+    #ff5b9c 48%,
+    #ff7a45 64%,
+    #ff4d4d 80%,
+    #5b7fff 100%
   );
-  background-size: 300% 100%;
-  opacity: 0;
-  animation: glow-sweep 5s ease-in-out infinite;
+  background-size: 250% 250%;
+  opacity: 0.6;
+  animation: glow-drift 11s ease-in-out infinite;
   animation-delay: var(--glow-delay, 0s);
 }
 
-@keyframes glow-sweep {
+@keyframes glow-drift {
   0% {
     background-position: 0% 0%;
-    opacity: 0;
-  }
-  15% {
-    opacity: 0.9;
   }
   50% {
-    background-position: 150% 0%;
-    opacity: 1;
-  }
-  85% {
-    opacity: 0.9;
+    background-position: 100% 100%;
   }
   100% {
-    background-position: 300% 0%;
-    opacity: 0;
+    background-position: 0% 0%;
   }
-}
-
-.glow-card:hover {
-  box-shadow:
-    0 0 50px -8px rgba(124, 147, 232, 0.3),
-    0 0 70px -16px rgba(224, 122, 63, 0.26);
 }
 
 .glow-card:hover::before {
-  animation-duration: 2.6s;
+  opacity: 0.75;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .glow-card::before {
-    animation: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .glow-card {
+  .glow-card::before,
+  .glow-card::after {
     animation: none;
   }
 }
