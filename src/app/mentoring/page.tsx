@@ -43,6 +43,36 @@ const tags = [
   "Transparent",
 ];
 
+const testimonials = [
+  {
+    quote:
+      "I had such a great case study review with Pavel! He gave me real, honest feedback and provided ways to improve my presentation, plus follow-up questions I may get in a real interview. Super kind and relatable too!",
+    name: "Mentee",
+    role: "via ADPList",
+    date: "May 07, 2026",
+  },
+  {
+    quote:
+      "I had an outstanding experience with my mentor, who provided amazing communication and motivation throughout our session. Their subject knowledge was exceptional, guiding me in building a strong portfolio while offering insightful, real feedback on my questions. Their problem-solving skills truly exceeded my expectations. I highly recommend booking a session.",
+    name: "Rakhi Das",
+    role: "Associate UX Designer, Fortmindz Pvt Ltd.",
+    date: "March 14, 2026",
+  },
+  {
+    quote: "He helped me a lot and gave me a lot of feedback it's useful and helpful",
+    name: "Rais Hasnaa",
+    role: "Student Product Design",
+    date: "January 07, 2026",
+  },
+  {
+    quote:
+      "Pavel is incredibly knowledgeable and genuinely understands the struggles of breaking into the UX industry in the UK. He reviewed my CV and portfolio in detail and gave sharp, actionable insights that I hadn't considered before. His guidance was honest, specific, and extremely valuable. A truly refreshing and motivating session.",
+    name: "Eshan Gupta",
+    role: "UX/UI Designer, Synkcode",
+    date: "November 16, 2025",
+  },
+];
+
 export default function MentoringPage() {
   return (
     <div className="px-6 py-24">
@@ -128,13 +158,22 @@ export default function MentoringPage() {
         </FadeInSection>
 
         <FadeInSection>
-          <div className="mb-16 rounded-xl border border-white/10 bg-white/5 p-6 sm:p-8">
-            <p className="mb-4 text-lg text-white/80">
-              &ldquo;I had such a great case study review with Pavel! He gave me real, honest
-              feedback and provided ways to improve my presentation, plus follow-up questions I
-              may get in a real interview. Super kind and relatable too!&rdquo;
-            </p>
-            <span className="text-sm text-white/40">Real mentee experience, via ADPList</span>
+          <h2 className="mb-8 uppercase">Mentee Testimonials</h2>
+          <div className="mb-16 grid gap-6 sm:grid-cols-2">
+            {testimonials.map((t) => (
+              <div
+                key={t.name + t.date}
+                className="flex flex-col rounded-xl border border-white/10 bg-white/5 p-6 sm:p-8"
+              >
+                <p className="mb-4 flex-1 text-white/80">&ldquo;{t.quote}&rdquo;</p>
+                <div>
+                  <span className="block text-sm font-semibold text-white">{t.name}</span>
+                  <span className="block text-xs text-white/40">
+                    {t.role} · {t.date}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         </FadeInSection>
 
