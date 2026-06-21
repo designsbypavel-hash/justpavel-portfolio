@@ -11,8 +11,8 @@ const heroStats = [
     description: "Contributed to a cross-platform design system at SonyLIV supporting 350M+ users across web, mobile, and TV.",
   },
   {
-    value: "82%",
-    description: "Led a full end-to-end redesign at Flatlay, driving 5,000+ downloads and reducing bounce rate by 82%.",
+    value: "20%",
+    description: "Led end-to-end UX for an enterprise AI platform (Aruva) at AWTG, reducing delivery time by 20% across discovery, prototyping, and delivery.",
   },
   {
     value: "75%",
@@ -43,11 +43,11 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
-          className="grid gap-4 sm:grid-cols-3"
+          className="grid items-stretch gap-4 sm:grid-cols-3"
         >
           {heroStats.map((stat, i) => (
-            <motion.div key={stat.value} variants={fadeInUp}>
-              <GlowCard delay={i * 3.5} className="rounded-2xl p-6">
+            <motion.div key={stat.value} variants={fadeInUp} className="h-full">
+              <GlowCard delay={i * 3.5} className="flex h-full flex-col rounded-2xl p-6">
                 <div className="mb-3 font-(family-name:--font-heading) text-4xl font-extrabold">
                   {stat.value}
                 </div>
