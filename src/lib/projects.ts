@@ -346,7 +346,14 @@ export const projects: Project[] = [
         result: "Fewer missed follow-ups and faster days-sales-outstanding across the collections operation.",
       },
     ],
-    closingSections: [],
+    closingSections: [
+      {
+        heading: "Reflection",
+        paragraphs: [
+          "The real cost of this workflow wasn't any single broken step — it was the constant context-switching between tools that made every account take longer than it should have. Unifying prep, calling, and follow-up into one continuous flow mattered more than any individual feature inside it.",
+        ],
+      },
+    ],
   },
   {
     slug: "sonyliv-ott-subscription",
@@ -396,7 +403,14 @@ export const projects: Project[] = [
         result: "Fewer checkout drop-offs and more completed, paid subscriptions.",
       },
     ],
-    closingSections: [],
+    closingSections: [
+      {
+        heading: "Reflection",
+        paragraphs: [
+          "Designing for a 10-foot, remote-control interface changes what \"simple\" means — every extra decision point costs more attention than it would on mobile, so clarity in plan comparison mattered more here than it would have in a touch-first flow.",
+        ],
+      },
+    ],
   },
   {
     slug: "sonyliv-search",
@@ -422,11 +436,7 @@ export const projects: Project[] = [
     role: "Product Designer (End-to-end)",
     platform: "OTT, B2C Mobile",
     team: "1 Designer, 1 PM, 1 PO, 3 Engineers",
-    stats: [
-      { value: "Faster", label: "Time to relevant result" },
-      { value: "Clearer", label: "Query refinement" },
-      { value: "Scaled", label: "Across devices & tiers" },
-    ],
+    stats: [],
     tldrProblem:
       "Legacy search made it hard to surface relevant results, refine queries, and navigate content at scale.",
     tldrWhatIDid:
@@ -455,7 +465,14 @@ export const projects: Project[] = [
         result: "Consistent search experience regardless of device tier.",
       },
     ],
-    closingSections: [],
+    closingSections: [
+      {
+        heading: "Reflection",
+        paragraphs: [
+          "At 350M+ users, the long tail of devices matters as much as the flagship experience — a search redesign that only works well on the newest phones quietly excludes a meaningful share of the people who actually rely on it.",
+        ],
+      },
+    ],
   },
   {
     slug: "connected-places",
@@ -464,7 +481,7 @@ export const projects: Project[] = [
       "A zero-to-one platform unifying live sensor data, operational analytics, and public digital experiences — built for the organisations running the places people actually use.",
     category: "B2B SaaS",
     tags: ["Zero-to-one", "Design System", "Admin Portal"],
-    image: "/site-assets/ai-control-layer.png",
+    image: "/site-assets/case-studies/connected-places/img-01.jpg",
     galleryImages: [
       "/site-assets/case-studies/connected-places/img-01.jpg",
       "/site-assets/case-studies/connected-places/img-02.jpg",
@@ -515,9 +532,9 @@ export const projects: Project[] = [
     ],
     closingSections: [
       {
-        heading: "Key Decisions",
+        heading: "Reflection",
         paragraphs: [
-          "Five decisions shaped the platform overall. Each one is grounded in a real audit finding, and each annotation maps directly to the element it changed — with the reasoning included, not just the outcome.",
+          "Designing for governance-focused operators meant trust had to be earned in the interface itself, not just promised in a sales deck — splitting monitoring from reporting was one decision, but the underlying lesson was that different headspaces need visually different surfaces, even within the same product.",
         ],
       },
     ],
