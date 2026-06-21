@@ -39,7 +39,7 @@ export function StrategySection({ decisions }: { decisions: Decision[] }) {
               Decision {i + 1}: {decision.title}
             </h3>
             <p className="mb-4 text-sm text-white/60">
-              <span className="font-semibold text-white/40">Why — </span>
+              <span className="font-semibold text-white/40">Why: </span>
               {decision.why}
             </p>
             {decision.alternativesConsidered && decision.alternativesConsidered.length > 0 && (
@@ -60,7 +60,7 @@ export function StrategySection({ decisions }: { decisions: Decision[] }) {
               ))}
             </ul>
             <p className="text-sm text-white/80">
-              <span className="font-semibold text-white/40">Result — </span>
+              <span className="font-semibold text-white/40">Result: </span>
               {decision.result}
             </p>
           </div>

@@ -65,7 +65,7 @@ export default function AboutPage() {
               shipped conversion-focused mobile journeys that move real business metrics. I work
               end-to-end: research, systems thinking, prototyping, and close collaboration with PMs
               and engineers until the thing is actually out the door. I care about accessible,
-              scalable design — not just beautiful screens.
+              scalable design, not just beautiful screens.
             </p>
 
             <div className="mt-10 border-t border-white/10 pt-6">

@@ -76,7 +76,7 @@ export const projects: Project[] = [
     tldrProblem:
       "Enterprise teams couldn't test Kai before going live. Every validation required engineering, a separate environment, or putting AI in front of customers and seeing what happened.",
     tldrWhatIDid:
-      "Designed a persistent Playground embedded beside every config tab, so teams could change instructions, training data, or rules and immediately see the effect — no save cycle, no redeploy.",
+      "Designed a persistent Playground embedded beside every config tab, so teams could change instructions, training data, or rules and immediately see the effect, with no save cycle and no redeploy.",
     tldrImpact:
       "Buyers stopped asking 'can it do the job?' and started asking better questions, because they could find out for themselves. The Playground became the answer to 'what happens when it gets it wrong?'",
     context: [
@@ -85,51 +85,51 @@ export const projects: Project[] = [
         paragraphs: [
           "As AI adoption accelerated, many businesses wanted to leverage AI assistants to automate support, generate leads, and improve operational efficiency. However, existing solutions often required technical expertise, complex configuration, and engineering support.",
           "Through stakeholder discussions and discovery activities, we identified a common challenge: users understood the outcomes they wanted from AI but struggled to understand how to create, train, and deploy AI assistants effectively.",
-          "The opportunity was not to build another AI platform — it was to make AI accessible, understandable, and actionable for non-technical users. The challenge became: how might we help businesses create and deploy AI assistants confidently without requiring technical expertise?",
+          "The opportunity was not to build another AI platform. It was to make AI accessible, understandable, and actionable for non-technical users. The challenge became: how might we help businesses create and deploy AI assistants confidently without requiring technical expertise?",
         ],
       },
       {
         heading: "Research Finding",
         paragraphs: [
-          "Capability was never the problem, but perceived risk was. \"What happens when Kai gets it wrong?\" was said in some form in every enterprise evaluation session — 8 of 8 interviews.",
-          "I'd expected questions about accuracy benchmarks and resolution rates. Instead, every evaluation turned to failure. Not \"can Kai answer?\" but \"what happens when it gets it wrong, and who's accountable?\" They weren't worried Kai couldn't do the job — they were worried they'd find out it couldn't in front of a customer. Risk is a feeling before it's a fact.",
-          "Before, the only fallback was engineering-gated: ops spots a gap, files a ticket, a developer makes the change, with limited validation — or worse, deploy and find out, escalating only if it goes wrong. For a contact-centre ops manager accountable for CSAT, that was not an option.",
+          "Capability was never the problem, but perceived risk was. \"What happens when Kai gets it wrong?\" was said in some form in every enterprise evaluation session: 8 of 8 interviews.",
+          "I'd expected questions about accuracy benchmarks and resolution rates. Instead, every evaluation turned to failure. Not \"can Kai answer?\" but \"what happens when it gets it wrong, and who's accountable?\" They weren't worried Kai couldn't do the job; they were worried they'd find out it couldn't in front of a customer. Risk is a feeling before it's a fact.",
+          "Before, the only fallback was engineering-gated: ops spots a gap, files a ticket, a developer makes the change, with limited validation, or worse, deploy and find out, escalating only if it goes wrong. For a contact-centre ops manager accountable for CSAT, that was not an option.",
           "3 of 4 active enterprise prospects had stalled at exactly this point. The AI worked. The product had no answer to \"can we test it before we go live?\"",
         ],
       },
       {
         heading: "Organisational Complexity",
         paragraphs: [
-          "Five roles needed access to the same Playground for different reasons, with five different definitions of what \"trusted\" means. Designing it wasn't a UI problem — it was an organisational trust problem.",
+          "Five roles needed access to the same Playground for different reasons, with five different definitions of what \"trusted\" means. Designing it wasn't a UI problem. It was an organisational trust problem.",
         ],
       },
       {
         heading: "Key Findings",
         paragraphs: [
           "Research and stakeholder discussions revealed three recurring themes.",
-          "Insight 1 — Users focused on business outcomes rather than AI terminology. Most participants understood what they wanted AI to accomplish but struggled with concepts such as models, prompts, knowledge bases, and agent configuration.",
-          "Insight 2 — Trust mattered more than automation. Users were willing to spend more time setting up assistants if they felt confident about where information came from and how responses were generated.",
-          "Insight 3 — Users wanted guidance rather than flexibility. While advanced configuration options were valuable, most participants preferred a structured workflow that reduced uncertainty and simplified decision-making.",
+          "Insight 1: Users focused on business outcomes rather than AI terminology. Most participants understood what they wanted AI to accomplish but struggled with concepts such as models, prompts, knowledge bases, and agent configuration.",
+          "Insight 2: Trust mattered more than automation. Users were willing to spend more time setting up assistants if they felt confident about where information came from and how responses were generated.",
+          "Insight 3: Users wanted guidance rather than flexibility. While advanced configuration options were valuable, most participants preferred a structured workflow that reduced uncertainty and simplified decision-making.",
         ],
       },
       {
         heading: "Landscape",
         paragraphs: [
-          "Every enterprise AI platform had the same gap. The category pattern was clear: enterprise AI tools treated testing as a separate, privileged activity — something bolted on for a demo, not something woven into daily configuration work.",
+          "Every enterprise AI platform had the same gap. The category pattern was clear: enterprise AI tools treated testing as a separate, privileged activity, something bolted on for a demo, not something woven into daily configuration work.",
         ],
       },
     ],
     decisions: [
       {
         title: "Make the Playground available on every config tab, not just Instructions",
-        why: "My first instinct was to scope the Playground to the Instructions tab. But training uploads, saved prompts, and completion criteria all affect Kai's responses. If the Playground isn't visible when those change, teams can't catch regressions there — they surface in production. AI Trainers needed immediate feedback when uploading knowledge documents; a bad upload only surfaced when a customer hit a wrong answer, days later.",
+        why: "My first instinct was to scope the Playground to the Instructions tab. But training uploads, saved prompts, and completion criteria all affect Kai's responses. If the Playground isn't visible when those change, teams can't catch regressions there; they surface in production. AI Trainers needed immediate feedback when uploading knowledge documents; a bad upload only surfaced when a customer hit a wrong answer, days later.",
         alternativesConsidered: [
-          "Instructions tab only — simpler to build, but misses training-quality checks entirely. A broken knowledge upload wouldn't be caught until a customer hit it.",
-          "A show/hide toggle per tab — adds a click of friction at exactly the moment teams most need immediate feedback after making a change.",
+          "Instructions tab only: simpler to build, but misses training-quality checks entirely. A broken knowledge upload wouldn't be caught until a customer hit it.",
+          "A show/hide toggle per tab: adds a click of friction at exactly the moment teams most need immediate feedback after making a change.",
         ],
         whatChanged: [
           "Playground persists across Details, Instructions, Training, and Prompts tabs",
-          "Same conversation thread as you navigate — test a full flow, not just one isolated response",
+          "Same conversation thread as you navigate, so you test a full flow rather than one isolated response",
           "Collapsed on smaller screens; always expanded on desktop where config work happens",
         ],
         result:
@@ -143,22 +143,22 @@ export const projects: Project[] = [
           "Access Management governs who can configure, test, and deploy",
         ],
         result:
-          "Testing became testable the moment a change was made, not after it was deployed — with the right people able to do the right things.",
+          "Testing became testable the moment a change was made, not after it was deployed, with the right people able to do the right things.",
       },
     ],
     closingSections: [
       {
         heading: "How the Playground Works Across Tabs",
         paragraphs: [
-          "Agent Config — model settings, language, style, and behaviour controls. Every dimension of the assistant's behaviour, from tone to escalation triggers, is immediately testable with no save cycle required.",
-          "Instructions — the most-used tab. Ops teams write the system prompt here and the Playground immediately shows the response. Change a word, see the effect — no save cycle, no redeploy.",
-          "Training — knowledge uploads, source files, token limits. The Playground here is critical: a bad knowledge upload only shows up when a customer hits it. AI Trainers now upload a document and immediately test the most common failure scenarios before it goes live.",
+          "Agent Config: model settings, language, style, and behaviour controls. Every dimension of the assistant's behaviour, from tone to escalation triggers, is immediately testable with no save cycle required.",
+          "Instructions: the most-used tab. Ops teams write the system prompt here and the Playground immediately shows the response. Change a word, see the effect, with no save cycle and no redeploy.",
+          "Training: knowledge uploads, source files, token limits. The Playground here is critical: a bad knowledge upload only shows up when a customer hits it. AI Trainers now upload a document and immediately test the most common failure scenarios before it goes live.",
         ],
       },
       {
         heading: "Impact",
         paragraphs: [
-          "Changed the buyer question, then the production numbers. The Playground's first measurable impact wasn't in the metrics — it was in the sales conversation, removing the single biggest blocker to enterprise deals closing.",
+          "Changed the buyer question, then the production numbers. The Playground's first measurable impact wasn't in the metrics. It was in the sales conversation, removing the single biggest blocker to enterprise deals closing.",
           "22% AI containment uplift, 45 second average handle time, and 250k+ monthly sessions followed once teams could validate confidently before go-live.",
         ],
       },
@@ -166,7 +166,7 @@ export const projects: Project[] = [
         heading: "What's Next",
         paragraphs: [
           "Automatic regression testing on config changes: right now testing is manual. After every training upload or instruction change, the saved scenario set should run automatically, flagging anything that changed before an ops manager even opens the Playground.",
-          "Shareable session links: currently one person tests and reports back. The AI Trainer who knows the edge cases and the Ops Manager who owns the KPIs need to review together — a shareable session link would make pre-launch sign-off collaborative without a screen-share meeting.",
+          "Shareable session links: currently one person tests and reports back. The AI Trainer who knows the edge cases and the Ops Manager who owns the KPIs need to review together, and a shareable session link would make pre-launch sign-off collaborative without a screen-share meeting.",
           "A shared failure-pattern library: teams build their own scenario sets in isolation, but failure patterns repeat across enterprise accounts. A shared library built from anonymised cross-account failures would give every new account a head start on what to test for.",
         ],
       },
@@ -214,7 +214,7 @@ export const projects: Project[] = [
       {
         heading: "Context",
         paragraphs: [
-          "SonyLIV supports a wide range of payment methods — UPI, cards, wallets, netbanking, and partner offers — because users in India pay in very different ways. But when everything looks equal, users slow down. Payment is a moment where confidence matters more than exploration.",
+          "SonyLIV supports a wide range of payment methods (UPI, cards, wallets, netbanking, and partner offers) because users in India pay in very different ways. But when everything looks equal, users slow down. Payment is a moment where confidence matters more than exploration.",
         ],
       },
     ],
@@ -231,7 +231,7 @@ export const projects: Project[] = [
       },
       {
         label: "Payment failure",
-        before: "A failed payment was a dead end — no clear next step, users abandoned.",
+        before: "A failed payment was a dead end with no clear next step, so users abandoned.",
         after: "Calm failure messaging, a clear retry path, and a fallback to another method without restarting.",
       },
     ],
@@ -254,7 +254,7 @@ export const projects: Project[] = [
           "\"Recommended / most used\" sits first",
           "Long-tail options remain available but not dominant",
         ],
-        result: "Checkout time reduced by 21%. Hierarchy reduces thinking — users move forward with confidence.",
+        result: "Checkout time reduced by 21%. Hierarchy reduces thinking, so users move forward with confidence.",
       },
       {
         title: "Make offers feel effortless, not risky",
@@ -264,7 +264,7 @@ export const projects: Project[] = [
           "Eligibility explained in plain language",
           "Total cost always visible and consistent",
         ],
-        result: "Higher confidence and fewer drop-offs during offer selection — offer clarity builds trust, users don't feel surprised at the last step.",
+        result: "Higher confidence and fewer drop-offs during offer selection: offer clarity builds trust, so users don't feel surprised at the last step.",
       },
       {
         title: "Design for failure recovery, because payments fail",
@@ -272,9 +272,9 @@ export const projects: Project[] = [
         whatChanged: [
           "Calm failure messaging",
           "Clear retry path",
-          "Smart fallbacks — choose another method without restarting everything",
+          "Smart fallbacks: choose another method without restarting everything",
         ],
-        result: "Failed payments reduced by 14%. Recovery is part of the product — we designed it to feel safe and guided.",
+        result: "Failed payments reduced by 14%. Recovery is part of the product, designed to feel safe and guided.",
       },
     ],
     closingSections: [
@@ -320,7 +320,7 @@ export const projects: Project[] = [
       {
         heading: "Discovery",
         paragraphs: [
-          "Outcomes need structure — if they aren't captured in a consistent format, they get lost. An empathy map built from the discoveries showed analysts switching between tools constantly, losing context between prep, the call itself, and the follow-up.",
+          "Outcomes need structure. If they aren't captured in a consistent format, they get lost. An empathy map built from the discoveries showed analysts switching between tools constantly, losing context between prep, the call itself, and the follow-up.",
         ],
       },
     ],
@@ -354,7 +354,7 @@ export const projects: Project[] = [
       {
         heading: "Reflection",
         paragraphs: [
-          "The real cost of this workflow wasn't any single broken step — it was the constant context-switching between tools that made every account take longer than it should have. Unifying prep, calling, and follow-up into one continuous flow mattered more than any individual feature inside it.",
+          "The real cost of this workflow wasn't any single broken step. It was the constant context-switching between tools that made every account take longer than it should have. Unifying prep, calling, and follow-up into one continuous flow mattered more than any individual feature inside it.",
         ],
       },
     ],
@@ -394,7 +394,7 @@ export const projects: Project[] = [
       {
         heading: "Context",
         paragraphs: [
-          "SonyLIV's Android TV subscription flow asked users to compare plans with unclear feature differentiation and pricing that wasn't easy to compare at a glance — on a 10-foot interface where every extra decision costs more attention than on mobile.",
+          "SonyLIV's Android TV subscription flow asked users to compare plans with unclear feature differentiation and pricing that wasn't easy to compare at a glance, on a 10-foot interface, where every extra decision costs more attention than on mobile.",
         ],
       },
     ],
@@ -416,7 +416,7 @@ export const projects: Project[] = [
       {
         heading: "Reflection",
         paragraphs: [
-          "Designing for a 10-foot, remote-control interface changes what \"simple\" means — every extra decision point costs more attention than it would on mobile, so clarity in plan comparison mattered more here than it would have in a touch-first flow.",
+          "Designing for a 10-foot, remote-control interface changes what \"simple\" means: every extra decision point costs more attention than it would on mobile, so clarity in plan comparison mattered more here than it would have in a touch-first flow.",
         ],
       },
     ],
@@ -449,7 +449,7 @@ export const projects: Project[] = [
     tldrProblem:
       "Legacy search made it hard to surface relevant results, refine queries, and navigate content at scale.",
     tldrWhatIDid:
-      "Redesigned the experience using failure patterns, user complaints, and global benchmarking — then validated changes through prototypes and quick feedback loops.",
+      "Redesigned the experience using failure patterns, user complaints, and global benchmarking, then validated changes through prototypes and quick feedback loops.",
     tldrImpact:
       "Faster, clearer, more intelligent search that scales across Android, iOS, tablets, and low-end devices.",
     context: [
@@ -478,7 +478,7 @@ export const projects: Project[] = [
       {
         heading: "Reflection",
         paragraphs: [
-          "At 350M+ users, the long tail of devices matters as much as the flagship experience — a search redesign that only works well on the newest phones quietly excludes a meaningful share of the people who actually rely on it.",
+          "At 350M+ users, the long tail of devices matters as much as the flagship experience, and a search redesign that only works well on the newest phones quietly excludes a meaningful share of the people who actually rely on it.",
         ],
       },
     ],

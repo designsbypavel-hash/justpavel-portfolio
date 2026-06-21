@@ -6,7 +6,7 @@ import FadeInSection from "@/components/FadeInSection";
 export const metadata: Metadata = {
   title: "Mentoring | Pavel",
   description:
-    "Mentoring for designers who want real progress — portfolio storytelling, interview prep, and practical AI workflows.",
+    "Mentoring for designers who want real progress: portfolio storytelling, interview prep, and practical AI workflows.",
 };
 
 const mentoringOffers = [

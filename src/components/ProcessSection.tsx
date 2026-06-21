@@ -16,7 +16,7 @@ export default function ProcessSection({
       </h2>
       <div className="space-y-8">
         {images.map((src, i) => (
-          <DarkImageSection key={src} src={src} alt={`${title} — process visual ${i + 1}`} />
+          <DarkImageSection key={src} src={src} alt={`${title}: process visual ${i + 1}`} />
         ))}
       </div>
     </section>
