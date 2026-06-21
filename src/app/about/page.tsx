@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 
 export const metadata: Metadata = {
   title: "About | Pavel",
@@ -21,46 +22,103 @@ const competencies = [
   },
 ];
 
+const lensPhotos = [
+  { src: "/site-assets/about-lens/york-minster.jpg", caption: "York Minster (Favourite Cathedral)" },
+  { src: "/site-assets/about-lens/uni-of-york.jpg", caption: "Uni of York" },
+  { src: "/site-assets/about-lens/york.jpg", caption: "York" },
+  { src: "/site-assets/about-lens/in-winters.jpg", caption: "In winters" },
+  { src: "/site-assets/about-lens/dream.jpg", caption: "Dream" },
+  { src: "/site-assets/about-lens/liverpool.jpg", caption: "Liverpool" },
+  { src: "/site-assets/about-lens/kingston-summer.jpg", caption: "Kingston in Summer" },
+  { src: "/site-assets/about-lens/iconic-beatles.jpg", caption: "Iconic Beatles" },
+  { src: "/site-assets/about-lens/st-paul-cathedral.jpg", caption: "St. Paul Cathedral" },
+];
+
 export default function AboutPage() {
   return (
     <div className="px-6 py-24">
-      <div className="mx-auto max-w-4xl">
-        <h1 className="mb-8 font-(family-name:--font-heading) text-4xl font-extrabold leading-tight sm:text-5xl">
-          I turn complex problems into products that feel effortless.
-        </h1>
-        <div className="relative mb-10 aspect-video w-full overflow-hidden rounded-xl border border-white/10">
-          <Image src="/site-assets/about-image.jpg" alt="Pavel at work" fill className="object-cover" />
-        </div>
-        <p className="mb-4 text-lg text-white/70">
-          Based in London with 7+ years spanning B2B SaaS and B2C work. Led UX for an AI platform
-          enabling teams to build and manage AI-powered experiences.
-        </p>
-        <p className="mb-16 text-lg text-white/70">
-          Specializes in conversion-focused mobile design and end-to-end processes from research
-          through shipped products. Values accessible, scalable design.
-        </p>
+      <div className="mx-auto max-w-6xl">
+        {/* Hero: photo + intro */}
+        <div className="mb-20 grid gap-10 sm:grid-cols-2 sm:items-start">
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/10">
+            <Image
+              src="/site-assets/about-lens/headshot.jpg"
+              alt="Pavel"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
 
-        <h2 className="mb-6 font-(family-name:--font-heading) text-2xl font-extrabold uppercase tracking-tight">
-          From My Lens
-        </h2>
-        <p className="mb-4 text-lg italic text-white/80">
-          &ldquo;I notice patterns, details, and flow, in cities, spaces, and products.&rdquo;
-        </p>
-        <p className="mb-16 text-white/60">
-          Personal reference points include York Minster (favourite cathedral), the University of
-          York, Liverpool, Kingston, and St. Paul&apos;s Cathedral.
-        </p>
+          <div>
+            <span className="mb-4 inline-block rounded-full border border-white/15 px-3 py-1 text-xs text-white/60">
+              About
+            </span>
+            <h1 className="mb-6 font-(family-name:--font-heading) text-4xl font-extrabold leading-tight sm:text-5xl">
+              I turn complex <span className="font-extrabold text-white">problems</span> into
+              products that feel effortless.
+            </h1>
+            <p className="text-lg text-white/70">
+              Based in London, I&apos;m a Product Designer with 7+ years across B2B SaaS and B2C,
+              from zero-to-one discovery to shipping high-fidelity UI at scale. I recently led UX
+              for an AI platform where teams build and manage AI-powered experiences, and I&apos;ve
+              shipped conversion-focused mobile journeys that move real business metrics. I work
+              end-to-end: research, systems thinking, prototyping, and close collaboration with PMs
+              and engineers until the thing is actually out the door. I care about accessible,
+              scalable design — not just beautiful screens.
+            </p>
 
-        <h2 className="mb-6 font-(family-name:--font-heading) text-2xl font-extrabold uppercase tracking-tight">
-          Core Competencies
-        </h2>
-        <div className="grid gap-6 sm:grid-cols-3">
-          {competencies.map((item) => (
-            <div key={item.title} className="rounded-xl border border-white/10 bg-white/5 p-6">
-              <h3 className="mb-2 font-semibold">{item.title}</h3>
-              <p className="text-sm text-white/60">{item.description}</p>
+            <div className="mt-10 border-t border-white/10 pt-6">
+              <span className="block text-xs uppercase tracking-widest text-white/40">Location</span>
+              <span className="text-lg font-semibold">London, UK</span>
             </div>
-          ))}
+          </div>
+        </div>
+
+        {/* From My Lens */}
+        <div className="mb-20 border-t border-white/10 pt-16">
+          <div className="mb-10 text-center">
+            <span className="mb-4 inline-block rounded-full border border-white/15 px-3 py-1 text-xs text-white/60">
+              From my lens
+            </span>
+            <p className="mx-auto max-w-3xl text-2xl text-white/50 sm:text-3xl">
+              I notice <span className="font-semibold text-white">patterns, details,</span> and{" "}
+              <span className="font-semibold text-white">flow,</span> in cities, spaces, and
+              products.
+            </p>
+          </div>
+
+          <div className="flex gap-6 overflow-x-auto pb-4">
+            {lensPhotos.map((photo, i) => (
+              <figure
+                key={photo.caption}
+                className="shrink-0 rotate-(--tilt) rounded-sm bg-white p-2 pb-4 shadow-[0_15px_30px_-10px_rgba(0,0,0,0.6)]"
+                style={{ "--tilt": `${i % 2 === 0 ? "-2deg" : "2deg"}` } as CSSProperties}
+              >
+                <div className="relative h-44 w-36 overflow-hidden sm:h-52 sm:w-44">
+                  <Image src={photo.src} alt={photo.caption} fill className="object-cover" />
+                </div>
+                <figcaption className="mt-2 max-w-36 text-center text-xs text-black/70 sm:max-w-44">
+                  {photo.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+
+        {/* Core Competencies */}
+        <div className="border-t border-white/10 pt-16">
+          <h2 className="mb-6 font-(family-name:--font-heading) text-2xl font-extrabold uppercase tracking-tight">
+            Core Competencies
+          </h2>
+          <div className="grid gap-6 sm:grid-cols-3">
+            {competencies.map((item) => (
+              <div key={item.title} className="rounded-xl border border-white/10 bg-white/5 p-6">
+                <h3 className="mb-2 font-semibold">{item.title}</h3>
+                <p className="text-sm text-white/60">{item.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
