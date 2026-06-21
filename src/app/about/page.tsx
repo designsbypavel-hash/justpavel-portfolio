@@ -88,21 +88,31 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="flex gap-6 overflow-x-auto pb-4">
-            {lensPhotos.map((photo, i) => (
-              <figure
-                key={photo.caption}
-                className="shrink-0 rotate-(--tilt) rounded-sm bg-white p-2 pb-4 shadow-[0_15px_30px_-10px_rgba(0,0,0,0.6)]"
-                style={{ "--tilt": `${i % 2 === 0 ? "-2deg" : "2deg"}` } as CSSProperties}
-              >
-                <div className="relative h-44 w-36 overflow-hidden sm:h-52 sm:w-44">
-                  <Image src={photo.src} alt={photo.caption} fill className="object-cover" />
-                </div>
-                <figcaption className="mt-2 max-w-36 text-center text-xs text-black/70 sm:max-w-44">
-                  {photo.caption}
-                </figcaption>
-              </figure>
-            ))}
+          <div className="relative">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-black to-transparent sm:w-24"
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-black to-transparent sm:w-24"
+            />
+            <div className="scrollbar-none flex snap-x snap-proximity gap-6 overflow-x-auto scroll-smooth px-6 pb-4 sm:px-12">
+              {lensPhotos.map((photo, i) => (
+                <figure
+                  key={photo.caption}
+                  className="shrink-0 snap-center rotate-(--tilt) rounded-sm bg-white p-2 pb-4 shadow-[0_15px_30px_-10px_rgba(0,0,0,0.6)]"
+                  style={{ "--tilt": `${i % 2 === 0 ? "-2deg" : "2deg"}` } as CSSProperties}
+                >
+                  <div className="relative h-44 w-36 overflow-hidden sm:h-52 sm:w-44">
+                    <Image src={photo.src} alt={photo.caption} fill className="object-cover" />
+                  </div>
+                  <figcaption className="mt-2 max-w-36 text-center text-xs text-black/70 sm:max-w-44">
+                    {photo.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
           </div>
         </div>
 
