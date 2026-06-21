@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Metadata } from "next";
+import CTASection from "@/components/CTASection";
 
 export const metadata: Metadata = {
   title: "Youtube | Pavel",
@@ -43,6 +44,13 @@ export default function YoutubePage() {
               </p>
             </a>
           ))}
+        </div>
+        <div className="mt-12">
+          <CTASection
+            href="https://www.youtube.com/@DesignWithPavel"
+            label="Visit My Channel"
+            external
+          />
         </div>
       </div>
     </div>
