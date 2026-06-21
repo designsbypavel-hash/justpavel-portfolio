@@ -22,6 +22,7 @@ export type Project = {
   category: string;
   tags: string[];
   image: string;
+  galleryImages: string[];
   role: string;
   platform: string;
   team: string;
@@ -44,6 +45,18 @@ export const projects: Project[] = [
     category: "B2B SaaS",
     tags: ["AI", "Enterprise", "Validation", "Governance"],
     image: "/site-assets/ai-control-layer.png",
+    galleryImages: [
+      "/site-assets/case-studies/agent-ai/img-01.png",
+      "/site-assets/case-studies/agent-ai/img-02.png",
+      "/site-assets/case-studies/agent-ai/img-03.png",
+      "/site-assets/case-studies/agent-ai/img-04.png",
+      "/site-assets/case-studies/agent-ai/img-05.png",
+      "/site-assets/case-studies/agent-ai/img-06.png",
+      "/site-assets/case-studies/agent-ai/img-07.png",
+      "/site-assets/case-studies/agent-ai/img-08.png",
+      "/site-assets/case-studies/agent-ai/img-09.png",
+      "/site-assets/case-studies/agent-ai/img-10.png",
+    ],
     role: "Lead Product Designer (End-to-end)",
     platform: "Enterprise B2B SaaS · AI Agent",
     team: "1 designer · 2 PMs · 3 engineers",
@@ -80,8 +93,21 @@ export const projects: Project[] = [
         heading: "Organisational Complexity",
         paragraphs: [
           "Five roles needed access to the same Playground for different reasons, with five different definitions of what \"trusted\" means. Designing it wasn't a UI problem — it was an organisational trust problem.",
-          "Key findings from research: users focused on business outcomes rather than AI terminology, struggling with concepts like models, prompts, knowledge bases, and agent configuration. Trust was critical to adoption — users were willing to spend more time setting up assistants if they felt confident about where information came from and how responses were generated. And users wanted guidance rather than flexibility, preferring a structured workflow that reduced uncertainty.",
-          "The category pattern was clear: enterprise AI tools treated testing as a separate, privileged activity, not something woven into daily configuration work.",
+        ],
+      },
+      {
+        heading: "Key Findings",
+        paragraphs: [
+          "Research and stakeholder discussions revealed three recurring themes.",
+          "Insight 1 — Users focused on business outcomes rather than AI terminology. Most participants understood what they wanted AI to accomplish but struggled with concepts such as models, prompts, knowledge bases, and agent configuration.",
+          "Insight 2 — Trust mattered more than automation. Users were willing to spend more time setting up assistants if they felt confident about where information came from and how responses were generated.",
+          "Insight 3 — Users wanted guidance rather than flexibility. While advanced configuration options were valuable, most participants preferred a structured workflow that reduced uncertainty and simplified decision-making.",
+        ],
+      },
+      {
+        heading: "Landscape",
+        paragraphs: [
+          "Every enterprise AI platform had the same gap. The category pattern was clear: enterprise AI tools treated testing as a separate, privileged activity — something bolted on for a demo, not something woven into daily configuration work.",
         ],
       },
     ],
@@ -109,6 +135,14 @@ export const projects: Project[] = [
       },
     ],
     closingSections: [
+      {
+        heading: "How the Playground Works Across Tabs",
+        paragraphs: [
+          "Agent Config — model settings, language, style, and behaviour controls. Every dimension of the assistant's behaviour, from tone to escalation triggers, is immediately testable with no save cycle required.",
+          "Instructions — the most-used tab. Ops teams write the system prompt here and the Playground immediately shows the response. Change a word, see the effect — no save cycle, no redeploy.",
+          "Training — knowledge uploads, source files, token limits. The Playground here is critical: a bad knowledge upload only shows up when a customer hits it. AI Trainers now upload a document and immediately test the most common failure scenarios before it goes live.",
+        ],
+      },
       {
         heading: "Impact",
         paragraphs: [
@@ -140,6 +174,15 @@ export const projects: Project[] = [
     category: "B2C Mobile",
     tags: ["Payments", "Checkout", "Conversion Optimization"],
     image: "/site-assets/sonyliv-checkout.jpg",
+    galleryImages: [
+      "/site-assets/case-studies/sonyliv-check/img-01.png",
+      "/site-assets/case-studies/sonyliv-check/img-02.png",
+      "/site-assets/case-studies/sonyliv-check/img-03.png",
+      "/site-assets/case-studies/sonyliv-check/img-04.png",
+      "/site-assets/case-studies/sonyliv-check/img-05.png",
+      "/site-assets/case-studies/sonyliv-check/img-06.png",
+      "/site-assets/case-studies/sonyliv-check/img-07.png",
+    ],
     role: "Product Designer (End-to-end)",
     platform: "Mobile",
     team: "PM, PO, 3 Engineers",
@@ -160,12 +203,6 @@ export const projects: Project[] = [
         heading: "Context",
         paragraphs: [
           "SonyLIV supports a wide range of payment methods — UPI, cards, wallets, netbanking, and partner offers — because users in India pay in very different ways. But when everything looks equal, users slow down. Payment is a moment where confidence matters more than exploration.",
-        ],
-      },
-      {
-        heading: "What I Learned",
-        paragraphs: [
-          "To ground decisions, I combined heuristic evaluation to spot friction patterns, benchmarking from Prime Video, Hotstar, PhonePe, Paytm and similar products, and payment UX research specific to Indian users' habits and trust signals.",
         ],
       },
     ],
@@ -211,7 +248,14 @@ export const projects: Project[] = [
         result: "Failed payments reduced by 14%. Recovery is part of the product — we designed it to feel safe and guided.",
       },
     ],
-    closingSections: [],
+    closingSections: [
+      {
+        heading: "What I Learned",
+        paragraphs: [
+          "To ground these decisions, I combined three inputs: heuristic evaluation to spot friction patterns, benchmarking against Prime Video, Hotstar, PhonePe, and Paytm, and payment UX research specific to Indian users' habits and trust signals.",
+        ],
+      },
+    ],
   },
   {
     slug: "fintech-autonomous",
@@ -221,6 +265,15 @@ export const projects: Project[] = [
     category: "B2B SaaS",
     tags: ["AI", "Fintech", "Collections", "Workflow"],
     image: "/site-assets/ai-fintech-collections.jpg",
+    galleryImages: [
+      "/site-assets/case-studies/fintech-autonomous/img-01.jpg",
+      "/site-assets/case-studies/fintech-autonomous/img-02.jpg",
+      "/site-assets/case-studies/fintech-autonomous/img-03.jpg",
+      "/site-assets/case-studies/fintech-autonomous/img-04.jpg",
+      "/site-assets/case-studies/fintech-autonomous/img-05.jpg",
+      "/site-assets/case-studies/fintech-autonomous/img-06.jpg",
+      "/site-assets/case-studies/fintech-autonomous/img-07.jpg",
+    ],
     role: "Product Designer (End-to-end)",
     platform: "Fintech & AI, B2B SaaS",
     team: "1 designer, 2 PMs, 4 engineers (2 FE, 2 BE)",
@@ -278,6 +331,15 @@ export const projects: Project[] = [
     category: "B2C Mobile",
     tags: ["Subscriptions", "Conversion", "UX"],
     image: "/site-assets/sonyliv-subscription.jpg",
+    galleryImages: [
+      "/site-assets/case-studies/sonyliv-ott-subscription/img-01.jpg",
+      "/site-assets/case-studies/sonyliv-ott-subscription/img-02.jpg",
+      "/site-assets/case-studies/sonyliv-ott-subscription/img-03.jpg",
+      "/site-assets/case-studies/sonyliv-ott-subscription/img-04.jpg",
+      "/site-assets/case-studies/sonyliv-ott-subscription/img-05.jpg",
+      "/site-assets/case-studies/sonyliv-ott-subscription/img-06.jpg",
+      "/site-assets/case-studies/sonyliv-ott-subscription/img-07.jpg",
+    ],
     role: "Product Designer (End-to-end)",
     platform: "OTT, B2C",
     team: "1 Product Designer · 1 PM · 3 Engineers",
@@ -324,6 +386,19 @@ export const projects: Project[] = [
     category: "B2C Mobile",
     tags: ["Search", "Discovery", "Streaming"],
     image: "/site-assets/sonyliv-search.jpg",
+    galleryImages: [
+      "/site-assets/case-studies/sonyliv-search/img-01.jpg",
+      "/site-assets/case-studies/sonyliv-search/img-02.jpg",
+      "/site-assets/case-studies/sonyliv-search/img-03.jpg",
+      "/site-assets/case-studies/sonyliv-search/img-04.jpg",
+      "/site-assets/case-studies/sonyliv-search/img-05.jpg",
+      "/site-assets/case-studies/sonyliv-search/img-06.jpg",
+      "/site-assets/case-studies/sonyliv-search/img-07.jpg",
+      "/site-assets/case-studies/sonyliv-search/img-08.jpg",
+      "/site-assets/case-studies/sonyliv-search/img-09.jpg",
+      "/site-assets/case-studies/sonyliv-search/img-10.jpg",
+      "/site-assets/case-studies/sonyliv-search/img-11.jpg",
+    ],
     role: "Product Designer (End-to-end)",
     platform: "Fintech & AI, B2B SaaS",
     team: "1 Designer, 1 PM, 1 PO, 3 Engineers",
@@ -370,6 +445,15 @@ export const projects: Project[] = [
     category: "B2B SaaS",
     tags: ["Zero-to-one", "Design System", "Admin Portal"],
     image: "/site-assets/ai-control-layer.png",
+    galleryImages: [
+      "/site-assets/case-studies/connected-places/img-01.jpg",
+      "/site-assets/case-studies/connected-places/img-02.jpg",
+      "/site-assets/case-studies/connected-places/img-03.jpg",
+      "/site-assets/case-studies/connected-places/img-04.png",
+      "/site-assets/case-studies/connected-places/img-05.jpg",
+      "/site-assets/case-studies/connected-places/img-06.jpg",
+      "/site-assets/case-studies/connected-places/img-07.jpg",
+    ],
     role: "Lead Product Designer (End-to-end)",
     platform: "Admin Portal · Web",
     team: "Councils · Destinations · Estates",

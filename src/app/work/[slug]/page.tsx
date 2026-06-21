@@ -135,6 +135,31 @@ export default async function ProjectPage({
           ))}
         </div>
 
+        {/* Process & Visuals gallery */}
+        {project.galleryImages.length > 0 && (
+          <section className="mb-12">
+            <h2 className="mb-8 font-(family-name:--font-heading) text-2xl font-extrabold uppercase tracking-tight">
+              Process &amp; Visuals
+            </h2>
+            <div className="space-y-6">
+              {project.galleryImages.map((src, i) => (
+                <div
+                  key={src}
+                  className="relative w-full overflow-hidden rounded-xl border border-white/10 bg-white"
+                  style={{ aspectRatio: "16 / 9" }}
+                >
+                  <Image
+                    src={src}
+                    alt={`${project.title} — process visual ${i + 1}`}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Key Decisions */}
         {project.decisions.length > 0 && (
           <section className="mb-12">
