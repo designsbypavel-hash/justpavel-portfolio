@@ -42,7 +42,7 @@ export default function AboutPage() {
         <div className="mb-20 grid gap-10 sm:grid-cols-2 sm:items-start">
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/10">
             <Image
-              src="/site-assets/about-lens/headshot.jpg"
+              src="/site-assets/about-lens/headshot-new.jpg"
               alt="Pavel"
               fill
               className="object-cover"
