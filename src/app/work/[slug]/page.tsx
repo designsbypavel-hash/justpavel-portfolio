@@ -137,6 +137,36 @@ export default async function ProjectPage({
           ))}
         </div>
 
+        {/* User Journey: Before vs After */}
+        {project.journeySteps && project.journeySteps.length > 0 && (
+          <section className="mb-12">
+            <h2 className="mb-8 font-(family-name:--font-heading) text-2xl font-extrabold uppercase tracking-tight">
+              User Journey: Before vs After
+            </h2>
+            <div className="space-y-4">
+              {project.journeySteps.map((step) => (
+                <div key={step.label} className="rounded-xl border border-white/10 p-6">
+                  <p className="mb-4 text-sm font-semibold text-white/80">{step.label}</p>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="rounded-lg border border-red-500/20 bg-red-500/5 p-4">
+                      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-red-400/70">
+                        Before
+                      </p>
+                      <p className="text-sm text-white/60">{step.before}</p>
+                    </div>
+                    <div className="rounded-lg border border-emerald-500/20 bg-emerald-500/5 p-4">
+                      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-emerald-400/70">
+                        After
+                      </p>
+                      <p className="text-sm text-white/60">{step.after}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Process & Visuals gallery */}
         {project.galleryImages.length > 0 && (
           <section className="mb-12">
@@ -178,6 +208,18 @@ export default async function ProjectPage({
                     <span className="font-semibold text-white/40">Why — </span>
                     {decision.why}
                   </p>
+                  {decision.alternativesConsidered && decision.alternativesConsidered.length > 0 && (
+                    <div className="mb-4 rounded-lg border border-white/10 bg-black/30 p-4">
+                      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-white/40">
+                        Alternatives Considered
+                      </p>
+                      <ul className="list-inside list-disc space-y-1 text-sm text-white/60">
+                        {decision.alternativesConsidered.map((alt, j) => (
+                          <li key={j}>{alt}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                   <ul className="mb-4 list-inside list-disc space-y-1 text-sm text-white/70">
                     {decision.whatChanged.map((item, j) => (
                       <li key={j}>{item}</li>

@@ -6,6 +6,7 @@ export type ImpactStat = {
 export type Decision = {
   title: string;
   why: string;
+  alternativesConsidered?: string[];
   whatChanged: string[];
   result: string;
 };
@@ -13,6 +14,12 @@ export type Decision = {
 export type Section = {
   heading: string;
   paragraphs: string[];
+};
+
+export type JourneyStep = {
+  label: string;
+  before: string;
+  after: string;
 };
 
 export type Project = {
@@ -32,6 +39,7 @@ export type Project = {
   tldrWhatIDid: string;
   tldrImpact: string;
   context: Section[];
+  journeySteps?: JourneyStep[];
   decisions: Decision[];
   closingSections: Section[];
 };
@@ -115,6 +123,10 @@ export const projects: Project[] = [
       {
         title: "Make the Playground available on every config tab, not just Instructions",
         why: "My first instinct was to scope the Playground to the Instructions tab. But training uploads, saved prompts, and completion criteria all affect Kai's responses. If the Playground isn't visible when those change, teams can't catch regressions there — they surface in production. AI Trainers needed immediate feedback when uploading knowledge documents; a bad upload only surfaced when a customer hit a wrong answer, days later.",
+        alternativesConsidered: [
+          "Instructions tab only — simpler to build, but misses training-quality checks entirely. A broken knowledge upload wouldn't be caught until a customer hit it.",
+          "A show/hide toggle per tab — adds a click of friction at exactly the moment teams most need immediate feedback after making a change.",
+        ],
         whatChanged: [
           "Playground persists across Details, Instructions, Training, and Prompts tabs",
           "Same conversation thread as you navigate — test a full flow, not just one isolated response",
@@ -204,6 +216,23 @@ export const projects: Project[] = [
         paragraphs: [
           "SonyLIV supports a wide range of payment methods — UPI, cards, wallets, netbanking, and partner offers — because users in India pay in very different ways. But when everything looks equal, users slow down. Payment is a moment where confidence matters more than exploration.",
         ],
+      },
+    ],
+    journeySteps: [
+      {
+        label: "Payment method selection",
+        before: "All payment methods shown with equal visual weight, no guidance on which to pick.",
+        after: "UPI surfaced first and recommended; long-tail options available but not competing for attention.",
+      },
+      {
+        label: "Offers",
+        before: "Unclear whether an offer applied, or what it actually changed about the price.",
+        after: "Clear \"applied\" state, eligibility explained in plain language, total cost always visible.",
+      },
+      {
+        label: "Payment failure",
+        before: "A failed payment was a dead end — no clear next step, users abandoned.",
+        after: "Calm failure messaging, a clear retry path, and a fallback to another method without restarting.",
       },
     ],
     decisions: [
