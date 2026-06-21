@@ -90,12 +90,19 @@ export default function Home() {
       >
         <div className="mx-auto max-w-6xl">
           <FadeInSection>
-            <h2 className="mb-4 font-(family-name:--font-heading) text-3xl font-extrabold sm:text-4xl">
-              Mentoring for designers who want real progress
-            </h2>
-            <p className="mb-12 max-w-2xl text-white/70">
-              Coaching on portfolio storytelling, interview walkthroughs, and practical AI workflows.
-            </p>
+            <div className="mb-12 flex flex-wrap items-center gap-6">
+              <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full border-2 border-white/20 shadow-[0_0_0_6px_rgba(255,255,255,0.04)]">
+                <Image src="/site-assets/mentor-avatar.webp" alt="Pavel" fill className="object-cover" />
+              </div>
+              <div>
+                <h2 className="mb-2 font-(family-name:--font-heading) text-3xl font-extrabold sm:text-4xl">
+                  Mentoring for designers who want real progress
+                </h2>
+                <p className="max-w-2xl text-white/70">
+                  Coaching on portfolio storytelling, interview walkthroughs, and practical AI workflows.
+                </p>
+              </div>
+            </div>
           </FadeInSection>
 
           <div className="mb-16 grid gap-6 sm:grid-cols-2">
