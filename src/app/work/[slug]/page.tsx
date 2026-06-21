@@ -143,22 +143,30 @@ export default async function ProjectPage({
             <h2 className="mb-8 font-(family-name:--font-heading) text-2xl font-extrabold uppercase tracking-tight">
               User Journey: Before vs After
             </h2>
-            <div className="space-y-4">
-              {project.journeySteps.map((step) => (
-                <div key={step.label} className="rounded-xl border border-white/10 p-6">
-                  <p className="mb-4 text-sm font-semibold text-white/80">{step.label}</p>
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <div className="rounded-lg border border-red-500/20 bg-red-500/5 p-4">
-                      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-red-400/70">
+            <div className="space-y-6">
+              {project.journeySteps.map((step, i) => (
+                <div key={step.label} className="rounded-xl border border-white/10 bg-white/[0.03] p-6">
+                  <div className="mb-4 flex items-center gap-3">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/20 text-xs font-semibold text-white/60">
+                      {i + 1}
+                    </span>
+                    <p className="text-sm font-semibold text-white/80">{step.label}</p>
+                  </div>
+                  <div className="grid items-stretch gap-3 sm:grid-cols-[1fr_auto_1fr]">
+                    <div className="rounded-lg border border-white/10 bg-black/40 p-4">
+                      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-white/35">
                         Before
                       </p>
-                      <p className="text-sm text-white/60">{step.before}</p>
+                      <p className="text-sm text-white/55">{step.before}</p>
                     </div>
-                    <div className="rounded-lg border border-emerald-500/20 bg-emerald-500/5 p-4">
-                      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-emerald-400/70">
+                    <div className="flex items-center justify-center text-white/30 sm:rotate-0">
+                      <span aria-hidden className="text-lg">→</span>
+                    </div>
+                    <div className="rounded-lg border border-white/10 bg-gradient-to-br from-blue-500/[0.07] via-white/[0.03] to-orange-500/[0.07] p-4">
+                      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-white/50">
                         After
                       </p>
-                      <p className="text-sm text-white/60">{step.after}</p>
+                      <p className="text-sm text-white/80">{step.after}</p>
                     </div>
                   </div>
                 </div>
