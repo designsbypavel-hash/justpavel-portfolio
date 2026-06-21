@@ -306,7 +306,11 @@ export const projects: Project[] = [
     role: "Product Designer (End-to-end)",
     platform: "Fintech & AI, B2B SaaS",
     team: "1 designer, 2 PMs, 4 engineers (2 FE, 2 BE)",
-    stats: [],
+    stats: [
+      { value: "40%", label: "Fewer missed follow-ups" },
+      { value: "15%", label: "Less manual effort" },
+      { value: "13%", label: "Faster DSO" },
+    ],
     tldrProblem:
       "AR analysts manage hundreds of accounts per cycle, but the workflow was fragmented across tools, leading to manual work, errors, and missed follow-ups that impacted DSO.",
     tldrWhatIDid:
