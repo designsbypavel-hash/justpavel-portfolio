@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { CSSProperties } from "react";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import GradientWordLoop from "@/components/GradientWordLoop";
 
@@ -44,11 +45,12 @@ export default function Hero() {
           variants={staggerContainer}
           className="grid gap-4 sm:grid-cols-3"
         >
-          {heroStats.map((stat) => (
+          {heroStats.map((stat, i) => (
             <motion.div
               key={stat.value}
               variants={fadeInUp}
               className="glow-card rounded-2xl p-6"
+              style={{ "--glow-delay": `${i * -1.7}s` } as CSSProperties}
             >
               <div className="mb-3 font-(family-name:--font-heading) text-4xl font-extrabold">
                 {stat.value}

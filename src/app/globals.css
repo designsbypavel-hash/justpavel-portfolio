@@ -201,15 +201,29 @@ p, span, a, li, label, input, textarea, button {
     rgba(224, 122, 63, 0.95) 100%
   );
   background-size: 300% 100%;
-  animation: glow-sweep 4s linear infinite;
+  opacity: 0;
+  animation: glow-sweep 5s ease-in-out infinite;
+  animation-delay: var(--glow-delay, 0s);
 }
 
 @keyframes glow-sweep {
   0% {
     background-position: 0% 0%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  50% {
+    background-position: 150% 0%;
+    opacity: 1;
+  }
+  85% {
+    opacity: 0.9;
   }
   100% {
     background-position: 300% 0%;
+    opacity: 0;
   }
 }
 
@@ -220,7 +234,7 @@ p, span, a, li, label, input, textarea, button {
 }
 
 .glow-card:hover::before {
-  animation-duration: 1.8s;
+  animation-duration: 2.6s;
 }
 
 @media (prefers-reduced-motion: reduce) {
