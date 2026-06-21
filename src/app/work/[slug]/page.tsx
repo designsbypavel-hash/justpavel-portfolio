@@ -74,16 +74,18 @@ export default async function ProjectPage({
           <Image src={project.image} alt={project.title} fill className="object-cover" />
         </div>
 
-        <div className="mb-12 grid gap-8 sm:grid-cols-3">
-          {project.stats.map((stat, i) => (
-            <div key={`${stat.label}-${i}`} className="border-t border-white/30 pt-4">
-              <div className="font-(family-name:--font-heading) text-4xl font-extrabold">
-                {stat.value}
+        {project.stats.length > 0 && (
+          <div className="mb-12 grid gap-8 sm:grid-cols-3">
+            {project.stats.map((stat, i) => (
+              <div key={`${stat.label}-${i}`} className="border-t border-white/30 pt-4">
+                <div className="font-(family-name:--font-heading) text-4xl font-extrabold">
+                  {stat.value}
+                </div>
+                <div className="mt-2 text-sm text-white/60">{stat.label}</div>
               </div>
-              <div className="mt-2 text-sm text-white/60">{stat.label}</div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
 
         <div className="mb-12 flex flex-wrap gap-2">
           {project.tags.map((tag) => (

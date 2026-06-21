@@ -277,11 +277,7 @@ export const projects: Project[] = [
     role: "Product Designer (End-to-end)",
     platform: "Fintech & AI, B2B SaaS",
     team: "1 designer, 2 PMs, 4 engineers (2 FE, 2 BE)",
-    stats: [
-      { value: "Fewer", label: "Missed follow-ups" },
-      { value: "Less", label: "Manual effort" },
-      { value: "Faster", label: "DSO" },
-    ],
+    stats: [],
     tldrProblem:
       "AR analysts manage hundreds of accounts per cycle, but the workflow was fragmented across tools, leading to manual work, errors, and missed follow-ups that impacted DSO.",
     tldrWhatIDid:
@@ -343,12 +339,7 @@ export const projects: Project[] = [
     role: "Product Designer (End-to-end)",
     platform: "OTT, B2C",
     team: "1 Product Designer · 1 PM · 3 Engineers",
-    stats: [
-      { value: "+", label: "Paid subscriptions" },
-      { value: "−", label: "Checkout drop-offs" },
-      { value: "Faster", label: "Plan decision-making" },
-      { value: "Higher", label: "Plan selection engagement" },
-    ],
+    stats: [],
     tldrProblem:
       "Users were dropping because plan selection felt unclear and pricing differentiation wasn't obvious.",
     tldrWhatIDid:
@@ -400,7 +391,7 @@ export const projects: Project[] = [
       "/site-assets/case-studies/sonyliv-search/img-11.jpg",
     ],
     role: "Product Designer (End-to-end)",
-    platform: "Fintech & AI, B2B SaaS",
+    platform: "OTT, B2C Mobile",
     team: "1 Designer, 1 PM, 1 PO, 3 Engineers",
     stats: [
       { value: "Faster", label: "Time to relevant result" },
@@ -458,11 +449,7 @@ export const projects: Project[] = [
     platform: "Admin Portal · Web",
     team: "Councils · Destinations · Estates",
     duration: "2 months",
-    stats: [
-      { value: "0", label: "Product modules designed end-to-end" },
-      { value: "0", label: "Critical UX findings resolved pre-launch" },
-      { value: "0", label: "Design system powering full product" },
-    ],
+    stats: [],
     tldrProblem:
       "No platform existed that connected live operational data, analytics, content management, and public digital experience in one governed system for place operators.",
     tldrWhatIDid:
