@@ -163,13 +163,11 @@ p, span, a, li, label, input, textarea, button {
   }
 }
 
-/* Apple-style glowing gradient-edge card, with the glow travelling around the border */
-@property --glow-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-
+/* Apple-style glowing gradient-edge card. Reuses the same proven technique
+   as .gradient-text-loop below: an oversized linear gradient animated via
+   background-position, masked into a thin ring matching the card's border
+   radius. background-position animation has universal browser support, no
+   @property or rotation-distortion concerns on non-square cards. */
 .glow-card {
   position: relative;
   isolation: isolate;
@@ -178,8 +176,6 @@ p, span, a, li, label, input, textarea, button {
     0 0 40px -10px rgba(124, 147, 232, 0.18),
     0 0 60px -20px rgba(224, 122, 63, 0.15);
   transition: box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-  --glow-angle: 0deg;
-  animation: glow-rotate 6s linear infinite;
 }
 
 .glow-card::before {
@@ -188,27 +184,32 @@ p, span, a, li, label, input, textarea, button {
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: conic-gradient(
-    from var(--glow-angle),
-    rgba(124, 147, 232, 0) 0%,
-    rgba(124, 147, 232, 0.9) 12%,
-    rgba(217, 154, 78, 0.9) 25%,
-    rgba(224, 122, 63, 0.9) 32%,
-    rgba(255, 255, 255, 0) 45%,
-    rgba(255, 255, 255, 0) 100%
-  );
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
-  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  background-image: linear-gradient(
+    90deg,
+    rgba(124, 147, 232, 0.95) 0%,
+    rgba(217, 154, 78, 0.95) 20%,
+    rgba(224, 122, 63, 0.95) 30%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(124, 147, 232, 0.95) 70%,
+    rgba(217, 154, 78, 0.95) 90%,
+    rgba(224, 122, 63, 0.95) 100%
+  );
+  background-size: 300% 100%;
+  animation: glow-sweep 4s linear infinite;
 }
 
-@keyframes glow-rotate {
-  to {
-    --glow-angle: 360deg;
+@keyframes glow-sweep {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 300% 0%;
   }
 }
 
@@ -216,7 +217,16 @@ p, span, a, li, label, input, textarea, button {
   box-shadow:
     0 0 50px -8px rgba(124, 147, 232, 0.3),
     0 0 70px -16px rgba(224, 122, 63, 0.26);
-  animation-duration: 3s;
+}
+
+.glow-card:hover::before {
+  animation-duration: 1.8s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow-card::before {
+    animation: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
