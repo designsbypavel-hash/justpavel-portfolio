@@ -43,10 +43,12 @@ export default function AboutPage() {
         <h2 className="mb-6 font-(family-name:--font-heading) text-2xl font-extrabold uppercase tracking-tight">
           From My Lens
         </h2>
+        <p className="mb-4 text-lg italic text-white/80">
+          &ldquo;I notice patterns, details, and flow, in cities, spaces, and products.&rdquo;
+        </p>
         <p className="mb-16 text-white/60">
-          Observes patterns, details, and flow across cities, spaces, and products. Personal
-          reference points include York Minster, the University of York, Liverpool, Kingston, and
-          St. Paul&apos;s Cathedral.
+          Personal reference points include York Minster (favourite cathedral), the University of
+          York, Liverpool, Kingston, and St. Paul&apos;s Cathedral.
         </p>
 
         <h2 className="mb-6 font-(family-name:--font-heading) text-2xl font-extrabold uppercase tracking-tight">
