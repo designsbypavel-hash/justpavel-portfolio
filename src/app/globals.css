@@ -16,6 +16,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sen), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
 /* Typography hierarchy — single source of truth, Sen throughout */
@@ -24,43 +25,34 @@ h1, h2, h3, h4 {
   letter-spacing: -0.01em;
 }
 
+/* Fluid typography: scales smoothly between the 320px and 1440px
+   reference widths instead of jumping at a single breakpoint, so
+   every size in between (375, 390, 430, 768, 1024, 1280...) gets a
+   proportionate size rather than landing on a mobile-only or
+   desktop-only value. clamp(min, preferred, max) -- the preferred
+   value uses vw so it scales with the viewport between the clamps. */
 h1 {
   font-weight: 700;
-  font-size: 2.25rem; /* 36px mobile */
+  font-size: clamp(2rem, 1.5rem + 3.6vw, 3.75rem); /* 32px -> 60px */
   line-height: 1.1;
 }
 
 h2 {
   font-weight: 700;
-  font-size: 1.875rem; /* 30px mobile */
+  font-size: clamp(1.625rem, 1.3rem + 2vw, 2.5rem); /* 26px -> 40px */
   line-height: 1.15;
 }
 
 h3 {
   font-weight: 700;
-  font-size: 1.5rem; /* 24px mobile */
+  font-size: clamp(1.375rem, 1.2rem + 1vw, 2rem); /* 22px -> 32px */
   line-height: 1.2;
 }
 
 h4 {
   font-weight: 700;
-  font-size: 1.25rem; /* 20px mobile */
+  font-size: clamp(1.125rem, 1rem + 0.7vw, 1.5rem); /* 18px -> 24px */
   line-height: 1.25;
-}
-
-@media (min-width: 768px) {
-  h1 {
-    font-size: 3.75rem; /* 60px desktop */
-  }
-  h2 {
-    font-size: 2.5rem; /* 40px desktop */
-  }
-  h3 {
-    font-size: 2rem; /* 32px desktop */
-  }
-  h4 {
-    font-size: 1.5rem; /* 24px desktop */
-  }
 }
 
 p, span, a, li, label, input, textarea, button {

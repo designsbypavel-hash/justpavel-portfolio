@@ -16,16 +16,16 @@ export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-black px-6 py-12">
       <div className="mx-auto flex max-w-6xl flex-wrap items-start justify-between gap-10">
-        <div>
+        <div className="w-full sm:w-auto">
           <span className="mb-6 block font-(family-name:--font-heading) text-lg font-extrabold lowercase">
             pavel
           </span>
-          <nav className="mb-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/60">
+          <nav className="mb-8 flex flex-wrap gap-x-6 gap-y-3 text-sm text-white/60">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="relative py-1 transition-colors duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-white after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-white after:transition-all after:duration-400 after:ease-[cubic-bezier(0.22,1,0.36,1)] hover:after:w-full"
+                className="relative flex min-h-[24px] items-center py-1 transition-colors duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-white after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-white after:transition-all after:duration-400 after:ease-[cubic-bezier(0.22,1,0.36,1)] hover:after:w-full"
               >
                 {link.label}
               </Link>
@@ -33,8 +33,8 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className="text-right">
-          <div className="mb-4 flex justify-end">
+        <div className="w-full text-left sm:w-auto sm:text-right">
+          <div className="mb-4 flex justify-start sm:justify-end">
             <SocialLinks />
           </div>
           <p className="text-sm text-white/50">

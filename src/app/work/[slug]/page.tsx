@@ -124,7 +124,7 @@ export default async function ProjectPage({
                       </p>
                       <p className="text-sm text-white/55">{step.before}</p>
                     </div>
-                    <div className="flex items-center justify-center text-white/30 sm:rotate-0">
+                    <div className="flex items-center justify-center rotate-90 text-white/30 sm:rotate-0">
                       <span aria-hidden className="text-lg">→</span>
                     </div>
                     <div className="rounded-lg border border-white/10 bg-gradient-to-br from-blue-500/[0.07] via-white/[0.03] to-orange-500/[0.07] p-4">
