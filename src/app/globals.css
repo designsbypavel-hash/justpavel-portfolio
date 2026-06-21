@@ -163,7 +163,13 @@ p, span, a, li, label, input, textarea, button {
   }
 }
 
-/* Apple-style glowing gradient-edge card */
+/* Apple-style glowing gradient-edge card, with the glow travelling around the border */
+@property --glow-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
 .glow-card {
   position: relative;
   isolation: isolate;
@@ -171,7 +177,9 @@ p, span, a, li, label, input, textarea, button {
   box-shadow:
     0 0 40px -10px rgba(124, 147, 232, 0.18),
     0 0 60px -20px rgba(224, 122, 63, 0.15);
-  transition: box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  --glow-angle: 0deg;
+  animation: glow-rotate 6s linear infinite;
 }
 
 .glow-card::before {
@@ -180,12 +188,14 @@ p, span, a, li, label, input, textarea, button {
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(
-    135deg,
-    rgba(124, 147, 232, 0.55) 0%,
-    rgba(255, 255, 255, 0.06) 35%,
-    rgba(255, 255, 255, 0.06) 65%,
-    rgba(224, 122, 63, 0.55) 100%
+  background: conic-gradient(
+    from var(--glow-angle),
+    rgba(124, 147, 232, 0) 0%,
+    rgba(124, 147, 232, 0.9) 12%,
+    rgba(217, 154, 78, 0.9) 25%,
+    rgba(224, 122, 63, 0.9) 32%,
+    rgba(255, 255, 255, 0) 45%,
+    rgba(255, 255, 255, 0) 100%
   );
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
@@ -193,10 +203,24 @@ p, span, a, li, label, input, textarea, button {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes glow-rotate {
+  to {
+    --glow-angle: 360deg;
+  }
 }
 
 .glow-card:hover {
   box-shadow:
     0 0 50px -8px rgba(124, 147, 232, 0.3),
     0 0 70px -16px rgba(224, 122, 63, 0.26);
+  animation-duration: 3s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow-card {
+    animation: none;
+  }
 }
