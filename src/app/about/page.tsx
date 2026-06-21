@@ -88,7 +88,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="relative">
+          <div className="group relative overflow-hidden">
             <div
               aria-hidden
               className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-black to-transparent sm:w-24"
@@ -97,11 +97,11 @@ export default function AboutPage() {
               aria-hidden
               className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-black to-transparent sm:w-24"
             />
-            <div className="scrollbar-none flex snap-x snap-proximity gap-6 overflow-x-auto scroll-smooth px-6 pb-4 sm:px-12">
-              {lensPhotos.map((photo, i) => (
+            <div className="marquee-track flex w-max gap-6 pb-4 [animation-duration:32s] group-hover:[animation-play-state:paused]">
+              {[...lensPhotos, ...lensPhotos].map((photo, i) => (
                 <figure
-                  key={photo.caption}
-                  className="shrink-0 snap-center rotate-(--tilt) rounded-sm bg-white p-2 pb-4 shadow-[0_15px_30px_-10px_rgba(0,0,0,0.6)]"
+                  key={`${photo.caption}-${i}`}
+                  className="shrink-0 rotate-(--tilt) rounded-sm bg-white p-2 pb-4 shadow-[0_15px_30px_-10px_rgba(0,0,0,0.6)]"
                   style={{ "--tilt": `${i % 2 === 0 ? "-2deg" : "2deg"}` } as CSSProperties}
                 >
                   <div className="relative h-44 w-36 overflow-hidden sm:h-52 sm:w-44">
