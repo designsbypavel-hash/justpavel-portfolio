@@ -31,11 +31,6 @@ const links = [
       </svg>
     ),
   },
-  {
-    href: "https://adplist.org/mentors/pavel-mondal",
-    label: "Mentoring (ADPList)",
-    icon: <span className="text-xs font-semibold">in</span>,
-  },
 ];
 
 export default function SocialLinks() {
