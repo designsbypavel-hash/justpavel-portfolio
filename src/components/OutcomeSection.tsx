@@ -5,13 +5,13 @@ export default function OutcomeSection({ sections }: { sections: Section[] }) {
 
   return (
     <section className="mb-12">
-      <h2 className="mb-8 font-(family-name:--font-heading) text-2xl font-extrabold uppercase tracking-tight">
+      <h2 className="mb-8 uppercase">
         Results
       </h2>
       <div className="space-y-10">
         {sections.map((section) => (
           <div key={section.heading}>
-            <h3 className="mb-3 text-lg font-semibold text-white/90">{section.heading}</h3>
+            <h3 className="mb-3 text-white/90">{section.heading}</h3>
             <div className="space-y-3">
               {section.paragraphs.map((p, i) => (
                 <p key={i} className="text-white/70">

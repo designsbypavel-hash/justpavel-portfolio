@@ -12,7 +12,7 @@ export default function ContactPage() {
       <div className="px-6 pt-28 pb-16">
         <div className="mx-auto max-w-6xl">
           <p className="mb-2 text-sm uppercase tracking-widest text-white/50">Let&apos;s talk about</p>
-          <h1 className="font-(family-name:--font-heading) text-5xl font-extrabold sm:text-6xl">
+          <h1 className="">
             Your Project
           </h1>
         </div>
@@ -21,7 +21,7 @@ export default function ContactPage() {
       <div className="border-t border-white/10 px-6 py-16">
         <div className="mx-auto grid max-w-6xl gap-12 sm:grid-cols-2">
           <div>
-            <h2 className="mb-8 font-(family-name:--font-heading) text-3xl font-extrabold">
+            <h2 className="mb-8">
               Get in touch
             </h2>
             <a

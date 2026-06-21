@@ -53,7 +53,7 @@ export default function MentoringPage() {
               <Image src="/site-assets/mentor-avatar.webp" alt="Pavel" fill className="object-cover" priority />
             </div>
             <div>
-              <h1 className="mb-2 font-(family-name:--font-heading) text-4xl font-extrabold leading-tight sm:text-5xl">
+              <h1 className="mb-2">
                 Mentoring for designers who want real progress
               </h1>
               <p className="max-w-2xl text-white/70">
@@ -67,7 +67,7 @@ export default function MentoringPage() {
           <div className="mb-16 grid gap-6 sm:grid-cols-2">
             {mentoringOffers.map((offer) => (
               <div key={offer.title} className="rounded-xl border border-white/10 bg-white/5 p-6">
-                <h2 className="mb-2 font-semibold">{offer.title}</h2>
+                <h2 className="mb-2">{offer.title}</h2>
                 <p className="text-sm text-white/60">{offer.description}</p>
               </div>
             ))}
@@ -88,7 +88,7 @@ export default function MentoringPage() {
         </FadeInSection>
 
         <FadeInSection>
-          <h2 className="mb-8 font-(family-name:--font-heading) text-2xl font-extrabold uppercase tracking-tight">
+          <h2 className="mb-8 uppercase">
             Mentee Ratings
           </h2>
           <div className="mb-16 grid gap-6 sm:grid-cols-2">
@@ -111,7 +111,7 @@ export default function MentoringPage() {
 
         <FadeInSection>
           <div className="mb-16">
-            <h2 className="mb-4 font-(family-name:--font-heading) text-2xl font-extrabold uppercase tracking-tight">
+            <h2 className="mb-4 uppercase">
               People Often Say
             </h2>
             <div className="flex flex-wrap gap-2">

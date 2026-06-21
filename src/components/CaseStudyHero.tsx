@@ -23,7 +23,7 @@ export default function CaseStudyHero({
         <span>{readingTime} min read</span>
       </div>
 
-      <h1 className="mb-6 font-(family-name:--font-heading) text-3xl font-extrabold leading-tight sm:text-5xl">
+      <h1 className="mb-6">
         {title}
       </h1>
       <p className="text-lg text-white/70">{description}</p>

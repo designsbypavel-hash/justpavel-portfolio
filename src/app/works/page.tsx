@@ -12,7 +12,7 @@ export default function WorksPage() {
   return (
     <div className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <h1 className="mb-16 font-(family-name:--font-heading) text-4xl font-extrabold uppercase tracking-tight sm:text-5xl">
+        <h1 className="mb-16 uppercase">
           All Projects
         </h1>
         <div className="space-y-16">

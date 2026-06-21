@@ -21,7 +21,7 @@ export default function YoutubePage() {
   return (
     <div className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <h1 className="mb-16 font-(family-name:--font-heading) text-4xl font-extrabold uppercase tracking-tight sm:text-5xl">
+        <h1 className="mb-16 uppercase">
           Youtube
         </h1>
         <div className="grid gap-8 sm:grid-cols-2">

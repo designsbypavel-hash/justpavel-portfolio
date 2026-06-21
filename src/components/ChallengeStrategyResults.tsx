@@ -4,13 +4,13 @@ export function ChallengeSection({ sections }: { sections: Section[] }) {
   if (sections.length === 0) return null;
   return (
     <section className="mb-12">
-      <h2 className="mb-8 font-(family-name:--font-heading) text-2xl font-extrabold uppercase tracking-tight">
+      <h2 className="mb-8 uppercase">
         Challenge
       </h2>
       <div className="space-y-10">
         {sections.map((section) => (
           <div key={section.heading}>
-            <h3 className="mb-3 text-lg font-semibold text-white/90">{section.heading}</h3>
+            <h3 className="mb-3 text-white/90">{section.heading}</h3>
             <div className="space-y-3">
               {section.paragraphs.map((p, i) => (
                 <p key={i} className="text-white/70">
@@ -29,13 +29,13 @@ export function StrategySection({ decisions }: { decisions: Decision[] }) {
   if (decisions.length === 0) return null;
   return (
     <section className="mb-12">
-      <h2 className="mb-8 font-(family-name:--font-heading) text-2xl font-extrabold uppercase tracking-tight">
+      <h2 className="mb-8 uppercase">
         Strategy
       </h2>
       <div className="space-y-10">
         {decisions.map((decision, i) => (
           <div key={decision.title} className="rounded-xl border border-white/10 p-6 sm:p-8">
-            <h3 className="mb-4 text-lg font-semibold">
+            <h3 className="mb-4">
               Decision {i + 1}: {decision.title}
             </h3>
             <p className="mb-4 text-sm text-white/60">

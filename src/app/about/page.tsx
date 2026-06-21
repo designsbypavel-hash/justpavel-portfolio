@@ -54,7 +54,7 @@ export default function AboutPage() {
             <span className="mb-4 inline-block rounded-full border border-white/15 px-3 py-1 text-xs text-white/60">
               About
             </span>
-            <h1 className="mb-6 font-(family-name:--font-heading) text-4xl font-extrabold leading-tight sm:text-5xl">
+            <h1 className="mb-6">
               I turn complex <span className="font-extrabold text-white">problems</span> into
               products that feel effortless.
             </h1>
@@ -118,13 +118,13 @@ export default function AboutPage() {
 
         {/* Core Competencies */}
         <div className="border-t border-white/10 pt-16">
-          <h2 className="mb-6 font-(family-name:--font-heading) text-2xl font-extrabold uppercase tracking-tight">
+          <h2 className="mb-6 uppercase">
             Core Competencies
           </h2>
           <div className="grid gap-6 sm:grid-cols-3">
             {competencies.map((item) => (
               <div key={item.title} className="rounded-xl border border-white/10 bg-white/5 p-6">
-                <h3 className="mb-2 font-semibold">{item.title}</h3>
+                <h3 className="mb-2">{item.title}</h3>
                 <p className="text-sm text-white/60">{item.description}</p>
               </div>
             ))}

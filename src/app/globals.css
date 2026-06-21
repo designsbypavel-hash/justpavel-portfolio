@@ -8,18 +8,92 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
-  --font-heading: var(--font-archivo);
+  --font-sans: var(--font-sen);
+  --font-heading: var(--font-sen);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-family: var(--font-sen), Arial, Helvetica, sans-serif;
 }
 
+/* Typography hierarchy — single source of truth, Sen throughout */
 h1, h2, h3, h4 {
-  font-family: var(--font-archivo), Arial, Helvetica, sans-serif;
+  font-family: var(--font-sen), Arial, Helvetica, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 2.25rem; /* 36px mobile */
+  line-height: 1.1;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 1.875rem; /* 30px mobile */
+  line-height: 1.15;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 1.5rem; /* 24px mobile */
+  line-height: 1.2;
+}
+
+h4 {
+  font-weight: 700;
+  font-size: 1.25rem; /* 20px mobile */
+  line-height: 1.25;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3.25rem; /* 52px desktop */
+  }
+  h2 {
+    font-size: 2.5rem; /* 40px desktop */
+  }
+  h3 {
+    font-size: 2rem; /* 32px desktop */
+  }
+  h4 {
+    font-size: 1.5rem; /* 24px desktop */
+  }
+}
+
+p, span, a, li, label, input, textarea, button {
+  font-family: var(--font-sen), Arial, Helvetica, sans-serif;
+}
+
+.text-body-lg {
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.text-body {
+  font-size: 1rem; /* 16px */
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.text-small {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.text-caption {
+  font-size: 0.75rem; /* 12px */
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.prose-readable {
+  max-width: 65ch;
 }
 
 .gradient-text {

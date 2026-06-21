@@ -11,7 +11,7 @@ export default function ProcessSection({
 
   return (
     <section className="mb-12">
-      <h2 className="mb-8 font-(family-name:--font-heading) text-2xl font-extrabold uppercase tracking-tight">
+      <h2 className="mb-8 uppercase">
         Process &amp; Visuals
       </h2>
       <div className="space-y-8">

@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
-import { Archivo, Inter } from "next/font/google";
+import { Sen } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const archivo = Archivo({
-  variable: "--font-archivo",
+const sen = Sen({
+  variable: "--font-sen",
   subsets: ["latin"],
-  weight: ["500", "700", "800", "900"],
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
+  weight: ["400", "700", "800"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -42,11 +38,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${archivo.variable} ${inter.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col bg-black text-white font-(family-name:--font-inter)">
+    <html lang="en" className={`${sen.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col bg-black text-white font-(family-name:--font-sen)">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

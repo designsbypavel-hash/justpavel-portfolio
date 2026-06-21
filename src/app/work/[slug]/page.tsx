@@ -81,20 +81,20 @@ export default async function ProjectPage({
 
         {/* TL;DR */}
         <section className="mb-12 rounded-xl border border-white/10 bg-white/5 p-6 sm:p-8">
-          <h2 className="mb-6 font-(family-name:--font-heading) text-xl font-extrabold uppercase tracking-tight">
+          <h2 className="mb-6 uppercase">
             TL;DR
           </h2>
           <div className="space-y-5">
             <div>
-              <h3 className="mb-1 text-sm font-semibold text-white/50">Problem</h3>
+              <h3 className="mb-1 text-white/50">Problem</h3>
               <p className="text-white/80">{project.tldrProblem}</p>
             </div>
             <div>
-              <h3 className="mb-1 text-sm font-semibold text-white/50">What I did</h3>
+              <h3 className="mb-1 text-white/50">What I did</h3>
               <p className="text-white/80">{project.tldrWhatIDid}</p>
             </div>
             <div>
-              <h3 className="mb-1 text-sm font-semibold text-white/50">Impact</h3>
+              <h3 className="mb-1 text-white/50">Impact</h3>
               <p className="text-white/80">{project.tldrImpact}</p>
             </div>
           </div>
@@ -105,7 +105,7 @@ export default async function ProjectPage({
         {/* User Journey: Before vs After */}
         {project.journeySteps && project.journeySteps.length > 0 && (
           <section className="mb-12">
-            <h2 className="mb-8 font-(family-name:--font-heading) text-2xl font-extrabold uppercase tracking-tight">
+            <h2 className="mb-8 uppercase">
               User Journey: Before vs After
             </h2>
             <div className="space-y-6">

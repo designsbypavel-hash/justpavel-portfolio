@@ -44,7 +44,7 @@ export default function Home() {
       <section id="works" className="border-t border-white/10 px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <FadeInSection>
-            <h2 className="mb-12 font-(family-name:--font-heading) text-3xl font-extrabold uppercase tracking-tight sm:text-4xl">
+            <h2 className="mb-12 uppercase">
               Featured Works
             </h2>
           </FadeInSection>
@@ -64,7 +64,7 @@ export default function Home() {
       <section id="youtube" className="border-t border-white/10 px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <FadeInSection>
-            <h2 className="mb-12 font-(family-name:--font-heading) text-3xl font-extrabold uppercase tracking-tight sm:text-4xl">
+            <h2 className="mb-12 uppercase">
               Youtube
             </h2>
           </FadeInSection>
@@ -95,7 +95,7 @@ export default function Home() {
                 <Image src="/site-assets/mentor-avatar.webp" alt="Pavel" fill className="object-cover" />
               </div>
               <div>
-                <h2 className="mb-2 font-(family-name:--font-heading) text-3xl font-extrabold sm:text-4xl">
+                <h2 className="mb-2">
                   Mentoring for designers who want real progress
                 </h2>
                 <p className="max-w-2xl text-white/70">
@@ -108,7 +108,7 @@ export default function Home() {
           <div className="mb-16 grid gap-6 sm:grid-cols-2">
             {mentoringOffers.map((offer) => (
               <div key={offer.title} className="rounded-xl border border-white/10 bg-white/5 p-6">
-                <h3 className="mb-2 font-semibold">{offer.title}</h3>
+                <h3 className="mb-2">{offer.title}</h3>
                 <p className="text-sm text-white/60">{offer.description}</p>
               </div>
             ))}
