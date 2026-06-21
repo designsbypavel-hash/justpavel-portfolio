@@ -12,10 +12,12 @@ const videos = [
   {
     title: "I Switched My AI Tool as a Designer - Here's Why",
     image: "/site-assets/youtube-ai-tools.png",
+    url: "https://www.youtube.com/watch?v=g8tmgesVgEU",
   },
   {
     title: "How I Use Mobbin Every Day as a Product Designer",
     image: "/site-assets/youtube-mobbin.jpg",
+    url: "https://www.youtube.com/watch?v=qloGX77CiyE",
   },
 ];
 
@@ -71,10 +73,14 @@ export default function Home() {
           <div className="grid gap-6 sm:grid-cols-2">
             {videos.map((video) => (
               <FadeInSection key={video.title}>
-                <div className="relative mb-4 aspect-video overflow-hidden rounded-xl border border-white/10">
-                  <Image src={video.image} alt={video.title} fill className="object-cover" />
-                </div>
-                <p className="font-medium">{video.title}</p>
+                <a href={video.url} target="_blank" rel="noopener noreferrer" className="group block">
+                  <div className="relative mb-4 aspect-video overflow-hidden rounded-xl border border-white/10 transition-colors duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:border-white/30">
+                    <Image src={video.image} alt={video.title} fill className="object-cover" />
+                  </div>
+                  <p className="font-medium transition-colors duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-white/80">
+                    {video.title}
+                  </p>
+                </a>
               </FadeInSection>
             ))}
           </div>
