@@ -54,21 +54,21 @@ const testimonials = [
   {
     quote:
       "I had an outstanding experience with my mentor, who provided amazing communication and motivation throughout our session. Their subject knowledge was exceptional, guiding me in building a strong portfolio while offering insightful, real feedback on my questions. Their problem-solving skills truly exceeded my expectations. I highly recommend booking a session.",
-    name: "Rakhi Das",
-    role: "Associate UX Designer, Fortmindz Pvt Ltd.",
+    name: "Mentee",
+    role: "Associate UX Designer",
     date: "March 14, 2026",
   },
   {
     quote: "He helped me a lot and gave me a lot of feedback it's useful and helpful",
-    name: "Rais Hasnaa",
-    role: "Student Product Design",
+    name: "Mentee",
+    role: "Student, Product Design",
     date: "January 07, 2026",
   },
   {
     quote:
       "Pavel is incredibly knowledgeable and genuinely understands the struggles of breaking into the UX industry in the UK. He reviewed my CV and portfolio in detail and gave sharp, actionable insights that I hadn't considered before. His guidance was honest, specific, and extremely valuable. A truly refreshing and motivating session.",
-    name: "Eshan Gupta",
-    role: "UX/UI Designer, Synkcode",
+    name: "Mentee",
+    role: "UX/UI Designer",
     date: "November 16, 2025",
   },
 ];
