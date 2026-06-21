@@ -162,3 +162,41 @@ p, span, a, li, label, input, textarea, button {
     animation: none;
   }
 }
+
+/* Apple-style glowing gradient-edge card */
+.glow-card {
+  position: relative;
+  isolation: isolate;
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow:
+    0 0 40px -10px rgba(124, 147, 232, 0.18),
+    0 0 60px -20px rgba(224, 122, 63, 0.15);
+  transition: box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.glow-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(124, 147, 232, 0.55) 0%,
+    rgba(255, 255, 255, 0.06) 35%,
+    rgba(255, 255, 255, 0.06) 65%,
+    rgba(224, 122, 63, 0.55) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.glow-card:hover {
+  box-shadow:
+    0 0 50px -8px rgba(124, 147, 232, 0.3),
+    0 0 70px -16px rgba(224, 122, 63, 0.26);
+}

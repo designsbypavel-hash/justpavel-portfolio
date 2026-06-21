@@ -48,7 +48,7 @@ export default function Hero() {
             <motion.div
               key={stat.value}
               variants={fadeInUp}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] p-6"
+              className="glow-card rounded-2xl p-6"
             >
               <div className="mb-3 font-(family-name:--font-heading) text-4xl font-extrabold">
                 {stat.value}
