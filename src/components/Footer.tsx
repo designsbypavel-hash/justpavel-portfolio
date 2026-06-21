@@ -31,11 +31,6 @@ export default function Footer() {
               </Link>
             ))}
           </nav>
-          <p className="text-xs text-white/40">
-            Typeset in <span className="font-semibold text-white/60">Archivo</span> by Omnibus-Type
-            <br />
-            and <span className="font-semibold text-white/60">Inter</span> by Rasmus Andersson.
-          </p>
         </div>
 
         <div className="text-right">
