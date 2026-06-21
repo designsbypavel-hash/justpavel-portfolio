@@ -10,8 +10,10 @@ export default function MetricGrid({ stats }: { stats: ImpactStat[] }) {
           { value: "[Add real metric here]", label: "Secondary outcome" },
         ];
 
+  const gridCols = items.length === 4 ? "sm:grid-cols-4" : "sm:grid-cols-3";
+
   return (
-    <div className="mb-12 grid gap-8 sm:grid-cols-3">
+    <div className={`mb-12 grid gap-8 ${gridCols}`}>
       {items.map((stat, i) => (
         <div key={`${stat.label}-${i}`} className="border-t border-white/30 pt-4">
           <div

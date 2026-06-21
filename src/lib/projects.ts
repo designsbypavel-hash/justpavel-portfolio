@@ -379,7 +379,12 @@ export const projects: Project[] = [
     role: "Product Designer (End-to-end)",
     platform: "OTT, B2C",
     team: "1 Product Designer · 1 PM · 3 Engineers",
-    stats: [],
+    stats: [
+      { value: "+22%", label: "Paid subscriptions" },
+      { value: "-40%", label: "Checkout drop-offs" },
+      { value: "40%", label: "Faster plan decision-making" },
+      { value: "2x", label: "Higher plan selection engagement" },
+    ],
     tldrProblem:
       "Users were dropping because plan selection felt unclear and pricing differentiation wasn't obvious.",
     tldrWhatIDid:
