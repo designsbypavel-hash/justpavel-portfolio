@@ -33,15 +33,15 @@ export default function StarfieldBackground() {
 
     function createParticles() {
       const area = width * height;
-      const count = Math.min(160, Math.max(60, Math.round(area / 14000)));
+      const count = Math.min(280, Math.max(110, Math.round(area / 8000)));
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * width,
         y: Math.random() * height,
-        radius: Math.random() * 1.2 + 0.4,
-        baseAlpha: Math.random() * 0.5 + 0.25,
+        radius: Math.random() * 1.3 + 0.4,
+        baseAlpha: Math.random() * 0.45 + 0.2,
         vx: (Math.random() - 0.5) * 0.04,
         vy: (Math.random() - 0.5) * 0.04,
-        twinkleSpeed: Math.random() * 0.015 + 0.005,
+        twinkleSpeed: Math.random() * 0.05 + 0.02,
         twinklePhase: Math.random() * Math.PI * 2,
       }));
     }
@@ -79,7 +79,7 @@ export default function StarfieldBackground() {
 
         const twinkle = prefersReducedMotion
           ? p.baseAlpha
-          : p.baseAlpha + Math.sin(t * p.twinkleSpeed + p.twinklePhase) * 0.15;
+          : p.baseAlpha + Math.sin(t * p.twinkleSpeed + p.twinklePhase) * 0.35;
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
