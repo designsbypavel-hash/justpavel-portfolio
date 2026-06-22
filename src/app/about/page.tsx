@@ -7,6 +7,17 @@ export const metadata: Metadata = {
   description: "Senior Product Designer in London, 7+ years across B2B SaaS and B2C mobile.",
 };
 
+const skills = [
+  "Product UX/UI",
+  "Design Systems",
+  "0-to-1 Discovery",
+  "Prototyping",
+  "AI-Powered Workflows",
+  "Cross-Functional Collaboration",
+];
+
+const tools = ["Figma", "FigJam", "ChatGPT", "Claude", "Notion", "Framer"];
+
 const competencies = [
   {
     title: "Efficient Workflow",
@@ -75,6 +86,35 @@ export default function AboutPage() {
           </div>
         </div>
 
+        {/* How I Work */}
+        <div className="mb-20 grid gap-10 pt-16 sm:grid-cols-2">
+          <div>
+            <span className="mb-4 inline-block rounded-full border border-white/15 px-3 py-1 text-xs text-white/60">
+              How I work
+            </span>
+            <h2 className="mb-4">Clarity first, polish second.</h2>
+            <p className="text-white/70">
+              Good design isn&apos;t just a clean layout. It&apos;s simplifying complex
+              problems, giving information clear structure, and building something
+              people understand at a glance, whether that&apos;s an AI platform, an
+              enterprise SaaS workflow, or a conversion-focused mobile journey.
+            </p>
+          </div>
+          <div>
+            <p className="mb-4 text-white/70">
+              Design doesn&apos;t happen in a vacuum. There&apos;s usually an existing
+              backend, a tight timeline, incomplete information, or a product
+              direction that&apos;s still evolving. Working well inside those
+              constraints, not around them, is most of the job.
+            </p>
+            <p className="text-white/70">
+              I work end-to-end: research, systems thinking, prototyping, and close
+              collaboration with PMs and engineers until the thing actually ships. I
+              care about accessible, scalable design, not just beautiful screens.
+            </p>
+          </div>
+        </div>
+
         {/* From My Lens */}
         <div className="mb-20 pt-16">
           <div className="mb-10 text-center">
@@ -128,6 +168,36 @@ export default function AboutPage() {
                 <p className="text-sm text-white/60">{item.description}</p>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Skills & Tools */}
+        <div className="grid gap-10 pt-16 sm:grid-cols-2">
+          <div>
+            <h2 className="mb-6 uppercase">Skills</h2>
+            <div className="flex flex-wrap gap-3">
+              {skills.map((skill) => (
+                <span
+                  key={skill}
+                  className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/70"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h2 className="mb-6 uppercase">Tools</h2>
+            <div className="flex flex-wrap gap-3">
+              {tools.map((tool) => (
+                <span
+                  key={tool}
+                  className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/70"
+                >
+                  {tool}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
