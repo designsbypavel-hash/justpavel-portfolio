@@ -28,7 +28,7 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
           variants={fadeInUp}
-          className="mb-12 font-(family-name:--font-heading) text-5xl font-extrabold leading-[1.05] sm:text-6xl md:text-7xl"
+          className="mb-12 font-(family-name:--font-heading) text-[42px] font-extrabold leading-[1.05] sm:text-[56px] md:text-[75px]"
         >
           Designing in London
           <br />
