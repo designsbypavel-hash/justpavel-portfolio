@@ -87,32 +87,28 @@ export default function AboutPage() {
         </div>
 
         {/* How I Work */}
-        <div className="mb-20 grid gap-10 pt-16 sm:grid-cols-2">
-          <div>
-            <span className="mb-4 inline-block rounded-full border border-white/15 px-3 py-1 text-xs text-white/60">
-              How I work
-            </span>
-            <h2 className="mb-4">Clarity first, polish second.</h2>
-            <p className="text-white/70">
-              Good design isn&apos;t just a clean layout. It&apos;s simplifying complex
-              problems, giving information clear structure, and building something
-              people understand at a glance, whether that&apos;s an AI platform, an
-              enterprise SaaS workflow, or a conversion-focused mobile journey.
-            </p>
-          </div>
-          <div>
-            <p className="mb-4 text-white/70">
-              Design doesn&apos;t happen in a vacuum. There&apos;s usually an existing
-              backend, a tight timeline, incomplete information, or a product
-              direction that&apos;s still evolving. Working well inside those
-              constraints, not around them, is most of the job.
-            </p>
-            <p className="text-white/70">
-              I work end-to-end: research, systems thinking, prototyping, and close
-              collaboration with PMs and engineers until the thing actually ships. I
-              care about accessible, scalable design, not just beautiful screens.
-            </p>
-          </div>
+        <div className="mb-20 max-w-3xl pt-16">
+          <span className="mb-4 inline-block rounded-full border border-white/15 px-3 py-1 text-xs text-white/60">
+            How I work
+          </span>
+          <h2 className="mb-6">Clarity first, polish second.</h2>
+          <p className="mb-4 text-white/70">
+            Good design isn&apos;t just a clean layout. It&apos;s simplifying complex
+            problems, giving information clear structure, and building something
+            people understand at a glance, whether that&apos;s an AI platform, an
+            enterprise SaaS workflow, or a conversion-focused mobile journey.
+          </p>
+          <p className="mb-4 text-white/70">
+            Design doesn&apos;t happen in a vacuum. There&apos;s usually an existing
+            backend, a tight timeline, incomplete information, or a product
+            direction that&apos;s still evolving. Working well inside those
+            constraints, not around them, is most of the job.
+          </p>
+          <p className="text-white/70">
+            I work end-to-end: research, systems thinking, prototyping, and close
+            collaboration with PMs and engineers until the thing actually ships. I
+            care about accessible, scalable design, not just beautiful screens.
+          </p>
         </div>
 
         {/* From My Lens */}
