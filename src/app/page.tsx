@@ -43,7 +43,7 @@ export default function Home() {
     <div>
       <Hero />
 
-      <section id="works" className="border-t border-white/10 px-6 py-24">
+      <section id="works" className="px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <FadeInSection>
             <h2 className="mb-12 uppercase">
@@ -63,7 +63,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="youtube" className="border-t border-white/10 px-6 py-24">
+      <section id="youtube" className="px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <FadeInSection>
             <h2 className="mb-12 uppercase">
@@ -92,7 +92,7 @@ export default function Home() {
 
       <section
         id="mentoring"
-        className="border-t border-white/10 bg-gradient-to-b from-indigo-950 via-indigo-950/60 to-black px-6 py-24"
+        className="bg-gradient-to-b from-indigo-950 via-indigo-950/60 to-black px-6 py-24"
       >
         <div className="mx-auto max-w-6xl">
           <FadeInSection>

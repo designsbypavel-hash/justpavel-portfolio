@@ -14,7 +14,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/10 bg-black px-6 py-12">
+    <footer className="bg-black px-6 py-12">
       <div className="mx-auto flex max-w-6xl flex-wrap items-start justify-between gap-10">
         <div className="w-full sm:w-auto">
           <span className="mb-6 block font-(family-name:--font-heading) text-lg font-extrabold lowercase">

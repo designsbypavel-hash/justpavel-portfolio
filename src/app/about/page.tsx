@@ -68,7 +68,7 @@ export default function AboutPage() {
               scalable design, not just beautiful screens.
             </p>
 
-            <div className="mt-10 border-t border-white/10 pt-6">
+            <div className="mt-10 pt-6">
               <span className="block text-xs uppercase tracking-widest text-white/40">Location</span>
               <span className="text-lg font-semibold">London, UK</span>
             </div>
@@ -76,7 +76,7 @@ export default function AboutPage() {
         </div>
 
         {/* From My Lens */}
-        <div className="mb-20 border-t border-white/10 pt-16">
+        <div className="mb-20 pt-16">
           <div className="mb-10 text-center">
             <span className="mb-4 inline-block rounded-full border border-white/15 px-3 py-1 text-xs text-white/60">
               From my lens
@@ -117,7 +117,7 @@ export default function AboutPage() {
         </div>
 
         {/* Core Competencies */}
-        <div className="border-t border-white/10 pt-16">
+        <div className="pt-16">
           <h2 className="mb-6 uppercase">
             Core Competencies
           </h2>

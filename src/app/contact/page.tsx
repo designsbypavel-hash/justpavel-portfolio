@@ -57,7 +57,7 @@ export default function ContactPage() {
         </div>
       </div>
 
-      <div className="border-t border-white/10 px-6 py-16">
+      <div className="px-6 py-16">
         <div className="mx-auto grid max-w-6xl gap-12 sm:grid-cols-2">
           <div>
             <h2 className="mb-8">Get in touch</h2>
