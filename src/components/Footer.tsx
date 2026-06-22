@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import SocialLinks from "@/components/SocialLinks";
+import { playClickSound } from "@/lib/sound";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -25,6 +28,7 @@ export default function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
+                onClick={playClickSound}
                 className="relative flex min-h-[24px] items-center py-1 transition-colors duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-white after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-white after:transition-all after:duration-400 after:ease-[cubic-bezier(0.22,1,0.36,1)] hover:after:w-full"
               >
                 {link.label}

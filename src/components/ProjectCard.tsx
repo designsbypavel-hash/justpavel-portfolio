@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import type { Project } from "@/lib/projects";
 import { cardHover } from "@/lib/motion";
 import GlowCard from "@/components/GlowCard";
+import { playClickSound } from "@/lib/sound";
 
 export default function ProjectCard({
   project,
@@ -21,6 +22,7 @@ export default function ProjectCard({
     <motion.div initial="rest" whileHover="hover" animate="rest" variants={cardHover}>
       <Link
         href={`/work/${project.slug}`}
+        onClick={playClickSound}
         className="group grid gap-6 sm:grid-cols-2 sm:items-center"
       >
         <GlowCard className="aspect-[4/3] w-full overflow-hidden rounded-xl">

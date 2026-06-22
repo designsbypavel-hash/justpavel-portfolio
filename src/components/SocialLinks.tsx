@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { buttonHover } from "@/lib/motion";
+import { playClickSound } from "@/lib/sound";
 
 const links = [
   {
@@ -47,6 +48,7 @@ export default function SocialLinks() {
           whileTap="tap"
           animate="rest"
           variants={buttonHover}
+          onClick={playClickSound}
           className="flex h-9 w-9 items-center justify-center rounded border border-white/30 text-white/70 transition-colors duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-white/60 hover:text-white"
           aria-label={link.label}
         >

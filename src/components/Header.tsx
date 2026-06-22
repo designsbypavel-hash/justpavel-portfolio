@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
+import { playClickSound } from "@/lib/sound";
 
 const navLinks = [
   { href: "/works", label: "Work" },
@@ -20,7 +21,10 @@ export default function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
         <Link
           href="/"
-          onClick={() => setOpen(false)}
+          onClick={() => {
+            playClickSound();
+            setOpen(false);
+          }}
           className="font-(family-name:--font-heading) text-lg font-extrabold tracking-tight transition-opacity duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] hover:opacity-70"
         >
           PAVEL
@@ -31,6 +35,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
+              onClick={playClickSound}
               className="relative py-1 transition-colors duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-white after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-white after:transition-all after:duration-400 after:ease-[cubic-bezier(0.22,1,0.36,1)] hover:after:w-full"
             >
               {link.label}
@@ -42,7 +47,10 @@ export default function Header() {
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
+          onClick={() => {
+            playClickSound();
+            setOpen((v) => !v);
+          }}
           className="flex h-11 w-11 flex-col items-center justify-center gap-1.5 md:hidden"
         >
           <span
@@ -72,7 +80,10 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  onClick={() => setOpen(false)}
+                  onClick={() => {
+                    playClickSound();
+                    setOpen(false);
+                  }}
                   className="flex min-h-[44px] items-center border-b border-white/5 text-base text-white/80 last:border-b-0 hover:text-white"
                 >
                   {link.label}

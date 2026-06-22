@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { buttonHover } from "@/lib/motion";
+import { playClickSound } from "@/lib/sound";
 
 export default function ContactForm() {
   const [name, setName] = useState("");
@@ -11,6 +12,7 @@ export default function ContactForm() {
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    playClickSound();
     const subject = encodeURIComponent(`Project inquiry from ${name || "your site"}`);
     const body = encodeURIComponent(`${message}\n\nFrom: ${name} (${email})`);
     window.location.href = `mailto:designsbypavel@gmail.com?subject=${subject}&body=${body}`;
