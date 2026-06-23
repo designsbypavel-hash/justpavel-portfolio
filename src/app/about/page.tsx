@@ -62,9 +62,6 @@ export default function AboutPage() {
           </div>
 
           <div>
-            <span className="mb-4 inline-block rounded-full border border-white/15 px-3 py-1 text-xs text-white/60">
-              About
-            </span>
             <h1 className="mb-6">
               I turn complex <span className="font-extrabold text-white">problems</span> into
               products that feel effortless.
@@ -88,9 +85,6 @@ export default function AboutPage() {
 
         {/* How I Work */}
         <div className="mb-20 max-w-3xl pt-16">
-          <span className="mb-4 inline-block rounded-full border border-white/15 px-3 py-1 text-xs text-white/60">
-            How I work
-          </span>
           <h2 className="mb-6">Clarity first, polish second.</h2>
           <p className="mb-4 text-white/70">
             Good design isn&apos;t just a clean layout. It&apos;s simplifying complex
@@ -114,9 +108,6 @@ export default function AboutPage() {
         {/* From My Lens */}
         <div className="mb-20 pt-16">
           <div className="mb-10 text-center">
-            <span className="mb-4 inline-block rounded-full border border-white/15 px-3 py-1 text-xs text-white/60">
-              From my lens
-            </span>
             <p className="mx-auto max-w-3xl text-2xl text-white/50 sm:text-3xl">
               I notice <span className="font-semibold text-white">patterns, details,</span> and{" "}
               <span className="font-semibold text-white">flow,</span> in cities, spaces, and
