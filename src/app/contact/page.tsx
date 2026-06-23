@@ -27,9 +27,6 @@ export default function ContactPage() {
       <div className="px-6 pt-28 pb-16">
         <div className="mx-auto max-w-6xl">
           <div className="max-w-3xl">
-            <span className="mb-4 inline-block rounded-full border border-white/15 px-3 py-1 text-xs text-white/60">
-              Contact
-            </span>
             <h1 className="mb-6">Let&apos;s build something</h1>
             <p className="mb-8 text-lg text-white/70">
               I&apos;m always open to hearing about new projects, mentoring opportunities, and
