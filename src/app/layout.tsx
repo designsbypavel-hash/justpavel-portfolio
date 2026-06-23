@@ -14,6 +14,15 @@ const sen = Sen({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.justpaveldesign.com"),
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
   title: "Pavel - Product Designer and YouTuber",
   description:
     "I'm a London-based Product Designer building AI-first B2B SaaS and high-conversion B2C mobile experiences. I also share design process and AI workflows on YouTube.",
