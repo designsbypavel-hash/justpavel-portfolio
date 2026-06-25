@@ -239,13 +239,15 @@ export const projects: Project[] = [
       {
         heading: "Context",
         paragraphs: [
-          "SonyLIV supports a wide range of payment methods (UPI, cards, wallets, netbanking, and partner offers) because users in India pay in very different ways. But when everything looks equal, users slow down. Payment is a moment where confidence matters more than exploration.",
+          "Picture someone who's just decided to go Premium on SonyLIV. They tap subscribe, and the payment screen opens: UPI, cards, wallets, netbanking, and partner offers, all lined up with equal visual weight, as if every option mattered equally to them. They pause.",
+          "That pause is the whole problem. SonyLIV supports a wide range of payment methods because users in India pay in very different ways, but when everything looks equal, users slow down. And this is the one screen in the entire product where confidence matters more than choice, because hesitation here doesn't just cost time, it costs the subscription.",
         ],
       },
       {
         heading: "Research & Approach",
         paragraphs: [
-          "To ground these decisions, I combined three inputs: heuristic evaluation to spot friction patterns, benchmarking against Prime Video, Hotstar, PhonePe, and Paytm, and payment UX research specific to Indian users' habits and trust signals.",
+          "Before changing a single pixel, I needed to know why that pause was happening. I ran a heuristic evaluation to map exactly where the friction sat, benchmarked the flow against Prime Video, Hotstar, PhonePe, and Paytm to see how others handled the same moment, and pulled in payment UX research specific to how Indian users actually build (or lose) trust on a checkout screen.",
+          "The picture that came back wasn't about complexity. Users weren't confused, they were stalled, standing in front of too many doors that all looked the same.",
         ],
       },
     ],
@@ -270,7 +272,7 @@ export const projects: Project[] = [
       {
         title: "Lead with UPI, without forcing it",
         phase: "Phase 1: Simplify Decision-Making",
-        why: "UPI is familiar and fast for many users, and it has high adoption potential. If we make it the smoothest path, users complete faster without feeling pushed.",
+        why: "The research kept pointing to the same answer: UPI was already the payment method most users reached for instinctively, fast, familiar, no card details to dig up. The story I wanted the screen to tell was \"this is the easy way,\" not \"this is the only way,\" so I made UPI the obvious first move without ever closing the door to anything else.",
         whatChanged: [
           "UPI surfaced more clearly in the hierarchy",
           "Shortened the path from selection → payment initiation",
@@ -281,7 +283,7 @@ export const projects: Project[] = [
       {
         title: "Reduce choice overload with clearer hierarchy",
         phase: "Phase 1: Simplify Decision-Making",
-        why: "When everything looks equal, users slow down. Payment is a moment where confidence matters more than exploration.",
+        why: "Even with UPI in the lead position, the rest of the screen was still asking users to evaluate five payment families at once before they could act. That's the moment confidence actually drains out of a checkout flow, not card numbers or OTPs, but standing in front of too many equal-looking doors.",
         whatChanged: [
           "Grouped payment methods logically",
           "\"Recommended / most used\" sits first",
@@ -292,7 +294,7 @@ export const projects: Project[] = [
       {
         title: "Make offers feel effortless, not risky",
         phase: "Phase 2: Build Trust at the Payment Moment",
-        why: "Offers can improve conversion, but unclear offers create mistrust: users hesitate if they don't understand whether it applied or what changed.",
+        why: "Offers were supposed to build trust, but they were doing the opposite. A user could see a discount mentioned somewhere on screen with no way to confirm it had actually been applied to their total. An offer you can't verify isn't a perk, it's a reason to hesitate right before paying.",
         whatChanged: [
           "Clear \"applied\" state",
           "Eligibility explained in plain language",
@@ -303,7 +305,7 @@ export const projects: Project[] = [
       {
         title: "Design for failure recovery, because payments fail",
         phase: "Phase 3: Design for Recovery",
-        why: "A failed payment is emotionally charged. If the next step isn't obvious, users abandon.",
+        why: "Payments fail. That's not a hypothetical, it's a guarantee at scale. The real test of a checkout flow isn't how it behaves when everything works, it's what happens in the half-second after a payment bounces, when a user is deciding whether to retry or just walk away.",
         whatChanged: [
           "Calm failure messaging",
           "Clear retry path",
@@ -316,7 +318,8 @@ export const projects: Project[] = [
       {
         heading: "Reflection",
         paragraphs: [
-          "Payment is the one screen where users have the least patience for ambiguity and the most at stake if something goes wrong. Reducing the number of decisions, not just the number of steps, ended up mattering more than any single visual change.",
+          "Looking back, the biggest unlock wasn't any single screen, it was realizing that checkout isn't a form, it's a decision made under mild stress. Every extra option, every unclear state, every dead end after a failure adds friction to that decision.",
+          "Strip those away, and the numbers, more UPI adoption, fewer failed payments, faster completion, follow almost on their own. Payment is the one screen where users have the least patience for ambiguity and the most at stake if something goes wrong.",
         ],
       },
     ],
