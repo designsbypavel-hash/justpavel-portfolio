@@ -42,6 +42,7 @@ export type Project = {
   team: string;
   teamBreakdown?: TeamGroup[];
   duration?: string;
+  keyInsight?: { title: string; description: string };
   stats: ImpactStat[];
   tldrProblem: string;
   tldrWhatIDid: string;
@@ -218,6 +219,11 @@ export const projects: Project[] = [
       { function: "Engineering", members: "3 Engineers" },
     ],
     duration: "2 months",
+    keyInsight: {
+      title: "Lead with UPI, without forcing it",
+      description:
+        "The single highest-leverage move in this redesign: surface UPI as the smoothest, most visually prominent path while keeping every other method available. Confidence beats choice at the payment moment, so the entire redesign builds outward from this one decision.",
+    },
     stats: [
       { value: "+28%", label: "UPI adoption" },
       { value: "-14%", label: "Failed payments" },
@@ -234,6 +240,12 @@ export const projects: Project[] = [
         heading: "Context",
         paragraphs: [
           "SonyLIV supports a wide range of payment methods (UPI, cards, wallets, netbanking, and partner offers) because users in India pay in very different ways. But when everything looks equal, users slow down. Payment is a moment where confidence matters more than exploration.",
+        ],
+      },
+      {
+        heading: "Research & Approach",
+        paragraphs: [
+          "To ground these decisions, I combined three inputs: heuristic evaluation to spot friction patterns, benchmarking against Prime Video, Hotstar, PhonePe, and Paytm, and payment UX research specific to Indian users' habits and trust signals.",
         ],
       },
     ],
@@ -302,9 +314,9 @@ export const projects: Project[] = [
     ],
     closingSections: [
       {
-        heading: "What I Learned",
+        heading: "Reflection",
         paragraphs: [
-          "To ground these decisions, I combined three inputs: heuristic evaluation to spot friction patterns, benchmarking against Prime Video, Hotstar, PhonePe, and Paytm, and payment UX research specific to Indian users' habits and trust signals.",
+          "Payment is the one screen where users have the least patience for ambiguity and the most at stake if something goes wrong. Reducing the number of decisions, not just the number of steps, ended up mattering more than any single visual change.",
         ],
       },
     ],

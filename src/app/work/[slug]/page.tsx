@@ -10,6 +10,7 @@ import { ChallengeSection, StrategySection } from "@/components/ChallengeStrateg
 import ProcessSection from "@/components/ProcessSection";
 import PrototypeVideo from "@/components/PrototypeVideo";
 import TeamComposition from "@/components/TeamComposition";
+import KeyInsight from "@/components/KeyInsight";
 import OutcomeSection from "@/components/OutcomeSection";
 import NextProjectCTA from "@/components/NextProjectCTA";
 
@@ -107,6 +108,10 @@ export default async function ProjectPage({
             </div>
           </div>
         </section>
+
+        {project.keyInsight && (
+          <KeyInsight title={project.keyInsight.title} description={project.keyInsight.description} />
+        )}
 
         <ChallengeSection sections={project.context} />
 
