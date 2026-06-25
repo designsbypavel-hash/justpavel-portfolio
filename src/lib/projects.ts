@@ -5,6 +5,7 @@ export type ImpactStat = {
 
 export type Decision = {
   title: string;
+  phase?: string;
   why: string;
   alternativesConsidered?: string[];
   whatChanged: string[];
@@ -238,6 +239,7 @@ export const projects: Project[] = [
     decisions: [
       {
         title: "Lead with UPI, without forcing it",
+        phase: "Phase 1: Simplify Decision-Making",
         why: "UPI is familiar and fast for many users, and it has high adoption potential. If we make it the smoothest path, users complete faster without feeling pushed.",
         whatChanged: [
           "UPI surfaced more clearly in the hierarchy",
@@ -248,6 +250,7 @@ export const projects: Project[] = [
       },
       {
         title: "Reduce choice overload with clearer hierarchy",
+        phase: "Phase 1: Simplify Decision-Making",
         why: "When everything looks equal, users slow down. Payment is a moment where confidence matters more than exploration.",
         whatChanged: [
           "Grouped payment methods logically",
@@ -258,6 +261,7 @@ export const projects: Project[] = [
       },
       {
         title: "Make offers feel effortless, not risky",
+        phase: "Phase 2: Build Trust at the Payment Moment",
         why: "Offers can improve conversion, but unclear offers create mistrust: users hesitate if they don't understand whether it applied or what changed.",
         whatChanged: [
           "Clear \"applied\" state",
@@ -268,6 +272,7 @@ export const projects: Project[] = [
       },
       {
         title: "Design for failure recovery, because payments fail",
+        phase: "Phase 3: Design for Recovery",
         why: "A failed payment is emotionally charged. If the next step isn't obvious, users abandon.",
         whatChanged: [
           "Calm failure messaging",
