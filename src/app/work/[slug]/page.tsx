@@ -58,6 +58,8 @@ export default async function ProjectPage({
           readingTime={readingTime}
         />
 
+        {project.prototypeVideo && <PrototypeVideo src={project.prototypeVideo} />}
+
         <CaseStudyOverview
           role={project.role}
           platform={project.platform}
@@ -85,8 +87,6 @@ export default async function ProjectPage({
         </div>
 
         <ProcessSection title={project.title} images={project.galleryImages} />
-
-        {project.prototypeVideo && <PrototypeVideo src={project.prototypeVideo} />}
 
         {/* TL;DR */}
         <section className="mb-12 rounded-xl border border-white/10 bg-white/5 p-6 sm:p-8">
