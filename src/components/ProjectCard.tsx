@@ -42,7 +42,17 @@ export default function ProjectCard({
           <TitleTag className="mb-2 text-2xl font-semibold transition-colors duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-white/80">
             {project.title}
           </TitleTag>
-          <p className="text-white/60">{project.description}</p>
+          <p className="mb-4 text-white/60">{project.description}</p>
+          <div className="flex flex-wrap gap-2">
+            {project.tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/60"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
       </Link>
     </motion.div>
