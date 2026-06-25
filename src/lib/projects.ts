@@ -55,6 +55,138 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "sonyliv-check",
+    title: "High-Conversion Checkout Experience",
+    description:
+      "SonyLIV's checkout needed to support India's diverse payment habits, without sacrificing speed or trust.",
+    category: "B2C Mobile",
+    tags: ["Payments", "Checkout", "Conversion Optimization"],
+    image: "/site-assets/sonyliv-checkout.jpg",
+    galleryImages: [
+      "/site-assets/case-studies/sonyliv-check/img-01.png",
+      "/site-assets/case-studies/sonyliv-check/img-02.png",
+      "/site-assets/case-studies/sonyliv-check/img-03.png",
+      "/site-assets/case-studies/sonyliv-check/img-04.png",
+      "/site-assets/case-studies/sonyliv-check/img-05.png",
+      "/site-assets/case-studies/sonyliv-check/img-06.png",
+      "/site-assets/case-studies/sonyliv-check/img-07.png",
+    ],
+    prototypeVideo: "/site-assets/case-studies/sonyliv-check/prototype.mp4",
+    role: "Product Designer (End-to-end)",
+    platform: "Mobile",
+    team: "PM, PO, 3 Engineers",
+    teamBreakdown: [
+      { function: "Design", members: "1 Designer (me, end-to-end)" },
+      { function: "Product", members: "1 PM, 1 PO" },
+      { function: "Engineering", members: "3 Engineers" },
+    ],
+    duration: "2 months",
+    keyInsight: {
+      title: "Lead with UPI, without forcing it",
+      description:
+        "The single highest-leverage move in this redesign: surface UPI as the smoothest, most visually prominent path while keeping every other method available. Confidence beats choice at the payment moment, so the entire redesign builds outward from this one decision.",
+    },
+    stats: [
+      { value: "+28%", label: "UPI adoption" },
+      { value: "-14%", label: "Failed payments" },
+      { value: "-21%", label: "Time to complete" },
+    ],
+    tldrProblem:
+      "Checkout had too many competing options and trust gaps, leading to hesitation and failed payments at the most conversion-critical moment.",
+    tldrWhatIDid:
+      "I simplified decision-making, prioritised high-success payment paths, and redesigned failure/retry states so users always knew what to do next.",
+    tldrImpact:
+      "+28% UPI adoption, -14% failed payments, -21% time to complete checkout.",
+    context: [
+      {
+        heading: "Context",
+        paragraphs: [
+          "Picture someone who's just decided to go Premium on SonyLIV. They tap subscribe, and the payment screen opens: UPI, cards, wallets, netbanking, and partner offers, all lined up with equal visual weight, as if every option mattered equally to them. They pause.",
+          "That pause is the whole problem. SonyLIV supports a wide range of payment methods because users in India pay in very different ways, but when everything looks equal, users slow down. And this is the one screen in the entire product where confidence matters more than choice, because hesitation here doesn't just cost time, it costs the subscription.",
+        ],
+      },
+      {
+        heading: "Research & Approach",
+        paragraphs: [
+          "Before changing a single pixel, I needed to know why that pause was happening. I ran a heuristic evaluation to map exactly where the friction sat, benchmarked the flow against Prime Video, Hotstar, PhonePe, and Paytm to see how others handled the same moment, and pulled in payment UX research specific to how Indian users actually build (or lose) trust on a checkout screen.",
+          "The picture that came back wasn't about complexity. Users weren't confused, they were stalled, standing in front of too many doors that all looked the same.",
+        ],
+      },
+    ],
+    journeySteps: [
+      {
+        label: "Payment method selection",
+        before: "All payment methods shown with equal visual weight, no guidance on which to pick.",
+        after: "UPI surfaced first and recommended; long-tail options available but not competing for attention.",
+      },
+      {
+        label: "Offers",
+        before: "Unclear whether an offer applied, or what it actually changed about the price.",
+        after: "Clear \"applied\" state, eligibility explained in plain language, total cost always visible.",
+      },
+      {
+        label: "Payment failure",
+        before: "A failed payment was a dead end with no clear next step, so users abandoned.",
+        after: "Calm failure messaging, a clear retry path, and a fallback to another method without restarting.",
+      },
+    ],
+    decisions: [
+      {
+        title: "Lead with UPI, without forcing it",
+        phase: "Phase 1: Simplify Decision-Making",
+        why: "The research kept pointing to the same answer: UPI was already the payment method most users reached for instinctively, fast, familiar, no card details to dig up. The story I wanted the screen to tell was \"this is the easy way,\" not \"this is the only way,\" so I made UPI the obvious first move without ever closing the door to anything else.",
+        whatChanged: [
+          "UPI surfaced more clearly in the hierarchy",
+          "Shortened the path from selection → payment initiation",
+          "Reduced competing noise around it",
+        ],
+        result: "UPI adoption increased by 28%. We prioritised UPI visually and structurally to reduce decision time.",
+      },
+      {
+        title: "Reduce choice overload with clearer hierarchy",
+        phase: "Phase 1: Simplify Decision-Making",
+        why: "Even with UPI in the lead position, the rest of the screen was still asking users to evaluate five payment families at once before they could act. That's the moment confidence actually drains out of a checkout flow, not card numbers or OTPs, but standing in front of too many equal-looking doors.",
+        whatChanged: [
+          "Grouped payment methods logically",
+          "\"Recommended / most used\" sits first",
+          "Long-tail options remain available but not dominant",
+        ],
+        result: "Checkout time reduced by 21%. Hierarchy reduces thinking, so users move forward with confidence.",
+      },
+      {
+        title: "Make offers feel effortless, not risky",
+        phase: "Phase 2: Build Trust at the Payment Moment",
+        why: "Offers were supposed to build trust, but they were doing the opposite. A user could see a discount mentioned somewhere on screen with no way to confirm it had actually been applied to their total. An offer you can't verify isn't a perk, it's a reason to hesitate right before paying.",
+        whatChanged: [
+          "Clear \"applied\" state",
+          "Eligibility explained in plain language",
+          "Total cost always visible and consistent",
+        ],
+        result: "Higher confidence and fewer drop-offs during offer selection: offer clarity builds trust, so users don't feel surprised at the last step.",
+      },
+      {
+        title: "Design for failure recovery, because payments fail",
+        phase: "Phase 3: Design for Recovery",
+        why: "Payments fail. That's not a hypothetical, it's a guarantee at scale. The real test of a checkout flow isn't how it behaves when everything works, it's what happens in the half-second after a payment bounces, when a user is deciding whether to retry or just walk away.",
+        whatChanged: [
+          "Calm failure messaging",
+          "Clear retry path",
+          "Smart fallbacks: choose another method without restarting everything",
+        ],
+        result: "Failed payments reduced by 14%. Recovery is part of the product, designed to feel safe and guided.",
+      },
+    ],
+    closingSections: [
+      {
+        heading: "Reflection",
+        paragraphs: [
+          "Looking back, the biggest unlock wasn't any single screen, it was realizing that checkout isn't a form, it's a decision made under mild stress. Every extra option, every unclear state, every dead end after a failure adds friction to that decision.",
+          "Strip those away, and the numbers, more UPI adoption, fewer failed payments, faster completion, follow almost on their own. Payment is the one screen where users have the least patience for ambiguity and the most at stake if something goes wrong.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "agent-ai",
     title: "Designing the control layer for enterprise AI agents",
     description:
@@ -188,138 +320,6 @@ export const projects: Project[] = [
         heading: "Reflection",
         paragraphs: [
           "Designing Kai taught me that successful AI experiences are not defined by the sophistication of the technology, but by how confidently the people responsible for it can answer the question: what happens when it gets it wrong?",
-        ],
-      },
-    ],
-  },
-  {
-    slug: "sonyliv-check",
-    title: "High-Conversion Checkout Experience",
-    description:
-      "SonyLIV's checkout needed to support India's diverse payment habits, without sacrificing speed or trust.",
-    category: "B2C Mobile",
-    tags: ["Payments", "Checkout", "Conversion Optimization"],
-    image: "/site-assets/sonyliv-checkout.jpg",
-    galleryImages: [
-      "/site-assets/case-studies/sonyliv-check/img-01.png",
-      "/site-assets/case-studies/sonyliv-check/img-02.png",
-      "/site-assets/case-studies/sonyliv-check/img-03.png",
-      "/site-assets/case-studies/sonyliv-check/img-04.png",
-      "/site-assets/case-studies/sonyliv-check/img-05.png",
-      "/site-assets/case-studies/sonyliv-check/img-06.png",
-      "/site-assets/case-studies/sonyliv-check/img-07.png",
-    ],
-    prototypeVideo: "/site-assets/case-studies/sonyliv-check/prototype.mp4",
-    role: "Product Designer (End-to-end)",
-    platform: "Mobile",
-    team: "PM, PO, 3 Engineers",
-    teamBreakdown: [
-      { function: "Design", members: "1 Designer (me, end-to-end)" },
-      { function: "Product", members: "1 PM, 1 PO" },
-      { function: "Engineering", members: "3 Engineers" },
-    ],
-    duration: "2 months",
-    keyInsight: {
-      title: "Lead with UPI, without forcing it",
-      description:
-        "The single highest-leverage move in this redesign: surface UPI as the smoothest, most visually prominent path while keeping every other method available. Confidence beats choice at the payment moment, so the entire redesign builds outward from this one decision.",
-    },
-    stats: [
-      { value: "+28%", label: "UPI adoption" },
-      { value: "-14%", label: "Failed payments" },
-      { value: "-21%", label: "Time to complete" },
-    ],
-    tldrProblem:
-      "Checkout had too many competing options and trust gaps, leading to hesitation and failed payments at the most conversion-critical moment.",
-    tldrWhatIDid:
-      "I simplified decision-making, prioritised high-success payment paths, and redesigned failure/retry states so users always knew what to do next.",
-    tldrImpact:
-      "+28% UPI adoption, -14% failed payments, -21% time to complete checkout.",
-    context: [
-      {
-        heading: "Context",
-        paragraphs: [
-          "Picture someone who's just decided to go Premium on SonyLIV. They tap subscribe, and the payment screen opens: UPI, cards, wallets, netbanking, and partner offers, all lined up with equal visual weight, as if every option mattered equally to them. They pause.",
-          "That pause is the whole problem. SonyLIV supports a wide range of payment methods because users in India pay in very different ways, but when everything looks equal, users slow down. And this is the one screen in the entire product where confidence matters more than choice, because hesitation here doesn't just cost time, it costs the subscription.",
-        ],
-      },
-      {
-        heading: "Research & Approach",
-        paragraphs: [
-          "Before changing a single pixel, I needed to know why that pause was happening. I ran a heuristic evaluation to map exactly where the friction sat, benchmarked the flow against Prime Video, Hotstar, PhonePe, and Paytm to see how others handled the same moment, and pulled in payment UX research specific to how Indian users actually build (or lose) trust on a checkout screen.",
-          "The picture that came back wasn't about complexity. Users weren't confused, they were stalled, standing in front of too many doors that all looked the same.",
-        ],
-      },
-    ],
-    journeySteps: [
-      {
-        label: "Payment method selection",
-        before: "All payment methods shown with equal visual weight, no guidance on which to pick.",
-        after: "UPI surfaced first and recommended; long-tail options available but not competing for attention.",
-      },
-      {
-        label: "Offers",
-        before: "Unclear whether an offer applied, or what it actually changed about the price.",
-        after: "Clear \"applied\" state, eligibility explained in plain language, total cost always visible.",
-      },
-      {
-        label: "Payment failure",
-        before: "A failed payment was a dead end with no clear next step, so users abandoned.",
-        after: "Calm failure messaging, a clear retry path, and a fallback to another method without restarting.",
-      },
-    ],
-    decisions: [
-      {
-        title: "Lead with UPI, without forcing it",
-        phase: "Phase 1: Simplify Decision-Making",
-        why: "The research kept pointing to the same answer: UPI was already the payment method most users reached for instinctively, fast, familiar, no card details to dig up. The story I wanted the screen to tell was \"this is the easy way,\" not \"this is the only way,\" so I made UPI the obvious first move without ever closing the door to anything else.",
-        whatChanged: [
-          "UPI surfaced more clearly in the hierarchy",
-          "Shortened the path from selection → payment initiation",
-          "Reduced competing noise around it",
-        ],
-        result: "UPI adoption increased by 28%. We prioritised UPI visually and structurally to reduce decision time.",
-      },
-      {
-        title: "Reduce choice overload with clearer hierarchy",
-        phase: "Phase 1: Simplify Decision-Making",
-        why: "Even with UPI in the lead position, the rest of the screen was still asking users to evaluate five payment families at once before they could act. That's the moment confidence actually drains out of a checkout flow, not card numbers or OTPs, but standing in front of too many equal-looking doors.",
-        whatChanged: [
-          "Grouped payment methods logically",
-          "\"Recommended / most used\" sits first",
-          "Long-tail options remain available but not dominant",
-        ],
-        result: "Checkout time reduced by 21%. Hierarchy reduces thinking, so users move forward with confidence.",
-      },
-      {
-        title: "Make offers feel effortless, not risky",
-        phase: "Phase 2: Build Trust at the Payment Moment",
-        why: "Offers were supposed to build trust, but they were doing the opposite. A user could see a discount mentioned somewhere on screen with no way to confirm it had actually been applied to their total. An offer you can't verify isn't a perk, it's a reason to hesitate right before paying.",
-        whatChanged: [
-          "Clear \"applied\" state",
-          "Eligibility explained in plain language",
-          "Total cost always visible and consistent",
-        ],
-        result: "Higher confidence and fewer drop-offs during offer selection: offer clarity builds trust, so users don't feel surprised at the last step.",
-      },
-      {
-        title: "Design for failure recovery, because payments fail",
-        phase: "Phase 3: Design for Recovery",
-        why: "Payments fail. That's not a hypothetical, it's a guarantee at scale. The real test of a checkout flow isn't how it behaves when everything works, it's what happens in the half-second after a payment bounces, when a user is deciding whether to retry or just walk away.",
-        whatChanged: [
-          "Calm failure messaging",
-          "Clear retry path",
-          "Smart fallbacks: choose another method without restarting everything",
-        ],
-        result: "Failed payments reduced by 14%. Recovery is part of the product, designed to feel safe and guided.",
-      },
-    ],
-    closingSections: [
-      {
-        heading: "Reflection",
-        paragraphs: [
-          "Looking back, the biggest unlock wasn't any single screen, it was realizing that checkout isn't a form, it's a decision made under mild stress. Every extra option, every unclear state, every dead end after a failure adds friction to that decision.",
-          "Strip those away, and the numbers, more UPI adoption, fewer failed payments, faster completion, follow almost on their own. Payment is the one screen where users have the least patience for ambiguity and the most at stake if something goes wrong.",
         ],
       },
     ],
