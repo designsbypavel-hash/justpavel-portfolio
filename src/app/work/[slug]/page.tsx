@@ -58,6 +58,9 @@ export default async function ProjectPage({
           readingTime={readingTime}
         />
 
+        {/* Visual: the headline numbers, right up top so the result is clear immediately */}
+        <MetricGrid stats={project.stats} />
+
         <CaseStudyOverview
           role={project.role}
           platform={project.platform}
@@ -155,9 +158,6 @@ export default async function ProjectPage({
 
         {/* Visual: the flow running, right after the decisions behind it are explained */}
         {project.prototypeVideo && <PrototypeVideo src={project.prototypeVideo} />}
-
-        {/* Visual: the payoff numbers, right before the closing reflection */}
-        <MetricGrid stats={project.stats} />
 
         <OutcomeSection sections={project.closingSections} />
 
