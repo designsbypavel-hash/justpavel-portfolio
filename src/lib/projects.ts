@@ -31,6 +31,7 @@ export type Project = {
   tags: string[];
   image: string;
   galleryImages: string[];
+  prototypeVideo?: string;
   role: string;
   platform: string;
   team: string;
@@ -196,6 +197,7 @@ export const projects: Project[] = [
       "/site-assets/case-studies/sonyliv-check/img-06.png",
       "/site-assets/case-studies/sonyliv-check/img-07.png",
     ],
+    prototypeVideo: "/site-assets/case-studies/sonyliv-check/prototype.mp4",
     role: "Product Designer (End-to-end)",
     platform: "Mobile",
     team: "PM, PO, 3 Engineers",

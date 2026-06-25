@@ -8,6 +8,7 @@ import MetricGrid from "@/components/MetricGrid";
 import DarkImageSection from "@/components/DarkImageSection";
 import { ChallengeSection, StrategySection } from "@/components/ChallengeStrategyResults";
 import ProcessSection from "@/components/ProcessSection";
+import PrototypeVideo from "@/components/PrototypeVideo";
 import OutcomeSection from "@/components/OutcomeSection";
 import NextProjectCTA from "@/components/NextProjectCTA";
 
@@ -80,6 +81,8 @@ export default async function ProjectPage({
         </div>
 
         <ProcessSection title={project.title} images={project.galleryImages} />
+
+        {project.prototypeVideo && <PrototypeVideo src={project.prototypeVideo} />}
 
         {/* TL;DR */}
         <section className="mb-12 rounded-xl border border-white/10 bg-white/5 p-6 sm:p-8">
