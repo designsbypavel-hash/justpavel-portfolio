@@ -9,6 +9,7 @@ import DarkImageSection from "@/components/DarkImageSection";
 import { ChallengeSection, StrategySection } from "@/components/ChallengeStrategyResults";
 import ProcessSection from "@/components/ProcessSection";
 import PrototypeVideo from "@/components/PrototypeVideo";
+import TeamComposition from "@/components/TeamComposition";
 import OutcomeSection from "@/components/OutcomeSection";
 import NextProjectCTA from "@/components/NextProjectCTA";
 
@@ -62,6 +63,8 @@ export default async function ProjectPage({
           team={project.team}
           duration={project.duration}
         />
+
+        {project.teamBreakdown && <TeamComposition groups={project.teamBreakdown} />}
 
         <div className="mb-12">
           <DarkImageSection src={project.image} alt={project.title} priority aspect="16 / 10" />

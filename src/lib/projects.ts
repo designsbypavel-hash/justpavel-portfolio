@@ -23,6 +23,11 @@ export type JourneyStep = {
   after: string;
 };
 
+export type TeamGroup = {
+  function: string;
+  members: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -35,6 +40,7 @@ export type Project = {
   role: string;
   platform: string;
   team: string;
+  teamBreakdown?: TeamGroup[];
   duration?: string;
   stats: ImpactStat[];
   tldrProblem: string;
@@ -70,6 +76,11 @@ export const projects: Project[] = [
     role: "Lead Product Designer (End-to-end)",
     platform: "Enterprise B2B SaaS · AI Agent",
     team: "1 designer · 2 PMs · 3 engineers",
+    teamBreakdown: [
+      { function: "Design", members: "1 Designer (me, end-to-end)" },
+      { function: "Product", members: "2 PMs" },
+      { function: "Engineering", members: "3 Engineers" },
+    ],
     stats: [
       { value: "22%", label: "AI containment uplift" },
       { value: "45s", label: "Average handle time" },
@@ -201,6 +212,11 @@ export const projects: Project[] = [
     role: "Product Designer (End-to-end)",
     platform: "Mobile",
     team: "PM, PO, 3 Engineers",
+    teamBreakdown: [
+      { function: "Design", members: "1 Designer (me, end-to-end)" },
+      { function: "Product", members: "1 PM, 1 PO" },
+      { function: "Engineering", members: "3 Engineers" },
+    ],
     duration: "2 months",
     stats: [
       { value: "+28%", label: "UPI adoption" },
@@ -313,6 +329,11 @@ export const projects: Project[] = [
     role: "Product Designer (End-to-end)",
     platform: "Fintech & AI, B2B SaaS",
     team: "1 designer, 2 PMs, 4 engineers (2 FE, 2 BE)",
+    teamBreakdown: [
+      { function: "Design", members: "1 Designer (me, end-to-end)" },
+      { function: "Product", members: "2 PMs" },
+      { function: "Engineering", members: "4 Engineers (2 FE, 2 BE)" },
+    ],
     stats: [
       { value: "40%", label: "Fewer missed follow-ups" },
       { value: "15%", label: "Less manual effort" },
@@ -386,6 +407,11 @@ export const projects: Project[] = [
     role: "Product Designer (End-to-end)",
     platform: "OTT, B2C",
     team: "1 Product Designer · 1 PM · 3 Engineers",
+    teamBreakdown: [
+      { function: "Design", members: "1 Product Designer (me, end-to-end)" },
+      { function: "Product", members: "1 PM" },
+      { function: "Engineering", members: "3 Engineers" },
+    ],
     stats: [
       { value: "+22%", label: "Paid subscriptions" },
       { value: "-40%", label: "Checkout drop-offs" },
@@ -452,6 +478,11 @@ export const projects: Project[] = [
     role: "Product Designer (End-to-end)",
     platform: "OTT, B2C Mobile",
     team: "1 Designer, 1 PM, 1 PO, 3 Engineers",
+    teamBreakdown: [
+      { function: "Design", members: "1 Designer (me, end-to-end)" },
+      { function: "Product", members: "1 PM, 1 PO" },
+      { function: "Engineering", members: "3 Engineers" },
+    ],
     stats: [],
     tldrProblem:
       "Legacy search made it hard to surface relevant results, refine queries, and navigate content at scale.",
