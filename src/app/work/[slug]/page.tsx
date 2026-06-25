@@ -58,8 +58,6 @@ export default async function ProjectPage({
           readingTime={readingTime}
         />
 
-        {project.prototypeVideo && <PrototypeVideo src={project.prototypeVideo} />}
-
         <CaseStudyOverview
           role={project.role}
           platform={project.platform}
@@ -68,12 +66,6 @@ export default async function ProjectPage({
         />
 
         {project.teamBreakdown && <TeamComposition groups={project.teamBreakdown} />}
-
-        <div className="mb-12">
-          <DarkImageSection src={project.image} alt={project.title} priority aspect="16 / 10" />
-        </div>
-
-        <MetricGrid stats={project.stats} />
 
         <div className="mb-12 flex flex-wrap gap-2">
           {project.tags.map((tag) => (
@@ -85,8 +77,6 @@ export default async function ProjectPage({
             </span>
           ))}
         </div>
-
-        <ProcessSection title={project.title} images={project.galleryImages} />
 
         {/* TL;DR */}
         <section className="mb-12 rounded-xl border border-white/10 bg-white/5 p-6 sm:p-8">
@@ -109,13 +99,18 @@ export default async function ProjectPage({
           </div>
         </section>
 
+        {/* Visual: hero image, right after the intro is established */}
+        <div className="mb-12">
+          <DarkImageSection src={project.image} alt={project.title} priority aspect="16 / 10" />
+        </div>
+
         {project.keyInsight && (
           <KeyInsight title={project.keyInsight.title} description={project.keyInsight.description} />
         )}
 
         <ChallengeSection sections={project.context} />
 
-        {/* User Journey: Before vs After */}
+        {/* User Journey: Before vs After (visual, right after the challenge is explained) */}
         {project.journeySteps && project.journeySteps.length > 0 && (
           <section className="mb-12">
             <h2 className="mb-8 uppercase">
@@ -153,7 +148,16 @@ export default async function ProjectPage({
           </section>
         )}
 
+        {/* Visual: the actual screens, right after the journey is explained */}
+        <ProcessSection title={project.title} images={project.galleryImages} />
+
         <StrategySection decisions={project.decisions} />
+
+        {/* Visual: the flow running, right after the decisions behind it are explained */}
+        {project.prototypeVideo && <PrototypeVideo src={project.prototypeVideo} />}
+
+        {/* Visual: the payoff numbers, right before the closing reflection */}
+        <MetricGrid stats={project.stats} />
 
         <OutcomeSection sections={project.closingSections} />
 
