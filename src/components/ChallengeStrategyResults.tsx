@@ -35,9 +35,15 @@ export function StrategySection({ decisions }: { decisions: Decision[] }) {
       <div className="space-y-10">
         {decisions.map((decision, i) => (
           <div key={decision.title} className="rounded-xl border border-white/10 p-6 sm:p-8">
-            <h3 className="mb-4">
-              Decision {i + 1}: {decision.title}
-            </h3>
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+              <h3 className="mb-0">
+                Decision {i + 1}: {decision.title}
+              </h3>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs font-medium text-emerald-300">
+                <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                Shipped
+              </span>
+            </div>
             <p className="mb-4 text-sm text-white/60">
               <span className="font-semibold text-white/40">Why: </span>
               {decision.why}

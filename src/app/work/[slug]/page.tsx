@@ -79,6 +79,8 @@ export default async function ProjectPage({
           ))}
         </div>
 
+        <ProcessSection title={project.title} images={project.galleryImages} />
+
         {/* TL;DR */}
         <section className="mb-12 rounded-xl border border-white/10 bg-white/5 p-6 sm:p-8">
           <h2 className="mb-6 uppercase">
@@ -139,8 +141,6 @@ export default async function ProjectPage({
             </div>
           </section>
         )}
-
-        <ProcessSection title={project.title} images={project.galleryImages} />
 
         <StrategySection decisions={project.decisions} />
 
