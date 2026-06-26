@@ -20,8 +20,15 @@ export function ChallengeSection({ sections }: { sections: Section[] }) {
               ))}
             </div>
             {section.image && (
-              <div className="relative mt-4 aspect-[16/10] w-full overflow-hidden rounded-xl border border-white/10">
-                <Image src={section.image} alt={section.heading} fill className="object-cover" />
+              <div className="-mx-6 mt-4 overflow-hidden rounded-xl border border-white/10 sm:-mx-16">
+                <Image
+                  src={section.image}
+                  alt={section.heading}
+                  width={1920}
+                  height={1080}
+                  quality={100}
+                  className="h-auto w-full"
+                />
               </div>
             )}
           </div>
@@ -48,8 +55,15 @@ function DecisionCard({ decision, index }: { decision: Decision; index: number }
         {decision.why}
       </p>
       {decision.image && (
-        <div className="relative mb-4 aspect-[16/10] w-full overflow-hidden rounded-lg border border-white/10">
-          <Image src={decision.image} alt={decision.title} fill className="object-cover" />
+        <div className="-mx-6 mb-4 overflow-hidden rounded-lg border border-white/10 sm:-mx-8">
+          <Image
+            src={decision.image}
+            alt={decision.title}
+            width={1920}
+            height={1080}
+            quality={100}
+            className="h-auto w-full"
+          />
         </div>
       )}
       {decision.alternativesConsidered && decision.alternativesConsidered.length > 0 && (

@@ -19,8 +19,15 @@ export default function KeyInsight({
         <p className="text-white/70">{description}</p>
       </div>
       {image && (
-        <div className="relative mt-4 aspect-[16/10] w-full overflow-hidden rounded-xl border border-white/10">
-          <Image src={image} alt={title} fill className="object-cover" />
+        <div className="-mx-6 mt-4 overflow-hidden rounded-xl border border-white/10 sm:-mx-16">
+          <Image
+            src={image}
+            alt={title}
+            width={1920}
+            height={1080}
+            quality={100}
+            className="h-auto w-full"
+          />
         </div>
       )}
     </section>

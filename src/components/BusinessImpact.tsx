@@ -27,8 +27,15 @@ export default function BusinessImpact({
         ))}
       </div>
       {image && (
-        <div className="relative mt-6 aspect-[16/10] w-full overflow-hidden rounded-xl border border-white/10">
-          <Image src={image} alt="Business impact dashboard" fill className="object-cover" />
+        <div className="-mx-6 mt-6 overflow-hidden rounded-xl border border-white/10 sm:-mx-16">
+          <Image
+            src={image}
+            alt="Business impact dashboard"
+            width={1920}
+            height={1080}
+            quality={100}
+            className="h-auto w-full"
+          />
         </div>
       )}
     </section>
