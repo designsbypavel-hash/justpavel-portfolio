@@ -136,18 +136,16 @@ export default async function ProjectPage({
 
         {project.ecosystemDiagramImage ? (
           <section className="mb-12">
-            <span className="mb-3 inline-block rounded-full border border-white/15 px-3 py-1 text-xs uppercase tracking-widest text-white/60">
-              Ecosystem Diagram
-            </span>
-            <div className="-mx-6 flex justify-center sm:-mx-16">
-              <div className="overflow-hidden rounded-xl border border-white/10">
+            <div className="flex justify-center" style={{ marginLeft: "calc(50% - 50vw)", marginRight: "calc(50% - 50vw)" }}>
+              <div className="w-full max-w-5xl overflow-hidden rounded-xl border border-white/10 px-4">
                 <Image
                   src={project.ecosystemDiagramImage}
-                  alt="Ecosystem diagram"
+                  alt="SonyLIV subscription ecosystem diagram"
                   width={1536}
                   height={1024}
                   quality={100}
-                  className="block h-auto max-h-[900px] w-auto max-w-full"
+                  sizes="(min-width: 1024px) 1024px, 100vw"
+                  className="h-auto w-full"
                 />
               </div>
             </div>
