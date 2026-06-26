@@ -3,14 +3,16 @@ import Image from "next/image";
 export default function DesignPrinciples({
   principles,
   image,
+  heading = "Design Principles",
 }: {
   principles: string[];
   image?: string;
+  heading?: string;
 }) {
   if (principles.length === 0) return null;
   return (
     <section className="mb-12">
-      <h2 className="mb-6 uppercase">Design Principles</h2>
+      <h2 className="mb-6 uppercase">{heading}</h2>
       <div className="grid gap-3 sm:grid-cols-2">
         {principles.map((principle, i) => (
           <div

@@ -65,6 +65,12 @@ export type Project = {
   designPrinciples?: string[];
   designPrinciplesImage?: string;
   businessImpactImage?: string;
+  teamsHelped?: TeamGroup[];
+  automationScope?: string[];
+  escalationTriggers?: string[];
+  rejectedConcepts?: string[];
+  constraints?: string[];
+  successMetrics?: ImpactCategory[];
   stats: ImpactStat[];
   tldrProblem: string;
   tldrWhatIDid: string;
@@ -313,6 +319,49 @@ export const projects: Project[] = [
       "Make risk observable, not theoretical: 'what happens when it's wrong' needs a real, safe place to find out.",
     ],
     designPrinciplesImage: "/site-assets/case-studies/agent-ai/img-05.png",
+    teamsHelped: [
+      { function: "Customer Support", members: "Reduced repetitive workload from password resets, order status, and FAQ-style queries." },
+      { function: "Sales", members: "Received qualified leads routed directly into the CRM instead of lost in a chatbot dead end." },
+      { function: "Marketing", members: "Gained visibility into customer intent and the questions people actually ask." },
+      { function: "Customer Success", members: "Could see sentiment and interaction patterns instead of relying on anecdote." },
+      { function: "Operations", members: "Got a self-serve way to update assistant behaviour without filing an engineering ticket." },
+      { function: "Product & BI teams", members: "Used real conversation data to see customer pain points and report on adoption." },
+    ],
+    automationScope: [
+      "FAQ responses",
+      "Lead qualification",
+      "Customer triage",
+      "Appointment booking",
+      "Information retrieval",
+      "CRM updates",
+      "Knowledge base search",
+      "Support ticket creation",
+      "Customer routing",
+      "Basic troubleshooting",
+      "Customer onboarding",
+    ],
+    escalationTriggers: [
+      "Customer sentiment turns negative or frustrated.",
+      "AI confidence in its own response falls below a defined threshold.",
+      "A customer explicitly asks for a human.",
+      "Sensitive account actions require verification.",
+      "The query is complex, regulated, or requires business judgement.",
+      "Multiple attempts have already failed, or a sales opportunity needs a human rep.",
+    ],
+    rejectedConcepts: [
+      "Rule-based decision-tree chatbots: too rigid for real conversations.",
+      "Static FAQ pages: low engagement, users still couldn't find the right answer.",
+      "Keyword-only search: low accuracy against natural-language questions.",
+      "Large menu-driven navigation: high cognitive load before reaching an answer.",
+      "Manual support-only workflows: not scalable past a small support team.",
+    ],
+    constraints: [
+      "Accuracy and hallucination prevention came before response creativity.",
+      "Data privacy, security, and auditability were non-negotiable for enterprise buyers.",
+      "Had to integrate with existing CRM and channel systems (Salesforce, HubSpot, WhatsApp, Email), not replace them.",
+      "Had to stay no-code configurable for business users, not just engineers.",
+      "LLM usage cost had to scale sustainably across many customer accounts, not just one pilot.",
+    ],
     stats: [
       { value: "22%", label: "AI containment uplift" },
       { value: "45s", label: "Average handle time" },
@@ -325,6 +374,13 @@ export const projects: Project[] = [
     tldrImpact:
       "Buyers stopped asking 'can it do the job?' and started asking better questions, because they could find out for themselves. The Playground became the answer to 'what happens when it gets it wrong?'",
     context: [
+      {
+        heading: "Why We Built Kai",
+        paragraphs: [
+          "Kai is a no-code, agentic AI customer service platform that lets organisations deploy AI assistants without engineering effort: automating support, generating qualified leads, resolving common queries, integrating with existing systems (Salesforce, HubSpot, WhatsApp, Email), and escalating complex cases to a human. The goal was to improve customer experience while reducing operational cost.",
+          "Traditional chatbots relied on rigid decision trees and FAQs, so customers struggled to find accurate answers quickly, support teams burned time on repetitive questions, and chatbots couldn't qualify or route leads intelligently. Businesses also had no visibility into customer intent or sentiment, and updating chatbot content always required a technical team, which slowed the business down. Kai's answer was to let business users configure the assistant themselves while the platform handled triage, lead qualification, analytics, and omnichannel engagement.",
+        ],
+      },
       {
         heading: "The Opportunity",
         image: "/site-assets/case-studies/agent-ai/img-06.png",
@@ -433,6 +489,33 @@ export const projects: Project[] = [
       },
     ],
     businessImpactImage: "/site-assets/case-studies/agent-ai/img-10.png",
+    successMetrics: [
+      {
+        category: "Tracked from launch",
+        points: [
+          "Support ticket reduction",
+          "First response time",
+          "Successful query resolution rate",
+          "Customer Satisfaction (CSAT)",
+          "AI adoption rate",
+          "Human escalation rate",
+          "Lead generation and lead conversion",
+          "Customer engagement and sentiment analysis",
+        ],
+      },
+      {
+        category: "Defined but dependent on CRM integration",
+        points: [
+          "CRM conversion rates, sales pipeline progression, and campaign attribution, available once Kai is integrated with Salesforce or HubSpot.",
+        ],
+      },
+      {
+        category: "Also part of the KPI framework",
+        points: [
+          "Average resolution time, AI containment rate, qualified leads generated, customer retention, agent productivity, and cost per support interaction.",
+        ],
+      },
+    ],
     closingSections: [
       {
         heading: "How the Playground Works Across Tabs",

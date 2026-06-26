@@ -16,6 +16,8 @@ import BusinessImpact from "@/components/BusinessImpact";
 import ProductHypothesis from "@/components/ProductHypothesis";
 import OutcomeSection from "@/components/OutcomeSection";
 import NextProjectCTA from "@/components/NextProjectCTA";
+import ChipList from "@/components/ChipList";
+import RejectedConcepts from "@/components/RejectedConcepts";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -137,9 +139,21 @@ export default async function ProjectPage({
           </section>
         )}
 
+        {project.rejectedConcepts && project.rejectedConcepts.length > 0 && (
+          <RejectedConcepts heading="Concepts We Rejected" items={project.rejectedConcepts} />
+        )}
+
         {project.hypothesis && <ProductHypothesis hypothesis={project.hypothesis} />}
 
         <ChallengeSection sections={project.context} />
+
+        {project.teamsHelped && project.teamsHelped.length > 0 && (
+          <TeamComposition groups={project.teamsHelped} />
+        )}
+
+        {project.automationScope && project.automationScope.length > 0 && (
+          <ChipList heading="What Kai Automates" chips={project.automationScope} />
+        )}
 
         {/* User Journey: Before vs After (visual, right after the challenge is explained) */}
         {project.journeySteps && project.journeySteps.length > 0 && (
@@ -183,6 +197,14 @@ export default async function ProjectPage({
           <DesignPrinciples principles={project.designPrinciples} image={project.designPrinciplesImage} />
         )}
 
+        {project.constraints && project.constraints.length > 0 && (
+          <DesignPrinciples principles={project.constraints} heading="Constraints That Shaped The Solution" />
+        )}
+
+        {project.escalationTriggers && project.escalationTriggers.length > 0 && (
+          <DesignPrinciples principles={project.escalationTriggers} heading="When Kai Escalates To A Human" />
+        )}
+
         <StrategySection decisions={project.decisions} />
 
         {/* Visual: the flow running, right after the decisions behind it are explained */}
@@ -190,6 +212,10 @@ export default async function ProjectPage({
 
         {project.businessImpact && project.businessImpact.length > 0 && (
           <BusinessImpact categories={project.businessImpact} image={project.businessImpactImage} />
+        )}
+
+        {project.successMetrics && project.successMetrics.length > 0 && (
+          <BusinessImpact categories={project.successMetrics} heading="Success Metrics We Defined" />
         )}
 
         {/* Remaining screens not already paired with specific copy above */}
