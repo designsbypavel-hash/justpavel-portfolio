@@ -51,6 +51,18 @@ export default async function ProjectPage({
   const currentIndex = projects.findIndex((p) => p.slug === project.slug);
   const nextProject = projects[(currentIndex + 1) % projects.length];
 
+  const usedImages = new Set(
+    [
+      project.keyInsight?.image,
+      project.designPrinciplesImage,
+      project.businessImpactImage,
+      ...project.context.map((s) => s.image),
+      ...project.decisions.map((d) => d.image),
+      ...project.closingSections.map((s) => s.image),
+    ].filter(Boolean)
+  );
+  const remainingGalleryImages = project.galleryImages.filter((img) => !usedImages.has(img));
+
   return (
     <div className="px-6 py-24">
       <div className="mx-auto max-w-4xl">
@@ -111,7 +123,11 @@ export default async function ProjectPage({
         </div>
 
         {project.keyInsight && (
-          <KeyInsight title={project.keyInsight.title} description={project.keyInsight.description} />
+          <KeyInsight
+            title={project.keyInsight.title}
+            description={project.keyInsight.description}
+            image={project.keyInsight.image}
+          />
         )}
 
         {project.opportunity && (
@@ -163,11 +179,8 @@ export default async function ProjectPage({
           </section>
         )}
 
-        {/* Visual: the actual screens, right after the journey is explained */}
-        <ProcessSection title={project.title} images={project.galleryImages} />
-
         {project.designPrinciples && project.designPrinciples.length > 0 && (
-          <DesignPrinciples principles={project.designPrinciples} />
+          <DesignPrinciples principles={project.designPrinciples} image={project.designPrinciplesImage} />
         )}
 
         <StrategySection decisions={project.decisions} />
@@ -176,7 +189,12 @@ export default async function ProjectPage({
         {project.prototypeVideo && <PrototypeVideo src={project.prototypeVideo} />}
 
         {project.businessImpact && project.businessImpact.length > 0 && (
-          <BusinessImpact categories={project.businessImpact} />
+          <BusinessImpact categories={project.businessImpact} image={project.businessImpactImage} />
+        )}
+
+        {/* Remaining screens not already paired with specific copy above */}
+        {remainingGalleryImages.length > 0 && (
+          <ProcessSection title={project.title} images={remainingGalleryImages} />
         )}
 
         <OutcomeSection sections={project.closingSections} />

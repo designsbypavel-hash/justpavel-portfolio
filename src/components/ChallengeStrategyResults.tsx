@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Decision, Section } from "@/lib/projects";
 
 export function ChallengeSection({ sections }: { sections: Section[] }) {
@@ -18,6 +19,11 @@ export function ChallengeSection({ sections }: { sections: Section[] }) {
                 </p>
               ))}
             </div>
+            {section.image && (
+              <div className="relative mt-4 aspect-[16/10] w-full overflow-hidden rounded-xl border border-white/10">
+                <Image src={section.image} alt={section.heading} fill className="object-cover" />
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -41,6 +47,11 @@ function DecisionCard({ decision, index }: { decision: Decision; index: number }
         <span className="font-semibold text-white/40">Why: </span>
         {decision.why}
       </p>
+      {decision.image && (
+        <div className="relative mb-4 aspect-[16/10] w-full overflow-hidden rounded-lg border border-white/10">
+          <Image src={decision.image} alt={decision.title} fill className="object-cover" />
+        </div>
+      )}
       {decision.alternativesConsidered && decision.alternativesConsidered.length > 0 && (
         <div className="mb-4 rounded-lg border border-white/10 bg-black/30 p-4">
           <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-white/40">

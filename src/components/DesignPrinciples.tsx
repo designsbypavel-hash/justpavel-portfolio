@@ -1,4 +1,12 @@
-export default function DesignPrinciples({ principles }: { principles: string[] }) {
+import Image from "next/image";
+
+export default function DesignPrinciples({
+  principles,
+  image,
+}: {
+  principles: string[];
+  image?: string;
+}) {
   if (principles.length === 0) return null;
   return (
     <section className="mb-12">
@@ -16,6 +24,11 @@ export default function DesignPrinciples({ principles }: { principles: string[] 
           </div>
         ))}
       </div>
+      {image && (
+        <div className="relative mt-4 aspect-[16/9] w-full overflow-hidden rounded-xl border border-white/10">
+          <Image src={image} alt="Design principle trade-offs" fill className="object-cover" />
+        </div>
+      )}
     </section>
   );
 }

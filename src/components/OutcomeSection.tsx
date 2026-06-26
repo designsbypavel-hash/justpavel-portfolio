@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Section } from "@/lib/projects";
 
 export default function OutcomeSection({ sections }: { sections: Section[] }) {
@@ -19,6 +20,11 @@ export default function OutcomeSection({ sections }: { sections: Section[] }) {
                 </p>
               ))}
             </div>
+            {section.image && (
+              <div className="relative mt-4 aspect-[16/10] w-full overflow-hidden rounded-xl border border-white/10">
+                <Image src={section.image} alt={section.heading} fill className="object-cover" />
+              </div>
+            )}
           </div>
         ))}
       </div>

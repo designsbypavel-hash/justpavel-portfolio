@@ -6,6 +6,7 @@ export type ImpactStat = {
 export type Decision = {
   title: string;
   phase?: string;
+  image?: string;
   why: string;
   alternativesConsidered?: string[];
   whatChanged: string[];
@@ -30,6 +31,7 @@ export type Hypothesis = {
 export type Section = {
   heading: string;
   paragraphs: string[];
+  image?: string;
 };
 
 export type JourneyStep = {
@@ -57,10 +59,12 @@ export type Project = {
   team: string;
   teamBreakdown?: TeamGroup[];
   duration?: string;
-  keyInsight?: { title: string; description: string };
+  keyInsight?: { title: string; description: string; image?: string };
   opportunity?: string;
   hypothesis?: Hypothesis;
   designPrinciples?: string[];
+  designPrinciplesImage?: string;
+  businessImpactImage?: string;
   stats: ImpactStat[];
   tldrProblem: string;
   tldrWhatIDid: string;
@@ -280,6 +284,7 @@ export const projects: Project[] = [
     ],
     keyInsight: {
       title: "Capability was never the problem, risk was",
+      image: "/site-assets/case-studies/agent-ai/img-01.png",
       description:
         "Every enterprise evaluation turned to the same question, in some form, in 8 of 8 interviews: what happens when Kai gets it wrong, and who's accountable? Teams weren't worried Kai couldn't do the job. They were worried they'd find out it couldn't in front of a customer.",
     },
@@ -307,6 +312,7 @@ export const projects: Project[] = [
       "Outcome-first language over AI terminology: meet users where their mental model already is.",
       "Make risk observable, not theoretical: 'what happens when it's wrong' needs a real, safe place to find out.",
     ],
+    designPrinciplesImage: "/site-assets/case-studies/agent-ai/img-05.png",
     stats: [
       { value: "22%", label: "AI containment uplift" },
       { value: "45s", label: "Average handle time" },
@@ -321,6 +327,7 @@ export const projects: Project[] = [
     context: [
       {
         heading: "The Opportunity",
+        image: "/site-assets/case-studies/agent-ai/img-06.png",
         paragraphs: [
           "As AI adoption accelerated, many businesses wanted to leverage AI assistants to automate support, generate leads, and improve operational efficiency. However, existing solutions often required technical expertise, complex configuration, and engineering support.",
           "Through stakeholder discussions and discovery activities, we identified a common challenge: users understood the outcomes they wanted from AI but struggled to understand how to create, train, and deploy AI assistants effectively.",
@@ -338,6 +345,7 @@ export const projects: Project[] = [
       },
       {
         heading: "Organisational Complexity",
+        image: "/site-assets/case-studies/agent-ai/img-02.png",
         paragraphs: [
           "Five roles needed access to the same Playground for different reasons, with five different definitions of what \"trusted\" means. Designing it wasn't a UI problem. It was an organisational trust problem.",
         ],
@@ -353,6 +361,7 @@ export const projects: Project[] = [
       },
       {
         heading: "Landscape",
+        image: "/site-assets/case-studies/agent-ai/img-03.png",
         paragraphs: [
           "Every enterprise AI platform had the same gap. The category pattern was clear: enterprise AI tools treated testing as a separate, privileged activity, something bolted on for a demo, not something woven into daily configuration work.",
         ],
@@ -361,6 +370,7 @@ export const projects: Project[] = [
     decisions: [
       {
         title: "Make the Playground available on every config tab, not just Instructions",
+        image: "/site-assets/case-studies/agent-ai/img-04.png",
         why: "My first instinct was to scope the Playground to the Instructions tab. But training uploads, saved prompts, and completion criteria all affect Kai's responses. If the Playground isn't visible when those change, teams can't catch regressions there; they surface in production. AI Trainers needed immediate feedback when uploading knowledge documents; a bad upload only surfaced when a customer hit a wrong answer, days later.",
         alternativesConsidered: [
           "Instructions tab only: simpler to build, but misses training-quality checks entirely. A broken knowledge upload wouldn't be caught until a customer hit it.",
@@ -380,6 +390,7 @@ export const projects: Project[] = [
       },
       {
         title: "Build a role-based permission model around the Playground itself",
+        image: "/site-assets/case-studies/agent-ai/img-09.png",
         why: "The Playground itself required a permission model. IT Admins needed control over who could run tests and who could push changes live.",
         whatChanged: [
           "Roles defined directly from research were implemented: Super Admin, Admin, Operator, Trainer, Viewer",
@@ -421,9 +432,11 @@ export const projects: Project[] = [
         ],
       },
     ],
+    businessImpactImage: "/site-assets/case-studies/agent-ai/img-10.png",
     closingSections: [
       {
         heading: "How the Playground Works Across Tabs",
+        image: "/site-assets/case-studies/agent-ai/img-07.png",
         paragraphs: [
           "Agent Config: model settings, language, style, and behaviour controls. Every dimension of the assistant's behaviour, from tone to escalation triggers, is immediately testable with no save cycle required.",
           "Instructions: the most-used tab. Ops teams write the system prompt here and the Playground immediately shows the response. Change a word, see the effect, with no save cycle and no redeploy.",

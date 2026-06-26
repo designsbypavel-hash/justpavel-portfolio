@@ -1,9 +1,13 @@
+import Image from "next/image";
+
 export default function KeyInsight({
   title,
   description,
+  image,
 }: {
   title: string;
   description: string;
+  image?: string;
 }) {
   return (
     <section className="mb-12">
@@ -14,6 +18,11 @@ export default function KeyInsight({
         <h2 className="mb-3">{title}</h2>
         <p className="text-white/70">{description}</p>
       </div>
+      {image && (
+        <div className="relative mt-4 aspect-[16/10] w-full overflow-hidden rounded-xl border border-white/10">
+          <Image src={image} alt={title} fill className="object-cover" />
+        </div>
+      )}
     </section>
   );
 }

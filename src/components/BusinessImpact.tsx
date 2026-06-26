@@ -1,6 +1,13 @@
+import Image from "next/image";
 import type { ImpactCategory } from "@/lib/projects";
 
-export default function BusinessImpact({ categories }: { categories: ImpactCategory[] }) {
+export default function BusinessImpact({
+  categories,
+  image,
+}: {
+  categories: ImpactCategory[];
+  image?: string;
+}) {
   if (categories.length === 0) return null;
   return (
     <section className="mb-12">
@@ -17,6 +24,11 @@ export default function BusinessImpact({ categories }: { categories: ImpactCateg
           </div>
         ))}
       </div>
+      {image && (
+        <div className="relative mt-6 aspect-[16/10] w-full overflow-hidden rounded-xl border border-white/10">
+          <Image src={image} alt="Business impact dashboard" fill className="object-cover" />
+        </div>
+      )}
     </section>
   );
 }
