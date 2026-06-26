@@ -13,6 +13,7 @@ import TeamComposition from "@/components/TeamComposition";
 import KeyInsight from "@/components/KeyInsight";
 import DesignPrinciples from "@/components/DesignPrinciples";
 import BusinessImpact from "@/components/BusinessImpact";
+import ProductHypothesis from "@/components/ProductHypothesis";
 import OutcomeSection from "@/components/OutcomeSection";
 import NextProjectCTA from "@/components/NextProjectCTA";
 
@@ -119,6 +120,8 @@ export default async function ProjectPage({
             <p className="text-white/70">{project.opportunity}</p>
           </section>
         )}
+
+        {project.hypothesis && <ProductHypothesis hypothesis={project.hypothesis} />}
 
         <ChallengeSection sections={project.context} />
 

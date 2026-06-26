@@ -19,6 +19,14 @@ export type ImpactCategory = {
   points: string[];
 };
 
+export type Hypothesis = {
+  weBelieved: string;
+  ifWe: string;
+  then: string;
+  because: string;
+  risks: string[];
+};
+
 export type Section = {
   heading: string;
   paragraphs: string[];
@@ -51,6 +59,7 @@ export type Project = {
   duration?: string;
   keyInsight?: { title: string; description: string };
   opportunity?: string;
+  hypothesis?: Hypothesis;
   designPrinciples?: string[];
   stats: ImpactStat[];
   tldrProblem: string;
@@ -269,6 +278,35 @@ export const projects: Project[] = [
       { function: "Product", members: "2 PMs" },
       { function: "Engineering", members: "3 Engineers" },
     ],
+    keyInsight: {
+      title: "Capability was never the problem, risk was",
+      description:
+        "Every enterprise evaluation turned to the same question, in some form, in 8 of 8 interviews: what happens when Kai gets it wrong, and who's accountable? Teams weren't worried Kai couldn't do the job. They were worried they'd find out it couldn't in front of a customer.",
+    },
+    opportunity:
+      "The opportunity wasn't another AI capability, it was removing the validation gap that had stalled 3 of 4 active enterprise prospects at the exact same point. Every competing AI platform treated testing as a separate, privileged activity bolted on for a demo, not something woven into daily configuration work, which made a persistent, no-redeploy Playground the highest-leverage fix available: it unblocked deals already in late-stage pipeline rather than competing for attention with platform-wide features.",
+    hypothesis: {
+      weBelieved:
+        "Enterprise buyers were stalling on AI agent adoption not because of capability gaps, but because of unvalidated risk: they couldn't answer 'what happens when it gets it wrong' before going live.",
+      ifWe:
+        "we gave config teams a persistent, no-redeploy testing surface embedded in every configuration tab,",
+      then:
+        "deal velocity and trainer confidence would increase,",
+      because:
+        "risk would become something teams could observe and resolve themselves rather than discover in production.",
+      risks: [
+        "Teams might still not trust self-tested results without third-party sign-off.",
+        "A testing surface available everywhere could become noise if not scoped to where regressions actually originate.",
+      ],
+    },
+    designPrinciples: [
+      "Trust over automation speed: users will trade setup time for confidence in where a response came from.",
+      "Test at the point of change, not after deployment: regressions caught in the Playground, not in front of a customer.",
+      "No save cycle, no redeploy: friction at the moment of testing kills the behaviour you're trying to encourage.",
+      "Access is a trust model, not a feature toggle: five roles needed five different reasons to be in the same space safely.",
+      "Outcome-first language over AI terminology: meet users where their mental model already is.",
+      "Make risk observable, not theoretical: 'what happens when it's wrong' needs a real, safe place to find out.",
+    ],
     stats: [
       { value: "22%", label: "AI containment uplift" },
       { value: "45s", label: "Average handle time" },
@@ -335,6 +373,10 @@ export const projects: Project[] = [
         ],
         result:
           "AI Trainers tested knowledge quality. Ops tested escalation logic. Both in the same session without context switching. Training regressions were discovered at the point of change instead of after customer-facing impact.",
+        tradeOff:
+          "More engineering surface to keep one conversation thread persistent and in sync across four separate config tabs.",
+        businessReasoning:
+          "A bad knowledge upload only surfaces when a customer hits it. The cost of missing this regression was customer-facing, not internal, so the build cost was justified by the downside it prevented.",
       },
       {
         title: "Build a role-based permission model around the Playground itself",
@@ -345,6 +387,38 @@ export const projects: Project[] = [
         ],
         result:
           "Testing became testable the moment a change was made, not after it was deployed, with the right people able to do the right things.",
+        tradeOff:
+          "Added a permission layer to a feature meant to remove friction, which risked reintroducing gatekeeping if scoped wrong.",
+        businessReasoning:
+          "Roles were defined directly from the five roles already named in evaluation sessions, not invented, so the permission model mapped to how teams actually worked rather than an abstract default that would need rework later.",
+      },
+    ],
+    businessImpact: [
+      {
+        category: "Business impact",
+        points: [
+          "Unblocked enterprise deals stalled at the validation question, 3 of 4 active prospects at the time were stuck at exactly this point.",
+          "22% AI containment uplift post-launch, once teams could validate before go-live.",
+        ],
+      },
+      {
+        category: "Customer impact",
+        points: [
+          "45s average handle time.",
+          "Trainers and Ops could test changes without filing an engineering ticket.",
+        ],
+      },
+      {
+        category: "Operational impact",
+        points: [
+          "Regression discovery moved from post-incident (customer hits a wrong answer) to point-of-change (caught in the Playground before going live).",
+        ],
+      },
+      {
+        category: "Product impact",
+        points: [
+          "250k+ monthly sessions through the Playground itself, making it a genuinely used product surface rather than a checkbox feature.",
+        ],
       },
     ],
     closingSections: [
@@ -375,6 +449,8 @@ export const projects: Project[] = [
         heading: "Reflection",
         paragraphs: [
           "Designing Kai taught me that successful AI experiences are not defined by the sophistication of the technology, but by how confidently the people responsible for it can answer the question: what happens when it gets it wrong?",
+          "I expected evaluation sessions to turn on accuracy benchmarks. They turned on accountability instead, every time. That gap between what I expected and what research actually surfaced is the clearest evidence the original framing (test the AI's capability) was wrong; the real product was a way to test trust.",
+          "The permission model was built reactively, after recognising the Playground itself needed governance. In hindsight, role-based access should have been scoped from day one alongside the testing surface itself, not bolted on once the gap became obvious.",
         ],
       },
     ],
