@@ -112,6 +112,7 @@ export const projects: Project[] = [
     duration: "2 months",
     keyInsight: {
       title: "Lead with UPI, without forcing it",
+      image: "/site-assets/case-studies/sonyliv-check/img-04.png",
       description:
         "The single highest-leverage move in this redesign: surface UPI as the smoothest, most visually prominent path while keeping every other method available. Confidence beats choice at the payment moment, so the entire redesign builds outward from this one decision.",
     },
@@ -124,6 +125,7 @@ export const projects: Project[] = [
       "Design for the failure path as a first-class state, not an edge case.",
       "Solve confusion with order and emphasis before reaching for new UI surface.",
     ],
+    designPrinciplesImage: "/site-assets/case-studies/sonyliv-check/img-03.png",
     stats: [
       { value: "+28%", label: "UPI adoption" },
       { value: "-14%", label: "Failed payments" },
@@ -138,6 +140,7 @@ export const projects: Project[] = [
     context: [
       {
         heading: "Context",
+        image: "/site-assets/case-studies/sonyliv-check/img-01.png",
         paragraphs: [
           "Picture someone who's just decided to go Premium on SonyLIV. They tap subscribe, and the payment screen opens: UPI, cards, wallets, netbanking, and partner offers, all lined up with equal visual weight, as if every option mattered equally to them. They pause.",
           "That pause is the whole problem. SonyLIV supports a wide range of payment methods because users in India pay in very different ways, but when everything looks equal, users slow down. And this is the one screen in the entire product where confidence matters more than choice, because hesitation here doesn't just cost time, it costs the subscription.",
@@ -172,6 +175,7 @@ export const projects: Project[] = [
       {
         title: "Lead with UPI, without forcing it",
         phase: "Phase 1: Simplify Decision-Making",
+        image: "/site-assets/case-studies/sonyliv-check/img-06.png",
         why: "The research kept pointing to the same answer: UPI was already the payment method most users reached for instinctively, fast, familiar, no card details to dig up. The story I wanted the screen to tell was \"this is the easy way,\" not \"this is the only way,\" so I made UPI the obvious first move without ever closing the door to anything else.",
         whatChanged: [
           "UPI surfaced more clearly in the hierarchy",
@@ -198,6 +202,7 @@ export const projects: Project[] = [
       {
         title: "Make offers feel effortless, not risky",
         phase: "Phase 2: Build Trust at the Payment Moment",
+        image: "/site-assets/case-studies/sonyliv-check/img-05.png",
         why: "Offers were supposed to build trust, but they were doing the opposite. A user could see a discount mentioned somewhere on screen with no way to confirm it had actually been applied to their total. An offer you can't verify isn't a perk, it's a reason to hesitate right before paying.",
         whatChanged: [
           "Clear \"applied\" state",
@@ -249,9 +254,11 @@ export const projects: Project[] = [
         ],
       },
     ],
+    businessImpactImage: "/site-assets/case-studies/sonyliv-check/img-07.png",
     closingSections: [
       {
         heading: "Reflection",
+        image: "/site-assets/case-studies/sonyliv-check/img-02.png",
         paragraphs: [
           "Looking back, the biggest unlock wasn't any single screen, it was realizing that checkout isn't a form, it's a decision made under mild stress. Every extra option, every unclear state, every dead end after a failure adds friction to that decision.",
           "Strip those away, and the numbers, more UPI adoption, fewer failed payments, faster completion, follow almost on their own. Payment is the one screen where users have the least patience for ambiguity and the most at stake if something goes wrong.",
