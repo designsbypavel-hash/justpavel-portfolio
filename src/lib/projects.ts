@@ -20,6 +20,15 @@ export type ImpactCategory = {
   points: string[];
 };
 
+export type EcosystemDiagram = {
+  title: string;
+  subtitle: string;
+  journeySteps: { label: string; description: string }[];
+  supportingSystems: { name: string; items: string[] }[];
+  dataLayerItems: string[];
+  impactStats: { value: string; label: string }[];
+};
+
 export type Hypothesis = {
   weBelieved: string;
   ifWe: string;
@@ -60,6 +69,7 @@ export type Project = {
   teamBreakdown?: TeamGroup[];
   duration?: string;
   keyInsight?: { title: string; description: string; image?: string };
+  ecosystemDiagram?: EcosystemDiagram;
   opportunity?: string;
   hypothesis?: Hypothesis;
   designPrinciples?: string[];
@@ -115,6 +125,32 @@ export const projects: Project[] = [
       image: "/site-assets/case-studies/sonyliv-check/img-04.png",
       description:
         "The single highest-leverage move in this redesign: surface UPI as the smoothest, most visually prominent path while keeping every other method available. Confidence beats choice at the payment moment, so the entire redesign builds outward from this one decision.",
+    },
+    ecosystemDiagram: {
+      title: "SonyLIV Subscription Ecosystem",
+      subtitle: "Mapping the end-to-end subscription journey and all the systems that power a seamless checkout experience.",
+      journeySteps: [
+        { label: "1. Discover", description: "User explores content on SonyLIV" },
+        { label: "2. Choose Plan", description: "User selects from available plans" },
+        { label: "3. Checkout", description: "User proceeds to secure checkout" },
+        { label: "4. Payment", description: "User completes payment via preferred method" },
+        { label: "5. Access", description: "Subscription activated, content unlocked" },
+      ],
+      supportingSystems: [
+        { name: "Content Platform", items: ["Content Catalog", "Recommendations", "Personalization", "Watch History"] },
+        { name: "Entitlement Service", items: ["Plan Management", "Pricing & Offers", "Entitlements", "Feature Access"] },
+        { name: "Checkout Experience", items: ["Plan Summary", "Payment Options", "Offers & Promos", "Secure Processing"] },
+        { name: "Payment Gateway", items: ["UPI", "Cards", "Net Banking", "Wallets"] },
+        { name: "Account & Access", items: ["User Management", "Subscription Status", "Device Management", "Access Control"] },
+      ],
+      dataLayerItems: ["User Behavior", "Funnel Analytics", "Payment Analytics", "Subscription Insights", "A/B Testing"],
+      impactStats: [
+        { value: "+28%", label: "Increase in UPI Adoption" },
+        { value: "-14%", label: "Reduction in Payment Failures" },
+        { value: "-21%", label: "Reduction in Checkout Time" },
+        { value: "+18%", label: "Increase in Subscription Conversion" },
+        { value: "+23%", label: "Growth in Paid Subscribers" },
+      ],
     },
     opportunity:
       "The real opportunity wasn't a visual refresh, it was converting a five-way evaluation into a one-way default with an escape hatch. That reframe mattered because it's a hierarchy problem, not a visual-design problem: fixable without backend changes, ownable end-to-end by design, and shippable inside a 2-month window, which is what made it the highest-leverage fix available on checkout at the time.",

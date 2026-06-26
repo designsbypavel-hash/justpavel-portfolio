@@ -18,6 +18,7 @@ import OutcomeSection from "@/components/OutcomeSection";
 import NextProjectCTA from "@/components/NextProjectCTA";
 import ChipList from "@/components/ChipList";
 import RejectedConcepts from "@/components/RejectedConcepts";
+import EcosystemDiagram from "@/components/EcosystemDiagram";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -131,6 +132,8 @@ export default async function ProjectPage({
             image={project.keyInsight.image}
           />
         )}
+
+        {project.ecosystemDiagram && <EcosystemDiagram diagram={project.ecosystemDiagram} />}
 
         {project.opportunity && (
           <section className="mb-12">
