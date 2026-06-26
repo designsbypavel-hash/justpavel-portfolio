@@ -70,6 +70,7 @@ export type Project = {
   duration?: string;
   keyInsight?: { title: string; description: string; image?: string };
   ecosystemDiagram?: EcosystemDiagram;
+  ecosystemDiagramImage?: string;
   opportunity?: string;
   hypothesis?: Hypothesis;
   designPrinciples?: string[];
@@ -126,6 +127,7 @@ export const projects: Project[] = [
       description:
         "The single highest-leverage move in this redesign: surface UPI as the smoothest, most visually prominent path while keeping every other method available. Confidence beats choice at the payment moment, so the entire redesign builds outward from this one decision.",
     },
+    ecosystemDiagramImage: "/site-assets/case-studies/sonyliv-check/ecosystem-diagram.webp",
     ecosystemDiagram: {
       title: "SonyLIV Subscription Ecosystem",
       subtitle: "Mapping the end-to-end subscription journey and all the systems that power a seamless checkout experience.",

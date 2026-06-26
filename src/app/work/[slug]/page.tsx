@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import Image from "next/image";
 import { projects, getProjectBySlug } from "@/lib/projects";
 import { estimateReadingTime } from "@/lib/readingTime";
 import CaseStudyHero from "@/components/CaseStudyHero";
@@ -133,7 +134,27 @@ export default async function ProjectPage({
           />
         )}
 
-        {project.ecosystemDiagram && <EcosystemDiagram diagram={project.ecosystemDiagram} />}
+        {project.ecosystemDiagramImage ? (
+          <section className="mb-12">
+            <span className="mb-3 inline-block rounded-full border border-white/15 px-3 py-1 text-xs uppercase tracking-widest text-white/60">
+              Ecosystem Diagram
+            </span>
+            <div className="-mx-6 flex justify-center sm:-mx-16">
+              <div className="overflow-hidden rounded-xl border border-white/10">
+                <Image
+                  src={project.ecosystemDiagramImage}
+                  alt="Ecosystem diagram"
+                  width={1536}
+                  height={1024}
+                  quality={100}
+                  className="block h-auto max-h-[900px] w-auto max-w-full"
+                />
+              </div>
+            </div>
+          </section>
+        ) : (
+          project.ecosystemDiagram && <EcosystemDiagram diagram={project.ecosystemDiagram} />
+        )}
 
         {project.opportunity && (
           <section className="mb-12">
