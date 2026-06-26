@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 type Particle = {
   x: number;
@@ -15,6 +16,8 @@ type Particle = {
 
 export default function StarfieldBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const pathname = usePathname();
+  const isCaseStudy = pathname?.startsWith("/work/") ?? false;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -26,6 +29,13 @@ export default function StarfieldBackground() {
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
+    const maxCount = isCaseStudy ? 140 : 280;
+    const minCount = isCaseStudy ? 50 : 110;
+    const divisor = isCaseStudy ? 16000 : 8000;
+    const maxAlpha = isCaseStudy ? 0.22 : 0.45;
+    const minAlpha = isCaseStudy ? 0.08 : 0.2;
+    const twinkleAmplitude = isCaseStudy ? 0.12 : 0.35;
+
     let particles: Particle[] = [];
     let width = 0;
     let height = 0;
@@ -33,12 +43,12 @@ export default function StarfieldBackground() {
 
     function createParticles() {
       const area = width * height;
-      const count = Math.min(280, Math.max(110, Math.round(area / 8000)));
+      const count = Math.min(maxCount, Math.max(minCount, Math.round(area / divisor)));
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * width,
         y: Math.random() * height,
         radius: Math.random() * 1.3 + 0.4,
-        baseAlpha: Math.random() * 0.45 + 0.2,
+        baseAlpha: Math.random() * maxAlpha + minAlpha,
         vx: (Math.random() - 0.5) * 0.04,
         vy: (Math.random() - 0.5) * 0.04,
         twinkleSpeed: Math.random() * 0.05 + 0.02,
@@ -79,7 +89,7 @@ export default function StarfieldBackground() {
 
         const twinkle = prefersReducedMotion
           ? p.baseAlpha
-          : p.baseAlpha + Math.sin(t * p.twinkleSpeed + p.twinklePhase) * 0.35;
+          : p.baseAlpha + Math.sin(t * p.twinkleSpeed + p.twinklePhase) * twinkleAmplitude;
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
@@ -102,7 +112,7 @@ export default function StarfieldBackground() {
       window.removeEventListener("resize", resize);
       cancelAnimationFrame(frameId);
     };
-  }, []);
+  }, [isCaseStudy]);
 
   return (
     <canvas
