@@ -27,7 +27,7 @@ export function ChallengeSection({ sections }: { sections: Section[] }) {
                   width={1920}
                   height={1080}
                   quality={100}
-                  className="h-auto w-full"
+                  className="mx-auto h-auto max-h-[640px] w-auto max-w-full"
                 />
               </div>
             )}
@@ -62,7 +62,7 @@ function DecisionCard({ decision, index }: { decision: Decision; index: number }
             width={1920}
             height={1080}
             quality={100}
-            className="h-auto w-full"
+            className="mx-auto h-auto max-h-[640px] w-auto max-w-full"
           />
         </div>
       )}
