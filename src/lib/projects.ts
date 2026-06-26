@@ -333,6 +333,7 @@ export const projects: Project[] = [
       { function: "Customer Success", members: "Could see sentiment and interaction patterns instead of relying on anecdote." },
       { function: "Operations", members: "Got a self-serve way to update assistant behaviour without filing an engineering ticket." },
       { function: "Product & BI teams", members: "Used real conversation data to see customer pain points and report on adoption." },
+      { function: "Management", members: "Got direct visibility into usage, satisfaction, and escalation trends across the assistant." },
     ],
     automationScope: [
       "FAQ responses",
@@ -363,6 +364,7 @@ export const projects: Project[] = [
       "Manual support-only workflows: not scalable past a small support team.",
     ],
     constraints: [
+      "The core tension throughout: give the AI enough capability to be genuinely useful, while keeping control, safety, and human escalation firmly in place.",
       "Accuracy and hallucination prevention came before response creativity.",
       "Data privacy, security, and auditability were non-negotiable for enterprise buyers.",
       "Had to integrate with existing CRM and channel systems (Salesforce, HubSpot, WhatsApp, Email), not replace them.",
@@ -386,6 +388,7 @@ export const projects: Project[] = [
         paragraphs: [
           "Kai is a no-code, agentic AI customer service platform that lets organisations deploy AI assistants without engineering effort: automating support, generating qualified leads, resolving common queries, integrating with existing systems (Salesforce, HubSpot, WhatsApp, Email), and escalating complex cases to a human. The goal was to improve customer experience while reducing operational cost.",
           "Traditional chatbots relied on rigid decision trees and FAQs, so customers struggled to find accurate answers quickly, support teams burned time on repetitive questions, and chatbots couldn't qualify or route leads intelligently. Businesses also had no visibility into customer intent or sentiment, and updating chatbot content always required a technical team, which slowed the business down. Kai's answer was to let business users configure the assistant themselves while the platform handled triage, lead qualification, analytics, and omnichannel engagement.",
+          "The underlying idea was simple: most people don't want to search through pages of documentation, they want to ask a question in their own words and get a clear answer. Kai's job was to be that first line of support, answering common questions instantly and guiding users to the right next step, so a human only gets involved when the conversation actually needs one.",
         ],
       },
       {
@@ -503,6 +506,7 @@ export const projects: Project[] = [
           "Support ticket reduction",
           "First response time",
           "Successful query resolution rate",
+          "Task completion rate",
           "Customer Satisfaction (CSAT)",
           "AI adoption rate",
           "Human escalation rate",
