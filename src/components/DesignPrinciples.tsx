@@ -27,15 +27,17 @@ export default function DesignPrinciples({
         ))}
       </div>
       {image && (
-        <div className="-mx-6 mt-4 overflow-hidden rounded-xl border border-white/10 sm:-mx-16">
-          <Image
-            src={image}
-            alt="Design principle trade-offs"
-            width={1920}
-            height={1080}
-            quality={100}
-            className="mx-auto h-auto max-h-[640px] w-auto max-w-full"
-          />
+        <div className="-mx-6 mt-4 flex justify-center sm:-mx-16">
+          <div className="overflow-hidden rounded-xl border border-white/10">
+            <Image
+              src={image}
+              alt="Design principle trade-offs"
+              width={1920}
+              height={1080}
+              quality={100}
+              className="block h-auto max-h-[640px] w-auto max-w-full"
+            />
+          </div>
         </div>
       )}
     </section>
