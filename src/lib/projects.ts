@@ -10,6 +10,13 @@ export type Decision = {
   alternativesConsidered?: string[];
   whatChanged: string[];
   result: string;
+  tradeOff?: string;
+  businessReasoning?: string;
+};
+
+export type ImpactCategory = {
+  category: string;
+  points: string[];
 };
 
 export type Section = {
@@ -43,6 +50,8 @@ export type Project = {
   teamBreakdown?: TeamGroup[];
   duration?: string;
   keyInsight?: { title: string; description: string };
+  opportunity?: string;
+  designPrinciples?: string[];
   stats: ImpactStat[];
   tldrProblem: string;
   tldrWhatIDid: string;
@@ -50,6 +59,7 @@ export type Project = {
   context: Section[];
   journeySteps?: JourneyStep[];
   decisions: Decision[];
+  businessImpact?: ImpactCategory[];
   closingSections: Section[];
 };
 
@@ -86,6 +96,15 @@ export const projects: Project[] = [
       description:
         "The single highest-leverage move in this redesign: surface UPI as the smoothest, most visually prominent path while keeping every other method available. Confidence beats choice at the payment moment, so the entire redesign builds outward from this one decision.",
     },
+    opportunity:
+      "The real opportunity wasn't a visual refresh, it was converting a five-way evaluation into a one-way default with an escape hatch. That reframe mattered because it's a hierarchy problem, not a visual-design problem: fixable without backend changes, ownable end-to-end by design, and shippable inside a 2-month window, which is what made it the highest-leverage fix available on checkout at the time.",
+    designPrinciples: [
+      "Default, don't decide for them: surface the highest-success path first, never remove alternatives.",
+      "Hierarchy is the de-risking tool: when every option looks equal, the user carries the cognitive cost.",
+      "Verify before you claim: any offer or discount must be confirmable on-screen, not just asserted.",
+      "Design for the failure path as a first-class state, not an edge case.",
+      "Solve confusion with order and emphasis before reaching for new UI surface.",
+    ],
     stats: [
       { value: "+28%", label: "UPI adoption" },
       { value: "-14%", label: "Failed payments" },
@@ -141,6 +160,8 @@ export const projects: Project[] = [
           "Reduced competing noise around it",
         ],
         result: "UPI adoption increased by 28%. We prioritised UPI visually and structurally to reduce decision time.",
+        tradeOff: "Risk of reading as the platform pushing one method, potentially alienating users who default to cards or wallets.",
+        businessReasoning: "Faster, higher-success payments reduce both checkout drop-off and downstream payment-processing failure cost.",
       },
       {
         title: "Reduce choice overload with clearer hierarchy",
@@ -152,6 +173,8 @@ export const projects: Project[] = [
           "Long-tail options remain available but not dominant",
         ],
         result: "Checkout time reduced by 21%. Hierarchy reduces thinking, so users move forward with confidence.",
+        tradeOff: "Less-common methods (netbanking, PayPal) become one extra tap further away from the default view.",
+        businessReasoning: "Confidence, not information density, was the bottleneck, so removing decisions had more leverage than adding clarity to existing ones.",
       },
       {
         title: "Make offers feel effortless, not risky",
@@ -163,6 +186,8 @@ export const projects: Project[] = [
           "Total cost always visible and consistent",
         ],
         result: "Higher confidence and fewer drop-offs during offer selection: offer clarity builds trust, so users don't feel surprised at the last step.",
+        tradeOff: "More on-screen state to design and QA for every offer/eligibility permutation.",
+        businessReasoning: "An unverifiable discount is a reputational risk, not just a UX gap: it reads as deceptive even when the underlying logic is correct.",
       },
       {
         title: "Design for failure recovery, because payments fail",
@@ -174,6 +199,35 @@ export const projects: Project[] = [
           "Smart fallbacks: choose another method without restarting everything",
         ],
         result: "Failed payments reduced by 14%. Recovery is part of the product, designed to feel safe and guided.",
+        tradeOff: "More design and engineering surface area spent on a state that's easy to deprioritize because it isn't the happy path.",
+        businessReasoning: "Recovery design is retention design: a user who fails once and finds no clear next step doesn't just abandon this transaction, they reconsider the subscription itself.",
+      },
+    ],
+    businessImpact: [
+      {
+        category: "Business impact",
+        points: [
+          "+28% UPI adoption shifted volume toward a faster, lower-friction payment rail.",
+          "-14% failed payments recovered transactions that would otherwise have been lost revenue.",
+        ],
+      },
+      {
+        category: "User impact",
+        points: [
+          "-21% time to complete checkout reduced cognitive load at the highest-stakes screen in the product.",
+        ],
+      },
+      {
+        category: "Operational impact (expected outcome)",
+        points: [
+          "Fewer failed-payment support escalations, as a direct consequence of clearer retry and fallback paths.",
+        ],
+      },
+      {
+        category: "Long-term product impact",
+        points: [
+          "The default-plus-hierarchy pattern is reusable anywhere SonyLIV adds a new payment method or offer type, without re-litigating the layout each time.",
+        ],
       },
     ],
     closingSections: [
@@ -182,6 +236,7 @@ export const projects: Project[] = [
         paragraphs: [
           "Looking back, the biggest unlock wasn't any single screen, it was realizing that checkout isn't a form, it's a decision made under mild stress. Every extra option, every unclear state, every dead end after a failure adds friction to that decision.",
           "Strip those away, and the numbers, more UPI adoption, fewer failed payments, faster completion, follow almost on their own. Payment is the one screen where users have the least patience for ambiguity and the most at stake if something goes wrong.",
+          "What surprised me most: the fix with the single highest measured impact, leading with UPI, was also the simplest to ship. That's a good signal in hindsight: it confirmed the bottleneck was decision architecture, not a lack of features.",
         ],
       },
     ],

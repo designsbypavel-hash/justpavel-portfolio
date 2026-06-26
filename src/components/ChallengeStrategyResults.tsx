@@ -58,10 +58,22 @@ function DecisionCard({ decision, index }: { decision: Decision; index: number }
           <li key={j}>{item}</li>
         ))}
       </ul>
-      <p className="text-sm text-white/80">
+      <p className="mb-4 text-sm text-white/80">
         <span className="font-semibold text-white/40">Result: </span>
         {decision.result}
       </p>
+      {decision.tradeOff && (
+        <p className="mb-2 text-sm text-white/60">
+          <span className="font-semibold text-white/40">Trade-off: </span>
+          {decision.tradeOff}
+        </p>
+      )}
+      {decision.businessReasoning && (
+        <p className="text-sm text-white/60">
+          <span className="font-semibold text-white/40">Business reasoning: </span>
+          {decision.businessReasoning}
+        </p>
+      )}
     </div>
   );
 }

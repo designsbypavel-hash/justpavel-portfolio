@@ -11,6 +11,8 @@ import ProcessSection from "@/components/ProcessSection";
 import PrototypeVideo from "@/components/PrototypeVideo";
 import TeamComposition from "@/components/TeamComposition";
 import KeyInsight from "@/components/KeyInsight";
+import DesignPrinciples from "@/components/DesignPrinciples";
+import BusinessImpact from "@/components/BusinessImpact";
 import OutcomeSection from "@/components/OutcomeSection";
 import NextProjectCTA from "@/components/NextProjectCTA";
 
@@ -111,6 +113,13 @@ export default async function ProjectPage({
           <KeyInsight title={project.keyInsight.title} description={project.keyInsight.description} />
         )}
 
+        {project.opportunity && (
+          <section className="mb-12">
+            <h2 className="mb-4 uppercase">Opportunity</h2>
+            <p className="text-white/70">{project.opportunity}</p>
+          </section>
+        )}
+
         <ChallengeSection sections={project.context} />
 
         {/* User Journey: Before vs After (visual, right after the challenge is explained) */}
@@ -154,10 +163,18 @@ export default async function ProjectPage({
         {/* Visual: the actual screens, right after the journey is explained */}
         <ProcessSection title={project.title} images={project.galleryImages} />
 
+        {project.designPrinciples && project.designPrinciples.length > 0 && (
+          <DesignPrinciples principles={project.designPrinciples} />
+        )}
+
         <StrategySection decisions={project.decisions} />
 
         {/* Visual: the flow running, right after the decisions behind it are explained */}
         {project.prototypeVideo && <PrototypeVideo src={project.prototypeVideo} />}
+
+        {project.businessImpact && project.businessImpact.length > 0 && (
+          <BusinessImpact categories={project.businessImpact} />
+        )}
 
         <OutcomeSection sections={project.closingSections} />
 
