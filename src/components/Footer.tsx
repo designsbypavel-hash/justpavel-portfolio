@@ -45,7 +45,7 @@ export default function Footer() {
             © {year} pavel. All rights reserved.
           </p>
           <p className="text-sm text-white/50">
-            Designed by hand. Built with <span className="font-semibold text-white/70">AI</span>.
+            Designed with love and sweat. Built with <span className="font-semibold text-white/70">AI</span>.
           </p>
         </div>
       </div>
