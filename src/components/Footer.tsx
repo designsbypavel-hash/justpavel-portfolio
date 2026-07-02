@@ -45,7 +45,7 @@ export default function Footer() {
             © {year} pavel. All rights reserved.
           </p>
           <p className="text-sm text-white/50">
-            Built with <span className="font-semibold text-white/70">Next.js</span>.
+            Designed by hand. Built with <span className="font-semibold text-white/70">AI</span>.
           </p>
         </div>
       </div>
