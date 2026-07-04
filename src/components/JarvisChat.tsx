@@ -91,8 +91,8 @@ export default function JarvisChat() {
         {/* Pulse rings */}
         {!open && (
           <>
-            <span className="absolute inset-0 rounded-full jarvis-ring" style={{ background: "rgba(59,130,246,0.18)", animationDelay: "0s" }} />
-            <span className="absolute inset-0 rounded-full jarvis-ring" style={{ background: "rgba(59,130,246,0.09)", animationDelay: "0.7s" }} />
+            <span className="absolute inset-0 rounded-full jarvis-ring" style={{ background: "radial-gradient(circle, rgba(99,102,241,0.25) 0%, rgba(59,130,246,0.1) 60%, transparent 100%)", animationDelay: "0s" }} />
+            <span className="absolute inset-0 rounded-full jarvis-ring" style={{ background: "radial-gradient(circle, rgba(168,85,247,0.15) 0%, rgba(99,102,241,0.07) 60%, transparent 100%)", animationDelay: "0.8s" }} />
           </>
         )}
         <button
@@ -100,9 +100,9 @@ export default function JarvisChat() {
           aria-label="Open Jarvis"
           className="relative flex h-14 w-14 items-center justify-center rounded-full transition-all hover:scale-110"
           style={{
-            background: "black",
-            border: "1px solid rgba(96,165,250,0.45)",
-            boxShadow: "0 0 24px rgba(59,130,246,0.45), 0 0 8px rgba(59,130,246,0.3) inset",
+            background: "linear-gradient(135deg, #0a0f2e 0%, #0d1b4b 50%, #1a0a3d 100%)",
+            border: "1px solid rgba(120,180,255,0.5)",
+            boxShadow: "0 0 32px rgba(99,102,241,0.6), 0 0 64px rgba(59,130,246,0.3), 0 0 12px rgba(168,85,247,0.4) inset",
           }}
         >
           {/* Jarvis arc icon */}
@@ -135,7 +135,7 @@ export default function JarvisChat() {
       {open && (
         <div className="fixed bottom-24 right-4 z-50 flex flex-col overflow-hidden rounded-2xl backdrop-blur-xl" style={{ width: "min(380px, calc(100vw - 32px))", background: "rgba(0,0,0,0.95)", border: "1px solid rgba(96,165,250,0.12)", boxShadow: "0 0 40px rgba(59,130,246,0.12)" }}>
           {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3" style={{ borderBottom: "1px solid rgba(255,255,255,0.07)", background: "rgba(23,37,84,0.25)" }}>
+          <div className="flex items-center justify-between px-4 py-3" style={{ borderBottom: "1px solid rgba(120,180,255,0.1)", background: "linear-gradient(135deg, rgba(10,15,46,0.9) 0%, rgba(26,10,61,0.8) 100%)" }}>
             <div className="flex items-center gap-3">
               <div className="relative flex h-9 w-9 items-center justify-center rounded-full border border-blue-400/30 bg-blue-950/50">
                 <svg width="18" height="18" viewBox="0 0 26 26" fill="none">
