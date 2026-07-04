@@ -124,10 +124,6 @@ export default function JarvisChat() {
     <>
       {/* Floating button */}
       <div className="fixed bottom-6 right-6 z-50" style={{ width: 56, height: 56 }}>
-        {/* Listening indicator */}
-        {listening && !open && (
-          <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-green-400" style={{ boxShadow: "0 0 6px #4ade80", animation: "dotpulse 1.5s ease-in-out infinite" }} />
-        )}
         <button
           type="button"
           onClick={() => { playClickSound(); setOpen((o) => !o); }}
