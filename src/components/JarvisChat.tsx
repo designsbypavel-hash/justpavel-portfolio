@@ -100,9 +100,9 @@ export default function JarvisChat() {
           aria-label="Open Jarvis"
           className="relative flex h-14 w-14 items-center justify-center rounded-full transition-all hover:scale-110"
           style={{
-            background: "linear-gradient(135deg, #1e3a8a 0%, #3730a3 40%, #7c3aed 100%)",
-            border: "1.5px solid rgba(167,139,250,0.7)",
-            boxShadow: "0 0 20px rgba(124,58,237,0.9), 0 0 50px rgba(99,102,241,0.6), 0 0 80px rgba(59,130,246,0.35)",
+            background: "linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #a855f7 100%)",
+            border: "2px solid rgba(216,180,254,0.8)",
+            boxShadow: "0 0 24px rgba(168,85,247,1), 0 0 48px rgba(99,102,241,0.8), 0 0 80px rgba(59,130,246,0.5)",
           }}
         >
           {/* Jarvis arc icon */}
@@ -247,7 +247,7 @@ export default function JarvisChat() {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKey}
               placeholder="Ask Jarvis anything…"
-              className="flex-1 bg-transparent text-sm text-white outline-none" style={{ color: "white" }} placeholder="Ask Jarvis anything…"
+              className="jarvis-input flex-1 bg-transparent text-sm outline-none" style={{ color: "rgba(255,255,255,0.9)" }}
             />
             <button
               onClick={() => send(input)}
@@ -274,6 +274,7 @@ export default function JarvisChat() {
         .jarvis-ring {
           animation: jarvis-ping 2.4s ease-out infinite;
         }
+        .jarvis-input::placeholder { color: rgba(167,139,250,0.6); }
       `}</style>
     </>
   );
