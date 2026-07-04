@@ -100,9 +100,9 @@ export default function JarvisChat() {
           aria-label="Open Jarvis"
           className="relative flex h-14 w-14 items-center justify-center rounded-full transition-all hover:scale-110"
           style={{
-            background: "linear-gradient(135deg, #0a0f2e 0%, #0d1b4b 50%, #1a0a3d 100%)",
-            border: "1px solid rgba(120,180,255,0.5)",
-            boxShadow: "0 0 32px rgba(99,102,241,0.6), 0 0 64px rgba(59,130,246,0.3), 0 0 12px rgba(168,85,247,0.4) inset",
+            background: "linear-gradient(135deg, #1e3a8a 0%, #3730a3 40%, #7c3aed 100%)",
+            border: "1.5px solid rgba(167,139,250,0.7)",
+            boxShadow: "0 0 20px rgba(124,58,237,0.9), 0 0 50px rgba(99,102,241,0.6), 0 0 80px rgba(59,130,246,0.35)",
           }}
         >
           {/* Jarvis arc icon */}
@@ -133,7 +133,7 @@ export default function JarvisChat() {
 
       {/* Chat window */}
       {open && (
-        <div className="fixed bottom-24 right-4 z-50 flex flex-col overflow-hidden rounded-2xl backdrop-blur-xl" style={{ width: "min(380px, calc(100vw - 32px))", background: "rgba(0,0,0,0.95)", border: "1px solid rgba(96,165,250,0.12)", boxShadow: "0 0 40px rgba(59,130,246,0.12)" }}>
+        <div className="fixed bottom-24 right-4 z-50 flex flex-col overflow-hidden rounded-2xl backdrop-blur-xl" style={{ width: "min(380px, calc(100vw - 32px))", background: "rgba(5,5,20,0.97)", border: "1.5px solid rgba(124,58,237,0.4)", boxShadow: "0 0 30px rgba(124,58,237,0.3), 0 0 60px rgba(59,130,246,0.15)" }}>
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3" style={{ borderBottom: "1px solid rgba(120,180,255,0.1)", background: "linear-gradient(135deg, rgba(10,15,46,0.9) 0%, rgba(26,10,61,0.8) 100%)" }}>
             <div className="flex items-center gap-3">
