@@ -100,9 +100,9 @@ export default function JarvisChat() {
           aria-label="Open Jarvis"
           className="relative flex h-14 w-14 items-center justify-center rounded-full transition-all hover:scale-110"
           style={{
-            background: "linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #a855f7 100%)",
-            border: "2px solid rgba(216,180,254,0.8)",
-            boxShadow: "0 0 24px rgba(168,85,247,1), 0 0 48px rgba(99,102,241,0.8), 0 0 80px rgba(59,130,246,0.5)",
+            background: "linear-gradient(135deg, #3b82f6 0%, #6366f1 40%, #a855f7 70%, #ffffff 100%)",
+            border: "2px solid rgba(255,255,255,0.9)",
+            boxShadow: "0 0 20px rgba(255,255,255,0.8), 0 0 40px rgba(168,85,247,0.9), 0 0 70px rgba(99,102,241,0.6)",
           }}
         >
           {/* Jarvis arc icon */}
