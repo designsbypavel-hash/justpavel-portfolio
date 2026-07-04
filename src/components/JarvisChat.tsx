@@ -11,60 +11,12 @@ export default function JarvisChat() {
   const [typing, setTyping] = useState(false);
   const [voiceOn, setVoiceOn] = useState(false);
   const [speaking, setSpeaking] = useState(false);
-  const [listening, setListening] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
-  const recognitionRef = useRef<any>(null);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, typing]);
 
-  // Wake word: "Hey Jarvis"
-  useEffect(() => {
-    const SpeechRecognition =
-      (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-    if (!SpeechRecognition) return;
-
-    const rec = new SpeechRecognition();
-    rec.continuous = true;
-    rec.interimResults = false;
-    rec.lang = "en-US";
-    recognitionRef.current = rec;
-
-    rec.onresult = (e: any) => {
-      const transcript = Array.from(e.results as any[])
-        .map((r: any) => r[0].transcript)
-        .join(" ")
-        .toLowerCase();
-      if (transcript.includes("hey jarvis") || transcript.includes("hi jarvis")) {
-        setOpen(true);
-        setListening(false);
-        rec.stop();
-        setTimeout(() => {
-          const greeting = "Hello! I'm Jarvis, Pavel's AI assistant. How can I help you today?";
-          setMessages((prev) =>
-            prev.length === 0 ? [{ role: "jarvis", text: greeting }] : prev
-          );
-        }, 300);
-      }
-    };
-
-    rec.onerror = () => setListening(false);
-    rec.onend = () => {
-      // Restart if still in wake-word mode
-      if (recognitionRef.current && !open) {
-        try { rec.start(); } catch {}
-      }
-    };
-
-    try {
-      rec.start();
-      setListening(true);
-    } catch {}
-
-    return () => { try { rec.stop(); } catch {} };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const speakIfOn = useCallback(
     (text: string) => {
