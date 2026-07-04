@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import StarfieldBackground from "@/components/StarfieldBackground";
+import JarvisChat from "@/components/JarvisChat";
 
 const sen = Sen({
   variable: "--font-sen",
@@ -56,6 +57,7 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
         </div>
+        <JarvisChat />
       </body>
     </html>
   );
