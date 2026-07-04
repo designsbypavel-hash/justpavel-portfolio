@@ -132,15 +132,6 @@ export default function JarvisChat() {
           <div className="flex items-center justify-between px-5 py-4" style={{ borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
             <div className="flex items-center gap-3">
               <span className="text-base font-bold tracking-tight text-gray-900">Ask Jarvis</span>
-              <span
-                className="h-3 w-3 rounded-full"
-                style={{
-                  background: speaking
-                    ? "linear-gradient(135deg, #f97316, #6366f1)"
-                    : "linear-gradient(135deg, #f97316, #a855f7)",
-                  boxShadow: speaking ? "0 0 8px rgba(99,102,241,0.6)" : "none",
-                }}
-              />
             </div>
             <div className="flex items-center gap-1">
               <button
