@@ -133,7 +133,7 @@ export default function JarvisChat() {
 
       {/* Chat window */}
       {open && (
-        <div className="fixed bottom-24 right-6 z-50 flex w-[340px] flex-col overflow-hidden rounded-2xl backdrop-blur-xl sm:w-[380px]" style={{ background: "rgba(0,0,0,0.95)", border: "1px solid rgba(96,165,250,0.12)", boxShadow: "0 0 40px rgba(59,130,246,0.12)" }}>
+        <div className="fixed bottom-24 right-4 z-50 flex flex-col overflow-hidden rounded-2xl backdrop-blur-xl" style={{ width: "min(380px, calc(100vw - 32px))", background: "rgba(0,0,0,0.95)", border: "1px solid rgba(96,165,250,0.12)", boxShadow: "0 0 40px rgba(59,130,246,0.12)" }}>
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3" style={{ borderBottom: "1px solid rgba(255,255,255,0.07)", background: "rgba(23,37,84,0.25)" }}>
             <div className="flex items-center gap-3">
