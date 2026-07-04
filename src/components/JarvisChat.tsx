@@ -111,14 +111,19 @@ export default function JarvisChat() {
         {/* Pulse rings */}
         {!open && (
           <>
-            <span className="absolute inset-0 rounded-full bg-blue-500/20 jarvis-ring" style={{ animationDelay: "0s" }} />
-            <span className="absolute inset-0 rounded-full bg-blue-500/10 jarvis-ring" style={{ animationDelay: "0.6s" }} />
+            <span className="absolute inset-0 rounded-full jarvis-ring" style={{ background: "rgba(59,130,246,0.18)", animationDelay: "0s" }} />
+            <span className="absolute inset-0 rounded-full jarvis-ring" style={{ background: "rgba(59,130,246,0.09)", animationDelay: "0.7s" }} />
           </>
         )}
         <button
           onClick={() => { playClickSound(); setOpen((o) => !o); }}
           aria-label="Open Jarvis"
-          className="relative flex h-14 w-14 items-center justify-center rounded-full border border-blue-400/40 bg-black shadow-[0_0_24px_rgba(59,130,246,0.35)] transition-all hover:scale-110 hover:shadow-[0_0_36px_rgba(59,130,246,0.55)]"
+          className="relative flex h-14 w-14 items-center justify-center rounded-full transition-all hover:scale-110"
+          style={{
+            background: "black",
+            border: "1px solid rgba(96,165,250,0.45)",
+            boxShadow: "0 0 24px rgba(59,130,246,0.45), 0 0 8px rgba(59,130,246,0.3) inset",
+          }}
         >
           {/* Jarvis arc icon */}
           <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
@@ -140,7 +145,7 @@ export default function JarvisChat() {
         </button>
         {/* Label */}
         {!open && (
-          <span className="absolute -top-7 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-blue-400/20 bg-black/80 px-2 py-0.5 text-[10px] font-semibold tracking-widest text-blue-300/70">
+          <span className="absolute -top-7 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full px-2 py-0.5 text-[10px] font-semibold tracking-widest" style={{ background: "rgba(0,0,0,0.8)", border: "1px solid rgba(96,165,250,0.2)", color: "rgba(147,197,253,0.8)" }}>
             JARVIS
           </span>
         )}
@@ -148,9 +153,9 @@ export default function JarvisChat() {
 
       {/* Chat window */}
       {open && (
-        <div className="fixed bottom-24 right-6 z-50 flex w-[340px] flex-col overflow-hidden rounded-2xl border border-blue-400/15 bg-black/95 shadow-[0_0_40px_rgba(59,130,246,0.15)] backdrop-blur-xl sm:w-[380px]">
+        <div className="fixed bottom-24 right-6 z-50 flex w-[340px] flex-col overflow-hidden rounded-2xl backdrop-blur-xl sm:w-[380px]" style={{ background: "rgba(0,0,0,0.95)", border: "1px solid rgba(96,165,250,0.12)", boxShadow: "0 0 40px rgba(59,130,246,0.12)" }}>
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-white/8 bg-blue-950/20 px-4 py-3">
+          <div className="flex items-center justify-between px-4 py-3" style={{ borderBottom: "1px solid rgba(255,255,255,0.07)", background: "rgba(23,37,84,0.25)" }}>
             <div className="flex items-center gap-3">
               <div className="relative flex h-9 w-9 items-center justify-center rounded-full border border-blue-400/30 bg-blue-950/50">
                 <svg width="18" height="18" viewBox="0 0 26 26" fill="none">
