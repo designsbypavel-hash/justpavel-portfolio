@@ -96,6 +96,7 @@ export default function JarvisChat() {
           </>
         )}
         <button
+          type="button"
           onClick={() => { playClickSound(); setOpen((o) => !o); }}
           aria-label="Open Jarvis"
           className="relative flex h-14 w-14 items-center justify-center rounded-full transition-all hover:scale-110"
@@ -161,7 +162,7 @@ export default function JarvisChat() {
             </div>
             <div className="flex items-center gap-1">
               {/* Voice toggle */}
-              <button
+              <button type="button"
                 onClick={toggleVoice}
                 title={voiceOn ? "Mute voice" : "Unmute voice"}
                 className={`flex h-7 w-7 items-center justify-center rounded-full transition-colors ${
@@ -183,7 +184,7 @@ export default function JarvisChat() {
                   </svg>
                 )}
               </button>
-              <button
+              <button type="button"
                 onClick={() => { playClickSound(); setOpen(false); window.speechSynthesis?.cancel(); setSpeaking(false); }}
                 className="flex h-7 w-7 items-center justify-center rounded-full text-white/30 transition-colors hover:bg-white/10 hover:text-white/70"
               >
@@ -228,7 +229,7 @@ export default function JarvisChat() {
           {messages.length === 1 && (
             <div className="flex flex-wrap gap-2 border-t border-white/8 px-4 py-3">
               {suggestedQuestions.map((q) => (
-                <button
+                <button type="button"
                   key={q}
                   onClick={() => send(q)}
                   className="rounded-full px-3 py-1 text-xs transition-colors hover:text-white" style={{ border: "1px solid rgba(96,165,250,0.35)", color: "rgba(147,197,253,0.9)" }}
@@ -249,7 +250,7 @@ export default function JarvisChat() {
               placeholder="Ask Jarvis anything…"
               className="jarvis-input flex-1 bg-transparent text-sm outline-none" style={{ color: "rgba(255,255,255,0.9)" }}
             />
-            <button
+            <button type="button"
               onClick={() => send(input)}
               disabled={!input.trim()}
               className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-blue-400/20 bg-blue-950/40 text-blue-300/60 transition-colors hover:border-blue-400/40 hover:text-blue-300 disabled:opacity-30"
