@@ -4,26 +4,6 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { getJarvisReply, suggestedQuestions, type JarvisMessage } from "@/lib/jarvis";
 import { playClickSound } from "@/lib/sound";
 
-function speak(text: string) {
-  if (typeof window === "undefined" || !window.speechSynthesis) return;
-  window.speechSynthesis.cancel();
-  const utter = new SpeechSynthesisUtterance(text);
-  utter.rate = 0.92;
-  utter.pitch = 0.85;
-  utter.volume = 0.9;
-  // Pick a deep English voice if available
-  const voices = window.speechSynthesis.getVoices();
-  const preferred = voices.find(
-    (v) =>
-      v.lang.startsWith("en") &&
-      (v.name.toLowerCase().includes("daniel") ||
-        v.name.toLowerCase().includes("alex") ||
-        v.name.toLowerCase().includes("google uk") ||
-        v.name.toLowerCase().includes("male"))
-  );
-  if (preferred) utter.voice = preferred;
-  window.speechSynthesis.speak(utter);
-}
 
 export default function JarvisChat() {
   const [open, setOpen] = useState(false);
@@ -43,38 +23,38 @@ export default function JarvisChat() {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, typing]);
 
-  // Load voices asynchronously (Chrome requires this)
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.speechSynthesis?.getVoices();
-      window.speechSynthesis?.addEventListener("voiceschanged", () =>
-        window.speechSynthesis.getVoices()
-      );
-    }
-  }, []);
-
   const speakIfOn = useCallback(
     (text: string) => {
-      if (!voiceOn) return;
-      setSpeaking(true);
-      const utter = new SpeechSynthesisUtterance(text);
-      utter.rate = 0.92;
-      utter.pitch = 0.85;
-      utter.volume = 0.9;
-      const voices = window.speechSynthesis.getVoices();
-      const preferred = voices.find(
-        (v) =>
-          v.lang.startsWith("en") &&
-          (v.name.toLowerCase().includes("daniel") ||
-            v.name.toLowerCase().includes("alex") ||
-            v.name.toLowerCase().includes("google uk") ||
-            v.name.toLowerCase().includes("male"))
-      );
-      if (preferred) utter.voice = preferred;
-      utter.onend = () => setSpeaking(false);
-      utter.onerror = () => setSpeaking(false);
+      if (!voiceOn || typeof window === "undefined" || !window.speechSynthesis) return;
       window.speechSynthesis.cancel();
-      window.speechSynthesis.speak(utter);
+
+      const fire = () => {
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.rate = 0.9;
+        utter.pitch = 0.8;
+        utter.volume = 1;
+        // Pick best English voice — prefer Daniel (Mac) or Google UK Male (Chrome)
+        const voices = window.speechSynthesis.getVoices();
+        const preferred =
+          voices.find((v) => v.name === "Daniel") ||
+          voices.find((v) => v.name.includes("Google UK English Male")) ||
+          voices.find((v) => v.lang === "en-GB") ||
+          voices.find((v) => v.lang.startsWith("en")) ||
+          null;
+        if (preferred) utter.voice = preferred;
+        utter.onstart = () => setSpeaking(true);
+        utter.onend = () => setSpeaking(false);
+        utter.onerror = () => setSpeaking(false);
+        window.speechSynthesis.speak(utter);
+      };
+
+      const voices = window.speechSynthesis.getVoices();
+      if (voices.length > 0) {
+        fire();
+      } else {
+        // Chrome loads voices async — wait for the event then fire
+        window.speechSynthesis.addEventListener("voiceschanged", fire, { once: true });
+      }
     },
     [voiceOn]
   );
