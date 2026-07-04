@@ -199,9 +199,10 @@ export default function JarvisChat() {
                 <div
                   className={`max-w-[88%] rounded-xl px-3 py-2 text-sm leading-relaxed ${
                     msg.role === "user"
-                      ? "bg-white/10 text-white/90"
-                      : "border border-blue-400/10 bg-blue-950/20 text-white/75"
+                      ? "bg-white/10 text-white"
+                      : "text-white"
                   }`}
+                  style={msg.role === "jarvis" ? { background: "rgba(30,50,100,0.3)", border: "1px solid rgba(96,165,250,0.15)" } : {}}
                 >
                   {msg.text}
                 </div>
@@ -230,7 +231,7 @@ export default function JarvisChat() {
                 <button
                   key={q}
                   onClick={() => send(q)}
-                  className="rounded-full border border-blue-400/20 px-3 py-1 text-xs text-blue-300/60 transition-colors hover:border-blue-400/40 hover:text-blue-300/90"
+                  className="rounded-full px-3 py-1 text-xs transition-colors hover:text-white" style={{ border: "1px solid rgba(96,165,250,0.35)", color: "rgba(147,197,253,0.9)" }}
                 >
                   {q}
                 </button>
@@ -246,7 +247,7 @@ export default function JarvisChat() {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKey}
               placeholder="Ask Jarvis anything…"
-              className="flex-1 bg-transparent text-sm text-white/80 placeholder-blue-400/25 outline-none"
+              className="flex-1 bg-transparent text-sm text-white outline-none" style={{ color: "white" }} placeholder="Ask Jarvis anything…"
             />
             <button
               onClick={() => send(input)}
