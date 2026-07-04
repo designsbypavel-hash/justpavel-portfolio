@@ -11,11 +11,60 @@ export default function JarvisChat() {
   const [typing, setTyping] = useState(false);
   const [voiceOn, setVoiceOn] = useState(false);
   const [speaking, setSpeaking] = useState(false);
+  const [listening, setListening] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
+  const recognitionRef = useRef<any>(null);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, typing]);
+
+  // Wake word: "Hey Jarvis"
+  useEffect(() => {
+    const SpeechRecognition =
+      (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognition) return;
+
+    const rec = new SpeechRecognition();
+    rec.continuous = true;
+    rec.interimResults = false;
+    rec.lang = "en-US";
+    recognitionRef.current = rec;
+
+    rec.onresult = (e: any) => {
+      const transcript = Array.from(e.results as any[])
+        .map((r: any) => r[0].transcript)
+        .join(" ")
+        .toLowerCase();
+      if (transcript.includes("hey jarvis") || transcript.includes("hi jarvis")) {
+        setOpen(true);
+        setListening(false);
+        rec.stop();
+        setTimeout(() => {
+          const greeting = "Hello! I'm Jarvis, Pavel's AI assistant. How can I help you today?";
+          setMessages((prev) =>
+            prev.length === 0 ? [{ role: "jarvis", text: greeting }] : prev
+          );
+        }, 300);
+      }
+    };
+
+    rec.onerror = () => setListening(false);
+    rec.onend = () => {
+      // Restart if still in wake-word mode
+      if (recognitionRef.current && !open) {
+        try { rec.start(); } catch {}
+      }
+    };
+
+    try {
+      rec.start();
+      setListening(true);
+    } catch {}
+
+    return () => { try { rec.stop(); } catch {} };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const speakIfOn = useCallback(
     (text: string) => {
@@ -74,12 +123,38 @@ export default function JarvisChat() {
   return (
     <>
       {/* Floating button */}
-      <div className="fixed bottom-6 right-6 z-50">
-        {!open && (
-          <>
-            <span className="absolute inset-0 rounded-full jarvis-ring" style={{ background: "radial-gradient(circle, rgba(249,115,22,0.2) 0%, transparent 70%)", animationDelay: "0s" }} />
-            <span className="absolute inset-0 rounded-full jarvis-ring" style={{ background: "radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%)", animationDelay: "0.9s" }} />
-          </>
+      <div className="fixed bottom-6 right-6 z-50" style={{ width: 56, height: 56 }}>
+        {/* Orbiting dots — each wrapper rotates around button center, dot sits at top edge */}
+        {!open && [
+          { color: "#f97316", shadow: "#f97316", delay: "0s", size: 8, r: 34 },
+          { color: "#a855f7", shadow: "#a855f7", delay: "-1s", size: 6, r: 34 },
+          { color: "#ffffff", shadow: "rgba(255,255,255,0.9)", delay: "-2s", size: 6, r: 34 },
+        ].map((dot, i) => (
+          <div
+            key={i}
+            className="absolute"
+            style={{
+              top: "50%", left: "50%",
+              width: 0, height: 0,
+              animation: `jarvis-orbit 3s linear infinite`,
+              animationDelay: dot.delay,
+            }}
+          >
+            <span
+              className="absolute rounded-full"
+              style={{
+                width: dot.size, height: dot.size,
+                marginLeft: -dot.size / 2,
+                top: -(dot.r + dot.size / 2),
+                background: dot.color,
+                boxShadow: `0 0 8px ${dot.shadow}`,
+              }}
+            />
+          </div>
+        ))}
+        {/* Listening indicator */}
+        {listening && !open && (
+          <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-green-400" style={{ boxShadow: "0 0 6px #4ade80", animation: "dotpulse 1.5s ease-in-out infinite" }} />
         )}
         <button
           type="button"
@@ -245,14 +320,13 @@ export default function JarvisChat() {
 
       <style>{`
         @keyframes dotpulse {
-          0%, 100% { opacity: 0.3; transform: scale(0.8); }
+          0%, 100% { opacity: 0.4; transform: scale(0.85); }
           50% { opacity: 1; transform: scale(1.2); }
         }
-        @keyframes jarvis-ping {
-          0% { transform: scale(1); opacity: 0.6; }
-          100% { transform: scale(2.4); opacity: 0; }
+        @keyframes jarvis-orbit {
+          from { transform: rotate(0deg); }
+          to   { transform: rotate(360deg); }
         }
-        .jarvis-ring { animation: jarvis-ping 2.4s ease-out infinite; }
         .jarvis-input::placeholder { color: #9ca3af; }
       `}</style>
     </>
