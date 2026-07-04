@@ -124,34 +124,6 @@ export default function JarvisChat() {
     <>
       {/* Floating button */}
       <div className="fixed bottom-6 right-6 z-50" style={{ width: 56, height: 56 }}>
-        {/* Orbiting dots — each wrapper rotates around button center, dot sits at top edge */}
-        {!open && [
-          { color: "#f97316", shadow: "#f97316", delay: "0s", size: 8, r: 34 },
-          { color: "#a855f7", shadow: "#a855f7", delay: "-1s", size: 6, r: 34 },
-          { color: "#ffffff", shadow: "rgba(255,255,255,0.9)", delay: "-2s", size: 6, r: 34 },
-        ].map((dot, i) => (
-          <div
-            key={i}
-            className="absolute"
-            style={{
-              top: "50%", left: "50%",
-              width: 0, height: 0,
-              animation: `jarvis-orbit 3s linear infinite`,
-              animationDelay: dot.delay,
-            }}
-          >
-            <span
-              className="absolute rounded-full"
-              style={{
-                width: dot.size, height: dot.size,
-                marginLeft: -dot.size / 2,
-                top: -(dot.r + dot.size / 2),
-                background: dot.color,
-                boxShadow: `0 0 8px ${dot.shadow}`,
-              }}
-            />
-          </div>
-        ))}
         {/* Listening indicator */}
         {listening && !open && (
           <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-green-400" style={{ boxShadow: "0 0 6px #4ade80", animation: "dotpulse 1.5s ease-in-out infinite" }} />
@@ -167,15 +139,28 @@ export default function JarvisChat() {
             boxShadow: "0 0 20px rgba(249,115,22,0.5), 0 0 40px rgba(99,102,241,0.4), 0 0 60px rgba(168,85,247,0.3)",
           }}
         >
-          <svg width="22" height="22" viewBox="0 0 26 26" fill="none">
-            <circle cx="13" cy="13" r="10" stroke="white" strokeWidth="1.5" opacity="0.8" />
-            <circle cx="13" cy="13" r="5" stroke="white" strokeWidth="1" opacity="0.6" />
-            <circle cx="13" cy="13" r="2" fill="white" />
-            <line x1="13" y1="3" x2="13" y2="7" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-            <line x1="13" y1="19" x2="13" y2="23" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-            <line x1="3" y1="13" x2="7" y2="13" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-            <line x1="19" y1="13" x2="23" y2="13" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
+          <div className="flex items-center gap-[3px]">
+            {[
+              { color: "#f97316", delay: "0s" },
+              { color: "#ffffff", delay: "0.15s" },
+              { color: "#a855f7", delay: "0.3s" },
+              { color: "#ffffff", delay: "0.45s" },
+              { color: "#6366f1", delay: "0.6s" },
+            ].map((d, i) => (
+              <span
+                key={i}
+                className="rounded-full"
+                style={{
+                  width: 4,
+                  height: 4,
+                  background: d.color,
+                  boxShadow: `0 0 4px ${d.color}`,
+                  animation: `gmini-bounce 1.2s ease-in-out infinite`,
+                  animationDelay: d.delay,
+                }}
+              />
+            ))}
+          </div>
         </button>
         {!open && (
           <span className="absolute -top-7 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full px-2 py-0.5 text-[10px] font-semibold tracking-widest" style={{ background: "rgba(0,0,0,0.75)", color: "rgba(255,255,255,0.8)" }}>
@@ -323,9 +308,9 @@ export default function JarvisChat() {
           0%, 100% { opacity: 0.4; transform: scale(0.85); }
           50% { opacity: 1; transform: scale(1.2); }
         }
-        @keyframes jarvis-orbit {
-          from { transform: rotate(0deg); }
-          to   { transform: rotate(360deg); }
+        @keyframes gmini-bounce {
+          0%, 100% { transform: scaleY(1); opacity: 0.7; }
+          50% { transform: scaleY(2.8); opacity: 1; }
         }
         .jarvis-input::placeholder { color: #9ca3af; }
       `}</style>
