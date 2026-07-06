@@ -37,23 +37,27 @@ export default function Testimonials() {
   return (
     <section className="mb-16">
       <h2 className="mb-10 uppercase">What People Say</h2>
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="flex flex-col gap-4">
         {testimonials.map((t) => (
           <div
             key={t.name}
-            className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-6"
+            className="rounded-2xl border border-white/15 bg-white/[0.05] p-7"
           >
             {/* Quote */}
-            <p className="flex-1 text-sm leading-relaxed text-white/75">
+            <p className="mb-6 text-base leading-relaxed text-white/90">
               &ldquo;{t.text}&rdquo;
             </p>
             {/* Author */}
-            <div className="border-t border-white/8 pt-4">
-              <p className="text-sm font-semibold text-white">{t.name}</p>
-              <p className="mt-0.5 text-xs text-white/45">
-                {t.role}{t.company ? ` · ${t.company}` : ""} · {t.date}
-              </p>
-              <p className="mt-0.5 text-xs text-white/30">{t.relationship}</p>
+            <div className="flex items-center gap-4 border-t border-white/10 pt-5">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/10 text-sm font-bold text-white">
+                {t.name.charAt(0)}
+              </div>
+              <div>
+                <p className="font-semibold text-white">{t.name}</p>
+                <p className="mt-0.5 text-sm text-white/55">
+                  {t.role}{t.company ? ` · ${t.company}` : ""} · {t.date}
+                </p>
+              </div>
             </div>
           </div>
         ))}
