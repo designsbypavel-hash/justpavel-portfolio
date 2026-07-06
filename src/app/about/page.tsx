@@ -55,7 +55,15 @@ const skills = [
   "Accessibility (WCAG)",
 ];
 
-const tools = ["Figma", "FigJam", "Protopie", "Dovetail", "Claude Code", "Cursor", "Notion"];
+const tools = [
+  { name: "Figma", icon: "/site-assets/tools/figma.png" },
+  { name: "FigJam", icon: "/site-assets/tools/figjam.png" },
+  { name: "Protopie", icon: "/site-assets/tools/protopie.png" },
+  { name: "Dovetail", icon: "/site-assets/tools/dovetail.png" },
+  { name: "Claude", icon: "/site-assets/tools/claude.png" },
+  { name: "Cursor", icon: "/site-assets/tools/cursor.png" },
+  { name: "Notion", icon: "/site-assets/tools/notion.png" },
+];
 
 const lensPhotos = [
   { src: "/site-assets/about-lens/york-minster.jpg", caption: "York Minster (Favourite Cathedral)" },
@@ -154,11 +162,14 @@ export default function AboutPage() {
           </div>
           <div>
             <h2 className="mb-6 uppercase">Tools</h2>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-4">
               {tools.map((tool) => (
-                <span key={tool} className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/65">
-                  {tool}
-                </span>
+                <div key={tool.name} className="flex flex-col items-center gap-2">
+                  <div className="relative h-14 w-14 overflow-hidden rounded-2xl border border-white/10">
+                    <Image src={tool.icon} alt={tool.name} fill className="object-cover" />
+                  </div>
+                  <span className="text-xs text-white/45">{tool.name}</span>
+                </div>
               ))}
             </div>
           </div>
