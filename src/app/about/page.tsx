@@ -47,12 +47,14 @@ export default function AboutPage() {
           </p>
 
           {/* Full-width photo */}
-          <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: "16/9" }}>
+          <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: "4/3" }}>
             <Image
               src="/site-assets/about-lens/headshot-new.jpg"
               alt="Pavel"
               fill
-              className="object-cover object-top"
+              className="object-cover"
+              style={{ objectPosition: "center 30%" }}
+              quality={95}
               priority
             />
           </div>
