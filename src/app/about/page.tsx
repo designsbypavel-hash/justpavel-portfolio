@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
+import Testimonials from "@/components/Testimonials";
 
 export const metadata: Metadata = {
   title: "About | Pavel",
@@ -160,6 +161,7 @@ export default function AboutPage() {
 
         {/* Skills & Tools */}
         <div className="grid gap-10 pt-16 sm:grid-cols-2">
+          <Testimonials />
           <div>
             <h2 className="mb-6 uppercase">Skills</h2>
             <div className="flex flex-wrap gap-3">
