@@ -10,20 +10,20 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-title: var(--color-title);
-  --font-sans: var(--font-sen);
-  --font-heading: var(--font-sen);
+  --font-sans: 'Google Sans Flex', 'Google Sans', system-ui, sans-serif;
+  --font-heading: 'Google Sans Flex', 'Google Sans', system-ui, sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sen), Arial, Helvetica, sans-serif;
+  font-family: 'Google Sans Flex', 'Google Sans', system-ui, sans-serif;
   overflow-x: hidden;
 }
 
-/* Typography hierarchy — single source of truth, Sen throughout */
+/* Typography hierarchy */
 h1, h2, h3, h4 {
-  font-family: var(--font-sen), Arial, Helvetica, sans-serif;
+  font-family: 'Google Sans Flex', 'Google Sans', system-ui, sans-serif;
   letter-spacing: -0.01em;
   color: var(--color-title);
 }
@@ -59,7 +59,7 @@ h4 {
 }
 
 p, span, a, li, label, input, textarea, button {
-  font-family: var(--font-sen), Arial, Helvetica, sans-serif;
+  font-family: 'Google Sans Flex', 'Google Sans', system-ui, sans-serif;
 }
 
 .text-body-lg {
