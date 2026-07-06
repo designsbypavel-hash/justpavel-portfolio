@@ -53,8 +53,8 @@ export default function AboutPage() {
               alt="Pavel"
               fill
               className="object-cover"
-              style={{ objectPosition: "center 30%" }}
-              quality={95}
+              style={{ objectPosition: "center 62%" }}
+              quality={100}
               priority
             />
           </div>
