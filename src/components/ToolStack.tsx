@@ -22,8 +22,6 @@ const tools: Tool[] = [
   { name: "Dovetail",  icon: "/site-assets/tools/dovetail_si.svg", bg: "#1A1A2E", pad: true },
   { name: "Notion",    icon: "/site-assets/tools/notion.png",      bg: "#191919" },
   { name: "Miro",      icon: "/site-assets/tools/miro_si.svg",     bg: "#FFD02F", pad: true },
-  { name: "Adobe",     icon: "/site-assets/tools/adobe_si.svg",    bg: "#FF0000" },
-  { name: "Protopie",  icon: "/site-assets/tools/protopie.svg",    bg: "#E83A3A" },
 ];
 
 export default function ToolStack() {
