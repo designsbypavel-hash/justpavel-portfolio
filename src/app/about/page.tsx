@@ -156,11 +156,11 @@ export default function AboutPage() {
         <ToolStack />
 
         {/* From My Lens */}
-        <div className="mb-24">
+        <div>
           <h2 className="mb-2 uppercase">From My Lens</h2>
           <p className="mb-10 text-white/45 text-sm">I notice patterns, details, and flow — in cities, spaces, and products.</p>
-          <LensGallery photos={lensPhotos} />
         </div>
+        <LensGallery photos={lensPhotos} />
 
         {/* Testimonials */}
         <Testimonials />
