@@ -50,7 +50,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-full flex flex-col bg-black text-white" style={{ fontFamily: "'Google Sans Flex', 'Google Sans', system-ui, sans-serif" }}>
+      <body className="min-h-full flex flex-col bg-black text-white" style={{ fontFamily: "'Google Sans Flex', 'Google Sans', system-ui, sans-serif", fontWeight: 450 }}>
         <StarfieldBackground />
         <div className="relative z-10 flex min-h-full flex-1 flex-col">
           <Header />
