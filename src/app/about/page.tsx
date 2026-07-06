@@ -8,6 +8,41 @@ export const metadata: Metadata = {
   description: "Senior Product Designer in London, 7+ years across B2B SaaS and B2C mobile.",
 };
 
+const experience = [
+  {
+    company: "AWTG",
+    role: "Senior Product Designer",
+    period: "Oct 2024 – Present",
+    location: "London, UK",
+    summary:
+      "Leading UX across two enterprise AI platforms. Reduced design-to-dev cycle time by 20% through AI-assisted workflows, rebuilt a WCAG-compliant design system, and improved task completion through usability testing.",
+  },
+  {
+    company: "Flatlay",
+    role: "Product Designer",
+    period: "Oct 2021 – Oct 2024",
+    location: "Los Angeles (Remote)",
+    summary:
+      "Led end-to-end design for a consumer app from zero. Drove adoption to 5,000+ downloads and reduced bounce rate by 82%. Mentored junior designers and shipped across web and mobile.",
+  },
+  {
+    company: "SonyLIV",
+    role: "Product Designer",
+    period: "Jul 2020 – Oct 2021",
+    location: "Mumbai, India",
+    summary:
+      "Contributed to a cross-platform design system serving 350M+ users across web, TV, and mobile. Redesigned core experiences that increased engagement by 64%.",
+  },
+  {
+    company: "HighRadius",
+    role: "Product Designer",
+    period: "Mar 2019 – Jul 2020",
+    location: "Hyderabad, India",
+    summary:
+      "Designed AI-powered fintech workflows that improved receivables recovery by 75%. Conducted user research and worked closely with Finance stakeholders to simplify complex enterprise processes.",
+  },
+];
+
 const skills = [
   "Product UX/UI",
   "Design Systems",
@@ -15,24 +50,12 @@ const skills = [
   "Prototyping",
   "AI-Powered Workflows",
   "Cross-Functional Collaboration",
+  "Usability Testing",
+  "Information Architecture",
+  "Accessibility (WCAG)",
 ];
 
-const tools = ["Figma", "FigJam", "ChatGPT", "Claude", "Notion", "Framer"];
-
-const competencies = [
-  {
-    title: "Efficient Workflow",
-    description: "Streamlined design process for rapid delivery.",
-  },
-  {
-    title: "Collaborative Process",
-    description: "Close integration of feedback throughout design.",
-  },
-  {
-    title: "Attention to Detail",
-    description: "Meticulous approach ensuring polished, cohesive outputs.",
-  },
-];
+const tools = ["Figma", "FigJam", "Protopie", "Dovetail", "Claude Code", "Cursor", "Notion"];
 
 const lensPhotos = [
   { src: "/site-assets/about-lens/york-minster.jpg", caption: "York Minster (Favourite Cathedral)" },
@@ -49,10 +72,11 @@ const lensPhotos = [
 export default function AboutPage() {
   return (
     <div className="px-6 py-24">
-      <div className="mx-auto max-w-6xl">
-        {/* Hero: photo + intro */}
-        <div className="mb-20 grid gap-10 sm:grid-cols-2 sm:items-start">
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/10">
+      <div className="mx-auto max-w-3xl">
+
+        {/* Hero */}
+        <div className="mb-24 grid gap-12 sm:grid-cols-[200px_1fr] sm:items-start">
+          <div className="relative aspect-square w-48 overflow-hidden rounded-2xl border border-white/10 sm:w-full">
             <Image
               src="/site-assets/about-lens/headshot-new.jpg"
               alt="Pavel"
@@ -61,70 +85,92 @@ export default function AboutPage() {
               priority
             />
           </div>
-
           <div>
-            <h1 className="mb-6">
-              I turn complex <span className="font-extrabold text-white">problems</span> into
-              products that feel effortless.
+            <h1 className="mb-5 text-3xl font-bold leading-tight sm:text-4xl">
+              I turn complex problems into products that feel effortless.
             </h1>
-            <p className="text-lg text-white/70">
-              Based in London, I&apos;m a Product Designer with 7+ years across B2B SaaS and B2C,
-              from zero-to-one discovery to shipping high-fidelity UI at scale. I recently led UX
-              for an AI platform where teams build and manage AI-powered experiences, and I&apos;ve
-              shipped conversion-focused mobile journeys that move real business metrics. I work
-              end-to-end: research, systems thinking, prototyping, and close collaboration with PMs
-              and engineers until the thing is actually out the door. I care about accessible,
-              scalable design, not just beautiful screens.
+            <p className="text-white/65 leading-relaxed">
+              Senior Product Designer with 8 years across AI, SaaS, and enterprise — based in London.
+              MSc in Human-Computer Interaction from the University of York. I work end-to-end: research,
+              systems thinking, prototyping, and close collaboration with PMs and engineers until
+              the thing ships.
             </p>
-
-            <div className="mt-10 pt-6">
-              <span className="block text-xs uppercase tracking-widest text-white/40">Location</span>
-              <span className="text-lg font-semibold">London, UK</span>
+            <div className="mt-6 flex items-center gap-2 text-sm text-white/40">
+              <span>📍</span>
+              <span>London, UK · Open to opportunities</span>
             </div>
           </div>
         </div>
 
         {/* How I Work */}
-        <div className="mb-20 max-w-3xl pt-16">
-          <h2 className="mb-6">Clarity first, polish second.</h2>
-          <p className="mb-4 text-white/70">
-            Good design isn&apos;t just a clean layout. It&apos;s simplifying complex
-            problems, giving information clear structure, and building something
-            people understand at a glance, whether that&apos;s an AI platform, an
-            enterprise SaaS workflow, or a conversion-focused mobile journey.
-          </p>
-          <p className="mb-4 text-white/70">
-            Design doesn&apos;t happen in a vacuum. There&apos;s usually an existing
-            backend, a tight timeline, incomplete information, or a product
-            direction that&apos;s still evolving. Working well inside those
-            constraints, not around them, is most of the job.
-          </p>
-          <p className="text-white/70">
-            I work end-to-end: research, systems thinking, prototyping, and close
-            collaboration with PMs and engineers until the thing actually ships. I
-            care about accessible, scalable design, not just beautiful screens.
-          </p>
+        <div className="mb-24">
+          <h2 className="mb-6 uppercase">How I Work</h2>
+          <div className="space-y-4 text-white/65 leading-relaxed">
+            <p>
+              Good design isn't just a clean layout. It's simplifying complex problems, giving
+              information clear structure, and building something people understand at a glance —
+              whether that's an AI platform, an enterprise SaaS workflow, or a conversion-focused
+              mobile journey.
+            </p>
+            <p>
+              Design doesn't happen in a vacuum. There's usually an existing backend, a tight
+              timeline, incomplete information, or a product direction that's still evolving.
+              Working well inside those constraints — not around them — is most of the job.
+            </p>
+            <p>
+              I care about accessible, scalable design, not just beautiful screens.
+            </p>
+          </div>
+        </div>
+
+        {/* Experience */}
+        <div className="mb-24">
+          <h2 className="mb-8 uppercase">Experience</h2>
+          <div className="flex flex-col gap-8">
+            {experience.map((job) => (
+              <div key={job.company} className="border-l border-white/10 pl-6">
+                <div className="mb-1 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <span className="font-semibold text-white">{job.company}</span>
+                  <span className="text-sm text-white/45">{job.role}</span>
+                </div>
+                <div className="mb-3 text-xs text-white/30">{job.period} · {job.location}</div>
+                <p className="text-sm text-white/60 leading-relaxed">{job.summary}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Skills & Tools */}
+        <div className="mb-24 grid gap-10 sm:grid-cols-2">
+          <div>
+            <h2 className="mb-6 uppercase">Skills</h2>
+            <div className="flex flex-wrap gap-2">
+              {skills.map((skill) => (
+                <span key={skill} className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/65">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h2 className="mb-6 uppercase">Tools</h2>
+            <div className="flex flex-wrap gap-2">
+              {tools.map((tool) => (
+                <span key={tool} className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/65">
+                  {tool}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* From My Lens */}
-        <div className="mb-20 pt-16">
-          <div className="mb-10 text-center">
-            <p className="mx-auto max-w-3xl text-2xl text-white/50 sm:text-3xl">
-              I notice <span className="font-semibold text-white">patterns, details,</span> and{" "}
-              <span className="font-semibold text-white">flow,</span> in cities, spaces, and
-              products.
-            </p>
-          </div>
-
+        <div className="mb-24">
+          <h2 className="mb-2 uppercase">From My Lens</h2>
+          <p className="mb-10 text-white/45 text-sm">I notice patterns, details, and flow — in cities, spaces, and products.</p>
           <div className="group relative overflow-hidden">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-black to-transparent sm:w-24"
-            />
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-black to-transparent sm:w-24"
-            />
+            <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-black to-transparent sm:w-24" />
+            <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-black to-transparent sm:w-24" />
             <div className="marquee-track flex w-max gap-6 pb-4 [animation-duration:32s] group-hover:[animation-play-state:paused]">
               {[...lensPhotos, ...lensPhotos].map((photo, i) => (
                 <figure
@@ -144,51 +190,9 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Core Competencies */}
-        <div className="pt-16">
-          <h2 className="mb-6 uppercase">
-            Core Competencies
-          </h2>
-          <div className="grid gap-6 sm:grid-cols-3">
-            {competencies.map((item) => (
-              <div key={item.title} className="rounded-xl border border-white/10 bg-white/5 p-6">
-                <h3 className="mb-2">{item.title}</h3>
-                <p className="text-sm text-white/60">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Testimonials */}
+        <Testimonials />
 
-        {/* Skills & Tools */}
-        <div className="grid gap-10 pt-16 sm:grid-cols-2">
-          <Testimonials />
-          <div>
-            <h2 className="mb-6 uppercase">Skills</h2>
-            <div className="flex flex-wrap gap-3">
-              {skills.map((skill) => (
-                <span
-                  key={skill}
-                  className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/70"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div>
-            <h2 className="mb-6 uppercase">Tools</h2>
-            <div className="flex flex-wrap gap-3">
-              {tools.map((tool) => (
-                <span
-                  key={tool}
-                  className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/70"
-                >
-                  {tool}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
