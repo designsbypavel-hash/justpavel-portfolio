@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import Testimonials from "@/components/Testimonials";
+import ToolStack from "@/components/ToolStack";
 
 export const metadata: Metadata = {
   title: "About | Pavel",
@@ -55,15 +56,6 @@ const skills = [
   "Accessibility (WCAG)",
 ];
 
-const tools = [
-  { name: "Figma", icon: "/site-assets/tools/figma.png" },
-  { name: "FigJam", icon: "/site-assets/tools/figjam.png" },
-  { name: "Protopie", icon: "/site-assets/tools/protopie.png" },
-  { name: "Dovetail", icon: "/site-assets/tools/dovetail.png" },
-  { name: "Claude", icon: "/site-assets/tools/claude.png" },
-  { name: "Cursor", icon: "/site-assets/tools/cursor.png" },
-  { name: "Notion", icon: "/site-assets/tools/notion.png" },
-];
 
 const lensPhotos = [
   { src: "/site-assets/about-lens/york-minster.jpg", caption: "York Minster (Favourite Cathedral)" },
@@ -148,32 +140,20 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Skills & Tools */}
-        <div className="mb-24 grid gap-10 sm:grid-cols-2">
-          <div>
-            <h2 className="mb-6 uppercase">Skills</h2>
-            <div className="flex flex-wrap gap-2">
-              {skills.map((skill) => (
-                <span key={skill} className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/65">
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div>
-            <h2 className="mb-6 uppercase">Tools</h2>
-            <div className="flex flex-wrap gap-4">
-              {tools.map((tool) => (
-                <div key={tool.name} className="flex flex-col items-center gap-2">
-                  <div className="relative h-14 w-14 overflow-hidden rounded-2xl border border-white/10">
-                    <Image src={tool.icon} alt={tool.name} fill className="object-cover" />
-                  </div>
-                  <span className="text-xs text-white/45">{tool.name}</span>
-                </div>
-              ))}
-            </div>
+        {/* Skills */}
+        <div className="mb-24">
+          <h2 className="mb-6 uppercase">Skills</h2>
+          <div className="flex flex-wrap gap-2">
+            {skills.map((skill) => (
+              <span key={skill} className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/65">
+                {skill}
+              </span>
+            ))}
           </div>
         </div>
+
+        {/* Tool Stack — full-width marquee */}
+        <ToolStack />
 
         {/* From My Lens */}
         <div className="mb-24">
