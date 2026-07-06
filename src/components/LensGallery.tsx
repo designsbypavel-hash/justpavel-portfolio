@@ -179,7 +179,7 @@ export default function LensGallery({ photos }: { photos: Photo[] }) {
                       src={photo.src}
                       alt={photo.caption}
                       fill
-                      className="object-cover"
+                      className="object-cover [image-orientation:from-image]"
                       draggable={false}
                       sizes="170px"
                     />
