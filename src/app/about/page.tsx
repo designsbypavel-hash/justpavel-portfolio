@@ -58,15 +58,20 @@ const skills = [
 
 
 const lensPhotos = [
-  { src: "/site-assets/about-lens/york-minster.jpg", caption: "York Minster (Favourite Cathedral)" },
-  { src: "/site-assets/about-lens/uni-of-york.jpg", caption: "Uni of York" },
+  { src: "/site-assets/about-lens/york-minster.jpg", caption: "York Minster" },
+  { src: "/site-assets/about-lens/hampstead-heath-1.jpg", caption: "Hampstead Heath" },
   { src: "/site-assets/about-lens/york.jpg", caption: "York" },
+  { src: "/site-assets/about-lens/paris-eiffel.jpg", caption: "Paris" },
   { src: "/site-assets/about-lens/in-winters.jpg", caption: "In winters" },
-  { src: "/site-assets/about-lens/dream.jpg", caption: "Dream" },
+  { src: "/site-assets/about-lens/hampstead-heath-2.jpg", caption: "The Ponds" },
   { src: "/site-assets/about-lens/liverpool.jpg", caption: "Liverpool" },
+  { src: "/site-assets/about-lens/kew-tree.jpg", caption: "Kew Gardens" },
+  { src: "/site-assets/about-lens/dream.jpg", caption: "Dream" },
+  { src: "/site-assets/about-lens/hastings-coast.jpg", caption: "Hastings" },
   { src: "/site-assets/about-lens/kingston-summer.jpg", caption: "Kingston in Summer" },
   { src: "/site-assets/about-lens/iconic-beatles.jpg", caption: "Iconic Beatles" },
   { src: "/site-assets/about-lens/st-paul-cathedral.jpg", caption: "St. Paul Cathedral" },
+  { src: "/site-assets/about-lens/uni-of-york.jpg", caption: "Uni of York" },
 ];
 
 export default function AboutPage() {

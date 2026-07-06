@@ -5,18 +5,22 @@ import { useState, useRef, useCallback, useEffect } from "react";
 
 type Photo = { src: string; caption: string };
 
-// Two-row scatter — x as % of canvas width, y as px offset from center
-// Positions are percentages so they scale with canvas width
+// Three-row scatter across full canvas width — % x, px y from vertical center
 const SEED_LAYOUT = [
-  { xPct: 3,   y: -80,  rot: -4 },
-  { xPct: 14,  y:  50,  rot:  3 },
-  { xPct: 25,  y: -90,  rot: -2 },
-  { xPct: 36,  y:  40,  rot:  5 },
-  { xPct: 47,  y: -75,  rot: -5 },
-  { xPct: 57,  y:  55,  rot:  3 },
-  { xPct: 67,  y: -85,  rot: -3 },
-  { xPct: 78,  y:  45,  rot:  4 },
-  { xPct: 88,  y: -70,  rot: -2 },
+  { xPct:  1,  y: -120, rot: -4 },
+  { xPct:  8,  y:   30, rot:  3 },
+  { xPct: 16,  y: -100, rot: -2 },
+  { xPct: 23,  y:  110, rot:  5 },
+  { xPct: 30,  y:  -90, rot: -5 },
+  { xPct: 38,  y:   50, rot:  3 },
+  { xPct: 45,  y: -115, rot: -3 },
+  { xPct: 52,  y:   90, rot:  4 },
+  { xPct: 59,  y:  -80, rot: -2 },
+  { xPct: 66,  y:   40, rot:  5 },
+  { xPct: 73,  y: -110, rot: -4 },
+  { xPct: 80,  y:   70, rot:  3 },
+  { xPct: 87,  y:  -95, rot: -3 },
+  { xPct: 93,  y:   30, rot:  4 },
 ];
 
 const CARD_W = 170;
@@ -110,7 +114,7 @@ export default function LensGallery({ photos }: { photos: Photo[] }) {
     return () => window.removeEventListener("keydown", handler);
   }, [lightbox, photos.length]);
 
-  const CANVAS_H = 520;
+  const CANVAS_H = 620;
   const MID_Y = CANVAS_H / 2 - CARD_H / 2;
 
   return (
