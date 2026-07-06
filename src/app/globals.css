@@ -2,12 +2,14 @@
 
 :root {
   --background: #000000;
-  --foreground: #ffffff;
+  --foreground: #A8A29E;
+  --color-title: #F5F5F4;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-title: var(--color-title);
   --font-sans: var(--font-sen);
   --font-heading: var(--font-sen);
 }
@@ -23,6 +25,7 @@ body {
 h1, h2, h3, h4 {
   font-family: var(--font-sen), Arial, Helvetica, sans-serif;
   letter-spacing: -0.01em;
+  color: var(--color-title);
 }
 
 /* Fluid typography: scales smoothly between the 320px and 1440px
