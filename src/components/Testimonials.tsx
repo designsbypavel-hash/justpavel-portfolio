@@ -19,8 +19,8 @@ const testimonials = [
   },
   {
     name: "Prachi Chougule",
-    role: "Senior UI/UX Designer · Lemon Yellow LLP · July 2023",
-    text: "I highly recommend Pavel for his exceptional skills. I had the pleasure of working closely with Pavel for 1 year at Lemon Yellow LLP on the SonyLIV project. His dedication, expertise and positive attitude have always impressed me. He is an excellent communicator and collaborator with great observation skills — always willing to go the extra mile to ensure the success of the team.",
+    role: "Senior UI/UX Designer · July 2023",
+    text: "I highly recommend Pavel for his exceptional skills. I had the pleasure of working closely with Pavel for 1 year on the SonyLIV project. His dedication, expertise and positive attitude have always impressed me. He is an excellent communicator and collaborator with great observation skills — always willing to go the extra mile to ensure the success of the team.",
     bg: "rgba(255,237,213,0.04)",
     border: "rgba(254,215,170,0.15)",
     initial: "rgba(254,215,170,0.2)",
