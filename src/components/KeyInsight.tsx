@@ -15,7 +15,7 @@ export default function KeyInsight({
         <span className="mb-3 inline-block rounded-full border border-white/20 px-3 py-1 text-xs uppercase tracking-widest text-white/60">
           Key Insight
         </span>
-        <h2 className="mb-3">{title}</h2>
+        <h2 className="mb-3 h2-heading">{title}</h2>
         <p className="text-white/70">{description}</p>
       </div>
       {image && (

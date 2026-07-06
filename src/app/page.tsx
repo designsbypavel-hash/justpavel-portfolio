@@ -101,7 +101,7 @@ export default function Home() {
                 <Image src="/site-assets/mentor-avatar.webp" alt="Pavel" fill className="object-cover" />
               </div>
               <div>
-                <h2 className="mb-2">
+                <h2 className="mb-2 h2-heading">
                   Mentoring for designers who want real progress
                 </h2>
                 <p className="max-w-2xl text-white/70">

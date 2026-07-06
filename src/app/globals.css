@@ -21,74 +21,111 @@ body {
   overflow-x: hidden;
 }
 
-/* Typography hierarchy */
+/* ─── Typography hierarchy (modelled on benroachdesign.com) ────────────────
+   Ben Roach uses a clean 5-level scale:
+   • Display H1  — massive, heavy, very tight leading (~-0.03em tracking)
+   • Section H2  — small uppercase label, wide tracking, muted colour
+   • Card H3     — mid-size, semibold, normal tracking
+   • H4 label    — tiny uppercase label (same pattern as h2 but smaller)
+   • Body p      — 18–20px, normal weight, relaxed leading 1.65
+   ──────────────────────────────────────────────────────────────────────── */
+
 h1, h2, h3, h4 {
   font-family: 'Google Sans Flex', 'Google Sans', system-ui, sans-serif;
-  letter-spacing: -0.01em;
   color: var(--color-title);
 }
 
-/* Fluid typography: scales smoothly between the 320px and 1440px
-   reference widths instead of jumping at a single breakpoint, so
-   every size in between (375, 390, 430, 768, 1024, 1280...) gets a
-   proportionate size rather than landing on a mobile-only or
-   desktop-only value. clamp(min, preferred, max) -- the preferred
-   value uses vw so it scales with the viewport between the clamps. */
+/* Display — "Hi, I'm Pavel. I turn complexity…" */
 h1 {
   font-weight: 700;
-  font-size: clamp(2rem, 1.5rem + 3.6vw, 3.75rem); /* 32px -> 60px */
-  line-height: 1.1;
+  font-size: clamp(2.5rem, 2rem + 4.5vw, 5rem); /* 40px → 80px */
+  line-height: 1.04;
+  letter-spacing: -0.03em;
 }
 
+/* Section label — "ABOUT", "WORK", "TOOL STACK" (all h2s are uppercase labels) */
 h2 {
-  font-weight: 700;
-  font-size: clamp(1.625rem, 1.3rem + 2vw, 2.5rem); /* 26px -> 40px */
-  line-height: 1.15;
-}
-
-h3 {
-  font-weight: 700;
-  font-size: clamp(1.375rem, 1.2rem + 1vw, 2rem); /* 22px -> 32px */
+  font-weight: 500;
+  font-size: 0.6875rem; /* 11px */
   line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6b7280;
 }
 
+/* h2 used as a content heading (not a label) — opt-in with .h2-heading */
+.h2-heading {
+  font-weight: 600;
+  font-size: clamp(1.25rem, 1rem + 1.5vw, 1.875rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--color-title);
+}
+
+/* Card / sub-section title — project names, testimonial headings */
+h3 {
+  font-weight: 600;
+  font-size: clamp(1.25rem, 1rem + 1.5vw, 1.875rem); /* 20px → 30px */
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+/* Inline labels, meta */
 h4 {
-  font-weight: 700;
-  font-size: clamp(1.125rem, 1rem + 0.7vw, 1.5rem); /* 18px -> 24px */
-  line-height: 1.25;
+  font-weight: 500;
+  font-size: 0.75rem; /* 12px */
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+/* Body — comfortable reading size matching Ben Roach's ~18-20px paragraphs */
+body {
+  font-size: 1.0625rem; /* 17px base */
+  line-height: 1.65;
+  font-weight: 400;
+}
+
+p, li {
+  font-size: inherit;
+  line-height: 1.65;
+  max-width: 68ch;
 }
 
 p, span, a, li, label, input, textarea, button {
   font-family: 'Google Sans Flex', 'Google Sans', system-ui, sans-serif;
 }
 
+/* Utility classes kept for components that reference them */
 .text-body-lg {
-  font-size: 1.125rem; /* 18px */
-  line-height: 1.6;
+  font-size: 1.125rem;
+  line-height: 1.65;
   font-weight: 400;
 }
 
 .text-body {
-  font-size: 1rem; /* 16px */
-  line-height: 1.6;
+  font-size: 1rem;
+  line-height: 1.65;
   font-weight: 400;
 }
 
 .text-small {
-  font-size: 0.875rem; /* 14px */
+  font-size: 0.875rem;
   line-height: 1.5;
   font-weight: 400;
 }
 
 .text-caption {
-  font-size: 0.75rem; /* 12px */
+  font-size: 0.75rem;
   line-height: 1.4;
   font-weight: 400;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
 }
 
 .prose-readable {
-  max-width: 65ch;
+  max-width: 68ch;
 }
 
 .gradient-text {

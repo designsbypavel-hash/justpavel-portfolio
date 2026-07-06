@@ -97,7 +97,7 @@ export default function MentoringPage() {
           <div className="mb-16 grid gap-6 sm:grid-cols-2">
             {mentoringOffers.map((offer) => (
               <div key={offer.title} className="rounded-xl border border-white/10 bg-white/5 p-6">
-                <h2 className="mb-2">{offer.title}</h2>
+                <h2 className="mb-2 h2-heading">{offer.title}</h2>
                 <p className="text-sm text-white/60">{offer.description}</p>
               </div>
             ))}

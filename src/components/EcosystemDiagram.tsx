@@ -6,7 +6,7 @@ export default function EcosystemDiagram({ diagram }: { diagram: EcosystemDiagra
       <span className="mb-3 inline-block rounded-full border border-white/15 px-3 py-1 text-xs uppercase tracking-widest text-white/60">
         Ecosystem Diagram
       </span>
-      <h2 className="mb-2">{diagram.title}</h2>
+      <h2 className="mb-2 h2-heading">{diagram.title}</h2>
       <p className="mb-8 text-white/60">{diagram.subtitle}</p>
 
       <div className="-mx-6 overflow-x-auto sm:-mx-16 sm:overflow-x-visible">

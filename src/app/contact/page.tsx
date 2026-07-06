@@ -59,7 +59,7 @@ export default function ContactPage() {
       <div className="px-6 py-16">
         <div className="mx-auto grid max-w-6xl gap-12 sm:grid-cols-2">
           <div>
-            <h2 className="mb-8">Get in touch</h2>
+            <h2 className="mb-8 h2-heading">Get in touch</h2>
             <a
               href="mailto:designsbypavel@gmail.com"
               className="inline-flex items-center gap-3 text-lg font-medium hover:underline"
