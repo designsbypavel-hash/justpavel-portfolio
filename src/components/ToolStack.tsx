@@ -34,7 +34,7 @@ export default function ToolStack() {
       <p className="mb-12 max-w-2xl text-white/55 leading-relaxed">
         AI has automated a lot of surface-level design work, so now the value lies in systems
         thinking and the ability to translate complexity into clarity. I am constantly exploring
-        and mastering new tools — here&rsquo;s my current rotation.
+        and mastering new tools. Here&rsquo;s my current rotation.
       </p>
 
       <div className="group relative overflow-hidden">

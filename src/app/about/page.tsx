@@ -40,10 +40,10 @@ export default function AboutPage() {
             Hi, I&rsquo;m Pavel. I turn complexity into products people actually understand.
           </h1>
           <p className="mb-12 max-w-2xl text-lg leading-relaxed text-white/55">
-            I&rsquo;m a <strong className="font-semibold text-white">Senior Product Designer</strong> who works end-to-end — from messy discovery to shipped product. With{" "}
+            I&rsquo;m a <strong className="font-semibold text-white">Senior Product Designer</strong> who works end-to-end, from messy discovery to shipped product. With{" "}
             <strong className="font-semibold text-white">8 years across AI, enterprise SaaS, and consumer mobile</strong>, I bring both systems thinking and a relentless eye for detail.
             At AWTG I&rsquo;ve led UX across two AI platforms. At SonyLIV I worked on a design system reaching{" "}
-            <strong className="font-semibold text-white">350M+ users</strong>. Today I build with AI tools and ship fast — this site was built with Claude Code.
+            <strong className="font-semibold text-white">350M+ users</strong>. Today I build with AI tools and ship fast. This site was built with Claude Code.
           </p>
 
           {/* Full-width photo */}
@@ -66,14 +66,14 @@ export default function AboutPage() {
           <div className="space-y-4 text-white/65 leading-relaxed">
             <p>
               Good design isn't just a clean layout. It's simplifying complex problems, giving
-              information clear structure, and building something people understand at a glance —
+              information clear structure, and building something people understand at a glance,
               whether that's an AI platform, an enterprise SaaS workflow, or a conversion-focused
               mobile journey.
             </p>
             <p>
               Design doesn't happen in a vacuum. There's usually an existing backend, a tight
               timeline, incomplete information, or a product direction that's still evolving.
-              Working well inside those constraints — not around them — is most of the job.
+              Working well inside those constraints, not around them, is most of the job.
             </p>
             <p>
               I care about accessible, scalable design, not just beautiful screens.
@@ -88,7 +88,7 @@ export default function AboutPage() {
         {/* From My Lens */}
         <div>
           <h2 className="mb-2 uppercase">From My Lens</h2>
-          <p className="mb-10 text-white/45 text-sm">I notice patterns, details, and flow — in cities, spaces, and products.</p>
+          <p className="mb-10 text-white/45 text-sm">I notice patterns, details, and flow in cities, spaces, and products.</p>
         </div>
         <LensGallery photos={lensPhotos} />
 
