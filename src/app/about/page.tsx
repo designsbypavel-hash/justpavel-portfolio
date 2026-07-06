@@ -1,8 +1,8 @@
 import Image from "next/image";
 import type { Metadata } from "next";
-import type { CSSProperties } from "react";
 import Testimonials from "@/components/Testimonials";
 import ToolStack from "@/components/ToolStack";
+import LensGallery from "@/components/LensGallery";
 
 export const metadata: Metadata = {
   title: "About | Pavel",
@@ -159,26 +159,7 @@ export default function AboutPage() {
         <div className="mb-24">
           <h2 className="mb-2 uppercase">From My Lens</h2>
           <p className="mb-10 text-white/45 text-sm">I notice patterns, details, and flow — in cities, spaces, and products.</p>
-          <div className="group relative overflow-hidden">
-            <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-black to-transparent sm:w-24" />
-            <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-black to-transparent sm:w-24" />
-            <div className="marquee-track flex w-max gap-6 pb-4 [animation-duration:32s] group-hover:[animation-play-state:paused]">
-              {[...lensPhotos, ...lensPhotos].map((photo, i) => (
-                <figure
-                  key={`${photo.caption}-${i}`}
-                  className="shrink-0 rotate-(--tilt) rounded-sm bg-white p-2 pb-4 shadow-[0_15px_30px_-10px_rgba(0,0,0,0.6)]"
-                  style={{ "--tilt": `${i % 2 === 0 ? "-2deg" : "2deg"}` } as CSSProperties}
-                >
-                  <div className="relative h-44 w-36 overflow-hidden sm:h-52 sm:w-44">
-                    <Image src={photo.src} alt={photo.caption} fill className="object-cover" />
-                  </div>
-                  <figcaption className="mt-2 max-w-36 text-center text-xs text-black/70 sm:max-w-44">
-                    {photo.caption}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-          </div>
+          <LensGallery photos={lensPhotos} />
         </div>
 
         {/* Testimonials */}
