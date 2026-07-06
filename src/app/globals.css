@@ -109,19 +109,19 @@ p, span, a, li, label, input, textarea, button {
 .text-body {
   font-size: 1rem;
   line-height: 1.65;
-  font-weight: 400;
+  font-weight: 450;
 }
 
 .text-small {
   font-size: 0.875rem;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 450;
 }
 
 .text-caption {
   font-size: 0.75rem;
   line-height: 1.4;
-  font-weight: 400;
+  font-weight: 450;
   letter-spacing: 0.04em;
 }
 
