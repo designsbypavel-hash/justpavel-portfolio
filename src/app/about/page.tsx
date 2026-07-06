@@ -9,52 +9,6 @@ export const metadata: Metadata = {
   description: "Senior Product Designer in London, 7+ years across B2B SaaS and B2C mobile.",
 };
 
-const experience = [
-  {
-    company: "AWTG",
-    role: "Senior Product Designer",
-    period: "Oct 2024 – Present",
-    location: "London, UK",
-    summary:
-      "Leading UX across two enterprise AI platforms. Reduced design-to-dev cycle time by 20% through AI-assisted workflows, rebuilt a WCAG-compliant design system, and improved task completion through usability testing.",
-  },
-  {
-    company: "Flatlay",
-    role: "Product Designer",
-    period: "Oct 2021 – Oct 2024",
-    location: "Los Angeles (Remote)",
-    summary:
-      "Led end-to-end design for a consumer app from zero. Drove adoption to 5,000+ downloads and reduced bounce rate by 82%. Mentored junior designers and shipped across web and mobile.",
-  },
-  {
-    company: "SonyLIV",
-    role: "Product Designer",
-    period: "Jul 2020 – Oct 2021",
-    location: "Mumbai, India",
-    summary:
-      "Contributed to a cross-platform design system serving 350M+ users across web, TV, and mobile. Redesigned core experiences that increased engagement by 64%.",
-  },
-  {
-    company: "HighRadius",
-    role: "Product Designer",
-    period: "Mar 2019 – Jul 2020",
-    location: "Hyderabad, India",
-    summary:
-      "Designed AI-powered fintech workflows that improved receivables recovery by 75%. Conducted user research and worked closely with Finance stakeholders to simplify complex enterprise processes.",
-  },
-];
-
-const skills = [
-  "Product UX/UI",
-  "Design Systems",
-  "0-to-1 Discovery",
-  "Prototyping",
-  "AI-Powered Workflows",
-  "Cross-Functional Collaboration",
-  "Usability Testing",
-  "Information Architecture",
-  "Accessibility (WCAG)",
-];
 
 
 const lensPhotos = [
@@ -128,34 +82,6 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Experience */}
-        <div className="mb-24">
-          <h2 className="mb-8 uppercase">Experience</h2>
-          <div className="flex flex-col gap-8">
-            {experience.map((job) => (
-              <div key={job.company} className="border-l border-white/10 pl-6">
-                <div className="mb-1 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <span className="font-semibold text-white">{job.company}</span>
-                  <span className="text-sm text-white/45">{job.role}</span>
-                </div>
-                <div className="mb-3 text-xs text-white/30">{job.period} · {job.location}</div>
-                <p className="text-sm text-white/60 leading-relaxed">{job.summary}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Skills */}
-        <div className="mb-24">
-          <h2 className="mb-6 uppercase">Skills</h2>
-          <div className="flex flex-wrap gap-2">
-            {skills.map((skill) => (
-              <span key={skill} className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/65">
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
 
         {/* Tool Stack — full-width marquee */}
         <ToolStack />
