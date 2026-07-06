@@ -34,30 +34,27 @@ export default function AboutPage() {
       <div className="mx-auto max-w-3xl">
 
         {/* Hero */}
-        <div className="mb-24 grid gap-12 sm:grid-cols-[200px_1fr] sm:items-start">
-          <div className="relative aspect-square w-48 overflow-hidden rounded-2xl border border-white/10 sm:w-full">
+        <div className="mb-20">
+          <p className="mb-6 text-xs uppercase tracking-widest text-white/35">About</p>
+          <h1 className="mb-8 text-5xl font-bold leading-[1.08] sm:text-6xl lg:text-7xl">
+            Hi, I&rsquo;m Pavel. I turn complexity into products people actually understand.
+          </h1>
+          <p className="mb-12 max-w-2xl text-lg leading-relaxed text-white/55">
+            I&rsquo;m a <strong className="font-semibold text-white">Senior Product Designer</strong> who works end-to-end — from messy discovery to shipped product. With{" "}
+            <strong className="font-semibold text-white">8 years across AI, enterprise SaaS, and consumer mobile</strong>, I bring both systems thinking and a relentless eye for detail.
+            At AWTG I&rsquo;ve led UX across two AI platforms. At SonyLIV I worked on a design system reaching{" "}
+            <strong className="font-semibold text-white">350M+ users</strong>. Today I build with AI tools and ship fast — this site was built with Claude Code.
+          </p>
+
+          {/* Full-width photo */}
+          <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: "16/9" }}>
             <Image
               src="/site-assets/about-lens/headshot-new.jpg"
               alt="Pavel"
               fill
-              className="object-cover"
+              className="object-cover object-top"
               priority
             />
-          </div>
-          <div>
-            <h1 className="mb-5 text-3xl font-bold leading-tight sm:text-4xl">
-              I turn complex problems into products that feel effortless.
-            </h1>
-            <p className="text-white/65 leading-relaxed">
-              Senior Product Designer with 8 years across AI, SaaS, and enterprise — based in London.
-              MSc in Human-Computer Interaction from the University of York. I work end-to-end: research,
-              systems thinking, prototyping, and close collaboration with PMs and engineers until
-              the thing ships.
-            </p>
-            <div className="mt-6 flex items-center gap-2 text-sm text-white/40">
-              <span>📍</span>
-              <span>London, UK · Open to opportunities</span>
-            </div>
           </div>
         </div>
 
