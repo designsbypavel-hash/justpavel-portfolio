@@ -18,7 +18,7 @@ export default function WorksPage() {
         <div className="space-y-16">
           {projects.map((project) => (
             <FadeInSection key={project.slug}>
-              <ProjectCard project={project} titleAs="h2" />
+              <ProjectCard project={project} titleAs="h3" />
             </FadeInSection>
           ))}
         </div>
