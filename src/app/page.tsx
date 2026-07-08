@@ -33,7 +33,7 @@ const mentoringOffers = [
 ];
 
 const stats = [
-  { value: "450+", label: "Total mentoring time" },
+  { value: "450h+", label: "Total mentoring time" },
   { value: "15+", label: "Sessions completed" },
   { value: "100%", label: "Average attendance" },
 ];
