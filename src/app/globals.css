@@ -46,7 +46,7 @@ h1 {
 /* Section label — "ABOUT", "WORK", "TOOL STACK" (all h2s are uppercase labels) */
 h2 {
   font-weight: 500;
-  font-size: 0.8125rem; /* 13px */
+  font-size: 1rem; /* 16px */
   line-height: 1.2;
   letter-spacing: 0.14em;
   text-transform: uppercase;
