@@ -59,6 +59,7 @@ export type Project = {
   title: string;
   description: string;
   category: string;
+  readTime?: string;
   tags: string[];
   image: string;
   galleryImages: string[];
@@ -100,6 +101,7 @@ export const projects: Project[] = [
     description:
       "Kai is a no-code AI agent platform that enables businesses to create, train, and deploy AI assistants without technical expertise.",
     category: "B2B SaaS",
+    readTime: "8 min",
     tags: ["AI", "Enterprise", "Validation", "Governance"],
     image: "/site-assets/ai-control-layer.png",
     galleryImages: [
@@ -395,6 +397,7 @@ export const projects: Project[] = [
     description:
       "SonyLIV's checkout needed to support India's diverse payment habits, without sacrificing speed or trust.",
     category: "B2C Mobile",
+    readTime: "6 min",
     tags: ["Payments", "Checkout", "Conversion Optimization"],
     image: "/site-assets/sonyliv-checkout.jpg",
     galleryImages: [
@@ -606,6 +609,7 @@ export const projects: Project[] = [
     description:
       "Redesigned the core collections workflow so AR analysts could act faster, combining AI insights, in-app calling, automated summaries, and a structured follow-up system.",
     category: "B2B SaaS",
+    readTime: "7 min",
     tags: ["AI", "Fintech", "Collections", "Workflow"],
     image: "/site-assets/ai-fintech-collections.jpg",
     galleryImages: [
@@ -684,6 +688,7 @@ export const projects: Project[] = [
     description:
       "SonyLIV was growing fast, but subscription conversions weren't scaling at the same pace. Redesigned the plan selection → payment journey to reduce confusion and increase purchase confidence.",
     category: "B2C Mobile",
+    readTime: "5 min",
     tags: ["Subscriptions", "Conversion", "UX"],
     image: "/site-assets/sonyliv-subscription.jpg",
     galleryImages: [
@@ -751,6 +756,7 @@ export const projects: Project[] = [
     description:
       "Search is the gateway to discovering Originals, Live Sports, Movies, and TV Shows for 350M+ users. The legacy search experience created friction finding relevant results.",
     category: "B2C Mobile",
+    readTime: "6 min",
     tags: ["Search", "Discovery", "Streaming"],
     image: "/site-assets/sonyliv-search.jpg",
     galleryImages: [

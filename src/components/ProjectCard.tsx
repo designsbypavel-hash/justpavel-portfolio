@@ -36,12 +36,12 @@ export default function ProjectCard({
           />
         </GlowCard>
         <div>
-          <span className="mb-2 inline-block text-xs uppercase tracking-widest text-white/50">
-            {project.category}
-          </span>
           <TitleTag className="mb-2 text-2xl font-semibold transition-colors duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-white/80">
             {project.title}
           </TitleTag>
+          {project.readTime && (
+            <p className="mb-3 text-sm text-white/40">{project.readTime} read</p>
+          )}
           <p className="mb-4 text-white/60">{project.description}</p>
           <div className="flex flex-wrap gap-2">
             {project.tags.map((tag) => (
