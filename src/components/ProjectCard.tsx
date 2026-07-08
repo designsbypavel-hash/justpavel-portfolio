@@ -36,7 +36,7 @@ export default function ProjectCard({
           />
         </GlowCard>
         <div>
-          <span className="mb-2 inline-block uppercase tracking-widest text-white/50" style={{ fontSize: "2rem" }}>
+          <span className="mb-2 inline-block text-xs uppercase tracking-widest text-white/50">
             {project.category}
           </span>
           <TitleTag className="mb-2 text-2xl font-semibold transition-colors duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-white/80">
