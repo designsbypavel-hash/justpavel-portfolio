@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: "Design Mentoring — Pavel Mondal",
     description: "1-to-1 mentoring for designers: portfolio storytelling, interview prep, and AI workflows.",
     url: "https://www.justpaveldesign.com/mentoring",
-    images: [{ url: "/site-assets/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.justpaveldesign.com/site-assets/og-image.png", width: 1200, height: 630 }],
   },
 };
 

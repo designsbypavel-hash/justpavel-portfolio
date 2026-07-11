@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description:
       "8 years across AI platforms, B2B SaaS, and B2C mobile. Led UX at AWTG and SonyLIV, reaching 350M+ users.",
     url: "https://www.justpaveldesign.com/about",
-    images: [{ url: "/site-assets/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.justpaveldesign.com/site-assets/og-image.png", width: 1200, height: 630 }],
   },
 };
 

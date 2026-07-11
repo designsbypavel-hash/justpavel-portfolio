@@ -44,7 +44,7 @@ export const metadata: Metadata = {
       "Senior Product Designer in London specialising in AI-first B2B SaaS and high-conversion B2C mobile experiences. 8 years across enterprise and consumer products.",
     images: [
       {
-        url: "/site-assets/og-image.png",
+        url: "https://www.justpaveldesign.com/site-assets/og-image.png",
         width: 1200,
         height: 630,
         alt: "Pavel Mondal — Senior Product Designer, London",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     title: "Pavel Mondal — Senior Product Designer, London",
     description:
       "Senior Product Designer in London specialising in AI-first B2B SaaS and high-conversion B2C mobile experiences.",
-    images: ["/site-assets/og-image.png"],
+    images: ["https://www.justpaveldesign.com/site-assets/og-image.png"],
     creator: "@justpaveldesign",
   },
   alternates: {

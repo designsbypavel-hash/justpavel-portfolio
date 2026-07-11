@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: "Work — Pavel Mondal, Product Designer",
     description: "Product design case studies covering AI platforms, enterprise SaaS, and B2C mobile.",
     url: "https://www.justpaveldesign.com/works",
-    images: [{ url: "/site-assets/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.justpaveldesign.com/site-assets/og-image.png", width: 1200, height: 630 }],
   },
 };
 

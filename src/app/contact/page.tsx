@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "Contact Pavel Mondal — Product Designer",
     description: "Open to product design projects, mentoring, and speaking about AI-first design.",
     url: "https://www.justpaveldesign.com/contact",
-    images: [{ url: "/site-assets/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "https://www.justpaveldesign.com/site-assets/og-image.png", width: 1200, height: 630 }],
   },
 };
 

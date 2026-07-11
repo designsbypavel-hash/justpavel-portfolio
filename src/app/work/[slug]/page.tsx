@@ -42,7 +42,7 @@ export async function generateMetadata({
       description: project.description,
       url: `https://www.justpaveldesign.com/work/${slug}`,
       type: "article",
-      images: [{ url: project.image, width: 1200, height: 630, alt: project.title }],
+      images: [{ url: `https://www.justpaveldesign.com${project.image}`, width: 1200, height: 630, alt: project.title }],
     },
   };
 }
