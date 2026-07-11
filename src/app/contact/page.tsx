@@ -2,8 +2,15 @@ import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact | Pavel",
-  description: "Get in touch about your project.",
+  title: "Contact",
+  description: "Get in touch with Pavel Mondal — open to product design projects, mentoring, and speaking about AI-first design.",
+  alternates: { canonical: "https://www.justpaveldesign.com/contact" },
+  openGraph: {
+    title: "Contact Pavel Mondal — Product Designer",
+    description: "Open to product design projects, mentoring, and speaking about AI-first design.",
+    url: "https://www.justpaveldesign.com/contact",
+    images: [{ url: "/site-assets/og-image.png", width: 1200, height: 630 }],
+  },
 };
 
 const topics = [

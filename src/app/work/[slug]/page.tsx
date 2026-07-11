@@ -34,8 +34,16 @@ export async function generateMetadata({
   const project = getProjectBySlug(slug);
   if (!project) return {};
   return {
-    title: `${project.title} | Pavel`,
+    title: project.title,
     description: project.description,
+    alternates: { canonical: `https://www.justpaveldesign.com/work/${slug}` },
+    openGraph: {
+      title: `${project.title} — Pavel Mondal`,
+      description: project.description,
+      url: `https://www.justpaveldesign.com/work/${slug}`,
+      type: "article",
+      images: [{ url: project.image, width: 1200, height: 630, alt: project.title }],
+    },
   };
 }
 

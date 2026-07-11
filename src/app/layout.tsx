@@ -8,30 +8,60 @@ import JarvisChat from "@/components/JarvisChat";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.justpaveldesign.com"),
   robots: {
-    index: false,
-    follow: false,
-    nocache: true,
+    index: true,
+    follow: true,
     googleBot: {
-      index: false,
-      follow: false,
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
-  title: "Pavel - Product Designer and YouTuber",
+  title: {
+    default: "Pavel Mondal — Senior Product Designer, London",
+    template: "%s | Pavel Mondal",
+  },
   description:
-    "I'm a London-based Product Designer building AI-first B2B SaaS and high-conversion B2C mobile experiences. I also share design process and AI workflows on YouTube.",
+    "Senior Product Designer in London specialising in AI-first B2B SaaS and high-conversion B2C mobile experiences. 8 years across enterprise and consumer products.",
+  keywords: [
+    "Product Designer London",
+    "UX Designer London",
+    "Senior Product Designer",
+    "AI product design",
+    "B2B SaaS design",
+    "mobile UX design",
+    "Pavel Mondal",
+  ],
+  authors: [{ name: "Pavel Mondal", url: "https://www.justpaveldesign.com" }],
+  creator: "Pavel Mondal",
   openGraph: {
     type: "website",
-    title: "Pavel - Product Designer and YouTuber",
+    url: "https://www.justpaveldesign.com",
+    siteName: "Pavel Mondal — Product Designer",
+    title: "Pavel Mondal — Senior Product Designer, London",
     description:
-      "I'm a London-based Product Designer building AI-first B2B SaaS and high-conversion B2C mobile experiences. I also share design process and AI workflows on YouTube.",
-    images: ["/site-assets/og-image.png"],
+      "Senior Product Designer in London specialising in AI-first B2B SaaS and high-conversion B2C mobile experiences. 8 years across enterprise and consumer products.",
+    images: [
+      {
+        url: "/site-assets/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Pavel Mondal — Senior Product Designer, London",
+      },
+    ],
+    locale: "en_GB",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pavel - Product Designer and YouTuber",
+    title: "Pavel Mondal — Senior Product Designer, London",
     description:
-      "I'm a London-based Product Designer building AI-first B2B SaaS and high-conversion B2C mobile experiences. I also share design process and AI workflows on YouTube.",
+      "Senior Product Designer in London specialising in AI-first B2B SaaS and high-conversion B2C mobile experiences.",
     images: ["/site-assets/og-image.png"],
+    creator: "@justpaveldesign",
+  },
+  alternates: {
+    canonical: "https://www.justpaveldesign.com",
   },
 };
 
@@ -50,6 +80,25 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Pavel Mondal",
+            url: "https://www.justpaveldesign.com",
+            jobTitle: "Senior Product Designer",
+            description:
+              "Senior Product Designer in London specialising in AI-first B2B SaaS and high-conversion B2C mobile experiences.",
+            address: { "@type": "PostalAddress", addressLocality: "London", addressCountry: "GB" },
+            sameAs: [
+              "https://www.youtube.com/@justpaveldesign",
+              "https://adplist.org/mentors/pavel-mondal",
+            ],
+          }),
+        }}
+      />
       <body className="min-h-full flex flex-col bg-black text-white" style={{ fontFamily: "'Google Sans Flex', 'Google Sans', system-ui, sans-serif", fontWeight: 450 }}>
         <StarfieldBackground />
         <div className="relative z-10 flex min-h-full flex-1 flex-col">

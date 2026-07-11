@@ -5,8 +5,17 @@ import ToolStack from "@/components/ToolStack";
 import LensGallery from "@/components/LensGallery";
 
 export const metadata: Metadata = {
-  title: "About | Pavel",
-  description: "Senior Product Designer in London, 7+ years across B2B SaaS and B2C mobile.",
+  title: "About",
+  description:
+    "Senior Product Designer in London with 8 years across AI platforms, B2B SaaS, and B2C mobile. Led UX at AWTG and SonyLIV, reaching 350M+ users.",
+  alternates: { canonical: "https://www.justpaveldesign.com/about" },
+  openGraph: {
+    title: "About Pavel Mondal — Senior Product Designer",
+    description:
+      "8 years across AI platforms, B2B SaaS, and B2C mobile. Led UX at AWTG and SonyLIV, reaching 350M+ users.",
+    url: "https://www.justpaveldesign.com/about",
+    images: [{ url: "/site-assets/og-image.png", width: 1200, height: 630 }],
+  },
 };
 
 

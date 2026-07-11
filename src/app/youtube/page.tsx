@@ -3,8 +3,15 @@ import type { Metadata } from "next";
 import CTASection from "@/components/CTASection";
 
 export const metadata: Metadata = {
-  title: "Youtube | Pavel",
-  description: "Videos on AI tools, design workflows, and product design practice.",
+  title: "YouTube",
+  description: "Pavel Mondal on YouTube — videos on AI tools for designers, UX workflows, and product design practice.",
+  alternates: { canonical: "https://www.justpaveldesign.com/youtube" },
+  openGraph: {
+    title: "YouTube — Pavel Mondal, Product Designer",
+    description: "Videos on AI tools for designers, UX workflows, and product design practice.",
+    url: "https://www.justpaveldesign.com/youtube",
+    images: [{ url: "/site-assets/og-image.png", width: 1200, height: 630 }],
+  },
 };
 
 const videos = [

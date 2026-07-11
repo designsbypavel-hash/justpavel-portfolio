@@ -4,9 +4,16 @@ import CTASection from "@/components/CTASection";
 import FadeInSection from "@/components/FadeInSection";
 
 export const metadata: Metadata = {
-  title: "Mentoring | Pavel",
+  title: "Mentoring",
   description:
-    "Mentoring for designers who want real progress: portfolio storytelling, interview prep, and practical AI workflows.",
+    "1-to-1 design mentoring by Pavel Mondal — portfolio storytelling, UX interview prep, and practical AI workflows for designers. Book on ADPList.",
+  alternates: { canonical: "https://www.justpaveldesign.com/mentoring" },
+  openGraph: {
+    title: "Design Mentoring — Pavel Mondal",
+    description: "1-to-1 mentoring for designers: portfolio storytelling, interview prep, and AI workflows.",
+    url: "https://www.justpaveldesign.com/mentoring",
+    images: [{ url: "/site-assets/og-image.png", width: 1200, height: 630 }],
+  },
 };
 
 const mentoringOffers = [
