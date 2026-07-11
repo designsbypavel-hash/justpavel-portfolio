@@ -97,9 +97,9 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "agent-ai",
-    title: "Designing the control layer for enterprise AI agents",
+    title: "How do you trust an AI assistant before it goes live?",
     description:
-      "Kai is a no-code AI agent platform that enables businesses to create, train, and deploy AI assistants without technical expertise.",
+      "Businesses wanted to use Kai to handle customer support. But they had no way to check if it was ready before switching it on. I designed the solution.",
     category: "B2B SaaS",
     readTime: "8 min",
     tags: ["AI", "Enterprise", "Validation", "Governance"],
@@ -125,34 +125,34 @@ export const projects: Project[] = [
       { function: "Engineering", members: "3 Engineers" },
     ],
     keyInsight: {
-      title: "Capability was never the problem, risk was",
+      title: "The AI worked. Nobody could verify that before going live.",
       image: "/site-assets/case-studies/agent-ai/img-01.png",
       description:
-        "Every enterprise evaluation turned to the same question, in some form, in 8 of 8 interviews: what happens when Kai gets it wrong, and who's accountable? Teams weren't worried Kai couldn't do the job. They were worried they'd find out it couldn't in front of a customer.",
+        "In 8 out of 8 sales meetings, the same question came up: \"What happens when Kai gets it wrong — and who is accountable?\" Companies weren't asking whether the AI could do the job. They were asking how they'd know before it was too late.",
     },
     opportunity:
-      "The opportunity wasn't another AI capability, it was removing the validation gap that had stalled 3 of 4 active enterprise prospects at the exact same point. Every competing AI platform treated testing as a separate, privileged activity bolted on for a demo, not something woven into daily configuration work, which made a persistent, no-redeploy Playground the highest-leverage fix available: it unblocked deals already in late-stage pipeline rather than competing for attention with platform-wide features.",
+      "The gap wasn't a missing feature. It was a missing sense of safety. Every competing platform treated testing as something you did in a separate environment before a demo — not something built into the daily setup experience. Giving teams a way to test changes the moment they made them, without involving engineering, was the highest-impact thing we could build.",
     hypothesis: {
       weBelieved:
-        "Enterprise buyers were stalling on AI agent adoption not because of capability gaps, but because of unvalidated risk: they couldn't answer 'what happens when it gets it wrong' before going live.",
+        "Companies weren't afraid of AI. They were afraid of finding out it didn't work in front of a real customer. Give teams a safe way to check before going live, and they'll move forward with confidence.",
       ifWe:
-        "we gave config teams a persistent, no-redeploy testing surface embedded in every configuration tab,",
+        "we built a live test window directly into the setup experience — visible every time someone made a change —",
       then:
-        "deal velocity and trainer confidence would increase,",
+        "teams would feel confident going live, and stalled deals would move forward,",
       because:
-        "risk would become something teams could observe and resolve themselves rather than discover in production.",
+        "the answer to 'what happens when it gets it wrong?' would no longer be 'we find out when a customer tells us.'",
       risks: [
-        "Teams might still not trust self-tested results without third-party sign-off.",
-        "A testing surface available everywhere could become noise if not scoped to where regressions actually originate.",
+        "Teams might feel they need a third party to sign off on test results, not trusting their own findings.",
+        "A test window available everywhere could be ignored if it isn't surfaced at the right moments.",
       ],
     },
     designPrinciples: [
-      "Trust over automation speed: users will trade setup time for confidence in where a response came from.",
-      "Test at the point of change, not after deployment: regressions caught in the Playground, not in front of a customer.",
-      "No save cycle, no redeploy: friction at the moment of testing kills the behaviour you're trying to encourage.",
-      "Access is a trust model, not a feature toggle: five roles needed five different reasons to be in the same space safely.",
-      "Outcome-first language over AI terminology: meet users where their mental model already is.",
-      "Make risk observable, not theoretical: 'what happens when it's wrong' needs a real, safe place to find out.",
+      "Let people check before they commit: a test window right next to every setting removes the fear of going live.",
+      "Catch problems where they're made, not where they land: a bad change should show up in testing, not in a customer conversation.",
+      "No extra steps: if testing requires saving, reloading, or filing a ticket, people won't do it.",
+      "Different people, different trust levels: a trainer uploading content and a manager approving go-live need different access, for good reasons.",
+      "Talk like the person using it: avoid AI jargon. Say what happens, not how it works under the hood.",
+      "Make 'what if it goes wrong?' a question you can answer, not one you dread.",
     ],
     designPrinciplesImage: "/site-assets/case-studies/agent-ai/img-05.png",
     teamsHelped: [
@@ -201,129 +201,128 @@ export const projects: Project[] = [
       "LLM usage cost had to scale sustainably across many customer accounts, not just one pilot.",
     ],
     stats: [
-      { value: "22%", label: "AI containment uplift" },
-      { value: "45s", label: "Average handle time" },
-      { value: "250k+", label: "Monthly sessions" },
+      { value: "22%", label: "More queries resolved by AI after launch" },
+      { value: "45s", label: "Average time to handle a customer query" },
+      { value: "250k+", label: "Test sessions run every month" },
     ],
     tldrProblem:
-      "Enterprise teams couldn't test Kai before going live. Every validation required engineering, a separate environment, or putting AI in front of customers and seeing what happened.",
+      "Businesses wanted to use Kai to handle customer support — but had no way to check if it was ready before switching it on. Every test required engineers, a separate environment, or going live and hoping for the best.",
     tldrWhatIDid:
-      "Designed a persistent Playground embedded beside every config tab, so teams could change instructions, training data, or rules and immediately see the effect, with no save cycle and no redeploy.",
+      "Designed a live test window built into every part of the setup experience. Make a change, see exactly how the assistant responds — right there, before anything goes live. No engineering needed.",
     tldrImpact:
-      "Buyers stopped asking 'can it do the job?' and started asking better questions, because they could find out for themselves. The Playground became the answer to 'what happens when it gets it wrong?'",
+      "Companies that had paused because they couldn't verify the AI moved forward. The question changed from 'what if it gets it wrong?' to 'let me check right now.'",
     context: [
       {
-        heading: "Why We Built Kai",
+        heading: "What is Kai?",
         paragraphs: [
-          "Kai is a no-code, agentic AI customer service platform that lets organisations deploy AI assistants without engineering effort: automating support, generating qualified leads, resolving common queries, integrating with existing systems (Salesforce, HubSpot, WhatsApp, Email), and escalating complex cases to a human. The goal was to improve customer experience while reducing operational cost.",
-          "Traditional chatbots relied on rigid decision trees and FAQs, so customers struggled to find accurate answers quickly, support teams burned time on repetitive questions, and chatbots couldn't qualify or route leads intelligently. Businesses also had no visibility into customer intent or sentiment, and updating chatbot content always required a technical team, which slowed the business down. Kai's answer was to let business users configure the assistant themselves while the platform handled triage, lead qualification, analytics, and omnichannel engagement.",
-          "The underlying idea was simple: most people don't want to search through pages of documentation, they want to ask a question in their own words and get a clear answer. Kai's job was to be that first line of support, answering common questions instantly and guiding users to the right next step, so a human only gets involved when the conversation actually needs one.",
+          "Kai is an AI assistant platform for businesses. Companies use it to set up a customer-facing chatbot — answering support questions, qualifying sales leads, and routing customers to the right team — without needing engineers to build it.",
+          "Think of it like hiring a customer service agent who never sleeps, handles thousands of conversations at once, and can be trained by the business team themselves — not the tech team.",
+          "Old-style chatbots followed rigid scripts and broke the moment a customer asked something unexpected. Kai understands natural language, learns from the company's own content, and knows when to hand off to a human.",
         ],
       },
       {
-        heading: "The Opportunity",
+        heading: "The Problem",
         image: "/site-assets/case-studies/agent-ai/img-06.png",
         paragraphs: [
-          "As AI adoption accelerated, many businesses wanted to leverage AI assistants to automate support, generate leads, and improve operational efficiency. However, existing solutions often required technical expertise, complex configuration, and engineering support.",
-          "Through stakeholder discussions and discovery activities, we identified a common challenge: users understood the outcomes they wanted from AI but struggled to understand how to create, train, and deploy AI assistants effectively.",
-          "The opportunity was not to build another AI platform. It was to make AI accessible, understandable, and actionable for non-technical users. The challenge became: how might we help businesses create and deploy AI assistants confidently without requiring technical expertise?",
+          "Companies were interested. But something kept stopping them from committing.",
+          "Whenever they made a change to the assistant — updated its instructions, added new content, adjusted how it handled certain questions — they had no way to see what effect that change would have before it went live.",
+          "The only option was to deploy it and see what happened. For someone responsible for customer satisfaction, that wasn't good enough.",
         ],
       },
       {
-        heading: "Research Finding",
+        heading: "What Research Showed",
         paragraphs: [
-          "Capability was never the problem, but perceived risk was. \"What happens when Kai gets it wrong?\" was said in some form in every enterprise evaluation session: 8 of 8 interviews.",
-          "I'd expected questions about accuracy benchmarks and resolution rates. Instead, every evaluation turned to failure. Not \"can Kai answer?\" but \"what happens when it gets it wrong, and who's accountable?\" They weren't worried Kai couldn't do the job; they were worried they'd find out it couldn't in front of a customer. Risk is a feeling before it's a fact.",
-          "Before, the only fallback was engineering-gated: ops spots a gap, files a ticket, a developer makes the change, with limited validation, or worse, deploy and find out, escalating only if it goes wrong. For a contact-centre ops manager accountable for CSAT, that was not an option.",
-          "3 of 4 active enterprise prospects had stalled at exactly this point. The AI worked. The product had no answer to \"can we test it before we go live?\"",
+          "I expected sales meetings to be about performance: accuracy rates, speed, resolution numbers. Instead, every meeting turned to the same question.",
+          "\"What happens when Kai gets it wrong — and who is accountable?\"",
+          "This came up in 8 out of 8 sessions. Not \"does it work?\" — they could see it worked. The question was: can we be sure before we put it in front of our customers?",
+          "3 out of 4 companies we were in advanced talks with had paused at exactly this point. The AI was fine. The product had no answer to 'can we check before going live?'",
         ],
       },
       {
-        heading: "Organisational Complexity",
+        heading: "Who Uses the Platform",
         image: "/site-assets/case-studies/agent-ai/img-02.png",
         paragraphs: [
-          "Five roles needed access to the same Playground for different reasons, with five different definitions of what \"trusted\" means. Designing it wasn't a UI problem. It was an organisational trust problem.",
+          "Five different types of people needed to use the same testing space — a trainer uploading new content, an ops manager reviewing responses, an IT admin controlling who can make changes, a viewer monitoring results, and a super admin overseeing everything.",
+          "Each of them had a different idea of what 'safe to test' and 'ready to go live' meant. The design had to work for all of them.",
         ],
       },
       {
-        heading: "Key Findings",
+        heading: "Three Things That Kept Coming Up in Research",
         paragraphs: [
-          "Research and stakeholder discussions revealed three recurring themes.",
-          "Insight 1: Users focused on business outcomes rather than AI terminology. Most participants understood what they wanted AI to accomplish but struggled with concepts such as models, prompts, knowledge bases, and agent configuration.",
-          "Insight 2: Trust mattered more than automation. Users were willing to spend more time setting up assistants if they felt confident about where information came from and how responses were generated.",
-          "Insight 3: Users wanted guidance rather than flexibility. While advanced configuration options were valuable, most participants preferred a structured workflow that reduced uncertainty and simplified decision-making.",
+          "People talked about what they needed the assistant to do — not how it worked underneath. They didn't care about the technology. They cared about the outcome.",
+          "They would happily spend more time on setup if they felt confident in the result. This wasn't about speed. It was about certainty.",
+          "Every time they updated something, they had no way to check what changed without going live. That single gap was the reason deals were stalling.",
         ],
       },
       {
-        heading: "Landscape",
+        heading: "What Every Competitor Was Missing",
         image: "/site-assets/case-studies/agent-ai/img-03.png",
         paragraphs: [
-          "Every enterprise AI platform had the same gap. The category pattern was clear: enterprise AI tools treated testing as a separate, privileged activity, something bolted on for a demo, not something woven into daily configuration work.",
+          "Every other AI platform treated testing as a separate activity — something you did in a different environment before a demo, not something built into daily use.",
+          "Nobody had made testing a natural part of the setup experience itself. That gap was the opportunity.",
         ],
       },
     ],
     decisions: [
       {
-        title: "Make the Playground available on every config tab, not just Instructions",
+        title: "The test window follows you everywhere — not just one screen",
         image: "/site-assets/case-studies/agent-ai/img-04.png",
-        why: "My first instinct was to scope the Playground to the Instructions tab. But training uploads, saved prompts, and completion criteria all affect Kai's responses. If the Playground isn't visible when those change, teams can't catch regressions there; they surface in production. AI Trainers needed immediate feedback when uploading knowledge documents; a bad upload only surfaced when a customer hit a wrong answer, days later.",
+        why: "My first instinct was to add the test window to just one part of the setup experience. But everything affects how the assistant responds — its instructions, the documents it learns from, its tone rules. A problem introduced in one place would be invisible if the test window wasn't there. I needed it to be present wherever a change could be made.",
         alternativesConsidered: [
-          "Instructions tab only: simpler to build, but misses training-quality checks entirely. A broken knowledge upload wouldn't be caught until a customer hit it.",
-          "A show/hide toggle per tab: adds a click of friction at exactly the moment teams most need immediate feedback after making a change.",
+          "One tab only: simpler to build, but a broken content upload wouldn't be caught until a customer hit it.",
+          "A toggle to show or hide it: adds an extra step at exactly the moment you most need immediate feedback.",
         ],
         whatChanged: [
-          "Playground persists across Details, Instructions, Training, and Prompts tabs",
-          "Same conversation thread as you navigate, so you test a full flow rather than one isolated response",
-          "Collapsed on smaller screens; always expanded on desktop where config work happens",
+          "The test window is visible across every setup screen — instructions, content, tone, and behaviour settings",
+          "The same conversation carries across screens, so you test a realistic flow, not a single isolated response",
+          "Compact on smaller screens; always open on desktop where setup work happens",
         ],
         result:
-          "AI Trainers tested knowledge quality. Ops tested escalation logic. Both in the same session without context switching. Training regressions were discovered at the point of change instead of after customer-facing impact.",
+          "Someone uploading new content could test it immediately. Someone adjusting the assistant's instructions could see the effect straight away. Problems were caught the moment they were introduced — not when a customer discovered them.",
         tradeOff:
-          "More engineering surface to keep one conversation thread persistent and in sync across four separate config tabs.",
+          "Keeping one live conversation thread in sync across multiple screens required more engineering work than a simpler, single-screen version would have.",
         businessReasoning:
-          "A bad knowledge upload only surfaces when a customer hits it. The cost of missing this regression was customer-facing, not internal, so the build cost was justified by the downside it prevented.",
+          "A broken content upload only surfaces when a customer hits it. The cost of missing that is a bad customer experience and a lost trust signal — far more expensive than the extra build effort.",
       },
       {
-        title: "Build a role-based permission model around the Playground itself",
+        title: "Different people get different levels of access — for good reasons",
         image: "/site-assets/case-studies/agent-ai/img-09.png",
-        why: "The Playground itself required a permission model. IT Admins needed control over who could run tests and who could push changes live.",
+        why: "Five types of people needed to use the same testing space, but for very different reasons. A trainer uploading content, a manager approving the assistant before launch, and an IT admin controlling who can make changes all need to be in the same place — but with different things visible and different things they're allowed to do.",
         whatChanged: [
-          "Roles defined directly from research were implemented: Super Admin, Admin, Operator, Trainer, Viewer",
-          "Access Management governs who can configure, test, and deploy",
+          "Five roles mapped directly from interviews: Super Admin, Admin, Operator, Trainer, Viewer",
+          "Each role sees and can do exactly what their job requires — nothing more",
         ],
         result:
-          "Testing became testable the moment a change was made, not after it was deployed, with the right people able to do the right things.",
+          "Everyone who needed to be involved in testing could be, without stepping on each other. The right person could test, the right person could approve, and the right person could lock things down.",
         tradeOff:
-          "Added a permission layer to a feature meant to remove friction, which risked reintroducing gatekeeping if scoped wrong.",
+          "Adding access rules to a feature designed to remove friction risked making it feel more complicated. Getting the role definitions right from the start was critical.",
         businessReasoning:
-          "Roles were defined directly from the five roles already named in evaluation sessions, not invented, so the permission model mapped to how teams actually worked rather than an abstract default that would need rework later.",
+          "The five roles came directly from the people I interviewed — they weren't invented. That meant the access model matched how teams actually worked, instead of being an abstract system they'd have to adapt to.",
       },
     ],
     businessImpact: [
       {
-        category: "Business impact",
+        category: "Deals moved forward",
         points: [
-          "Unblocked enterprise deals stalled at the validation question, 3 of 4 active prospects at the time were stuck at exactly this point.",
-          "22% AI containment uplift post-launch, once teams could validate before go-live.",
+          "3 out of 4 companies that had paused — all stuck at the same question — moved forward once they could test the assistant themselves before going live.",
         ],
       },
       {
-        category: "Customer impact",
+        category: "Better AI performance",
         points: [
-          "45s average handle time.",
-          "Trainers and Ops could test changes without filing an engineering ticket.",
+          "22% more customer queries resolved by the AI after launch, because teams could find and fix problems before going live instead of after.",
         ],
       },
       {
-        category: "Operational impact",
+        category: "Faster for customers",
         points: [
-          "Regression discovery moved from post-incident (customer hits a wrong answer) to point-of-change (caught in the Playground before going live).",
+          "Customer queries handled in 45 seconds on average. Teams could update the assistant's behaviour and test it themselves — no engineering ticket needed.",
         ],
       },
       {
-        category: "Product impact",
+        category: "A tool people actually use",
         points: [
-          "250k+ monthly sessions through the Playground itself, making it a genuinely used product surface rather than a checkbox feature.",
+          "250,000+ test sessions run every month. The test window became part of how teams work, not a feature they ignore.",
         ],
       },
     ],
@@ -358,35 +357,35 @@ export const projects: Project[] = [
     ],
     closingSections: [
       {
-        heading: "How the Playground Works Across Tabs",
+        heading: "How the Test Window Works in Practice",
         image: "/site-assets/case-studies/agent-ai/img-07.png",
         paragraphs: [
-          "Agent Config: model settings, language, style, and behaviour controls. Every dimension of the assistant's behaviour, from tone to escalation triggers, is immediately testable with no save cycle required.",
-          "Instructions: the most-used tab. Ops teams write the system prompt here and the Playground immediately shows the response. Change a word, see the effect, with no save cycle and no redeploy.",
-          "Training: knowledge uploads, source files, token limits. The Playground here is critical: a bad knowledge upload only shows up when a customer hits it. AI Trainers now upload a document and immediately test the most common failure scenarios before it goes live.",
+          "When someone updates the assistant's instructions — changing how it introduces itself, or how it handles a refund request — the test window shows the effect immediately. No saving. No refreshing. Just change and see.",
+          "When someone uploads a new document to train the assistant on, they can ask it questions about that document right away. A bad upload shows up in the test, not when a customer asks a question the assistant can't answer.",
+          "When someone adjusts the assistant's tone or the situations where it hands off to a human, the test window is right there to try it. Every screen, every change, same place to check.",
         ],
       },
       {
-        heading: "Impact",
+        heading: "What Changed in Sales Meetings",
         paragraphs: [
-          "Changed the buyer question, then the production numbers. The Playground's first measurable impact wasn't in the metrics. It was in the sales conversation, removing the single biggest blocker to enterprise deals closing.",
-          "22% AI containment uplift, 45 second average handle time, and 250k+ monthly sessions followed once teams could validate confidently before go-live.",
+          "The question 'what happens when it gets it wrong?' didn't go away. But the answer changed. Instead of 'we'll find out,' it became 'let me show you.'",
+          "Companies that had paused the deal could now see for themselves that changes were safe before going live. That shifted the conversation from risk to readiness.",
         ],
       },
       {
-        heading: "What's Next",
+        heading: "What I'd Build Next",
         paragraphs: [
-          "Automatic regression testing on config changes: right now testing is manual. After every training upload or instruction change, the saved scenario set should run automatically, flagging anything that changed before an ops manager even opens the Playground.",
-          "Shareable session links: currently one person tests and reports back. The AI Trainer who knows the edge cases and the Ops Manager who owns the KPIs need to review together, and a shareable session link would make pre-launch sign-off collaborative without a screen-share meeting.",
-          "A shared failure-pattern library: teams build their own scenario sets in isolation, but failure patterns repeat across enterprise accounts. A shared library built from anonymised cross-account failures would give every new account a head start on what to test for.",
+          "Automatic checks after every update: right now, testing is something a person has to remember to do. The next step is running a standard set of test scenarios automatically every time something changes — so problems are flagged before anyone has to go looking for them.",
+          "A way to test together: currently one person tests and reports back. But the person who knows the edge cases and the person who signs off on go-live are often different people. A shared test session would let both of them look at the same thing at the same time.",
+          "Shared examples across companies: teams build their own test scenarios from scratch. But the same types of problems come up again and again across different businesses. A library of common test cases — built from anonymised examples — would give new teams a head start.",
         ],
       },
       {
-        heading: "Reflection",
+        heading: "What I Learned",
         paragraphs: [
-          "Designing Kai taught me that successful AI experiences are not defined by the sophistication of the technology, but by how confidently the people responsible for it can answer the question: what happens when it gets it wrong?",
-          "I expected evaluation sessions to turn on accuracy benchmarks. They turned on accountability instead, every time. That gap between what I expected and what research actually surfaced is the clearest evidence the original framing (test the AI's capability) was wrong; the real product was a way to test trust.",
-          "The permission model was built reactively, after recognising the Playground itself needed governance. In hindsight, role-based access should have been scoped from day one alongside the testing surface itself, not bolted on once the gap became obvious.",
+          "I went into this project thinking the problem was about making the AI smarter. Research showed the problem was simpler: people had no way to check whether it was ready.",
+          "The solution wasn't a new AI feature. It was giving people a safe place to find out for themselves — before it mattered.",
+          "One thing I'd do differently: I added user access levels late in the process, once I realised different people needed different permissions. That should have been part of the design from day one — not something bolted on once the gap became obvious.",
         ],
       },
     ],
