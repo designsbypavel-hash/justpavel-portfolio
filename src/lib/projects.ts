@@ -131,7 +131,7 @@ export const projects: Project[] = [
         "In 8 out of 8 sales meetings, the same question came up: \"What happens when Kai gets it wrong, and who is accountable?\" Companies weren't asking whether the AI could do the job. They were asking how they'd know before it was too late.",
     },
     opportunity:
-      "The gap wasn't a missing feature. It was a missing sense of safety. Every competing platform treated testing as something you did in a separate environment before a demo. Nobody had built it into the daily setup experience. Giving teams a way to test changes the moment they made them, without involving engineering, was the highest-impact thing we could build.",
+      "If we give teams a safe way to simulate real customer conversations before going live, they will gain the confidence to commit, reduce the risk of deploying something broken, and adopt AI faster. The gap wasn't a missing AI feature. It was a missing sense of safety. Every competitor treated testing as something you did in a separate environment before a demo. Nobody had made it part of the daily setup experience. That was the opening.",
     hypothesis: {
       weBelieved:
         "Companies weren't afraid of AI. They were afraid of finding out it didn't work in front of a real customer. Give teams a safe way to check before going live, and they'll move forward with confidence.",
@@ -186,11 +186,9 @@ export const projects: Project[] = [
       "Multiple attempts have already failed, or a sales opportunity needs a human rep.",
     ],
     rejectedConcepts: [
-      "Rule-based decision-tree chatbots: too rigid for real conversations.",
-      "Static FAQ pages: low engagement, users still couldn't find the right answer.",
-      "Keyword-only search: low accuracy against natural-language questions.",
-      "Large menu-driven navigation: high cognitive load before reaching an answer.",
-      "Manual support-only workflows: not scalable past a small support team.",
+      "A separate testing environment: we considered keeping testing isolated, but that recreated the exact problem we were solving. Teams would still need to switch contexts, and the friction would mean they'd skip it.",
+      "A test button on the instructions screen only: simpler to build, but any change to training content or tone rules would be invisible. Problems introduced outside instructions would only surface in production.",
+      "A manual QA checklist before go-live: this puts the burden on teams to remember steps. Research showed people don't follow checklists under pressure. The test needed to be present at the moment of change, not at the end of a process.",
     ],
     constraints: [
       "The core tension throughout: give the AI enough capability to be genuinely useful, while keeping control, safety, and human escalation firmly in place.",
@@ -232,10 +230,10 @@ export const projects: Project[] = [
       {
         heading: "What Research Showed",
         paragraphs: [
-          "I expected sales meetings to be about performance: accuracy rates, speed, resolution numbers. Instead, every meeting turned to the same question.",
+          "We ran 8 interviews with customer support managers and operations leads at enterprise companies that were actively evaluating Kai. These were people responsible for customer satisfaction scores, not engineering or product. They were the ones who would own the outcome if the AI got it wrong.",
+          "I expected the sessions to be about performance: accuracy rates, speed, resolution numbers. Instead, every single meeting turned to the same question.",
           "\"What happens when Kai gets it wrong, and who is accountable?\"",
-          "This came up in 8 out of 8 sessions. They could see it worked. The question was: can we be sure before we put it in front of our customers?",
-          "3 out of 4 companies we were in advanced talks with had paused at exactly this point. The AI was fine. The product had no answer to 'can we check before going live?'",
+          "They could see the AI worked in the demo. The question was whether they could be sure before putting it in front of their own customers. 3 out of 4 companies in advanced talks had paused at exactly this point.",
         ],
       },
       {
@@ -356,6 +354,14 @@ export const projects: Project[] = [
       },
     ],
     closingSections: [
+      {
+        heading: "How We Got There",
+        paragraphs: [
+          "Before any high-fidelity work, I mapped the five roles on a whiteboard against what each person needed to do, what they needed to see, and what they should never be able to touch. That exercise exposed the permission model problem early, before it could become a late-stage design fix.",
+          "Early concepts were rough: one put the test window in a drawer that slid out from the right, which kept it accessible but made it feel like an afterthought. Another treated it as a full-page mode you had to navigate to, which added the exact friction we were trying to remove. The version that worked kept the test window anchored beside the config screen at all times, visible without being forced on you.",
+          "I tested three structural approaches with two ops leads before committing to the final layout. The insight that shifted everything: people didn't want to open a test window. They wanted testing to already be there when they looked up.",
+        ],
+      },
       {
         heading: "How the Test Window Works in Practice",
         image: "/site-assets/case-studies/agent-ai/img-07.png",
