@@ -128,15 +128,15 @@ export const projects: Project[] = [
       title: "The AI worked. Nobody could verify that before going live.",
       image: "/site-assets/case-studies/agent-ai/img-01.png",
       description:
-        "In 8 out of 8 sales meetings, the same question came up: \"What happens when Kai gets it wrong — and who is accountable?\" Companies weren't asking whether the AI could do the job. They were asking how they'd know before it was too late.",
+        "In 8 out of 8 sales meetings, the same question came up: \"What happens when Kai gets it wrong, and who is accountable?\" Companies weren't asking whether the AI could do the job. They were asking how they'd know before it was too late.",
     },
     opportunity:
-      "The gap wasn't a missing feature. It was a missing sense of safety. Every competing platform treated testing as something you did in a separate environment before a demo — not something built into the daily setup experience. Giving teams a way to test changes the moment they made them, without involving engineering, was the highest-impact thing we could build.",
+      "The gap wasn't a missing feature. It was a missing sense of safety. Every competing platform treated testing as something you did in a separate environment before a demo. Nobody had built it into the daily setup experience. Giving teams a way to test changes the moment they made them, without involving engineering, was the highest-impact thing we could build.",
     hypothesis: {
       weBelieved:
         "Companies weren't afraid of AI. They were afraid of finding out it didn't work in front of a real customer. Give teams a safe way to check before going live, and they'll move forward with confidence.",
       ifWe:
-        "we built a live test window directly into the setup experience — visible every time someone made a change —",
+        "we built a live test window directly into the setup experience, visible every time someone made a change,",
       then:
         "teams would feel confident going live, and stalled deals would move forward,",
       because:
@@ -206,17 +206,17 @@ export const projects: Project[] = [
       { value: "250k+", label: "Test sessions run every month" },
     ],
     tldrProblem:
-      "Businesses wanted to use Kai to handle customer support — but had no way to check if it was ready before switching it on. Every test required engineers, a separate environment, or going live and hoping for the best.",
+      "Businesses wanted to use Kai to handle customer support but had no way to check if it was ready before switching it on. Every test required engineers, a separate environment, or going live and hoping for the best.",
     tldrWhatIDid:
-      "Designed a live test window built into every part of the setup experience. Make a change, see exactly how the assistant responds — right there, before anything goes live. No engineering needed.",
+      "Designed a live test window built into every part of the setup experience. Make a change, see exactly how the assistant responds, right there before anything goes live. No engineering needed.",
     tldrImpact:
       "Companies that had paused because they couldn't verify the AI moved forward. The question changed from 'what if it gets it wrong?' to 'let me check right now.'",
     context: [
       {
         heading: "What is Kai?",
         paragraphs: [
-          "Kai is an AI assistant platform for businesses. Companies use it to set up a customer-facing chatbot — answering support questions, qualifying sales leads, and routing customers to the right team — without needing engineers to build it.",
-          "Think of it like hiring a customer service agent who never sleeps, handles thousands of conversations at once, and can be trained by the business team themselves — not the tech team.",
+          "Kai is an AI assistant platform for businesses. Companies use it to set up a customer-facing chatbot that answers support questions, qualifies sales leads, and routes customers to the right team, without needing engineers to build it.",
+          "Think of it like hiring a customer service agent who never sleeps, handles thousands of conversations at once, and can be trained by the business team themselves, not the tech team.",
           "Old-style chatbots followed rigid scripts and broke the moment a customer asked something unexpected. Kai understands natural language, learns from the company's own content, and knows when to hand off to a human.",
         ],
       },
@@ -225,7 +225,7 @@ export const projects: Project[] = [
         image: "/site-assets/case-studies/agent-ai/img-06.png",
         paragraphs: [
           "Companies were interested. But something kept stopping them from committing.",
-          "Whenever they made a change to the assistant — updated its instructions, added new content, adjusted how it handled certain questions — they had no way to see what effect that change would have before it went live.",
+          "Whenever they made a change to the assistant, whether updating its instructions, adding new content, or adjusting how it handled certain questions, they had no way to see what effect that change would have before it went live.",
           "The only option was to deploy it and see what happened. For someone responsible for customer satisfaction, that wasn't good enough.",
         ],
       },
@@ -233,8 +233,8 @@ export const projects: Project[] = [
         heading: "What Research Showed",
         paragraphs: [
           "I expected sales meetings to be about performance: accuracy rates, speed, resolution numbers. Instead, every meeting turned to the same question.",
-          "\"What happens when Kai gets it wrong — and who is accountable?\"",
-          "This came up in 8 out of 8 sessions. Not \"does it work?\" — they could see it worked. The question was: can we be sure before we put it in front of our customers?",
+          "\"What happens when Kai gets it wrong, and who is accountable?\"",
+          "This came up in 8 out of 8 sessions. They could see it worked. The question was: can we be sure before we put it in front of our customers?",
           "3 out of 4 companies we were in advanced talks with had paused at exactly this point. The AI was fine. The product had no answer to 'can we check before going live?'",
         ],
       },
@@ -242,14 +242,14 @@ export const projects: Project[] = [
         heading: "Who Uses the Platform",
         image: "/site-assets/case-studies/agent-ai/img-02.png",
         paragraphs: [
-          "Five different types of people needed to use the same testing space — a trainer uploading new content, an ops manager reviewing responses, an IT admin controlling who can make changes, a viewer monitoring results, and a super admin overseeing everything.",
+          "Five different types of people needed to use the same testing space: a trainer uploading new content, an ops manager reviewing responses, an IT admin controlling who can make changes, a viewer monitoring results, and a super admin overseeing everything.",
           "Each of them had a different idea of what 'safe to test' and 'ready to go live' meant. The design had to work for all of them.",
         ],
       },
       {
         heading: "Three Things That Kept Coming Up in Research",
         paragraphs: [
-          "People talked about what they needed the assistant to do — not how it worked underneath. They didn't care about the technology. They cared about the outcome.",
+          "People talked about what they needed the assistant to do, not how it worked underneath. They didn't care about the technology. They cared about the outcome.",
           "They would happily spend more time on setup if they felt confident in the result. This wasn't about speed. It was about certainty.",
           "Every time they updated something, they had no way to check what changed without going live. That single gap was the reason deals were stalling.",
         ],
@@ -258,53 +258,53 @@ export const projects: Project[] = [
         heading: "What Every Competitor Was Missing",
         image: "/site-assets/case-studies/agent-ai/img-03.png",
         paragraphs: [
-          "Every other AI platform treated testing as a separate activity — something you did in a different environment before a demo, not something built into daily use.",
+          "Every other AI platform treated testing as a separate activity. Something you did in a different environment before a demo, not something built into daily use.",
           "Nobody had made testing a natural part of the setup experience itself. That gap was the opportunity.",
         ],
       },
     ],
     decisions: [
       {
-        title: "The test window follows you everywhere — not just one screen",
+        title: "The test window follows you everywhere, not just one screen",
         image: "/site-assets/case-studies/agent-ai/img-04.png",
-        why: "My first instinct was to add the test window to just one part of the setup experience. But everything affects how the assistant responds — its instructions, the documents it learns from, its tone rules. A problem introduced in one place would be invisible if the test window wasn't there. I needed it to be present wherever a change could be made.",
+        why: "My first instinct was to add the test window to just one part of the setup experience. But everything affects how the assistant responds: its instructions, the documents it learns from, its tone rules. A problem introduced in one place would be invisible if the test window wasn't there. I needed it to be present wherever a change could be made.",
         alternativesConsidered: [
           "One tab only: simpler to build, but a broken content upload wouldn't be caught until a customer hit it.",
           "A toggle to show or hide it: adds an extra step at exactly the moment you most need immediate feedback.",
         ],
         whatChanged: [
-          "The test window is visible across every setup screen — instructions, content, tone, and behaviour settings",
-          "The same conversation carries across screens, so you test a realistic flow, not a single isolated response",
+          "The test window is visible across every setup screen: instructions, content, tone, and behaviour settings",
+          "The same conversation carries across screens, so you test a realistic flow rather than a single isolated response",
           "Compact on smaller screens; always open on desktop where setup work happens",
         ],
         result:
-          "Someone uploading new content could test it immediately. Someone adjusting the assistant's instructions could see the effect straight away. Problems were caught the moment they were introduced — not when a customer discovered them.",
+          "Someone uploading new content could test it immediately. Someone adjusting the assistant's instructions could see the effect straight away. Problems were caught the moment they were introduced, not when a customer discovered them.",
         tradeOff:
           "Keeping one live conversation thread in sync across multiple screens required more engineering work than a simpler, single-screen version would have.",
         businessReasoning:
-          "A broken content upload only surfaces when a customer hits it. The cost of missing that is a bad customer experience and a lost trust signal — far more expensive than the extra build effort.",
+          "A broken content upload only surfaces when a customer hits it. The cost of missing that is a bad customer experience and a lost trust signal. Far more expensive than the extra build effort.",
       },
       {
-        title: "Different people get different levels of access — for good reasons",
+        title: "Different people get different levels of access, for good reasons",
         image: "/site-assets/case-studies/agent-ai/img-09.png",
-        why: "Five types of people needed to use the same testing space, but for very different reasons. A trainer uploading content, a manager approving the assistant before launch, and an IT admin controlling who can make changes all need to be in the same place — but with different things visible and different things they're allowed to do.",
+        why: "Five types of people needed to use the same testing space, but for very different reasons. A trainer uploading content, a manager approving the assistant before launch, and an IT admin controlling who can make changes all need to be in the same place, but with different things visible and different things they're allowed to do.",
         whatChanged: [
           "Five roles mapped directly from interviews: Super Admin, Admin, Operator, Trainer, Viewer",
-          "Each role sees and can do exactly what their job requires — nothing more",
+          "Each role sees and can do exactly what their job requires, nothing more",
         ],
         result:
           "Everyone who needed to be involved in testing could be, without stepping on each other. The right person could test, the right person could approve, and the right person could lock things down.",
         tradeOff:
           "Adding access rules to a feature designed to remove friction risked making it feel more complicated. Getting the role definitions right from the start was critical.",
         businessReasoning:
-          "The five roles came directly from the people I interviewed — they weren't invented. That meant the access model matched how teams actually worked, instead of being an abstract system they'd have to adapt to.",
+          "The five roles came directly from the people I interviewed. They weren't invented. That meant the access model matched how teams actually worked, instead of being an abstract system they'd have to adapt to.",
       },
     ],
     businessImpact: [
       {
         category: "Deals moved forward",
         points: [
-          "3 out of 4 companies that had paused — all stuck at the same question — moved forward once they could test the assistant themselves before going live.",
+          "3 out of 4 companies that had paused, all stuck at the same question, moved forward once they could test the assistant themselves before going live.",
         ],
       },
       {
@@ -316,7 +316,7 @@ export const projects: Project[] = [
       {
         category: "Faster for customers",
         points: [
-          "Customer queries handled in 45 seconds on average. Teams could update the assistant's behaviour and test it themselves — no engineering ticket needed.",
+          "Customer queries handled in 45 seconds on average. Teams could update the assistant's behaviour and test it themselves. No engineering ticket needed.",
         ],
       },
       {
@@ -360,7 +360,7 @@ export const projects: Project[] = [
         heading: "How the Test Window Works in Practice",
         image: "/site-assets/case-studies/agent-ai/img-07.png",
         paragraphs: [
-          "When someone updates the assistant's instructions — changing how it introduces itself, or how it handles a refund request — the test window shows the effect immediately. No saving. No refreshing. Just change and see.",
+          "When someone updates the assistant's instructions, changing how it introduces itself or how it handles a refund request, the test window shows the effect immediately. No saving. No refreshing. Just change and see.",
           "When someone uploads a new document to train the assistant on, they can ask it questions about that document right away. A bad upload shows up in the test, not when a customer asks a question the assistant can't answer.",
           "When someone adjusts the assistant's tone or the situations where it hands off to a human, the test window is right there to try it. Every screen, every change, same place to check.",
         ],
@@ -375,17 +375,17 @@ export const projects: Project[] = [
       {
         heading: "What I'd Build Next",
         paragraphs: [
-          "Automatic checks after every update: right now, testing is something a person has to remember to do. The next step is running a standard set of test scenarios automatically every time something changes — so problems are flagged before anyone has to go looking for them.",
+          "Automatic checks after every update: right now, testing is something a person has to remember to do. The next step is running a standard set of test scenarios automatically every time something changes, so problems are flagged before anyone has to go looking for them.",
           "A way to test together: currently one person tests and reports back. But the person who knows the edge cases and the person who signs off on go-live are often different people. A shared test session would let both of them look at the same thing at the same time.",
-          "Shared examples across companies: teams build their own test scenarios from scratch. But the same types of problems come up again and again across different businesses. A library of common test cases — built from anonymised examples — would give new teams a head start.",
+          "Shared examples across companies: teams build their own test scenarios from scratch. But the same types of problems come up again and again across different businesses. A library of common test cases, built from anonymised examples, would give new teams a head start.",
         ],
       },
       {
         heading: "What I Learned",
         paragraphs: [
           "I went into this project thinking the problem was about making the AI smarter. Research showed the problem was simpler: people had no way to check whether it was ready.",
-          "The solution wasn't a new AI feature. It was giving people a safe place to find out for themselves — before it mattered.",
-          "One thing I'd do differently: I added user access levels late in the process, once I realised different people needed different permissions. That should have been part of the design from day one — not something bolted on once the gap became obvious.",
+          "The solution wasn't a new AI feature. It was giving people a safe place to find out for themselves, before it mattered.",
+          "One thing I'd do differently: I added user access levels late in the process, once I realised different people needed different permissions. That should have been part of the design from day one, not something bolted on once the gap became obvious.",
         ],
       },
     ],
