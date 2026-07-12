@@ -18,8 +18,6 @@ export const metadata: Metadata = {
   },
 };
 
-
-
 const lensPhotos = [
   { src: "/site-assets/about-lens/york-minster.jpg", caption: "York Minster" },
   { src: "/site-assets/about-lens/hampstead-heath-1.jpg", caption: "Hampstead Heath" },
@@ -40,32 +38,60 @@ const lensPhotos = [
 export default function AboutPage() {
   return (
     <div className="px-6 py-24">
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-5xl">
 
-        {/* Hero */}
-        <div className="mb-20">
-          <p className="mb-6 text-xs uppercase tracking-widest text-white/35">About</p>
-          <h1 className="mb-8 text-5xl font-bold leading-[1.08] sm:text-6xl lg:text-7xl">
-            Hi, I&rsquo;m Pavel. I turn complexity into products people actually understand.
-          </h1>
-          <p className="mb-12 max-w-2xl text-lg leading-relaxed text-white/55">
-            I&rsquo;m a <strong className="font-semibold text-white">Senior Product Designer</strong> who works end-to-end, from messy discovery to shipped product. With{" "}
-            <strong className="font-semibold text-white">8 years across AI, enterprise SaaS, and consumer mobile</strong>, I bring both systems thinking and a relentless eye for detail.
-            At AWTG I&rsquo;ve led UX across two AI platforms. At SonyLIV I worked on a design system reaching{" "}
-            <strong className="font-semibold text-white">350M+ users</strong>. Today I build with AI tools and ship fast. This site was built with Claude Code.
-          </p>
+        {/* Hero — two-column */}
+        <div className="mb-24 flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-16">
 
-          {/* Full-width photo */}
-          <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: "4/3" }}>
-            <Image
-              src="/site-assets/about-lens/headshot-new.jpg"
-              alt="Pavel"
-              fill
-              className="object-cover"
-              style={{ objectPosition: "center 30%" }}
-              quality={100}
-              priority
-            />
+          {/* Left: intro text */}
+          <div className="flex-1">
+            <p className="mb-5 text-xs uppercase tracking-widest text-white/35">About</p>
+            <h1 className="mb-8 text-4xl font-bold leading-[1.1] sm:text-5xl lg:text-6xl">
+              👋 Hi, I&rsquo;m Pavel, a Senior Product Designer with 8 years building digital products people actually understand.
+            </h1>
+            <p className="text-lg leading-relaxed text-white/55">
+              My work is driven by curiosity, systems thinking, and a belief that the best design removes friction without drawing attention to itself. I&rsquo;ve led UX across AI platforms and consumer products reaching{" "}
+              <strong className="font-semibold text-white">350M+ users</strong>, and I&rsquo;ve spent{" "}
+              <strong className="font-semibold text-white">450+ hours mentoring</strong> designers early in their careers.
+            </p>
+          </div>
+
+          {/* Right: portrait card */}
+          <div className="relative flex-shrink-0 lg:w-72">
+            {/* offset background element */}
+            <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-2xl bg-white/5" />
+            {/* card */}
+            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-2xl">
+              <div className="relative" style={{ aspectRatio: "3/4" }}>
+                <Image
+                  src="/site-assets/about-lens/headshot-new.jpg"
+                  alt="Pavel Mondal"
+                  fill
+                  className="object-cover"
+                  style={{ objectPosition: "center 20%" }}
+                  quality={100}
+                  priority
+                />
+              </div>
+              <div className="px-4 py-3">
+                <p className="text-sm font-medium text-white/80">Pavel Mondal</p>
+                <p className="text-xs text-white/40">Senior Product Designer · London</p>
+              </div>
+            </div>
+
+            {/* circular stamp */}
+            <div className="absolute -bottom-6 -right-6 h-20 w-20">
+              <svg viewBox="0 0 100 100" className="h-full w-full animate-[spin_20s_linear_infinite]">
+                <defs>
+                  <path id="circle" d="M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" />
+                </defs>
+                <text className="fill-white/30 text-[11px]" style={{ fontSize: "11px", fill: "rgba(255,255,255,0.3)" }}>
+                  <textPath href="#circle" startOffset="0%">
+                    ✦ BASED IN LONDON ✦ OPEN TO WORK ✦
+                  </textPath>
+                </text>
+              </svg>
+            </div>
           </div>
         </div>
 
@@ -74,14 +100,14 @@ export default function AboutPage() {
           <h2 className="mb-6 uppercase">How I Work</h2>
           <div className="space-y-4 text-white/65 leading-relaxed">
             <p>
-              Good design isn't just a clean layout. It's simplifying complex problems, giving
+              Good design isn&rsquo;t just a clean layout. It&rsquo;s simplifying complex problems, giving
               information clear structure, and building something people understand at a glance,
-              whether that's an AI platform, an enterprise SaaS workflow, or a conversion-focused
+              whether that&rsquo;s an AI platform, an enterprise SaaS workflow, or a conversion-focused
               mobile journey.
             </p>
             <p>
-              Design doesn't happen in a vacuum. There's usually an existing backend, a tight
-              timeline, incomplete information, or a product direction that's still evolving.
+              Design doesn&rsquo;t happen in a vacuum. There&rsquo;s usually an existing backend, a tight
+              timeline, incomplete information, or a product direction that&rsquo;s still evolving.
               Working well inside those constraints, not around them, is most of the job.
             </p>
             <p>
@@ -89,7 +115,6 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
-
 
         {/* Tool Stack — full-width marquee */}
         <ToolStack />
