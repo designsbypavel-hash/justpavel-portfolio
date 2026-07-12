@@ -398,9 +398,9 @@ export const projects: Project[] = [
   },
   {
     slug: "sonyliv-check",
-    title: "High-Conversion Checkout Experience",
+    title: "Reducing payment hesitation at SonyLIV's most critical screen",
     description:
-      "SonyLIV's checkout needed to support India's diverse payment habits, without sacrificing speed or trust.",
+      "When a user decides to subscribe, the checkout screen should get out of the way. SonyLIV's didn't. I redesigned it to remove the friction that was turning intent into drop-off.",
     category: "B2C Mobile",
     readTime: "6 min",
     tags: ["Payments", "Checkout", "Conversion Optimization"],
@@ -458,13 +458,13 @@ export const projects: Project[] = [
       ],
     },
     opportunity:
-      "The real opportunity wasn't a visual refresh, it was converting a five-way evaluation into a one-way default with an escape hatch. That reframe mattered because it's a hierarchy problem, not a visual-design problem: fixable without backend changes, ownable end-to-end by design, and shippable inside a 2-month window, which is what made it the highest-leverage fix available on checkout at the time.",
+      "If users arrive at checkout having already decided to subscribe, the screen's job is not to make them reconsider every payment option. It is to confirm the easiest path and get out of the way. The opportunity was to convert a five-way evaluation into a clear default with alternatives still accessible. That reframe mattered because it was a hierarchy problem, not an infrastructure problem: fixable within the two-month window, without touching the backend, and ownable end-to-end by design.",
     designPrinciples: [
-      "Default, don't decide for them: surface the highest-success path first, never remove alternatives.",
-      "Hierarchy is the de-risking tool: when every option looks equal, the user carries the cognitive cost.",
-      "Verify before you claim: any offer or discount must be confirmable on-screen, not just asserted.",
-      "Design for the failure path as a first-class state, not an edge case.",
-      "Solve confusion with order and emphasis before reaching for new UI surface.",
+      "Lead with a default, not a menu: surface the highest-success path first. Never remove alternatives, but never make them compete for equal attention.",
+      "Hierarchy carries the cognitive load so the user doesn't have to: when every option looks the same, the user has to evaluate all of them.",
+      "Every claim must be verifiable on screen: a discount the user cannot confirm is not a benefit, it is a reason to pause.",
+      "Failure is not an edge case: at scale, payment failures are guaranteed. Design the recovery path with the same care as the happy path.",
+      "Solve with order and emphasis before adding new UI: the problem was not that the screen was missing something. It was that everything on it had equal weight.",
     ],
     designPrinciplesImage: "/site-assets/case-studies/sonyliv-check/img-03.png",
     stats: [
@@ -473,25 +473,44 @@ export const projects: Project[] = [
       { value: "-21%", label: "Time to complete" },
     ],
     tldrProblem:
-      "Checkout had too many competing options and trust gaps, leading to hesitation and failed payments at the most conversion-critical moment.",
+      "Users who had already decided to subscribe were pausing at checkout and not completing. Too many payment options with equal visual weight, unclear offer states, and dead-end failure screens were creating hesitation at the worst possible moment.",
     tldrWhatIDid:
-      "I simplified decision-making, prioritised high-success payment paths, and redesigned failure/retry states so users always knew what to do next.",
+      "Simplified decision-making by giving UPI a clear default position, made offers verifiable on screen, and designed payment failure as a recoverable state rather than a dead end.",
     tldrImpact:
-      "+28% UPI adoption, -14% failed payments, -21% time to complete checkout.",
+      "Post-launch analytics showed a 28% increase in UPI adoption, 14% fewer failed payments, and 21% faster checkout completion.",
     context: [
       {
-        heading: "Context",
+        heading: "Business context",
         image: "/site-assets/case-studies/sonyliv-check/img-01.png",
         paragraphs: [
-          "Picture someone who's just decided to go Premium on SonyLIV. They tap subscribe, and the payment screen opens: UPI, cards, wallets, netbanking, and partner offers, all lined up with equal visual weight, as if every option mattered equally to them. They pause.",
-          "That pause is the whole problem. SonyLIV supports a wide range of payment methods because users in India pay in very different ways, but when everything looks equal, users slow down. And this is the one screen in the entire product where confidence matters more than choice, because hesitation here doesn't just cost time, it costs the subscription.",
+          "SonyLIV had 350M+ users and a growing catalogue. Subscription revenue was the business model. The checkout screen sat at the end of the entire funnel: every marketing campaign, every content investment, every recommendation led here.",
+          "The business goal was straightforward: more people completing subscriptions, fewer falling out at payment. The design challenge was more specific: a screen that supported India's fragmented payment landscape without that fragmentation costing conversions.",
         ],
       },
       {
-        heading: "Research & Approach",
+        heading: "Constraints",
         paragraphs: [
-          "Before changing a single pixel, I needed to know why that pause was happening. I ran a heuristic evaluation to map exactly where the friction sat, benchmarked the flow against Prime Video, Hotstar, PhonePe, and Paytm to see how others handled the same moment, and pulled in payment UX research specific to how Indian users actually build (or lose) trust on a checkout screen.",
-          "The picture that came back wasn't about complexity. Users weren't confused, they were stalled, standing in front of too many doors that all looked the same.",
+          "India's payment ecosystem is genuinely complex. UPI, cards, net banking, wallets, and operator billing all have meaningful user bases. Removing any of them was not an option.",
+          "The existing payment backend and gateway integrations were fixed scope. Any changes had to work with the current ranking and routing logic, not replace it.",
+          "The fix had to ship within a two-month window, which ruled out anything requiring backend restructuring. That constraint was actually clarifying: it confirmed this was a hierarchy and hierarchy problem, not an infrastructure problem.",
+          "Low-end Android devices accounted for a significant share of SonyLIV's user base. Any redesign had to perform consistently across device tiers, not just on flagships.",
+        ],
+      },
+      {
+        heading: "Research",
+        paragraphs: [
+          "I started with a heuristic evaluation of the existing checkout flow, mapping every point where a user might pause, doubt, or abandon. That gave me a rough diagnosis before talking to anyone.",
+          "I then benchmarked against Prime Video, Hotstar, PhonePe, and Paytm to understand how the market had already solved payment hierarchy and failure states for Indian users. The pattern was consistent across the better performers: one method led, others followed.",
+          "I also reviewed Play Store reviews and internal customer support patterns to find recurring complaints. The themes that kept surfacing were not about missing features. They were about confusion: which method to pick, whether a discount had actually applied, and what to do after a payment failed.",
+          "The picture that emerged was not that checkout was broken. It was that it treated a decision that most users had already made as if they still needed to evaluate everything from scratch.",
+        ],
+      },
+      {
+        heading: "What research changed",
+        paragraphs: [
+          "I went in expecting the problem to be about payment method support or technical failures. The research redirected that completely.",
+          "Users were not failing because the payment options were wrong or the backend was unreliable. They were stalling because the screen gave them no signal about what to do next. Every option looked equally valid, which made choosing feel like a decision that could go wrong.",
+          "That shifted the design brief from adding capability to removing uncertainty. The question was not what else to support but what to lead with.",
         ],
       },
     ],
@@ -511,6 +530,11 @@ export const projects: Project[] = [
         before: "A failed payment was a dead end with no clear next step, so users abandoned.",
         after: "Calm failure messaging, a clear retry path, and a fallback to another method without restarting.",
       },
+    ],
+    rejectedConcepts: [
+      "A tabbed layout separating payment methods: I considered grouping UPI, cards, and wallets into separate tabs to reduce visible options. The problem was that it buried methods users might want to switch to mid-flow, and added a navigation layer on a screen where speed matters most.",
+      "A recommendation engine choosing the method automatically: surfacing only the user's most-used method and hiding the rest felt like an overreach on a payment screen. Users need the reassurance that alternatives exist, even if they don't use them.",
+      "A full visual redesign with new components: benchmarking showed the existing layout structure was not the problem. A redesign would have taken the two-month window and delivered something that looked different without addressing the actual friction. The winning approach was hierarchy change, not visual change.",
     ],
     decisions: [
       {
@@ -598,12 +622,27 @@ export const projects: Project[] = [
     businessImpactImage: "/site-assets/case-studies/sonyliv-check/img-07.png",
     closingSections: [
       {
-        heading: "Reflection",
+        heading: "How thinking changed during the project",
         image: "/site-assets/case-studies/sonyliv-check/img-02.png",
         paragraphs: [
-          "Looking back, the biggest unlock wasn't any single screen, it was realizing that checkout isn't a form, it's a decision made under mild stress. Every extra option, every unclear state, every dead end after a failure adds friction to that decision.",
-          "Strip those away, and the numbers, more UPI adoption, fewer failed payments, faster completion, follow almost on their own. Payment is the one screen where users have the least patience for ambiguity and the most at stake if something goes wrong.",
-          "What surprised me most: the fix with the single highest measured impact, leading with UPI, was also the simplest to ship. That's a good signal in hindsight: it confirmed the bottleneck was decision architecture, not a lack of features.",
+          "My initial assumption was that the checkout drop-off was a trust problem: users were not confident enough in SonyLIV's payment security, so they were abandoning. I expected the solution to involve clearer security signals, trust badges, and better error messaging around card details.",
+          "The heuristic evaluation and competitor benchmarking contradicted that. Users were not dropping off because they distrusted the platform. They were dropping off because the screen gave them no signal about what to do. Security was not the bottleneck. Decision-making was.",
+          "That meant the highest-leverage fix was not adding more reassurance but removing the requirement to evaluate everything. Leading with UPI was the clearest expression of that reframe: it made the decision for most users without taking the decision away from anyone.",
+        ],
+      },
+      {
+        heading: "How this scales beyond checkout",
+        paragraphs: [
+          "The default-plus-hierarchy pattern that came out of this project is not specific to payment methods. It applies anywhere SonyLIV adds a new offer type, a new subscription tier, or a new payment rail.",
+          "Rather than re-litigating the layout each time something is added, the principle holds: one path leads, others remain accessible. That made the pattern reusable across Android, iOS, and tablet surfaces without redesigning from scratch each time.",
+        ],
+      },
+      {
+        heading: "Reflection",
+        paragraphs: [
+          "The most useful thing I learned from this project was about where to look for friction. I went in assuming the problem was visible: a broken step, a confusing label, a missing feature. The research showed the problem was structural: a screen that treated a near-certain decision as an open question.",
+          "The fix with the single highest measured impact, leading with UPI, was also the simplest to ship. That is a pattern worth carrying forward: when the bottleneck is decision architecture rather than missing capability, the solution is often subtraction, not addition.",
+          "If I were doing this again, I would involve engineering earlier in the constraints conversation. Understanding the backend limitations from day one would have let me scope alternatives more accurately at the start, rather than discovering some were off the table partway through exploration.",
         ],
       },
     ],
