@@ -14,7 +14,6 @@ const tools: Tool[] = [
   { name: "Claude",    icon: "/site-assets/tools/claude.png",      bg: "#2B1810" },
   { name: "Cursor",    icon: "/site-assets/tools/cursor.png",      bg: "#0F0F0F" },
   { name: "Figma",     icon: "/site-assets/tools/figma.png",       bg: "#1E1E1E" },
-  { name: "FigJam",    icon: "/site-assets/tools/figjam.svg",      bg: "#2D1B69", pad: true },
   { name: "Linear",    icon: "/site-assets/tools/linear_si.svg",   bg: "#5E6AD2", pad: true },
   { name: "Framer",    icon: "/site-assets/tools/framer_si.svg",   bg: "#0055FF", pad: true },
   { name: "v0",        icon: "/site-assets/tools/v0_si.svg",       bg: "#000000", pad: true },
