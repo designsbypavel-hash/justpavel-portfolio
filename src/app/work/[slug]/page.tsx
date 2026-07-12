@@ -88,14 +88,7 @@ export default async function ProjectPage({
         {/* Visual: the headline numbers, right up top so the result is clear immediately */}
         <MetricGrid stats={project.stats} />
 
-        <CaseStudyOverview
-          role={project.role}
-          platform={project.platform}
-          team={project.team}
-          duration={project.duration}
-        />
-
-        {project.teamBreakdown && <TeamComposition groups={project.teamBreakdown} />}
+        {project.teamBreakdown && <TeamComposition groups={project.teamBreakdown} platform={project.platform} />}
 
         <div className="mb-12 flex flex-wrap gap-2">
           {project.tags.map((tag) => (

@@ -1,6 +1,6 @@
 import type { TeamGroup } from "@/lib/projects";
 
-export default function TeamComposition({ groups }: { groups: TeamGroup[] }) {
+export default function TeamComposition({ groups, platform }: { groups: TeamGroup[]; platform?: string }) {
   if (groups.length === 0) return null;
   return (
     <section className="mb-12">
@@ -17,6 +17,14 @@ export default function TeamComposition({ groups }: { groups: TeamGroup[] }) {
             <span className="text-white/80">{group.members}</span>
           </div>
         ))}
+        {platform && (
+          <div className="rounded-xl border border-white/10 bg-white/[0.03] p-5">
+            <span className="mb-2 block text-xs uppercase tracking-widest text-white/40">
+              Platform
+            </span>
+            <span className="text-white/80">{platform}</span>
+          </div>
+        )}
       </div>
     </section>
   );
