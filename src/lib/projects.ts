@@ -687,6 +687,7 @@ export const projects: Project[] = [
     context: [
       {
         heading: "Business context",
+        image: "/site-assets/case-studies/fintech-autonomous/img-02.jpg",
         paragraphs: [
           "Days sales outstanding is a core metric for any finance team. The longer it takes to collect on an invoice, the worse the company's cash flow. The collections team's job is to close that gap: contact the right accounts, at the right time, and follow up consistently until payment is received.",
           "The business problem was simple to state. The team was not keeping up. DSO was higher than it should have been, and the root cause was not that analysts were working slowly. It was that the tools they were working with were adding overhead at every step of the process.",
@@ -797,7 +798,6 @@ export const projects: Project[] = [
     closingSections: [
       {
         heading: "How thinking changed during the project",
-        image: "/site-assets/case-studies/fintech-autonomous/img-02.jpg",
         paragraphs: [
           "I assumed at the start that the calling experience was the core problem. Analysts were using a separate dialer, which seemed like the obvious friction point. I expected the solution to be primarily about integrating telephony.",
           "Observing analysts working showed something different. The call itself was the part of the workflow they were most comfortable with. The breakdown happened before and after: the scramble to pull up account context before dialling, and the manual write-up and reminder-setting that happened after hanging up.",
