@@ -796,9 +796,9 @@ export const projects: Project[] = [
   },
   {
     slug: "sonyliv-search",
-    title: "Enhancing Search for Seamless Discovery for 350M+ SonyLIV Users",
+    title: "Helping millions find something worth watching faster",
     description:
-      "Search is the gateway to discovering Originals, Live Sports, Movies, and TV Shows for 350M+ users. The legacy search experience created friction finding relevant results.",
+      "SonyLIV's catalogue kept growing. Search didn't keep up. Users were abandoning searches they should have been able to complete. I redesigned the experience to reduce that friction.",
     category: "B2C Mobile",
     readTime: "6 min",
     tags: ["Search", "Discovery", "Streaming"],
@@ -826,38 +826,138 @@ export const projects: Project[] = [
     ],
     stats: [],
     tldrProblem:
-      "Legacy search made it hard to surface relevant results, refine queries, and navigate content at scale.",
+      "Users were abandoning searches they should have been able to complete. The experience punished imperfect queries, gave no help when results were weak, and made live sports nearly impossible to discover quickly.",
     tldrWhatIDid:
-      "Redesigned the experience using failure patterns, user complaints, and global benchmarking, then validated changes through prototypes and quick feedback loops.",
+      "Redesigned search as a discovery surface, not just a retrieval tool. Added autocomplete, rich suggestions, recent and trending searches, and forgiving query handling — validated through prototypes before any build commitment.",
     tldrImpact:
-      "Faster, clearer, more intelligent search that scales across Android, iOS, tablets, and low-end devices.",
+      "A search experience that works for users who know exactly what they want and for users still figuring it out, across all device tiers in SonyLIV's user base.",
     context: [
       {
-        heading: "Context",
+        heading: "Business context",
         paragraphs: [
-          "SonyLIV serves 350M+ users, and search is the gateway to discovering Originals, Live Sports, Movies, and TV Shows. The legacy experience created friction: people struggled to find relevant results, refine queries, and navigate a massive library.",
+          "SonyLIV serves 350M+ users across movies, TV shows, originals, live sports, and regional content. As the catalogue grew, so did the surface area where search could fail. A user who cannot find what they are looking for does not stay on the platform. They leave.",
+          "The business case for search improvement was straightforward: reduce the drop-off between search intent and content found. Every successful search is a session that continues. Every abandoned search is a session that ends.",
         ],
       },
       {
-        heading: "Approach",
+        heading: "Constraints",
         paragraphs: [
-          "I grounded the redesign in failure patterns pulled from analytics, real user complaints, and benchmarking against global streaming search experiences, then validated each change through prototypes and quick feedback loops rather than a single big-bang release.",
+          "Live sports content changes by the minute. Match schedules, scores, and availability shift constantly, and search results for sports needed to reflect that without the team having to manually update anything.",
+          "The existing search ranking and indexing system was not in scope for this project. Any redesign had to work with the current backend, not require a new one.",
+          "SonyLIV's user base spans a wide range of Android devices, including low-end hardware with limited processing power. Autocomplete and suggestions had to be designed to perform consistently, not just on flagships.",
+          "Users search in multiple languages and often with inconsistent spelling, partial titles, or actor names instead of show titles. The experience had to handle imperfect input without dead ends.",
+          "The catalogue includes content with inconsistent metadata quality. Some titles had rich information, others did not. The design had to degrade gracefully when metadata was thin.",
+        ],
+      },
+      {
+        heading: "Research",
+        paragraphs: [
+          "I reviewed Play Store reviews filtered for search-related complaints, which gave an unfiltered picture of where users were hitting walls: spelling mistakes returning nothing, sports content invisible unless you knew the exact fixture name, and no way to recover from a failed search without starting again.",
+          "I looked at internal analytics to understand where in the search flow users were dropping off. The signal was clearest at two points: immediately after typing a query that returned weak results, and when users had to choose between many similarly-presented results with no visual differentiation.",
+          "I benchmarked against Netflix, Prime Video, Hotstar, and YouTube to understand how the market was handling the same tensions between retrieval and discovery. The consistent pattern in the stronger experiences was that they treated search as the start of a conversation, not a one-shot lookup.",
+          "I also spoke with the customer support team about the most common search-related tickets, which surfaced a category I had not prioritised initially: repeat searches. A meaningful portion of users searched for the same content across multiple sessions, which pointed to a simple fix with high return.",
+        ],
+      },
+      {
+        heading: "What research changed",
+        paragraphs: [
+          "I went into this project assuming the core problem was relevance: the algorithm was surfacing the wrong results, and improving ranking would fix search.",
+          "The research contradicted that. Users were not failing because results were irrelevant. They were failing before they got to results at all. Partial titles returned nothing. A misspelling killed the query. Users who did not know a title had no way to browse toward what they wanted.",
+          "The problem was not that search was finding the wrong things. It was that search required users to already know what they were looking for. That shifted the entire brief from improving retrieval to enabling discovery.",
         ],
       },
     ],
+    opportunity:
+      "If users could search with partial information, recover from mistakes without starting over, and browse intelligently when they had no specific title in mind, they would spend less time searching and more time watching. The opportunity was to redesign search as a discovery surface, not just a retrieval tool, without requiring any changes to the backend ranking system.",
+    designPrinciples: [
+      "Search should forgive imperfect input: a spelling mistake or a partial title should never be a dead end.",
+      "Help users discover, not just retrieve: some users know what they want, others are still deciding. The experience should serve both.",
+      "Reduce typing wherever possible: suggestions, recent searches, and trending content should do the work so users do not have to.",
+      "Surface intent early: autocomplete should reflect what users are likely looking for, not just what matches the characters typed.",
+      "Make failure recoverable: a weak result set should offer a next step, not a blank screen.",
+      "Design for the device in the user's hand, not the one in the demo: low-end Android performance is part of the brief, not an afterthought.",
+    ],
+    rejectedConcepts: [
+      "A category-first browse approach: I considered leading with genres and content categories rather than a search field, on the basis that many users were exploring rather than retrieving. The problem was that it did not serve users who had a specific title or person in mind, and it added a navigation layer in front of the most-used path into the catalogue.",
+      "A personalised search surface showing each user different suggestions based on watch history: the engineering cost was significant and the project timeline did not allow for it. More importantly, personalisation would have addressed discovery for returning users but done nothing for new ones. The higher-leverage fix was improving the base experience for everyone.",
+      "Redesigning the results page layout: early explorations changed how results were presented on screen. Testing with prototypes showed that users were not struggling with results layout. They were struggling to reach relevant results at all. Changing the layout did not address the actual abandonment point.",
+    ],
     decisions: [
       {
-        title: "Design for scale across device tiers",
-        why: "A search experience that only works well on flagship phones excludes a large share of SonyLIV's actual user base on low-end Android devices and tablets.",
-        whatChanged: ["Layouts and interactions validated across Android, iOS, tablets, and low-end devices"],
-        result: "Consistent search experience regardless of device tier.",
+        title: "Add autocomplete that starts helping from the first character",
+        image: "/site-assets/case-studies/sonyliv-search/img-04.jpg",
+        why: "Analytics showed users were abandoning searches after typing a full query and finding nothing. Autocomplete moves the feedback loop earlier: instead of discovering a dead end after submitting, users can see whether content exists while they are still typing and adjust accordingly.",
+        whatChanged: [
+          "Autocomplete suggestions appear from the first character",
+          "Suggestions include titles, genres, actors, and sports fixtures",
+          "Selecting a suggestion bypasses the results page and goes directly to content where possible",
+        ],
+        result: "Users could course-correct mid-query rather than after a failed submission. The abandonment point moved earlier in the flow, where recovery was easier.",
+        tradeOff: "Autocomplete at this level of coverage required close coordination with the engineering team on what the backend could surface in real time without degrading performance on low-end devices.",
+        businessReasoning: "Every query that is redirected toward relevant content before submission is a search session that does not end in abandonment. The return on the engineering investment was direct.",
+      },
+      {
+        title: "Surface recent and trending searches on the empty state",
+        image: "/site-assets/case-studies/sonyliv-search/img-06.jpg",
+        why: "The empty search state was a blank field. It gave users who did not have a specific title in mind nothing to work with. Research had surfaced two patterns: users who repeated the same searches across sessions, and users who were open to watching something trending but had no way to find it from search.",
+        whatChanged: [
+          "Recent searches shown immediately when search is opened",
+          "Trending searches shown below, updated to reflect current viewing patterns",
+          "Live sports fixtures surfaced prominently when matches are in progress",
+        ],
+        result: "The search screen became useful before the user typed anything. Repeat searches were one tap. Discovery for undecided users had a starting point.",
+        tradeOff: "Trending content can feel algorithmically imposed if not implemented carefully. The presentation had to feel like helpful context, not a recommendation engine overriding the user's intent.",
+        businessReasoning: "Reducing the effort required to find already-known content has a direct effect on return session engagement. A user who opens search and immediately sees what they were looking for last time does not need to think.",
+      },
+      {
+        title: "Show rich results with visual context, not just text titles",
+        image: "/site-assets/case-studies/sonyliv-search/img-08.jpg",
+        why: "SonyLIV's catalogue includes many titles that users recognise visually but cannot name precisely. A list of text titles required users to read and evaluate each result. Adding thumbnails, content type labels, and brief metadata let users recognise what they were looking for rather than read their way to it.",
+        whatChanged: [
+          "Results display thumbnail, title, content type, and year at minimum",
+          "Sports results show fixture status and scheduled time where available",
+          "Content type labels distinguish movies, series, originals, and live events",
+        ],
+        result: "Users could scan results rather than read them, which reduced the time between submitting a query and starting to watch.",
+        tradeOff: "Rich results require consistent metadata. Titles with thin metadata fell back to text-only display, which created some visual inconsistency in mixed result sets.",
+        businessReasoning: "Visual recognition is faster than reading for catalogue browsing. Reducing the cognitive cost of evaluating results directly affects whether a search session ends in a watch session.",
+      },
+      {
+        title: "Design for scale across every device in the user base",
+        image: "/site-assets/case-studies/sonyliv-search/img-10.jpg",
+        why: "SonyLIV's user base is not concentrated on flagship devices. Low-end Android hardware is a significant portion of actual usage. A search experience that performs well on a flagship and degrades badly on entry-level hardware is not a search experience that works for SonyLIV's users.",
+        whatChanged: [
+          "All interactions and layouts validated across low-end Android, mid-range Android, iOS, and tablet",
+          "Autocomplete debounced to avoid performance issues on slower processors",
+          "Image loading in results designed to degrade gracefully on slow connections",
+        ],
+        result: "Consistent search behaviour regardless of device tier. The redesign did not create a two-class experience between newer and older hardware.",
+        tradeOff: "Some visual richness available on higher-end devices had to be scaled back to maintain acceptable performance on lower-end ones.",
+        businessReasoning: "A redesign that improves search for flagship users while degrading it for low-end users is a net negative at SonyLIV's scale. Consistent performance across the device spectrum was a requirement, not a preference.",
       },
     ],
     closingSections: [
       {
+        heading: "How thinking changed during the project",
+        paragraphs: [
+          "The most significant shift was in how I understood the problem. I started the project expecting to improve search relevance. The research showed that relevance was not where users were failing.",
+          "Users were failing before they got to results at all. The barrier was not that results were wrong, it was that the experience required users to already know exactly what they were looking for. A partial title returned nothing. A misspelling killed the query. That is not a ranking problem. That is a design problem.",
+          "Reframing the brief from improving retrieval to enabling discovery changed almost every decision that followed. Autocomplete, suggestions, rich results, and the empty state were all consequences of that single shift in understanding.",
+        ],
+      },
+      {
+        heading: "How this scales beyond search",
+        paragraphs: [
+          "The patterns that came out of this project, forgiving input handling, visual recognition over text reading, surfacing context before the user asks for it, are not specific to the search screen.",
+          "The same principles apply to any content discovery surface on SonyLIV: the home screen, category pages, and recommendation surfaces. Framing search as a discovery tool rather than a retrieval tool opened up a way of thinking about the whole product that the team carried forward.",
+        ],
+      },
+      {
         heading: "Reflection",
         paragraphs: [
-          "At 350M+ users, the long tail of devices matters as much as the flagship experience, and a search redesign that only works well on the newest phones quietly excludes a meaningful share of the people who actually rely on it.",
+          "The most useful thing this project taught me was to question what problem I was actually solving before designing anything. My initial diagnosis was wrong. The research corrected it. That correction was worth more than any individual design decision that followed.",
+          "If I were doing this again, I would involve the engineering team in the constraints conversation earlier. Understanding the limits of what the backend could surface in real time would have let me scope the autocomplete work more accurately from the start, rather than discovering some constraints mid-exploration.",
+          "I would also have pushed harder to instrument the search flow before starting design work, so that post-launch we had a clear baseline to measure against. The absence of pre-redesign benchmarks made it harder to quantify exactly what changed.",
         ],
       },
     ],
