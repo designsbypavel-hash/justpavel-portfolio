@@ -166,6 +166,77 @@ p, span, a, li, label, input, textarea, button {
   }
 }
 
+/* ─── Light mode ────────────────────────────────────────────────────────── */
+
+[data-theme="light"] {
+  --background: #f5f5f3;
+  --foreground: #333333;
+  --color-title: #111111;
+  color-scheme: light;
+}
+
+[data-theme="light"] body {
+  background: #f5f5f3 !important;
+  color: #333 !important;
+}
+
+/* Headings */
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4 {
+  color: #111 !important;
+}
+
+/* White text variants → dark equivalents */
+[data-theme="light"] .text-white      { color: #111 !important; }
+[data-theme="light"] .text-white\/80  { color: rgba(17,17,17,0.80) !important; }
+[data-theme="light"] .text-white\/70  { color: rgba(17,17,17,0.70) !important; }
+[data-theme="light"] .text-white\/65  { color: rgba(17,17,17,0.65) !important; }
+[data-theme="light"] .text-white\/60  { color: rgba(17,17,17,0.60) !important; }
+[data-theme="light"] .text-white\/55  { color: rgba(17,17,17,0.55) !important; }
+[data-theme="light"] .text-white\/50  { color: rgba(17,17,17,0.50) !important; }
+[data-theme="light"] .text-white\/45  { color: rgba(17,17,17,0.45) !important; }
+[data-theme="light"] .text-white\/40  { color: rgba(17,17,17,0.40) !important; }
+[data-theme="light"] .text-white\/35  { color: rgba(17,17,17,0.35) !important; }
+[data-theme="light"] .text-white\/30  { color: rgba(17,17,17,0.30) !important; }
+[data-theme="light"] .text-white\/25  { color: rgba(17,17,17,0.25) !important; }
+[data-theme="light"] .text-white\/20  { color: rgba(17,17,17,0.20) !important; }
+
+/* Backgrounds */
+[data-theme="light"] .bg-black              { background-color: #f5f5f3 !important; }
+[data-theme="light"] .bg-black\/40          { background-color: rgba(200,200,195,0.4) !important; }
+[data-theme="light"] .bg-black\/80          { background-color: rgba(235,235,232,0.85) !important; }
+[data-theme="light"] .bg-white\/5           { background-color: rgba(0,0,0,0.04) !important; }
+[data-theme="light"] .bg-white\/\[0\.03\]   { background-color: rgba(0,0,0,0.03) !important; }
+
+/* Borders */
+[data-theme="light"] .border-white\/10 { border-color: rgba(0,0,0,0.10) !important; }
+[data-theme="light"] .border-white\/15 { border-color: rgba(0,0,0,0.12) !important; }
+[data-theme="light"] .border-white\/5  { border-color: rgba(0,0,0,0.05) !important; }
+
+/* Header */
+[data-theme="light"] header {
+  background-color: rgba(245,245,243,0.88) !important;
+  border-color: rgba(0,0,0,0.08) !important;
+}
+/* Nav link hover underline */
+[data-theme="light"] nav a::after { background-color: #111 !important; }
+
+/* Hover text on nav */
+[data-theme="light"] nav a:hover { color: #111 !important; }
+
+/* Starfield hidden in light mode */
+[data-theme="light"] canvas { display: none !important; }
+
+/* Pill / chip tags */
+[data-theme="light"] .border-white\/15 { border-color: rgba(0,0,0,0.12) !important; }
+
+/* Hamburger lines */
+[data-theme="light"] button span.bg-white { background-color: #111 !important; }
+
+/* ─── end light mode ──────────────────────────────────────────────────────── */
+
 .scrollbar-none {
   scrollbar-width: none;
   -ms-overflow-style: none;
