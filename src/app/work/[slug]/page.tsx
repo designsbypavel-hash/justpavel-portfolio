@@ -20,6 +20,7 @@ import NextProjectCTA from "@/components/NextProjectCTA";
 import ChipList from "@/components/ChipList";
 import RejectedConcepts from "@/components/RejectedConcepts";
 import EcosystemDiagram from "@/components/EcosystemDiagram";
+import ThemeVarProvider from "@/components/ThemeVarProvider";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -76,6 +77,7 @@ export default async function ProjectPage({
   const remainingGalleryImages = project.galleryImages.filter((img) => !usedImages.has(img));
 
   return (
+    <ThemeVarProvider>
     <div className="px-6 py-24">
       <div className="mx-auto max-w-4xl">
         <CaseStudyHero
@@ -251,5 +253,6 @@ export default async function ProjectPage({
         <NextProjectCTA slug={nextProject.slug} title={nextProject.title} />
       </div>
     </div>
+    </ThemeVarProvider>
   );
 }

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { useTheme } from "@/components/ThemeProvider";
 
 type Tool = {
   name: string;
@@ -25,6 +26,8 @@ const tools: Tool[] = [
 
 export default function ToolStack() {
   const [hovered, setHovered] = useState<string | null>(null);
+  const { theme } = useTheme();
+  const isLight = theme === "light";
   const doubled = [...tools, ...tools];
 
   return (
@@ -37,16 +40,8 @@ export default function ToolStack() {
       </p>
 
       <div className="group relative overflow-hidden">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 sm:w-28"
-          style={{ background: "linear-gradient(to right, #000 0%, transparent 100%)" }}
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 sm:w-28"
-          style={{ background: "linear-gradient(to left, #000 0%, transparent 100%)" }}
-        />
+        <div aria-hidden className="marquee-fade-l pointer-events-none absolute inset-y-0 left-0 z-10 w-16 sm:w-28" />
+        <div aria-hidden className="marquee-fade-r pointer-events-none absolute inset-y-0 right-0 z-10 w-16 sm:w-28" />
 
         <div className="marquee-track flex w-max gap-5 [animation-duration:30s] group-hover:[animation-play-state:paused]">
           {doubled.map((tool, i) => {
@@ -67,8 +62,12 @@ export default function ToolStack() {
                     background: tool.bg,
                     padding: tool.pad ? "18%" : undefined,
                     boxShadow: isHovered
-                      ? "0 0 0 2px rgba(255,255,255,0.3), 0 20px 40px -8px rgba(0,0,0,0.7)"
-                      : "0 4px 16px -4px rgba(0,0,0,0.5)",
+                      ? isLight
+                        ? "0 0 0 2px rgba(0,0,0,0.15), 0 20px 40px -8px rgba(0,0,0,0.25)"
+                        : "0 0 0 2px rgba(255,255,255,0.3), 0 20px 40px -8px rgba(0,0,0,0.7)"
+                      : isLight
+                        ? "0 4px 16px -4px rgba(0,0,0,0.15)"
+                        : "0 4px 16px -4px rgba(0,0,0,0.5)",
                     transform: isHovered ? "scale(1.12) translateY(-5px)" : "scale(1)",
                     transition: "all 0.25s cubic-bezier(0.34,1.56,0.64,1)",
                   }}
@@ -85,7 +84,11 @@ export default function ToolStack() {
                 </div>
                 <span
                   className="text-xs transition-colors duration-200"
-                  style={{ color: isHovered ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.35)" }}
+                  style={{
+                    color: isLight
+                      ? isHovered ? "rgba(17,17,17,0.85)" : "rgba(17,17,17,0.45)"
+                      : isHovered ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.35)",
+                  }}
                 >
                   {tool.name}
                 </span>
