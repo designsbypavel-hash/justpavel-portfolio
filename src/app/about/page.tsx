@@ -79,19 +79,6 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* circular stamp */}
-            <div className="absolute -bottom-6 -right-6 h-20 w-20">
-              <svg viewBox="0 0 100 100" className="h-full w-full animate-[spin_20s_linear_infinite]">
-                <defs>
-                  <path id="circle" d="M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" />
-                </defs>
-                <text className="fill-white/30 text-[11px]" style={{ fontSize: "11px", fill: "rgba(255,255,255,0.3)" }}>
-                  <textPath href="#circle" startOffset="0%">
-                    ✦ BASED IN LONDON ✦ OPEN TO WORK ✦
-                  </textPath>
-                </text>
-              </svg>
-            </div>
           </div>
         </div>
 
