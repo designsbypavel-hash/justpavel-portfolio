@@ -19,8 +19,8 @@ export default function GlowCard({
           and the content, so the glow only shows outside the card edges and
           never bleeds into the card's own interior. */}
       <div
-        className="absolute inset-0 z-0 bg-[#0a0a0a]"
-        style={{ borderRadius: "inherit" }}
+        className="absolute inset-0 z-0"
+        style={{ borderRadius: "inherit", backgroundColor: "var(--glow-card-bg, #0a0a0a)" }}
       />
       <div className="relative z-10 h-full w-full">{children}</div>
     </div>
