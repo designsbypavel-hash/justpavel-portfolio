@@ -649,7 +649,7 @@ export const projects: Project[] = [
   },
   {
     slug: "fintech-autonomous",
-    title: "Helping AR analysts spend less time on admin and more time recovering debt",
+    title: "Using AI to help AR analysts spend less time on admin and more time recovering debt",
     description:
       "Accounts receivable analysts were managing hundreds of accounts per cycle across disconnected tools. Every call left a trail of manual work. I redesigned the workflow to remove that overhead.",
     category: "B2B SaaS",
