@@ -46,9 +46,10 @@ export default function Home() {
       <section id="works" className="px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <FadeInSection>
-            <h2 className="mb-12 uppercase">
-              Featured Works
-            </h2>
+            <div className="mb-12">
+              <h2 className="mb-2 uppercase">Featured Works</h2>
+              <p className="text-base text-white/45">Selected case studies — click any to read the full story.</p>
+            </div>
           </FadeInSection>
           <div className="space-y-16">
             {featuredWorks.map((work, index) => (

@@ -5,11 +5,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import { gradientWordLoop } from "@/lib/motion";
 
 const WORDS = [
-  "Product Design",
-  "UX Strategy",
-  "AI Platforms",
-  "Design Systems",
-  "Human-Centred UX",
+  "Designed",
+  "Built",
+  "Crafted",
+  "Shipped",
+  "Engineered",
 ];
 
 export default function GradientWordLoop({ intervalMs = 3000 }: { intervalMs?: number }) {
