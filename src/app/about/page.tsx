@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     "Senior Product Designer in London with 8 years across AI platforms, B2B SaaS, and B2C mobile. Led UX at AWTG and SonyLIV, reaching 350M+ users.",
   alternates: { canonical: "https://www.justpaveldesign.com/about" },
   openGraph: {
-    title: "About Pavel Mondal — Senior Product Designer",
+    title: "About Pavel Mondal, Senior Product Designer",
     description:
       "8 years across AI platforms, B2B SaaS, and B2C mobile. Led UX at AWTG and SonyLIV, reaching 350M+ users.",
     url: "https://www.justpaveldesign.com/about",

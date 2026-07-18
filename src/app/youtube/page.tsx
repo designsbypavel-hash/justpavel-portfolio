@@ -4,10 +4,10 @@ import CTASection from "@/components/CTASection";
 
 export const metadata: Metadata = {
   title: "YouTube",
-  description: "Pavel Mondal on YouTube — videos on AI tools for designers, UX workflows, and product design practice.",
+  description: "Pavel Mondal on YouTube, videos on AI tools for designers, UX workflows, and product design practice.",
   alternates: { canonical: "https://www.justpaveldesign.com/youtube" },
   openGraph: {
-    title: "YouTube — Pavel Mondal, Product Designer",
+    title: "YouTube, Pavel Mondal, Product Designer",
     description: "Videos on AI tools for designers, UX workflows, and product design practice.",
     url: "https://www.justpaveldesign.com/youtube",
     images: [{ url: "https://www.justpaveldesign.com/site-assets/og-image.png", width: 1200, height: 630 }],

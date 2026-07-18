@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     },
   },
   title: {
-    default: "Pavel Mondal — Senior Product Designer, London",
+    default: "Pavel Mondal, Senior Product Designer, London",
     template: "%s | Pavel Mondal",
   },
   description:
@@ -39,8 +39,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://www.justpaveldesign.com",
-    siteName: "Pavel Mondal — Product Designer",
-    title: "Pavel Mondal — Senior Product Designer, London",
+    siteName: "Pavel Mondal, Product Designer",
+    title: "Pavel Mondal, Senior Product Designer, London",
     description:
       "Senior Product Designer in London specialising in AI-first B2B SaaS and high-conversion B2C mobile experiences. 8 years across enterprise and consumer products.",
     images: [
@@ -48,14 +48,14 @@ export const metadata: Metadata = {
         url: "https://www.justpaveldesign.com/site-assets/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Pavel Mondal — Senior Product Designer, London",
+        alt: "Pavel Mondal, Senior Product Designer, London",
       },
     ],
     locale: "en_GB",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pavel Mondal — Senior Product Designer, London",
+    title: "Pavel Mondal, Senior Product Designer, London",
     description:
       "Senior Product Designer in London specialising in AI-first B2B SaaS and high-conversion B2C mobile experiences.",
     images: ["https://www.justpaveldesign.com/site-assets/og-image.png"],

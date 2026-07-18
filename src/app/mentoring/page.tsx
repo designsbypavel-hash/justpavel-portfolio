@@ -6,10 +6,10 @@ import FadeInSection from "@/components/FadeInSection";
 export const metadata: Metadata = {
   title: "Mentoring",
   description:
-    "1-to-1 design mentoring by Pavel Mondal — portfolio storytelling, UX interview prep, and practical AI workflows for designers. Book on ADPList.",
+    "1-to-1 design mentoring by Pavel Mondal, portfolio storytelling, UX interview prep, and practical AI workflows for designers. Book on ADPList.",
   alternates: { canonical: "https://www.justpaveldesign.com/mentoring" },
   openGraph: {
-    title: "Design Mentoring — Pavel Mondal",
+    title: "Design Mentoring, Pavel Mondal",
     description: "1-to-1 mentoring for designers: portfolio storytelling, interview prep, and AI workflows.",
     url: "https://www.justpaveldesign.com/mentoring",
     images: [{ url: "https://www.justpaveldesign.com/site-assets/og-image.png", width: 1200, height: 630 }],

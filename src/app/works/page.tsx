@@ -5,10 +5,10 @@ import FadeInSection from "@/components/FadeInSection";
 
 export const metadata: Metadata = {
   title: "Work",
-  description: "Product design case studies by Pavel Mondal — AI platforms, enterprise SaaS, and high-conversion B2C mobile experiences.",
+  description: "Product design case studies by Pavel Mondal, AI platforms, enterprise SaaS, and high-conversion B2C mobile experiences.",
   alternates: { canonical: "https://www.justpaveldesign.com/works" },
   openGraph: {
-    title: "Work — Pavel Mondal, Product Designer",
+    title: "Work, Pavel Mondal, Product Designer",
     description: "Product design case studies covering AI platforms, enterprise SaaS, and B2C mobile.",
     url: "https://www.justpaveldesign.com/works",
     images: [{ url: "https://www.justpaveldesign.com/site-assets/og-image.png", width: 1200, height: 630 }],

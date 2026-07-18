@@ -39,7 +39,7 @@ export async function generateMetadata({
     description: project.description,
     alternates: { canonical: `https://www.justpaveldesign.com/work/${slug}` },
     openGraph: {
-      title: `${project.title} — Pavel Mondal`,
+      title: `${project.title}, Pavel Mondal`,
       description: project.description,
       url: `https://www.justpaveldesign.com/work/${slug}`,
       type: "article",
