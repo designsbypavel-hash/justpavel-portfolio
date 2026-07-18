@@ -6,7 +6,8 @@ import ProjectCard from "@/components/ProjectCard";
 import CTASection from "@/components/CTASection";
 import FadeInSection from "@/components/FadeInSection";
 
-const featuredWorks = projects.slice(0, 3);
+const featuredSlugs = ["agent-ai", "sonyliv-ott-subscription", "fintech-autonomous"];
+const featuredWorks = featuredSlugs.map((slug) => projects.find((p) => p.slug === slug)!);
 
 const videos = [
   {
