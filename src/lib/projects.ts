@@ -870,6 +870,7 @@ export const projects: Project[] = [
       },
       {
         heading: "What users were actually experiencing",
+        image: "/site-assets/case-studies/sonyliv-ott-subscription/img-03.jpg",
         paragraphs: [
           "I started with session recordings and ran remote usability sessions with a panel of Android TV users. The same pattern emerged again and again. Users would reach the plan selection screen, slow down, start pressing directional keys back and forth, and eventually back out entirely.",
           "In their own words: “I couldn’t work out what I was actually getting with the more expensive plan” and “I wanted to just click Subscribe but I had to go through too many screens first.”",
@@ -879,6 +880,7 @@ export const projects: Project[] = [
       },
       {
         heading: "The design constraint nobody planned for",
+        image: "/site-assets/case-studies/sonyliv-ott-subscription/img-04.jpg",
         paragraphs: [
           "Android TV is a categorically different medium. Users are seated 8–10 feet from the screen, using a directional remote with 4-way navigation. There’s no tap, no pinch, no scroll-by-thumb. Every interaction is deliberate.",
           "This meant that design patterns borrowed from SonyLIV’s mobile subscription flow — which the team had been working from as a template — were fundamentally wrong for this surface. A 5-tap mobile flow becomes a 15-key-press TV ordeal. Dense comparison tables that feel fine on a phone become walls of text across the room.",
@@ -890,6 +892,7 @@ export const projects: Project[] = [
       title: "Confusion isn’t a preference problem — it’s a design problem",
       description:
         "Users weren’t indecisive about subscribing. They were indecisive because the UI made the decision hard. Once we realised the drop-off was confusion-driven (not price-sensitivity), the design direction became obvious: make the right plan obvious at a glance, from 10 feet away.",
+      image: "/site-assets/case-studies/sonyliv-ott-subscription/img-05.jpg",
     },
     designPrinciples: [
       "One clear recommendation per screen — never make users compare more than 3 options at once on a TV",
@@ -900,6 +903,7 @@ export const projects: Project[] = [
     decisions: [
       {
         title: "Rebuild plan comparison from the TV viewport up",
+        image: "/site-assets/case-studies/sonyliv-ott-subscription/img-06.jpg",
         why: "The existing plan list was a direct port from the mobile UI — flat, text-heavy, with no visual hierarchy. At TV distance, users couldn’t tell the plans apart or understand the value difference.",
         whatChanged: [
           "Redesigned plans as distinct visual cards with a recommended plan visually elevated and pre-selected",
@@ -911,6 +915,7 @@ export const projects: Project[] = [
       },
       {
         title: "Collapse the funnel from 5 steps to 3",
+        image: "/site-assets/case-studies/sonyliv-ott-subscription/img-02.jpg",
         why: "The original flow was: Plan Selection → Plan Confirmation → Payment Method → Payment Details → Confirmation. Each screen transition on a TV requires a page load. Five pages meant five moments for users to reconsider and bail.",
         whatChanged: [
           "Merged Plan Confirmation into Plan Selection — selecting a plan now shows a summary panel inline, no separate screen",
@@ -921,6 +926,7 @@ export const projects: Project[] = [
       },
       {
         title: "Introduce a recommended plan signal",
+        image: "/site-assets/case-studies/sonyliv-ott-subscription/img-07.jpg",
         why: "Without a clear default, users felt the weight of the decision entirely. Adding a ‘Most Popular’ or recommended signal gives users a socially-validated anchor — particularly important in a lean-back context where the cognitive cost of deliberation is higher.",
         whatChanged: [
           "Added a ‘Most popular’ badge to the mid-tier plan (the plan with highest purchase volume)",
@@ -931,6 +937,7 @@ export const projects: Project[] = [
       },
       {
         title: "Handle payment failure in-flow instead of starting over",
+        image: "/site-assets/case-studies/sonyliv-ott-subscription/img-01.jpg",
         why: "Session recordings showed a painful pattern: users who hit a UPI or card failure were being dropped back to the plan selection screen. Starting over completely was killing a significant number of nearly-completed purchases.",
         whatChanged: [
           "Payment failure now surfaces inline with a retry prompt and an alternative payment method suggestion — no navigation away from the payment screen",
