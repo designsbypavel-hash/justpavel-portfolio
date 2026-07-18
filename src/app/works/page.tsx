@@ -19,15 +19,9 @@ export default function WorksPage() {
   return (
     <div className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-16">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-white/35">Case Studies</p>
-          <h1 className="mb-4 font-(family-name:--font-heading) text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl">
-            All Projects
-          </h1>
-          <p className="max-w-xl text-lg text-white/50">
-            End-to-end UX across AI platforms, enterprise SaaS, and high-conversion consumer products.
-          </p>
-        </div>
+        <h1 className="mb-16 uppercase">
+          All Projects
+        </h1>
         <div className="space-y-16">
           {projects.map((project) => (
             <FadeInSection key={project.slug}>
