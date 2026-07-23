@@ -269,15 +269,6 @@ export const projects: Project[] = [
           "Those 30 questions collapsed into three design themes: reduce cognitive load for first-time users setting up the assistant from scratch, build confidence through continuous testing at the point of change, and roll out more advanced controls progressively so the platform doesn't feel overwhelming on day one. Everything we built traced back to one of those three.",
         ],
       },
-      {
-        heading: "What Usage Data Showed After Launch",
-        image: "/site-assets/case-studies/agent-ai/img-12.png",
-        paragraphs: [
-          "After launch, we tracked test session volume daily across all active accounts. The data showed something specific: usage wasn't just happening at setup. Teams were returning to the test window repeatedly throughout the day, especially after content updates and instruction changes.",
-          "The stacked breakdown by user age segment showed that the 25 to 29 age group drove the majority of daily sessions, consistent with operations and customer support roles at the companies using the platform. Average daily sessions per user held steady around 80 to 84 across age groups, showing the test window became a regular part of how these teams worked, not a one-time onboarding step.",
-          "The late-April spike in the 30-day view mapped to a batch of new accounts going live simultaneously. Session volume climbed to over 2,000 in a single day, without any additional onboarding support from us. Teams could find it, understand it, and use it without being walked through it.",
-        ],
-      },
     ],
     decisions: [
       {
