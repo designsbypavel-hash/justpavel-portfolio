@@ -271,6 +271,7 @@ export const projects: Project[] = [
       },
       {
         heading: "What Usage Data Showed After Launch",
+        image: "/site-assets/case-studies/agent-ai/img-12.png",
         paragraphs: [
           "After launch, we tracked test session volume daily across all active accounts. The data showed something specific: usage wasn't just happening at setup. Teams were returning to the test window repeatedly throughout the day, especially after content updates and instruction changes.",
           "The stacked breakdown by user age segment showed that the 25 to 29 age group drove the majority of daily sessions, consistent with operations and customer support roles at the companies using the platform. Average daily sessions per user held steady around 80 to 84 across age groups, showing the test window became a regular part of how these teams worked, not a one-time onboarding step.",
