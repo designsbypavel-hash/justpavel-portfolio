@@ -990,7 +990,7 @@ export const projects: Project[] = [
         ],
       },
       {
-        heading: “What I’d do differently”,
+        heading: "What I’d do differently",
         paragraphs: [
           "The plan consolidation decision, removing two of the original five plans, was the right call, but I’d push for it earlier and harder. We spent two weeks designing for five plans before the PM data confirmed that two of them had combined purchase share below 4%. That’s two weeks of layout work that never shipped.",
           "I also underestimated how differently Android TV users think about payment. Mobile payment flows assume familiarity with UPI and digital wallets. Our TV audience skewed older, with higher rates of net banking preference, and we found this out halfway through engineering, forcing a late-stage redesign of the payment screen. Earlier research specifically scoped to payment behaviour on TV would have caught it.",
