@@ -260,6 +260,24 @@ export const projects: Project[] = [
           "Nobody had made testing a natural part of the setup experience itself. That gap was the opportunity.",
         ],
       },
+      {
+        heading: "From 30 Questions to 3 Priorities",
+        image: "/site-assets/case-studies/agent-ai/img-11.png",
+        paragraphs: [
+          "Research didn't hand us a roadmap. It handed us 30 open design questions spread across 6 functional areas: how people create assistants, how they train them, how they test them, how teams share access, how AI behaviour should be controlled, and how governance would work at enterprise scale.",
+          "Every question got a priority label based on what users said they needed before they'd commit. MVP, Phase 2, Phase 3, or Deferred. Testing Experience had the highest density of MVP tags by a significant margin. People weren't asking for more features. They were asking for confidence before going live.",
+          "Those 30 questions collapsed into three design themes: reduce cognitive load for first-time users setting up the assistant from scratch, build confidence through continuous testing at the point of change, and roll out more advanced controls progressively so the platform doesn't feel overwhelming on day one. Everything we built traced back to one of those three.",
+        ],
+      },
+      {
+        heading: "What Usage Data Showed After Launch",
+        image: "/site-assets/case-studies/agent-ai/img-11.png",
+        paragraphs: [
+          "After launch, we tracked test session volume daily across all active accounts. The data showed something specific: usage wasn't just happening at setup. Teams were returning to the test window repeatedly throughout the day, especially after content updates and instruction changes.",
+          "The stacked breakdown by user age segment showed that the 25 to 29 age group drove the majority of daily sessions, consistent with operations and customer support roles at the companies using the platform. Average daily sessions per user held steady around 80 to 84 across age groups, showing the test window became a regular part of how these teams worked, not a one-time onboarding step.",
+          "The late-April spike in the 30-day view mapped to a batch of new accounts going live simultaneously. Session volume climbed to over 2,000 in a single day, without any additional onboarding support from us. Teams could find it, understand it, and use it without being walked through it.",
+        ],
+      },
     ],
     decisions: [
       {
