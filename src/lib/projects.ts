@@ -262,6 +262,7 @@ export const projects: Project[] = [
       },
       {
         heading: "From 30 Questions to 3 Priorities",
+        image: "/site-assets/case-studies/agent-ai/img-11.png",
         paragraphs: [
           "Research didn't hand us a roadmap. It handed us 30 open design questions spread across 6 functional areas: how people create assistants, how they train them, how they test them, how teams share access, how AI behaviour should be controlled, and how governance would work at enterprise scale.",
           "Every question got a priority label based on what users said they needed before they'd commit. MVP, Phase 2, Phase 3, or Deferred. Testing Experience had the highest density of MVP tags by a significant margin. People weren't asking for more features. They were asking for confidence before going live.",
