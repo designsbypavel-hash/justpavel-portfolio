@@ -34,7 +34,7 @@ export function ChallengeSection({ sections }: { sections: Section[] }) {
             </div>
             {section.image && (
               <div className="mt-6 flex justify-center">
-                <div className="w-full max-w-2xl overflow-hidden rounded-xl" style={{ border: `1px solid ${cs.border}` }}>
+                <div className="w-full max-w-lg overflow-hidden rounded-xl" style={{ border: `1px solid ${cs.border}` }}>
                   <Image src={section.image} alt={section.heading} width={1920} height={1080} quality={100} className="block h-auto w-full" />
                 </div>
               </div>
