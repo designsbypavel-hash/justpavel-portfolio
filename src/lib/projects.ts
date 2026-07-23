@@ -973,7 +973,24 @@ export const projects: Project[] = [
     ],
     closingSections: [
       {
-        heading: "What I’d do differently",
+        heading: "A/B Test: Did the redesign actually work?",
+        image: "/site-assets/case-studies/sonyliv-ott-subscription/img-08.jpg",
+        paragraphs: [
+          "After shipping the redesigned subscription funnel, we ran a 14-day A/B test against the original flow with a 50/50 traffic split. The primary goal was upsell CTR, with checkout completion as a guardrail to make sure higher engagement didn't come at the cost of completions.",
+          "Variant B (the redesign with the enlarged plan visual) reached statistical significance on day 8 at 95% confidence. Probability to outperform Variant A: 98.2%.",
+          "248,613 total impressions. Upsell CTR improved by +46.3%. Upsell-to-cart rate improved by +38.1%. Average order value moved from $168.40 to $184.20, a +9.4% increase. Checkout completion was flat at -0.4%, well within the guardrail threshold. The redesign was recommended for full rollout.",
+        ],
+      },
+      {
+        heading: "What the data showed over time",
+        image: "/site-assets/case-studies/sonyliv-ott-subscription/img-09.jpg",
+        paragraphs: [
+          "The CTR gap opened from day one and widened steadily. Variant A (compact strip) averaged 5.4% CTR across the 14 days. Variant B (enlarged image) averaged 7.9%. The significance threshold was crossed at day 8 and the gap continued to grow, confirming the result was not noise.",
+          "The detailed metrics table confirmed no negative trade-offs: step 3 back-navigation was flat at -0.3 points. Users engaging more with the upsell were not second-guessing their choice at checkout. The visual treatment changed behaviour without introducing doubt.",
+        ],
+      },
+      {
+        heading: “What I’d do differently”,
         paragraphs: [
           "The plan consolidation decision, removing two of the original five plans, was the right call, but I’d push for it earlier and harder. We spent two weeks designing for five plans before the PM data confirmed that two of them had combined purchase share below 4%. That’s two weeks of layout work that never shipped.",
           "I also underestimated how differently Android TV users think about payment. Mobile payment flows assume familiarity with UPI and digital wallets. Our TV audience skewed older, with higher rates of net banking preference, and we found this out halfway through engineering, forcing a late-stage redesign of the payment screen. Earlier research specifically scoped to payment behaviour on TV would have caught it.",
