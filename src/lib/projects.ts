@@ -201,6 +201,7 @@ export const projects: Project[] = [
       "LLM usage cost had to scale sustainably across many customer accounts, not just one pilot.",
     ],
     stats: [
+      { value: "$3M+", label: "Revenue backed by enterprise clients including British Council" },
       { value: "22%", label: "More queries resolved by AI after launch" },
       { value: "45s", label: "Average time to handle a customer query" },
       { value: "250k+", label: "Test sessions run every month" },
@@ -240,6 +241,14 @@ export const projects: Project[] = [
         image: "/site-assets/case-studies/agent-ai/img-02.png",
         paragraphs: [
           "Five roles shared the same workspace: trainer, ops manager, IT admin, viewer, and super admin. Each had a different definition of 'ready to go live'. The design had to serve all of them.",
+        ],
+      },
+      {
+        heading: "Trusted by Global Enterprises",
+        image: "/site-assets/case-studies/agent-ai/british-council.webp",
+        paragraphs: [
+          "British Council is among the enterprise organisations running Kai at scale. With operations across 100+ countries and millions of learners, they needed an AI assistant that non-technical teams could configure, test, and trust before going live.",
+          "That adoption, backed by $3M+ in enterprise revenue, validated the core product bet: organisations with high accountability and complex governance requirements could confidently deploy AI without depending on engineering.",
         ],
       },
       {
