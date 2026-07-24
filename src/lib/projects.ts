@@ -403,7 +403,7 @@ export const projects: Project[] = [
       },
       {
         heading: "The Test Window in Practice",
-        image: "/site-assets/case-studies/agent-ai/img-07.png",
+        image: "/site-assets/case-studies/agent-ai/img-07.jpg",
         paragraphs: [
           "Change an instruction, see the effect. Upload a document, test it. Adjust tone or escalation rules, check immediately. Same place, every screen, no extra steps.",
         ],
