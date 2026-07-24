@@ -384,6 +384,22 @@ export const projects: Project[] = [
     ],
     closingSections: [
       {
+        heading: "Early Concepts",
+        image: "/site-assets/case-studies/agent-ai/img-08.png",
+        paragraphs: [
+          "Before committing to the final structure, I explored several directions. Early concepts included a usage and plan overview alongside the knowledge base — surfacing training files, tokens, and message counts in a single dashboard view.",
+          "These helped clarify what information was actually useful during setup versus what was operational noise. Most of it was noise.",
+        ],
+      },
+      {
+        heading: "Early Concepts: Access and Roles",
+        image: "/site-assets/case-studies/agent-ai/img-09.png",
+        paragraphs: [
+          "A parallel exploration looked at user management — how different roles (Super Admin, Agent Owner, non-owner) would be surfaced across organisations. This concept made the access model explicit early, which surfaced how complex multi-org permission structures could become.",
+          "It directly informed the decision to design role access as a progressive layer, introduced only after a user had completed their first assistant.",
+        ],
+      },
+      {
         heading: "How We Got There",
         paragraphs: [
           "Before any high-fidelity work, I mapped the five roles against what each needed to do, see, and never touch. That exposed the permission model problem before it became a late-stage fix.",
