@@ -24,10 +24,8 @@ export default function OutcomeSection({ sections }: { sections: Section[] }) {
               ))}
             </div>
             {section.image && (
-              <div className="-mx-6 mt-4 flex justify-center sm:-mx-16">
-                <div className="overflow-hidden rounded-xl" style={{ border: `1px solid ${border}` }}>
-                  <Image src={section.image} alt={section.heading} width={1920} height={1080} quality={100} className="block h-auto max-h-[640px] w-auto max-w-full" />
-                </div>
+              <div className="mt-4 w-full overflow-hidden rounded-xl" style={{ border: `1px solid ${border}` }}>
+                <Image src={section.image} alt={section.heading} width={1920} height={1080} quality={100} sizes="100vw" className="block h-auto w-full" />
               </div>
             )}
           </div>
