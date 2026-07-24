@@ -401,6 +401,14 @@ export const projects: Project[] = [
         ],
       },
       {
+        heading: "Process and Tools",
+        image: "/site-assets/case-studies/agent-ai/img-17.jpg",
+        paragraphs: [
+          "The project followed a double-diamond structure: Discover, Define, Develop, Deliver. Each phase used different tools matched to the job at hand.",
+          "NotebookLM organised business, research, and engineering docs during discovery. Vibe coding tools generated research guides and draft findings. Gemini acted as ideation partner and UX delivery planner during the define phase. Figma Make produced early concepts, Figma design handled explorations, and Vibe coding tools supported prototype builds through develop. Final output was production-ready code.",
+        ],
+      },
+      {
         heading: "How We Got There",
         paragraphs: [
           "Before any high-fidelity work, I mapped the five roles against what each needed to do, see, and never touch. That exposed the permission model problem before it became a late-stage fix.",
