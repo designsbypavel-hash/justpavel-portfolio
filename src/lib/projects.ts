@@ -102,7 +102,7 @@ export const projects: Project[] = [
     description:
       "Businesses wanted to use Kai to handle customer support. But they had no way to check if it was ready before switching it on. I designed the solution.",
     category: "B2B SaaS",
-    readTime: "8 min",
+    readTime: "4 min",
     tags: ["AI", "Enterprise", "Validation", "Governance"],
     image: "/site-assets/ai-control-layer.png",
     gif: "/site-assets/case-studies/agent-ai/thumbnail.gif",
