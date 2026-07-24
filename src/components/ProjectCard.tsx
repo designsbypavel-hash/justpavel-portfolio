@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import type { Project } from "@/lib/projects";
 import { cardHover } from "@/lib/motion";
@@ -18,14 +19,17 @@ export default function ProjectCard({
   priority?: boolean;
 }) {
   const TitleTag = titleAs;
+  const [hovered, setHovered] = useState(false);
   return (
     <motion.div initial="rest" whileHover="hover" animate="rest" variants={cardHover}>
       <Link
         href={`/work/${project.slug}`}
         onClick={playClickSound}
         className="group grid gap-6 sm:grid-cols-2 sm:items-center"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
       >
-        <GlowCard className="aspect-[4/3] w-full overflow-hidden rounded-xl">
+        <GlowCard className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
           <Image
             src={project.image}
             alt={project.title}
@@ -34,6 +38,14 @@ export default function ProjectCard({
             priority={priority}
             sizes="(min-width: 640px) 50vw, 100vw"
           />
+          {project.gif && hovered && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={project.gif}
+              alt=""
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          )}
         </GlowCard>
         <div>
           <TitleTag className="mb-2 text-2xl font-semibold transition-colors duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-white/80">

@@ -62,6 +62,7 @@ export type Project = {
   readTime?: string;
   tags: string[];
   image: string;
+  gif?: string;
   galleryImages: string[];
   prototypeVideo?: string;
   role: string;
@@ -104,6 +105,7 @@ export const projects: Project[] = [
     readTime: "8 min",
     tags: ["AI", "Enterprise", "Validation", "Governance"],
     image: "/site-assets/ai-control-layer.png",
+    gif: "/site-assets/case-studies/agent-ai/thumbnail.gif",
     galleryImages: [
       "/site-assets/case-studies/agent-ai/img-01.png",
       "/site-assets/case-studies/agent-ai/img-02.png",
