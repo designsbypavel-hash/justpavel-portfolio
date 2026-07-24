@@ -58,9 +58,9 @@ function DecisionCard({ decision, index }: { decision: Decision; index: number }
         <span className="font-semibold" style={{ color: cs.muted }}>Why: </span>{decision.why}
       </p>
       {decision.image && (
-        <div className="-mx-6 mb-4 flex justify-center sm:-mx-8">
-          <div className="overflow-hidden rounded-lg" style={{ border: `1px solid ${cs.border}` }}>
-            <Image src={decision.image} alt={decision.title} width={1920} height={1080} quality={100} className="block h-auto max-h-[640px] w-auto max-w-full" />
+        <div className="-mx-6 mb-4 sm:-mx-8">
+          <div className="w-full overflow-hidden rounded-lg" style={{ border: `1px solid ${cs.border}` }}>
+            <Image src={decision.image} alt={decision.title} width={1920} height={1080} quality={100} sizes="100vw" className="block h-auto w-full" />
           </div>
         </div>
       )}
