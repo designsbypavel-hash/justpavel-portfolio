@@ -40,7 +40,7 @@ export default function AboutPage() {
     <div className="px-6 py-24">
       <div className="mx-auto max-w-5xl">
 
-        {/* Hero — two-column */}
+        {/* Hero two-column */}
         <div className="mb-24 flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-16">
 
           {/* Left: intro text */}
@@ -103,7 +103,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Tool Stack — full-width marquee */}
+        {/* Tool Stack full-width marquee */}
         <ToolStack />
 
         {/* From My Lens */}

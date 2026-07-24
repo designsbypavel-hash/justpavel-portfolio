@@ -117,7 +117,7 @@ export default function JarvisChat() {
         )}
       </div>
 
-      {/* Chat window — clean white card */}
+      {/* Chat window clean white card */}
       {open && (
         <div
           className="fixed bottom-24 right-4 z-50 flex flex-col overflow-hidden rounded-2xl"

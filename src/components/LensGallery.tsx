@@ -5,7 +5,7 @@ import { useState, useRef, useCallback, useEffect } from "react";
 
 type Photo = { src: string; caption: string };
 
-// Three-row scatter across full canvas width — % x, px y from vertical center
+// Three-row scatter across full canvas width % x, px y from vertical center
 const SEED_LAYOUT = [
   { xPct:  1,  y: -120, rot: -4 },
   { xPct:  8,  y:   30, rot:  3 },

@@ -131,7 +131,7 @@ export const projects: Project[] = [
         "In every sales meeting, the same question came up: \"What happens when Kai gets it wrong?\" Companies weren't questioning the AI. They were asking how they'd know it was safe before going live.",
     },
     opportunity:
-      "The gap wasn't a missing AI feature — it was a missing sense of safety. Every competitor treated testing as a pre-demo activity in a separate environment. Nobody had made it part of daily setup. That was the opening.",
+      "The gap wasn't a missing AI feature it was a missing sense of safety. Every competitor treated testing as a pre-demo activity in a separate environment. Nobody had made it part of daily setup. That was the opening.",
     hypothesis: {
       weBelieved:
         "Companies weren't afraid of AI. They were afraid of finding out it didn't work in front of a real customer. Give teams a safe way to check before going live, and they'll move forward with confidence.",
@@ -214,7 +214,7 @@ export const projects: Project[] = [
       {
         heading: "What is Kai?",
         paragraphs: [
-          "Kai is an AI assistant platform that lets businesses set up a customer-facing chatbot — answering support queries, qualifying leads, and routing customers — without needing engineers.",
+          "Kai is an AI assistant platform that lets businesses set up a customer-facing chatbot answering support queries, qualifying leads, and routing customers without needing engineers.",
           "Unlike rule-based chatbots, Kai understands natural language, learns from company content, and escalates to humans when needed.",
         ],
       },
@@ -222,14 +222,14 @@ export const projects: Project[] = [
         heading: "The Problem",
         image: "/site-assets/case-studies/agent-ai/img-06.jpg",
         paragraphs: [
-          "Companies were interested but kept stalling. Every change — updated instructions, new content, adjusted behaviour — had no visible effect until it went live.",
+          "Companies were interested but kept stalling. Every change updated instructions, new content, adjusted behaviour had no visible effect until it went live.",
           "For teams responsible for customer satisfaction, deploying blind wasn't acceptable.",
         ],
       },
       {
         heading: "What Research Showed",
         paragraphs: [
-          "We interviewed 8 customer support managers and operations leads at enterprise companies evaluating Kai — people who would own the outcome if the AI failed.",
+          "We interviewed 8 customer support managers and operations leads at enterprise companies evaluating Kai people who would own the outcome if the AI failed.",
           "I expected questions about performance. Instead, every session came back to the same thing: \"What happens when Kai gets it wrong?\"",
           "3 out of 4 companies in advanced talks had paused at exactly this point.",
         ],
@@ -245,7 +245,7 @@ export const projects: Project[] = [
         heading: "Three Things That Kept Coming Up in Research",
         paragraphs: [
           "Users cared about outcomes, not how the AI worked underneath.",
-          "They were willing to spend more time on setup — if it led to certainty, not just speed.",
+          "They were willing to spend more time on setup if it led to certainty, not just speed.",
           "Every update had no visible effect until live. That gap was why deals stalled.",
         ],
       },
@@ -261,7 +261,7 @@ export const projects: Project[] = [
         image: "/site-assets/case-studies/agent-ai/img-11.png",
         paragraphs: [
           "Research produced 30 open design questions across 6 areas: creation, training, testing, access, AI behaviour, and governance. Each was labelled MVP, Phase 2, Phase 3, or Deferred.",
-          "Testing had the highest density of MVP tags. People weren't asking for more features — they were asking for confidence before going live.",
+          "Testing had the highest density of MVP tags. People weren't asking for more features they were asking for confidence before going live.",
           "Everything collapsed into three themes: reduce cognitive load for first-time users, build confidence through testing at the point of change, and introduce advanced controls progressively.",
         ],
       },
@@ -303,15 +303,15 @@ export const projects: Project[] = [
         result:
           "Teams could upload a document and test it in the same session. Bad content was caught before it reached a customer.",
         tradeOff:
-          "Real-time indexing status required additional backend work. We prioritised it because silent failures — teams assuming content had loaded when it hadn't — were a worse outcome.",
+          "Real-time indexing status required additional backend work. We prioritised it because silent failures teams assuming content had loaded when it hadn't were a worse outcome.",
         businessReasoning:
-          "Support teams were blamed for wrong answers after knowledge updates. The issue wasn't the AI — it was no way to verify before going live. Fixing that eliminated a recurring escalation.",
+          "Support teams were blamed for wrong answers after knowledge updates. The issue wasn't the AI it was no way to verify before going live. Fixing that eliminated a recurring escalation.",
       },
       {
         phase: "Phase 3: Operating AI at scale",
         title: "Give teams the confidence to publish, not just the button",
         image: "/site-assets/case-studies/agent-ai/img-16.jpg",
-        why: "Publishing is a risk decision, not a technical one. Enterprise directors needed evidence the assistant was ready — not just a Publish button.",
+        why: "Publishing is a risk decision, not a technical one. Enterprise directors needed evidence the assistant was ready not just a Publish button.",
         whatChanged: [
           "Assistant Health panel shows resolution rate and confidence score in real time before publishing",
           "Knowledge gap alerts surface specific queries the assistant cannot answer, with the source identified",
@@ -320,11 +320,11 @@ export const projects: Project[] = [
           "Guardrails configuration lets teams define when Kai auto-escalates, without writing code",
         ],
         result:
-          "Directors approved publish decisions on data, not gut feel. The question changed from 'is it ready?' to 'health panel says 92% resolution and no regressions — let's go.'",
+          "Directors approved publish decisions on data, not gut feel. The question changed from 'is it ready?' to 'health panel says 92% resolution and no regressions let's go.'",
         tradeOff:
           "Visible confidence scores and knowledge gaps initially read as failures to some stakeholders. Reframing them as early warning signals shifted the conversation.",
         businessReasoning:
-          "Enterprise procurement required documented pre-production validation. The health panel and readiness check provided that audit trail — unblocking two deals stalled on governance requirements.",
+          "Enterprise procurement required documented pre-production validation. The health panel and readiness check provided that audit trail unblocking two deals stalled on governance requirements.",
       },
     ],
     businessImpact: [
@@ -387,7 +387,7 @@ export const projects: Project[] = [
         heading: "Early Concepts",
         image: "/site-assets/case-studies/agent-ai/img-08.png",
         paragraphs: [
-          "Before committing to the final structure, I explored several directions. Early concepts included a usage and plan overview alongside the knowledge base — surfacing training files, tokens, and message counts in a single dashboard view.",
+          "Before committing to the final structure, I explored several directions. Early concepts included a usage and plan overview alongside the knowledge base surfacing training files, tokens, and message counts in a single dashboard view.",
           "These helped clarify what information was actually useful during setup versus what was operational noise. Most of it was noise.",
         ],
       },
@@ -395,7 +395,7 @@ export const projects: Project[] = [
         heading: "Early Concepts: Access and Roles",
         image: "/site-assets/case-studies/agent-ai/img-09.png",
         paragraphs: [
-          "A parallel exploration looked at user management — how different roles (Super Admin, Agent Owner, non-owner) would be surfaced across organisations. This concept made the access model explicit early, which surfaced how complex multi-org permission structures could become.",
+          "A parallel exploration looked at user management how different roles (Super Admin, Agent Owner, non-owner) would be surfaced across organisations. This concept made the access model explicit early, which surfaced how complex multi-org permission structures could become.",
           "It directly informed the decision to design role access as a progressive layer, introduced only after a user had completed their first assistant.",
         ],
       },
@@ -403,7 +403,7 @@ export const projects: Project[] = [
         heading: "How We Got There",
         paragraphs: [
           "Before any high-fidelity work, I mapped the five roles against what each needed to do, see, and never touch. That exposed the permission model problem before it became a late-stage fix.",
-          "Early concepts ranged from a slide-out drawer to a full-page test mode — both added friction. The version that worked kept the test window anchored beside config at all times: visible without being forced.",
+          "Early concepts ranged from a slide-out drawer to a full-page test mode both added friction. The version that worked kept the test window anchored beside config at all times: visible without being forced.",
           "The key insight from testing: people didn't want to open a test window. They wanted testing to already be there.",
         ],
       },
@@ -411,9 +411,9 @@ export const projects: Project[] = [
         heading: "How the Test Window Works in Practice",
         image: "/site-assets/case-studies/agent-ai/img-07.png",
         paragraphs: [
-          "Change an instruction — see the effect immediately. No saving, no refreshing.",
-          "Upload a training document — test it right away. Bad content shows up in the test, not in a customer conversation.",
-          "Adjust tone or escalation rules — the test window is right there on every screen.",
+          "Change an instruction see the effect immediately. No saving, no refreshing.",
+          "Upload a training document test it right away. Bad content shows up in the test, not in a customer conversation.",
+          "Adjust tone or escalation rules the test window is right there on every screen.",
         ],
       },
       {
@@ -426,16 +426,16 @@ export const projects: Project[] = [
       {
         heading: "What I'd Build Next",
         paragraphs: [
-          "Automatic checks on every update — run standard scenarios whenever something changes, so problems are flagged without anyone having to look for them.",
-          "Collaborative testing — the person who knows edge cases and the person who signs off are usually different. A shared test session fixes that.",
-          "A shared test library — teams currently build scenarios from scratch. Anonymised examples from common problems across companies would give new teams a head start.",
+          "Automatic checks on every update run standard scenarios whenever something changes, so problems are flagged without anyone having to look for them.",
+          "Collaborative testing the person who knows edge cases and the person who signs off are usually different. A shared test session fixes that.",
+          "A shared test library teams currently build scenarios from scratch. Anonymised examples from common problems across companies would give new teams a head start.",
         ],
       },
       {
         heading: "What I Learned",
         paragraphs: [
           "I went in thinking the problem was making the AI smarter. Research showed it was simpler: people had no way to check if it was ready.",
-          "The solution wasn't a new AI feature — it was a safe place to find out for themselves, before it mattered.",
+          "The solution wasn't a new AI feature it was a safe place to find out for themselves, before it mattered.",
           "One thing I'd do differently: I introduced access levels late, once I realised different roles needed different permissions. That should have been designed in from the start.",
         ],
       },
