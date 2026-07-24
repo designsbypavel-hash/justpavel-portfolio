@@ -216,7 +216,7 @@ export const projects: Project[] = [
       {
         heading: "What is Kai?",
         paragraphs: [
-          "An AI assistant platform that lets businesses deploy a customer-facing chatbot — answering support queries, qualifying leads, routing customers — without engineers.",
+          "An AI assistant platform that lets businesses deploy a customer-facing chatbot answering support queries, qualifying leads, routing customers without engineers.",
         ],
       },
       {
@@ -230,7 +230,7 @@ export const projects: Project[] = [
         heading: "The Problem",
         image: "/site-assets/case-studies/agent-ai/img-06.jpg",
         paragraphs: [
-          "Every change — updated instructions, new content, adjusted behaviour — had no visible effect until the assistant went live. For teams responsible for customer satisfaction, deploying blind wasn't an option.",
+          "Every change updated instructions, new content, adjusted behaviour had no visible effect until the assistant went live. For teams responsible for customer satisfaction, deploying blind wasn't an option.",
         ],
       },
       {
@@ -244,7 +244,7 @@ export const projects: Project[] = [
         heading: "Five Roles, One Workspace",
         image: "/site-assets/case-studies/agent-ai/img-02.png",
         paragraphs: [
-          "Trainer, ops manager, IT admin, viewer, super admin — each with a different definition of ready to go live. The design had to serve all of them without adding a separate flow for each.",
+          "Trainer, ops manager, IT admin, viewer, super admin each with a different definition of ready to go live. The design had to serve all of them without adding a separate flow for each.",
         ],
       },
       {
@@ -258,7 +258,7 @@ export const projects: Project[] = [
         heading: "30 Questions. 3 Priorities.",
         image: "/site-assets/case-studies/agent-ai/img-11.png",
         paragraphs: [
-          "Research produced 30 design questions across 6 areas. Testing had the highest density of MVP tags — people weren't asking for more features, they were asking for confidence before going live.",
+          "Research produced 30 design questions across 6 areas. Testing had the highest density of MVP tags people weren't asking for more features, they were asking for confidence before going live.",
           "Three themes shaped everything: reduce cognitive load on first use, build confidence through real-time testing, introduce advanced controls progressively.",
         ],
       },
@@ -411,7 +411,7 @@ export const projects: Project[] = [
       {
         heading: "What Shifted in Sales",
         paragraphs: [
-          "The question didn't go away. The answer did. From 'we'll find out' to 'let me show you' — the conversation moved from risk to readiness.",
+          "The question didn't go away. The answer did. From 'we'll find out' to 'let me show you' the conversation moved from risk to readiness.",
         ],
       },
       {
