@@ -19,15 +19,12 @@ export default function ProjectCard({
   priority?: boolean;
 }) {
   const TitleTag = titleAs;
-  const [hovered, setHovered] = useState(false);
   return (
     <motion.div initial="rest" whileHover="hover" animate="rest" variants={cardHover}>
       <Link
         href={`/work/${project.slug}`}
         onClick={playClickSound}
         className="group grid gap-6 sm:grid-cols-2 sm:items-center"
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
       >
         <GlowCard className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
           <Image
@@ -38,7 +35,7 @@ export default function ProjectCard({
             priority={priority}
             sizes="(min-width: 640px) 50vw, 100vw"
           />
-          {project.gif && hovered && (
+          {project.gif && (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={project.gif}
