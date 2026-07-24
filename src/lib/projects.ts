@@ -216,70 +216,57 @@ export const projects: Project[] = [
       {
         heading: "What is Kai?",
         paragraphs: [
-          "Kai is an AI assistant platform that lets businesses set up a customer-facing chatbot answering support queries, qualifying leads, and routing customers without needing engineers.",
-          "Unlike rule-based chatbots, Kai understands natural language, learns from company content, and escalates to humans when needed.",
+          "An AI assistant platform that lets businesses deploy a customer-facing chatbot — answering support queries, qualifying leads, routing customers — without engineers.",
         ],
       },
       {
-        heading: "Trusted by Global Enterprises",
+        heading: "Backed by Global Enterprises",
         image: "/site-assets/case-studies/agent-ai/british-council.webp",
         paragraphs: [
-          "British Council, operating across 100+ countries with millions of learners, is among the enterprise organisations running Kai at scale. They needed an AI assistant non-technical teams could configure, test, and trust before going live.",
-          "That adoption, backed by $3M+ in enterprise revenue, validated the core bet: organisations with high governance requirements could deploy AI without depending on engineering.",
+          "British Council runs Kai across 100+ countries. Their adoption, alongside $3M+ in enterprise revenue, confirmed that high-governance organisations could deploy AI without depending on technical teams.",
         ],
       },
       {
         heading: "The Problem",
         image: "/site-assets/case-studies/agent-ai/img-06.jpg",
         paragraphs: [
-          "Companies were interested but kept stalling. Every change updated instructions, new content, adjusted behaviour had no visible effect until it went live.",
-          "For teams responsible for customer satisfaction, deploying blind wasn't acceptable.",
+          "Every change — updated instructions, new content, adjusted behaviour — had no visible effect until the assistant went live. For teams responsible for customer satisfaction, deploying blind wasn't an option.",
         ],
       },
       {
         heading: "What Research Showed",
         paragraphs: [
-          "We interviewed 8 customer support managers and operations leads at enterprise companies evaluating Kai people who would own the outcome if the AI failed.",
-          "I expected questions about performance. Instead, every session came back to the same thing: \"What happens when Kai gets it wrong?\"",
+          "8 interviews with enterprise customer support leads. Every session came back to the same question: \"What happens when Kai gets it wrong?\"",
           "3 out of 4 companies in advanced talks had paused at exactly this point.",
         ],
       },
       {
-        heading: "Who Uses the Platform",
+        heading: "Five Roles, One Workspace",
         image: "/site-assets/case-studies/agent-ai/img-02.png",
         paragraphs: [
-          "Five roles shared the same workspace: trainer, ops manager, IT admin, viewer, and super admin. Each had a different definition of 'ready to go live'. The design had to serve all of them.",
+          "Trainer, ops manager, IT admin, viewer, super admin — each with a different definition of ready to go live. The design had to serve all of them without adding a separate flow for each.",
         ],
       },
       {
-        heading: "Three Things That Kept Coming Up in Research",
-        paragraphs: [
-          "Users cared about outcomes, not how the AI worked underneath.",
-          "They were willing to spend more time on setup if it led to certainty, not just speed.",
-          "Every update had no visible effect until live. That gap was why deals stalled.",
-        ],
-      },
-      {
-        heading: "What Every Competitor Was Missing",
+        heading: "The Gap Nobody Had Closed",
         image: "/site-assets/case-studies/agent-ai/img-03.png",
         paragraphs: [
           "Every competitor treated testing as a separate pre-demo activity. Nobody had built it into the daily setup experience. That was the opening.",
         ],
       },
       {
-        heading: "From 30 Questions to 3 Priorities",
+        heading: "30 Questions. 3 Priorities.",
         image: "/site-assets/case-studies/agent-ai/img-11.png",
         paragraphs: [
-          "Research produced 30 open design questions across 6 areas: creation, training, testing, access, AI behaviour, and governance. Each was labelled MVP, Phase 2, Phase 3, or Deferred.",
-          "Testing had the highest density of MVP tags. People weren't asking for more features they were asking for confidence before going live.",
-          "Everything collapsed into three themes: reduce cognitive load for first-time users, build confidence through testing at the point of change, and introduce advanced controls progressively.",
+          "Research produced 30 design questions across 6 areas. Testing had the highest density of MVP tags — people weren't asking for more features, they were asking for confidence before going live.",
+          "Three themes shaped everything: reduce cognitive load on first use, build confidence through real-time testing, introduce advanced controls progressively.",
         ],
       },
       {
         heading: "How We Worked",
         image: "/site-assets/case-studies/agent-ai/img-17.jpg",
         paragraphs: [
-          "The project ran across four phases: Discover, Define, Develop, Deliver. Each phase used tools matched to the job. NotebookLM organised research and engineering docs. Gemini handled ideation and delivery planning. Figma Make and Figma Design drove early concepts and explorations. Vibe coding tools supported synthesis, prototypes, and final output.",
+          "Discover: NotebookLM + Vibe coding tools for research synthesis. Define: Gemini for ideation and UX planning. Develop: Figma Make, Figma Design, Vibe coding tools for concepts and explorations. Deliver: production-ready code.",
         ],
       },
     ],
@@ -401,59 +388,43 @@ export const projects: Project[] = [
     ],
     closingSections: [
       {
-        heading: "Early Concepts",
+        heading: "Early Explorations",
         image: "/site-assets/case-studies/agent-ai/img-08.png",
         paragraphs: [
-          "Before committing to the final structure, I explored several directions. Early concepts included a usage and plan overview alongside the knowledge base surfacing training files, tokens, and message counts in a single dashboard view.",
-          "These helped clarify what information was actually useful during setup versus what was operational noise. Most of it was noise.",
+          "Early concepts surfaced training files, tokens, and message counts alongside the knowledge base. Testing showed most of it was noise. Users wanted to check the assistant worked, not manage its capacity.",
         ],
       },
       {
-        heading: "Early Concepts: Access and Roles",
+        heading: "Access and Roles Exploration",
         image: "/site-assets/case-studies/agent-ai/img-09.png",
         paragraphs: [
-          "A parallel exploration looked at user management how different roles (Super Admin, Agent Owner, non-owner) would be surfaced across organisations. This concept made the access model explicit early, which surfaced how complex multi-org permission structures could become.",
-          "It directly informed the decision to design role access as a progressive layer, introduced only after a user had completed their first assistant.",
+          "An early exploration of user management exposed how complex multi-org permissions could become. It led to the decision to introduce role access progressively, not upfront.",
         ],
       },
       {
-        heading: "How We Got There",
-        paragraphs: [
-          "Before any high-fidelity work, I mapped the five roles against what each needed to do, see, and never touch. That exposed the permission model problem before it became a late-stage fix.",
-          "Early concepts ranged from a slide-out drawer to a full-page test mode both added friction. The version that worked kept the test window anchored beside config at all times: visible without being forced.",
-          "The key insight from testing: people didn't want to open a test window. They wanted testing to already be there.",
-        ],
-      },
-      {
-        heading: "How the Test Window Works in Practice",
+        heading: "The Test Window in Practice",
         image: "/site-assets/case-studies/agent-ai/img-07.png",
         paragraphs: [
-          "Change an instruction see the effect immediately. No saving, no refreshing.",
-          "Upload a training document test it right away. Bad content shows up in the test, not in a customer conversation.",
-          "Adjust tone or escalation rules the test window is right there on every screen.",
+          "Change an instruction, see the effect. Upload a document, test it. Adjust tone or escalation rules, check immediately. Same place, every screen, no extra steps.",
         ],
       },
       {
-        heading: "What Changed in Sales Meetings",
+        heading: "What Shifted in Sales",
         paragraphs: [
-          "'What happens when it gets it wrong?' didn't go away. But the answer changed from 'we'll find out' to 'let me show you.'",
-          "Companies that had paused could now verify safety themselves. The conversation moved from risk to readiness.",
+          "The question didn't go away. The answer did. From 'we'll find out' to 'let me show you' — the conversation moved from risk to readiness.",
         ],
       },
       {
-        heading: "What I'd Build Next",
+        heading: "What I'd Do Next",
         paragraphs: [
-          "Automatic checks on every update run standard scenarios whenever something changes, so problems are flagged without anyone having to look for them.",
-          "Collaborative testing the person who knows edge cases and the person who signs off are usually different. A shared test session fixes that.",
-          "A shared test library teams currently build scenarios from scratch. Anonymised examples from common problems across companies would give new teams a head start.",
+          "Automate test runs on every update. Build shared test sessions for the person who knows edge cases and the person who signs off. Create a library of common test scenarios so teams don't start from scratch.",
         ],
       },
       {
         heading: "What I Learned",
         paragraphs: [
-          "I went in thinking the problem was making the AI smarter. Research showed it was simpler: people had no way to check if it was ready.",
-          "The solution wasn't a new AI feature it was a safe place to find out for themselves, before it mattered.",
-          "One thing I'd do differently: I introduced access levels late, once I realised different roles needed different permissions. That should have been designed in from the start.",
+          "The problem wasn't making the AI smarter. It was giving people a safe place to check before it mattered.",
+          "I'd bring access levels in from day one. Adding them late made the permission model feel bolted on rather than designed in.",
         ],
       },
     ],
