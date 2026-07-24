@@ -80,7 +80,7 @@ export type Project = {
   teamsHelped?: TeamGroup[];
   automationScope?: string[];
   escalationTriggers?: string[];
-  rejectedConcepts?: string[];
+  rejectedConcepts?: Array<string | { text: string; image?: string }>;
   constraints?: string[];
   successMetrics?: ImpactCategory[];
   stats: ImpactStat[];
@@ -186,6 +186,7 @@ export const projects: Project[] = [
       "Multiple attempts have already failed, or a sales opportunity needs a human rep.",
     ],
     rejectedConcepts: [
+      { text: "A separate Playground tab: the earliest concept put testing behind its own navigation tab, isolated from the config screens. It looked clean but recreated the exact problem we were solving. Teams would still switch context to test, meaning they would skip it under pressure. Testing needed to be where the change was made, not one tab away.", image: "/site-assets/case-studies/agent-ai/img-13.png" },
       "A separate testing environment: we considered keeping testing isolated, but that recreated the exact problem we were solving. Teams would still need to switch contexts, and the friction would mean they'd skip it.",
       "A test button on the instructions screen only: simpler to build, but any change to training content or tone rules would be invisible. Problems introduced outside instructions would only surface in production.",
       "A manual QA checklist before go-live: this puts the burden on teams to remember steps. Research showed people don't follow checklists under pressure. The test needed to be present at the moment of change, not at the end of a process.",
