@@ -128,10 +128,10 @@ export const projects: Project[] = [
       title: "The AI worked. Nobody could verify that before going live.",
       image: "/site-assets/case-studies/agent-ai/img-01.png",
       description:
-        "In 8 out of 8 sales meetings, the same question came up: \"What happens when Kai gets it wrong, and who is accountable?\" Companies weren't asking whether the AI could do the job. They were asking how they'd know before it was too late.",
+        "In every sales meeting, the same question came up: \"What happens when Kai gets it wrong?\" Companies weren't questioning the AI. They were asking how they'd know it was safe before going live.",
     },
     opportunity:
-      "If we give teams a safe way to simulate real customer conversations before going live, they will gain the confidence to commit, reduce the risk of deploying something broken, and adopt AI faster. The gap wasn't a missing AI feature. It was a missing sense of safety. Every competitor treated testing as something you did in a separate environment before a demo. Nobody had made it part of the daily setup experience. That was the opening.",
+      "The gap wasn't a missing AI feature — it was a missing sense of safety. Every competitor treated testing as a pre-demo activity in a separate environment. Nobody had made it part of daily setup. That was the opening.",
     hypothesis: {
       weBelieved:
         "Companies weren't afraid of AI. They were afraid of finding out it didn't work in front of a real customer. Give teams a safe way to check before going live, and they'll move forward with confidence.",
@@ -205,69 +205,64 @@ export const projects: Project[] = [
       { value: "250k+", label: "Test sessions run every month" },
     ],
     tldrProblem:
-      "Businesses wanted to use Kai to handle customer support but had no way to check if it was ready before switching it on. Every test required engineers, a separate environment, or going live and hoping for the best.",
+      "Businesses wanted to use Kai for customer support but had no way to verify it was ready. Every test required engineers, a separate environment, or deploying blind.",
     tldrWhatIDid:
-      "Designed a live test window built into every part of the setup experience. Make a change, see exactly how the assistant responds, right there before anything goes live. No engineering needed.",
+      "Built a live test window into every part of setup. Change something, see the effect immediately, before anything goes live.",
     tldrImpact:
-      "Companies that had paused because they couldn't verify the AI moved forward. The question changed from 'what if it gets it wrong?' to 'let me check right now.'",
+      "Stalled deals moved forward. The question shifted from 'what if it gets it wrong?' to 'let me check right now.'",
     context: [
       {
         heading: "What is Kai?",
         paragraphs: [
-          "Kai is an AI assistant platform for businesses. Companies use it to set up a customer-facing chatbot that answers support questions, qualifies sales leads, and routes customers to the right team, without needing engineers to build it.",
-          "Think of it like hiring a customer service agent who never sleeps, handles thousands of conversations at once, and can be trained by the business team themselves, not the tech team.",
-          "Old-style chatbots followed rigid scripts and broke the moment a customer asked something unexpected. Kai understands natural language, learns from the company's own content, and knows when to hand off to a human.",
+          "Kai is an AI assistant platform that lets businesses set up a customer-facing chatbot — answering support queries, qualifying leads, and routing customers — without needing engineers.",
+          "Unlike rule-based chatbots, Kai understands natural language, learns from company content, and escalates to humans when needed.",
         ],
       },
       {
         heading: "The Problem",
         image: "/site-assets/case-studies/agent-ai/img-06.png",
         paragraphs: [
-          "Companies were interested. But something kept stopping them from committing.",
-          "Whenever they made a change to the assistant, whether updating its instructions, adding new content, or adjusting how it handled certain questions, they had no way to see what effect that change would have before it went live.",
-          "The only option was to deploy it and see what happened. For someone responsible for customer satisfaction, that wasn't good enough.",
+          "Companies were interested but kept stalling. Every change — updated instructions, new content, adjusted behaviour — had no visible effect until it went live.",
+          "For teams responsible for customer satisfaction, deploying blind wasn't acceptable.",
         ],
       },
       {
         heading: "What Research Showed",
         paragraphs: [
-          "We ran 8 interviews with customer support managers and operations leads at enterprise companies that were actively evaluating Kai. These were people responsible for customer satisfaction scores, not engineering or product. They were the ones who would own the outcome if the AI got it wrong.",
-          "I expected the sessions to be about performance: accuracy rates, speed, resolution numbers. Instead, every single meeting turned to the same question.",
-          "\"What happens when Kai gets it wrong, and who is accountable?\"",
-          "They could see the AI worked in the demo. The question was whether they could be sure before putting it in front of their own customers. 3 out of 4 companies in advanced talks had paused at exactly this point.",
+          "We interviewed 8 customer support managers and operations leads at enterprise companies evaluating Kai — people who would own the outcome if the AI failed.",
+          "I expected questions about performance. Instead, every session came back to the same thing: \"What happens when Kai gets it wrong?\"",
+          "3 out of 4 companies in advanced talks had paused at exactly this point.",
         ],
       },
       {
         heading: "Who Uses the Platform",
         image: "/site-assets/case-studies/agent-ai/img-02.png",
         paragraphs: [
-          "Five different types of people needed to use the same testing space: a trainer uploading new content, an ops manager reviewing responses, an IT admin controlling who can make changes, a viewer monitoring results, and a super admin overseeing everything.",
-          "Each of them had a different idea of what 'safe to test' and 'ready to go live' meant. The design had to work for all of them.",
+          "Five roles shared the same workspace: trainer, ops manager, IT admin, viewer, and super admin. Each had a different definition of 'ready to go live'. The design had to serve all of them.",
         ],
       },
       {
         heading: "Three Things That Kept Coming Up in Research",
         paragraphs: [
-          "People talked about what they needed the assistant to do, not how it worked underneath. They didn't care about the technology. They cared about the outcome.",
-          "They would happily spend more time on setup if they felt confident in the result. This wasn't about speed. It was about certainty.",
-          "Every time they updated something, they had no way to check what changed without going live. That single gap was the reason deals were stalling.",
+          "Users cared about outcomes, not how the AI worked underneath.",
+          "They were willing to spend more time on setup — if it led to certainty, not just speed.",
+          "Every update had no visible effect until live. That gap was why deals stalled.",
         ],
       },
       {
         heading: "What Every Competitor Was Missing",
         image: "/site-assets/case-studies/agent-ai/img-03.png",
         paragraphs: [
-          "Every other AI platform treated testing as a separate activity. Something you did in a different environment before a demo, not something built into daily use.",
-          "Nobody had made testing a natural part of the setup experience itself. That gap was the opportunity.",
+          "Every competitor treated testing as a separate pre-demo activity. Nobody had built it into the daily setup experience. That was the opening.",
         ],
       },
       {
         heading: "From 30 Questions to 3 Priorities",
         image: "/site-assets/case-studies/agent-ai/img-11.png",
         paragraphs: [
-          "Research didn't hand us a roadmap. It handed us 30 open design questions spread across 6 functional areas: how people create assistants, how they train them, how they test them, how teams share access, how AI behaviour should be controlled, and how governance would work at enterprise scale.",
-          "Every question got a priority label based on what users said they needed before they'd commit. MVP, Phase 2, Phase 3, or Deferred. Testing Experience had the highest density of MVP tags by a significant margin. People weren't asking for more features. They were asking for confidence before going live.",
-          "Those 30 questions collapsed into three design themes: reduce cognitive load for first-time users setting up the assistant from scratch, build confidence through continuous testing at the point of change, and roll out more advanced controls progressively so the platform doesn't feel overwhelming on day one. Everything we built traced back to one of those three.",
+          "Research produced 30 open design questions across 6 areas: creation, training, testing, access, AI behaviour, and governance. Each was labelled MVP, Phase 2, Phase 3, or Deferred.",
+          "Testing had the highest density of MVP tags. People weren't asking for more features — they were asking for confidence before going live.",
+          "Everything collapsed into three themes: reduce cognitive load for first-time users, build confidence through testing at the point of change, and introduce advanced controls progressively.",
         ],
       },
     ],
@@ -276,7 +271,7 @@ export const projects: Project[] = [
         phase: "Phase 1: Creating and managing AI assistants",
         title: "Get to a working assistant in one session, not one week",
         image: "/site-assets/case-studies/agent-ai/img-14.jpg",
-        why: "First-time users came in with one goal: see whether Kai could handle their actual support questions. If setup required too many steps before they could test anything, they'd lose confidence before reaching the value. The Playground needed to be the first thing visible, not something earned after completing configuration.",
+        why: "First-time users had one goal: see whether Kai could handle their real questions. Too many setup steps before testing meant losing confidence before reaching the value. The Playground had to be the first thing visible.",
         whatChanged: [
           "Playground is the default landing screen, showing a live test conversation immediately on first load",
           "Assistant creation is a single named step, not a multi-page wizard",
@@ -284,17 +279,17 @@ export const projects: Project[] = [
           "Recent conversations are saved automatically so teams can return to previous tests without starting over",
         ],
         result:
-          "Users could ask their first real question within 60 seconds of landing. The Playground became the proof point that moved conversations forward, not a feature teams discovered later.",
+          "Users could ask their first real question within 60 seconds. The Playground became the proof point that closed deals, not a feature discovered later.",
         tradeOff:
-          "Showing the Playground before configuration is complete means the assistant answers from a limited base. We accepted that because a partial answer that loads fast builds more trust than a perfect answer behind a long setup flow.",
+          "Showing the Playground before full configuration means answers come from a limited base. We accepted that trade-off: a fast partial answer builds more trust than a perfect answer hidden behind setup.",
         businessReasoning:
-          "Sales teams were demoing Kai in meetings. If setup took too long to reach a live test, the meeting moved on. A fast path to the Playground meant the demo could happen inside the conversation, not after it.",
+          "Sales teams demoed Kai live. A fast path to the Playground meant the demo happened inside the meeting, not after.",
       },
       {
         phase: "Phase 2: Training and testing your assistant",
         title: "Make training and testing one continuous loop, not two separate steps",
         image: "/site-assets/case-studies/agent-ai/img-15.jpg",
-        why: "Teams were uploading knowledge files and then navigating away to test whether the assistant had actually learned from them. That gap meant mistakes were invisible until a customer surfaced them. Training and testing needed to happen in the same place, not in separate tabs.",
+        why: "Teams uploaded knowledge files, then navigated away to test. That gap meant bad content was invisible until a customer surfaced it. Training and testing had to happen in one place.",
         alternativesConsidered: [
           "Test only after publishing: simpler to build, but a bad knowledge upload would reach customers before anyone caught it.",
           "A separate QA environment: recreated the context-switching problem. Teams would skip it under time pressure.",
@@ -306,17 +301,17 @@ export const projects: Project[] = [
           "Training file count and link count are surfaced at a glance so teams know what the assistant is working with",
         ],
         result:
-          "Teams could upload a new document and test whether the assistant answered correctly in the same session. Bad training content was caught before it reached a customer.",
+          "Teams could upload a document and test it in the same session. Bad content was caught before it reached a customer.",
         tradeOff:
-          "Showing indexing status in real time required backend work to surface that state reliably. We prioritised it because the alternative, teams assuming content had loaded when it hadn't, was causing silent failures.",
+          "Real-time indexing status required additional backend work. We prioritised it because silent failures — teams assuming content had loaded when it hadn't — were a worse outcome.",
         businessReasoning:
-          "Support teams were being blamed when Kai gave wrong answers after a knowledge update. The issue wasn't the AI. It was that there was no way to check before going live. Fixing that removed a recurring support escalation.",
+          "Support teams were blamed for wrong answers after knowledge updates. The issue wasn't the AI — it was no way to verify before going live. Fixing that eliminated a recurring escalation.",
       },
       {
         phase: "Phase 3: Operating AI at scale",
         title: "Give teams the confidence to publish, not just the button",
         image: "/site-assets/case-studies/agent-ai/img-16.jpg",
-        why: "At scale, publishing a new version of the assistant is a risk decision, not a technical one. Managers and enterprise directors needed to know whether the assistant was actually ready before they approved it. A Publish button with no context around it wasn't enough. The decision needed to be informed, not just possible.",
+        why: "Publishing is a risk decision, not a technical one. Enterprise directors needed evidence the assistant was ready — not just a Publish button.",
         whatChanged: [
           "Assistant Health panel shows resolution rate and confidence score in real time before publishing",
           "Knowledge gap alerts surface specific queries the assistant cannot answer, with the source identified",
@@ -325,11 +320,11 @@ export const projects: Project[] = [
           "Guardrails configuration lets teams define when Kai auto-escalates, without writing code",
         ],
         result:
-          "Enterprise directors could approve a publish decision based on data, not trust. The question changed from 'is it ready?' to 'the health panel says 92% resolution and no regressions, let's go.'",
+          "Directors approved publish decisions on data, not gut feel. The question changed from 'is it ready?' to 'health panel says 92% resolution and no regressions — let's go.'",
         tradeOff:
-          "Surfacing confidence scores and knowledge gaps means exposing model limitations visibly. Some stakeholders initially read gaps as failures. We reframed them as early warning signals, which shifted the conversation.",
+          "Visible confidence scores and knowledge gaps initially read as failures to some stakeholders. Reframing them as early warning signals shifted the conversation.",
         businessReasoning:
-          "Enterprise procurement required evidence of pre-production validation. The health panel and publish readiness check gave teams a documented audit trail, which directly unblocked two enterprise deals that had stalled on governance requirements.",
+          "Enterprise procurement required documented pre-production validation. The health panel and readiness check provided that audit trail — unblocking two deals stalled on governance requirements.",
       },
     ],
     businessImpact: [
@@ -391,41 +386,41 @@ export const projects: Project[] = [
       {
         heading: "How We Got There",
         paragraphs: [
-          "Before any high-fidelity work, I mapped the five roles on a whiteboard against what each person needed to do, what they needed to see, and what they should never be able to touch. That exercise exposed the permission model problem early, before it could become a late-stage design fix.",
-          "Early concepts were rough: one put the test window in a drawer that slid out from the right, which kept it accessible but made it feel like an afterthought. Another treated it as a full-page mode you had to navigate to, which added the exact friction we were trying to remove. The version that worked kept the test window anchored beside the config screen at all times, visible without being forced on you.",
-          "I tested three structural approaches with two ops leads before committing to the final layout. The insight that shifted everything: people didn't want to open a test window. They wanted testing to already be there when they looked up.",
+          "Before any high-fidelity work, I mapped the five roles against what each needed to do, see, and never touch. That exposed the permission model problem before it became a late-stage fix.",
+          "Early concepts ranged from a slide-out drawer to a full-page test mode — both added friction. The version that worked kept the test window anchored beside config at all times: visible without being forced.",
+          "The key insight from testing: people didn't want to open a test window. They wanted testing to already be there.",
         ],
       },
       {
         heading: "How the Test Window Works in Practice",
         image: "/site-assets/case-studies/agent-ai/img-07.png",
         paragraphs: [
-          "When someone updates the assistant's instructions, changing how it introduces itself or how it handles a refund request, the test window shows the effect immediately. No saving. No refreshing. Just change and see.",
-          "When someone uploads a new document to train the assistant on, they can ask it questions about that document right away. A bad upload shows up in the test, not when a customer asks a question the assistant can't answer.",
-          "When someone adjusts the assistant's tone or the situations where it hands off to a human, the test window is right there to try it. Every screen, every change, same place to check.",
+          "Change an instruction — see the effect immediately. No saving, no refreshing.",
+          "Upload a training document — test it right away. Bad content shows up in the test, not in a customer conversation.",
+          "Adjust tone or escalation rules — the test window is right there on every screen.",
         ],
       },
       {
         heading: "What Changed in Sales Meetings",
         paragraphs: [
-          "The question 'what happens when it gets it wrong?' didn't go away. But the answer changed. Instead of 'we'll find out,' it became 'let me show you.'",
-          "Companies that had paused the deal could now see for themselves that changes were safe before going live. That shifted the conversation from risk to readiness.",
+          "'What happens when it gets it wrong?' didn't go away. But the answer changed from 'we'll find out' to 'let me show you.'",
+          "Companies that had paused could now verify safety themselves. The conversation moved from risk to readiness.",
         ],
       },
       {
         heading: "What I'd Build Next",
         paragraphs: [
-          "Automatic checks after every update: right now, testing is something a person has to remember to do. The next step is running a standard set of test scenarios automatically every time something changes, so problems are flagged before anyone has to go looking for them.",
-          "A way to test together: currently one person tests and reports back. But the person who knows the edge cases and the person who signs off on go-live are often different people. A shared test session would let both of them look at the same thing at the same time.",
-          "Shared examples across companies: teams build their own test scenarios from scratch. But the same types of problems come up again and again across different businesses. A library of common test cases, built from anonymised examples, would give new teams a head start.",
+          "Automatic checks on every update — run standard scenarios whenever something changes, so problems are flagged without anyone having to look for them.",
+          "Collaborative testing — the person who knows edge cases and the person who signs off are usually different. A shared test session fixes that.",
+          "A shared test library — teams currently build scenarios from scratch. Anonymised examples from common problems across companies would give new teams a head start.",
         ],
       },
       {
         heading: "What I Learned",
         paragraphs: [
-          "I went into this project thinking the problem was about making the AI smarter. Research showed the problem was simpler: people had no way to check whether it was ready.",
-          "The solution wasn't a new AI feature. It was giving people a safe place to find out for themselves, before it mattered.",
-          "One thing I'd do differently: I added user access levels late in the process, once I realised different people needed different permissions. That should have been part of the design from day one, not something bolted on once the gap became obvious.",
+          "I went in thinking the problem was making the AI smarter. Research showed it was simpler: people had no way to check if it was ready.",
+          "The solution wasn't a new AI feature — it was a safe place to find out for themselves, before it mattered.",
+          "One thing I'd do differently: I introduced access levels late, once I realised different roles needed different permissions. That should have been designed in from the start.",
         ],
       },
     ],
