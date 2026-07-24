@@ -273,39 +273,63 @@ export const projects: Project[] = [
     ],
     decisions: [
       {
-        title: "The test window follows you everywhere, not just one screen",
-        image: "/site-assets/case-studies/agent-ai/img-04.png",
-        why: "My first instinct was to add the test window to just one part of the setup experience. But everything affects how the assistant responds: its instructions, the documents it learns from, its tone rules. A problem introduced in one place would be invisible if the test window wasn't there. I needed it to be present wherever a change could be made.",
-        alternativesConsidered: [
-          "One tab only: simpler to build, but a broken content upload wouldn't be caught until a customer hit it.",
-          "A toggle to show or hide it: adds an extra step at exactly the moment you most need immediate feedback.",
-        ],
+        phase: "Phase 1: Creating and managing AI assistants",
+        title: "Get to a working assistant in one session, not one week",
+        image: "/site-assets/case-studies/agent-ai/img-14.jpg",
+        why: "First-time users came in with one goal: see whether Kai could handle their actual support questions. If setup required too many steps before they could test anything, they'd lose confidence before reaching the value. The Playground needed to be the first thing visible, not something earned after completing configuration.",
         whatChanged: [
-          "The test window is visible across every setup screen: instructions, content, tone, and behaviour settings",
-          "The same conversation carries across screens, so you test a realistic flow rather than a single isolated response",
-          "Compact on smaller screens; always open on desktop where setup work happens",
+          "Playground is the default landing screen, showing a live test conversation immediately on first load",
+          "Assistant creation is a single named step, not a multi-page wizard",
+          "Suggested prompts surface common queries so users can test without writing their own",
+          "Recent conversations are saved automatically so teams can return to previous tests without starting over",
         ],
         result:
-          "Someone uploading new content could test it immediately. Someone adjusting the assistant's instructions could see the effect straight away. Problems were caught the moment they were introduced, not when a customer discovered them.",
+          "Users could ask their first real question within 60 seconds of landing. The Playground became the proof point that moved conversations forward, not a feature teams discovered later.",
         tradeOff:
-          "Keeping one live conversation thread in sync across multiple screens required more engineering work than a simpler, single-screen version would have.",
+          "Showing the Playground before configuration is complete means the assistant answers from a limited base. We accepted that because a partial answer that loads fast builds more trust than a perfect answer behind a long setup flow.",
         businessReasoning:
-          "A broken content upload only surfaces when a customer hits it. The cost of missing that is a bad customer experience and a lost trust signal. Far more expensive than the extra build effort.",
+          "Sales teams were demoing Kai in meetings. If setup took too long to reach a live test, the meeting moved on. A fast path to the Playground meant the demo could happen inside the conversation, not after it.",
       },
       {
-        title: "Different people get different levels of access, for good reasons",
-        image: "/site-assets/case-studies/agent-ai/img-09.png",
-        why: "Five types of people needed to use the same testing space, but for very different reasons. A trainer uploading content, a manager approving the assistant before launch, and an IT admin controlling who can make changes all need to be in the same place, but with different things visible and different things they're allowed to do.",
+        phase: "Phase 2: Training and testing your assistant",
+        title: "Make training and testing one continuous loop, not two separate steps",
+        image: "/site-assets/case-studies/agent-ai/img-15.jpg",
+        why: "Teams were uploading knowledge files and then navigating away to test whether the assistant had actually learned from them. That gap meant mistakes were invisible until a customer surfaced them. Training and testing needed to happen in the same place, not in separate tabs.",
+        alternativesConsidered: [
+          "Test only after publishing: simpler to build, but a bad knowledge upload would reach customers before anyone caught it.",
+          "A separate QA environment: recreated the context-switching problem. Teams would skip it under time pressure.",
+        ],
         whatChanged: [
-          "Five roles mapped directly from interviews: Super Admin, Admin, Operator, Trainer, Viewer",
-          "Each role sees and can do exactly what their job requires, nothing more",
+          "Knowledge sources, training files, and training links are visible in the sidebar alongside the live test window",
+          "Ready for testing status updates automatically when sources are connected and indexed",
+          "View Knowledge and Test Again actions sit directly in the Playground, not on a separate screen",
+          "Training file count and link count are surfaced at a glance so teams know what the assistant is working with",
         ],
         result:
-          "Everyone who needed to be involved in testing could be, without stepping on each other. The right person could test, the right person could approve, and the right person could lock things down.",
+          "Teams could upload a new document and test whether the assistant answered correctly in the same session. Bad training content was caught before it reached a customer.",
         tradeOff:
-          "Adding access rules to a feature designed to remove friction risked making it feel more complicated. Getting the role definitions right from the start was critical.",
+          "Showing indexing status in real time required backend work to surface that state reliably. We prioritised it because the alternative, teams assuming content had loaded when it hadn't, was causing silent failures.",
         businessReasoning:
-          "The five roles came directly from the people I interviewed. They weren't invented. That meant the access model matched how teams actually worked, instead of being an abstract system they'd have to adapt to.",
+          "Support teams were being blamed when Kai gave wrong answers after a knowledge update. The issue wasn't the AI. It was that there was no way to check before going live. Fixing that removed a recurring support escalation.",
+      },
+      {
+        phase: "Phase 3: Operating AI at scale",
+        title: "Give teams the confidence to publish, not just the button",
+        image: "/site-assets/case-studies/agent-ai/img-16.jpg",
+        why: "At scale, publishing a new version of the assistant is a risk decision, not a technical one. Managers and enterprise directors needed to know whether the assistant was actually ready before they approved it. A Publish button with no context around it wasn't enough. The decision needed to be informed, not just possible.",
+        whatChanged: [
+          "Assistant Health panel shows resolution rate and confidence score in real time before publishing",
+          "Knowledge gap alerts surface specific queries the assistant cannot answer, with the source identified",
+          "Publish readiness check confirms no regressions found since the last version",
+          "Version control shows the current published version and allows rollback without engineering support",
+          "Guardrails configuration lets teams define when Kai auto-escalates, without writing code",
+        ],
+        result:
+          "Enterprise directors could approve a publish decision based on data, not trust. The question changed from 'is it ready?' to 'the health panel says 92% resolution and no regressions, let's go.'",
+        tradeOff:
+          "Surfacing confidence scores and knowledge gaps means exposing model limitations visibly. Some stakeholders initially read gaps as failures. We reframed them as early warning signals, which shifted the conversation.",
+        businessReasoning:
+          "Enterprise procurement required evidence of pre-production validation. The health panel and publish readiness check gave teams a documented audit trail, which directly unblocked two enterprise deals that had stalled on governance requirements.",
       },
     ],
     businessImpact: [
