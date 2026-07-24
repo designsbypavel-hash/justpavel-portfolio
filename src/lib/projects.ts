@@ -221,6 +221,14 @@ export const projects: Project[] = [
         ],
       },
       {
+        heading: "Trusted by Global Enterprises",
+        image: "/site-assets/case-studies/agent-ai/british-council.webp",
+        paragraphs: [
+          "British Council, operating across 100+ countries with millions of learners, is among the enterprise organisations running Kai at scale. They needed an AI assistant non-technical teams could configure, test, and trust before going live.",
+          "That adoption, backed by $3M+ in enterprise revenue, validated the core bet: organisations with high governance requirements could deploy AI without depending on engineering.",
+        ],
+      },
+      {
         heading: "The Problem",
         image: "/site-assets/case-studies/agent-ai/img-06.jpg",
         paragraphs: [
@@ -241,14 +249,6 @@ export const projects: Project[] = [
         image: "/site-assets/case-studies/agent-ai/img-02.png",
         paragraphs: [
           "Five roles shared the same workspace: trainer, ops manager, IT admin, viewer, and super admin. Each had a different definition of 'ready to go live'. The design had to serve all of them.",
-        ],
-      },
-      {
-        heading: "Trusted by Global Enterprises",
-        image: "/site-assets/case-studies/agent-ai/british-council.webp",
-        paragraphs: [
-          "British Council is among the enterprise organisations running Kai at scale. With operations across 100+ countries and millions of learners, they needed an AI assistant that non-technical teams could configure, test, and trust before going live.",
-          "That adoption, backed by $3M+ in enterprise revenue, validated the core product bet: organisations with high accountability and complex governance requirements could confidently deploy AI without depending on engineering.",
         ],
       },
       {
