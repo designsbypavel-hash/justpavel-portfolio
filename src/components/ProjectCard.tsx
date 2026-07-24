@@ -26,7 +26,7 @@ export default function ProjectCard({
         onClick={playClickSound}
         className="group grid gap-6 sm:grid-cols-2 sm:items-center"
       >
-        <GlowCard className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
+        <GlowCard className="relative aspect-video w-full overflow-hidden rounded-xl">
           <Image
             src={project.image}
             alt={project.title}
