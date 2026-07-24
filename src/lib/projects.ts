@@ -389,7 +389,6 @@ export const projects: Project[] = [
     closingSections: [
       {
         heading: "Early Explorations",
-        image: "/site-assets/case-studies/agent-ai/img-08.png",
         paragraphs: [
           "Early concepts surfaced training files, tokens, and message counts alongside the knowledge base. Testing showed most of it was noise. Users wanted to check the assistant worked, not manage its capacity.",
         ],
