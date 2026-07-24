@@ -266,6 +266,13 @@ export const projects: Project[] = [
           "Everything collapsed into three themes: reduce cognitive load for first-time users, build confidence through testing at the point of change, and introduce advanced controls progressively.",
         ],
       },
+      {
+        heading: "How We Worked",
+        image: "/site-assets/case-studies/agent-ai/img-17.jpg",
+        paragraphs: [
+          "The project ran across four phases: Discover, Define, Develop, Deliver. Each phase used tools matched to the job. NotebookLM organised research and engineering docs. Gemini handled ideation and delivery planning. Figma Make and Figma Design drove early concepts and explorations. Vibe coding tools supported synthesis, prototypes, and final output.",
+        ],
+      },
     ],
     decisions: [
       {
@@ -398,14 +405,6 @@ export const projects: Project[] = [
         paragraphs: [
           "A parallel exploration looked at user management how different roles (Super Admin, Agent Owner, non-owner) would be surfaced across organisations. This concept made the access model explicit early, which surfaced how complex multi-org permission structures could become.",
           "It directly informed the decision to design role access as a progressive layer, introduced only after a user had completed their first assistant.",
-        ],
-      },
-      {
-        heading: "Process and Tools",
-        image: "/site-assets/case-studies/agent-ai/img-17.jpg",
-        paragraphs: [
-          "The project followed a double-diamond structure: Discover, Define, Develop, Deliver. Each phase used different tools matched to the job at hand.",
-          "NotebookLM organised business, research, and engineering docs during discovery. Vibe coding tools generated research guides and draft findings. Gemini acted as ideation partner and UX delivery planner during the define phase. Figma Make produced early concepts, Figma design handled explorations, and Vibe coding tools supported prototype builds through develop. Final output was production-ready code.",
         ],
       },
       {
