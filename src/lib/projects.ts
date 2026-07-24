@@ -220,7 +220,7 @@ export const projects: Project[] = [
       },
       {
         heading: "The Problem",
-        image: "/site-assets/case-studies/agent-ai/img-06.png",
+        image: "/site-assets/case-studies/agent-ai/img-06.jpg",
         paragraphs: [
           "Companies were interested but kept stalling. Every change — updated instructions, new content, adjusted behaviour — had no visible effect until it went live.",
           "For teams responsible for customer satisfaction, deploying blind wasn't acceptable.",
