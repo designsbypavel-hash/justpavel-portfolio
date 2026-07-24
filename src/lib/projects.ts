@@ -105,7 +105,7 @@ export const projects: Project[] = [
     tags: ["AI", "Enterprise", "Validation", "Governance"],
     image: "/site-assets/ai-control-layer.png",
     galleryImages: [
-      "/site-assets/case-studies/agent-ai/img-01.png",
+      "/site-assets/case-studies/agent-ai/img-01.jpg",
       "/site-assets/case-studies/agent-ai/img-02.png",
       "/site-assets/case-studies/agent-ai/img-03.png",
       "/site-assets/case-studies/agent-ai/img-04.png",
@@ -126,7 +126,7 @@ export const projects: Project[] = [
     ],
     keyInsight: {
       title: "The AI worked. Nobody could verify that before going live.",
-      image: "/site-assets/case-studies/agent-ai/img-01.png",
+      image: "/site-assets/case-studies/agent-ai/img-01.jpg",
       description:
         "In every sales meeting, the same question came up: \"What happens when Kai gets it wrong?\" Companies weren't questioning the AI. They were asking how they'd know it was safe before going live.",
     },
