@@ -702,6 +702,7 @@ export const projects: Project[] = [
     readTime: "7 min",
     tags: ["AI", "Fintech", "Collections", "Workflow"],
     image: "/site-assets/ai-fintech-collections.jpg",
+    gif: "/site-assets/case-studies/fintech-autonomous/thumbnail.gif",
     galleryImages: [
       "/site-assets/case-studies/fintech-autonomous/img-01.jpg",
       "/site-assets/case-studies/fintech-autonomous/img-02.jpg",
