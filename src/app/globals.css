@@ -57,9 +57,9 @@ h1 {
 /* Section label — "ABOUT", "WORK", "TOOL STACK" (all h2s are uppercase labels) */
 h2 {
   font-weight: 600;
-  font-size: 0.9375rem; /* 15px */
+  font-size: 2rem; /* 32px */
   line-height: 1.2;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #6b7280;
 }
