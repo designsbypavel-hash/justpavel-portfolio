@@ -156,7 +156,6 @@ export const projects: Project[] = [
       "Talk like the person using it: avoid AI jargon. Say what happens, not how it works under the hood.",
       "Make 'what if it goes wrong?' a question you can answer, not one you dread.",
     ],
-    designPrinciplesImage: "/site-assets/case-studies/agent-ai/img-05.png",
     teamsHelped: [
       { function: "Customer Support", members: "Reduced repetitive workload from password resets, order status, and FAQ-style queries." },
       { function: "Sales", members: "Received qualified leads routed directly into the CRM instead of lost in a chatbot dead end." },
