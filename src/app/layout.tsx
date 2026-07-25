@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Gloock } from "next/font/google";
+import { Gloock } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -7,19 +7,15 @@ import StarfieldBackground from "@/components/StarfieldBackground";
 import JarvisChat from "@/components/JarvisChat";
 import ThemeProvider from "@/components/ThemeProvider";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-sans",
-  display: "swap",
-});
-
+// Gloock via next/font (accent serif only — used for one italic word in headlines)
 const gloock = Gloock({
   subsets: ["latin"],
   weight: ["400"],
   variable: "--font-gloock",
   display: "swap",
 });
+
+// Neue Montreal is self-hosted via @font-face in globals.css
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.justpaveldesign.com"),
@@ -87,7 +83,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`h-full antialiased ${plusJakartaSans.variable} ${gloock.variable}`} data-theme="dark" suppressHydrationWarning>
+    <html lang="en" className={`h-full antialiased ${gloock.variable}`} data-theme="dark" suppressHydrationWarning>
       <head>
         {/* Prevent flash of wrong theme on first load */}
         <script
