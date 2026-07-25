@@ -56,7 +56,7 @@ export default function ProjectCard({
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/60"
+                className="rounded-full border border-white/25 bg-white/[0.05] px-3 py-1 text-[11px] uppercase tracking-[0.1em] text-white/70"
               >
                 {tag}
               </span>
