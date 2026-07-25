@@ -49,7 +49,7 @@ export default function ProjectCard({
             {project.title}
           </TitleTag>
           {project.readTime && (
-            <p className="mb-3 text-sm text-white/40">{project.readTime} read</p>
+            <p className="mb-3 text-sm text-white/60">{project.readTime} read</p>
           )}
           <p className="mb-4 text-white/60">{project.description}</p>
           <div className="flex flex-wrap gap-2">

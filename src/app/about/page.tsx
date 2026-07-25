@@ -45,7 +45,7 @@ export default function AboutPage() {
 
           {/* Left: intro text */}
           <div className="flex-1">
-            <p className="mb-5 text-xs uppercase tracking-widest text-white/35">About</p>
+            <p className="mb-5 text-xs uppercase tracking-widest text-white/55">About</p>
             <h1 className="mb-8 text-4xl font-bold leading-[1.1] sm:text-5xl lg:text-6xl">
               👋 Hi, I&rsquo;m Pavel, a Senior Product Designer with 8 years building digital products people actually understand.
             </h1>
@@ -75,7 +75,7 @@ export default function AboutPage() {
               </div>
               <div className="px-4 py-3">
                 <p className="text-sm font-medium text-white/80">Pavel Mondal</p>
-                <p className="text-xs text-white/40">Senior Product Designer · London</p>
+                <p className="text-xs text-white/60">Senior Product Designer · London</p>
               </div>
             </div>
 
@@ -109,7 +109,7 @@ export default function AboutPage() {
         {/* From My Lens */}
         <div>
           <h2 className="mb-2 uppercase">From My Lens</h2>
-          <p className="mb-10 text-white/45 text-sm">I notice patterns, details, and flow in cities, spaces, and products.</p>
+          <p className="mb-10 text-white/60 text-sm">I notice patterns, details, and flow in cities, spaces, and products.</p>
         </div>
         <LensGallery photos={lensPhotos} />
 

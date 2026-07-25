@@ -250,7 +250,7 @@ export default function LensGallery({ photos }: { photos: Photo[] }) {
                 {photos[lightbox].caption}
               </p>
             </div>
-            <p className="text-xs text-white/30">
+            <p className="text-xs text-white/60">
               {lightbox + 1} / {photos.length} &nbsp;·&nbsp; ← → to navigate
             </p>
           </figure>

@@ -197,12 +197,12 @@ export default async function ProjectPage({
                   </div>
                   <div className="grid items-stretch gap-3 sm:grid-cols-[1fr_auto_1fr]">
                     <div className="rounded-lg border border-white/10 bg-black/40 p-4">
-                      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-white/35">
+                      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-white/55">
                         Before
                       </p>
                       <p className="text-sm text-white/55">{step.before}</p>
                     </div>
-                    <div className="flex items-center justify-center rotate-90 text-white/30 sm:rotate-0">
+                    <div className="flex items-center justify-center rotate-90 text-white/55 sm:rotate-0">
                       <span aria-hidden className="text-lg">→</span>
                     </div>
                     <div className="rounded-lg border border-white/10 bg-gradient-to-br from-blue-500/[0.07] via-white/[0.03] to-orange-500/[0.07] p-4">

@@ -60,7 +60,7 @@ export default function Testimonials() {
               </div>
               <div>
                 <p className="text-sm font-semibold text-white">{t.name}</p>
-                <p className="text-xs text-white/45">{t.role}</p>
+                <p className="text-xs text-white/60">{t.role}</p>
               </div>
             </div>
           </div>

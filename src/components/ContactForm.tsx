@@ -36,7 +36,7 @@ export default function ContactForm() {
         value={name}
         onChange={(e) => setName(e.target.value)}
         placeholder="Your Name"
-        className="mb-5 w-full rounded-md border border-white/10 bg-white/5 px-4 py-3 text-sm placeholder:text-white/40 focus:outline-none focus:ring-1 focus:ring-white/40"
+        className="mb-5 w-full rounded-md border border-white/10 bg-white/5 px-4 py-3 text-sm placeholder:text-white/55 focus:outline-none focus:ring-1 focus:ring-white/40"
       />
 
       <label htmlFor="email" className="mb-2 block text-sm">
@@ -50,7 +50,7 @@ export default function ContactForm() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="name@gmail.com"
-        className="mb-5 w-full rounded-md border border-white/10 bg-white/5 px-4 py-3 text-sm placeholder:text-white/40 focus:outline-none focus:ring-1 focus:ring-white/40"
+        className="mb-5 w-full rounded-md border border-white/10 bg-white/5 px-4 py-3 text-sm placeholder:text-white/55 focus:outline-none focus:ring-1 focus:ring-white/40"
       />
 
       <label htmlFor="message" className="mb-2 block text-sm">
@@ -64,7 +64,7 @@ export default function ContactForm() {
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         placeholder="Type Your Message"
-        className="mb-6 w-full resize-y rounded-md border border-white/10 bg-white/5 px-4 py-3 text-sm placeholder:text-white/40 focus:outline-none focus:ring-1 focus:ring-white/40"
+        className="mb-6 w-full resize-y rounded-md border border-white/10 bg-white/5 px-4 py-3 text-sm placeholder:text-white/55 focus:outline-none focus:ring-1 focus:ring-white/40"
       />
 
       <motion.button

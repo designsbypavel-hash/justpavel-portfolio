@@ -47,7 +47,7 @@ export default function ContactPage() {
             <ul className="mb-8 space-y-3">
               {topics.map((topic) => (
                 <li key={topic.label} className="flex gap-2 text-white/70">
-                  <span aria-hidden className="text-white/40">
+                  <span aria-hidden className="text-white/60">
                     •
                   </span>
                   <span>
