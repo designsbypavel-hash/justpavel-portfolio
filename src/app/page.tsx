@@ -47,7 +47,7 @@ export default function Home() {
       <section id="works" className="px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <FadeInSection>
-            <h2 className="mb-12 uppercase">
+            <h2 className="mb-12">
               Featured Works
             </h2>
           </FadeInSection>
@@ -67,7 +67,7 @@ export default function Home() {
       <section id="youtube" className="px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <FadeInSection>
-            <h2 className="mb-12 uppercase">
+            <h2 className="mb-12">
               Youtube
             </h2>
           </FadeInSection>
