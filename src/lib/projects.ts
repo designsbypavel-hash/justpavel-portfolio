@@ -265,7 +265,7 @@ export const projects: Project[] = [
       {
         heading: "How We Worked",
         paragraphs: [
-          "Discover: NotebookLM + Vibe coding tools for research synthesis. Define: Gemini for ideation and UX planning. Develop: Figma Make, Figma Design, Vibe coding tools for concepts and explorations. Deliver: production-ready code.",
+          "Discover: NotebookLM + AI tools for research synthesis. Define: Gemini for ideation and UX planning. Develop: Figma Make, Figma Design, AI prototyping tools for concepts and explorations. Deliver: production-ready code.",
         ],
       },
     ],
