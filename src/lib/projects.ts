@@ -969,7 +969,7 @@ export const projects: Project[] = [
       },
       {
         title: "Handle payment failure in-flow instead of starting over",
-        image: "/site-assets/case-studies/sonyliv-ott-subscription/img-01.jpg",
+        image: "/site-assets/case-studies/sonyliv-ott-subscription/img-01.png",
         why: "Session recordings showed a painful pattern: users who hit a UPI or card failure were being dropped back to the plan selection screen. Starting over completely was killing a significant number of nearly-completed purchases.",
         whatChanged: [
           "Payment failure now surfaces inline with a retry prompt and an alternative payment method suggestion, no navigation away from the payment screen",
