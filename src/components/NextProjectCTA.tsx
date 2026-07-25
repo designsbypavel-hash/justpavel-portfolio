@@ -8,7 +8,7 @@ export default function NextProjectCTA({ slug, title }: { slug: string; title: s
   const { theme } = useTheme();
   const L = theme === "light";
   const border = L ? "rgba(0,0,0,0.10)" : "rgba(255,255,255,0.10)";
-  const muted = L ? "rgba(17,17,17,0.45)" : "rgba(255,255,255,0.40)";
+  const muted = L ? "rgba(17,17,17,0.65)" : "rgba(255,255,255,0.65)";
   return (
     <div className="mt-16 pt-10" style={{ borderTop: `1px solid ${border}` }}>
       <span className="mb-2 block text-xs uppercase tracking-widest" style={{ color: muted }}>Next Project</span>

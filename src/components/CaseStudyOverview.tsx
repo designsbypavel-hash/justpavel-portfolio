@@ -5,7 +5,7 @@ import { useTheme } from "@/components/ThemeProvider";
 export default function CaseStudyOverview({ role, platform, team, duration }: { role: string; platform: string; team: string; duration?: string }) {
   const { theme } = useTheme();
   const L = theme === "light";
-  const labelColor = L ? "rgba(17,17,17,0.45)" : "rgba(255,255,255,0.40)";
+  const labelColor = L ? "rgba(17,17,17,0.65)" : "rgba(255,255,255,0.65)";
   const valueColor = L ? "#111111" : "rgba(255,255,255,0.80)";
   const borderColor = L ? "rgba(0,0,0,0.10)" : "rgba(255,255,255,0.10)";
   return (

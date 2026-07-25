@@ -20,7 +20,7 @@ export default function RejectedConcepts({ heading, items }: { heading: string; 
             <div key={i} className="flex flex-col gap-3 rounded-xl border border-red-500/20 bg-red-500/[0.04] p-4">
               <div className="flex items-start gap-3">
                 <span aria-hidden className="mt-0.5 shrink-0 text-sm font-semibold text-red-400">✕</span>
-                <p className="text-sm" style={{ color: L ? "#333333" : "rgba(255,255,255,0.75)" }}>{text}</p>
+                <p className="text-sm" style={{ color: L ? "#333333" : "rgba(255,255,255,0.88)" }}>{text}</p>
               </div>
               {image && (
                 <div className="overflow-hidden rounded-lg border border-white/10">

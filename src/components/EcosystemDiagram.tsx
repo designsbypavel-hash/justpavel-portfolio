@@ -10,7 +10,7 @@ export default function EcosystemDiagram({ diagram }: { diagram: EcosystemDiagra
   const cardBg = L ? "#ffffff" : "rgba(255,255,255,0.03)";
   const strong = L ? "#111111" : "rgba(255,255,255,0.90)";
   const dim = L ? "rgba(17,17,17,0.60)" : "rgba(255,255,255,0.55)";
-  const muted = L ? "rgba(17,17,17,0.45)" : "rgba(255,255,255,0.40)";
+  const muted = L ? "rgba(17,17,17,0.65)" : "rgba(255,255,255,0.65)";
   return (
     <section className="mb-12">
       <span className="mb-3 inline-block rounded-full px-3 py-1 text-xs uppercase tracking-widest" style={{ border: `1px solid ${border}`, color: dim }}>Ecosystem Diagram</span>

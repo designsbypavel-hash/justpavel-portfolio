@@ -14,13 +14,13 @@ export default function TeamComposition({ groups, platform }: { groups: TeamGrou
       <div className="grid gap-4 sm:grid-cols-3">
         {groups.map((group) => (
           <div key={group.function} className="rounded-xl p-5" style={cardStyle}>
-            <span className="mb-2 block text-xs uppercase tracking-widest" style={{ color: L ? "rgba(17,17,17,0.45)" : "rgba(255,255,255,0.40)" }}>{group.function}</span>
+            <span className="mb-2 block text-xs uppercase tracking-widest" style={{ color: L ? "rgba(17,17,17,0.65)" : "rgba(255,255,255,0.65)" }}>{group.function}</span>
             <span style={{ color: L ? "#111111" : "rgba(255,255,255,0.80)" }}>{group.members}</span>
           </div>
         ))}
         {platform && (
           <div className="rounded-xl p-5" style={cardStyle}>
-            <span className="mb-2 block text-xs uppercase tracking-widest" style={{ color: L ? "rgba(17,17,17,0.45)" : "rgba(255,255,255,0.40)" }}>Platform</span>
+            <span className="mb-2 block text-xs uppercase tracking-widest" style={{ color: L ? "rgba(17,17,17,0.65)" : "rgba(255,255,255,0.65)" }}>Platform</span>
             <span style={{ color: L ? "#111111" : "rgba(255,255,255,0.80)" }}>{platform}</span>
           </div>
         )}

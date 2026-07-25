@@ -175,7 +175,7 @@ export default function MentoringPage() {
                 <p className="mb-4 flex-1 text-white/80">&ldquo;{t.quote}&rdquo;</p>
                 <div>
                   <span className="block text-sm font-semibold text-white">{t.name}</span>
-                  <span className="block text-xs text-white/40">
+                  <span className="block text-xs text-white/60">
                     {t.role} · {t.date}
                   </span>
                 </div>

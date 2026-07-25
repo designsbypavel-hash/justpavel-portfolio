@@ -10,7 +10,7 @@ export default function ProductHypothesis({ hypothesis }: { hypothesis: Hypothes
   const cardBg = L ? "#ffffff" : "rgba(255,255,255,0.03)";
   const strong = L ? "#111111" : "rgba(255,255,255,0.90)";
   const dim = L ? "rgba(17,17,17,0.60)" : "rgba(255,255,255,0.55)";
-  const muted = L ? "rgba(17,17,17,0.45)" : "rgba(255,255,255,0.40)";
+  const muted = L ? "rgba(17,17,17,0.65)" : "rgba(255,255,255,0.65)";
   return (
     <section className="mb-12">
       <h2 className="mb-6 uppercase">Product Hypothesis</h2>
