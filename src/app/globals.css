@@ -21,14 +21,15 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-title: var(--color-title);
-  --font-sans: 'Google Sans Flex', 'Google Sans', system-ui, sans-serif;
-  --font-heading: 'Google Sans Flex', 'Google Sans', system-ui, sans-serif;
+  --font-sans: var(--font-sans), system-ui, sans-serif;
+  --font-heading: var(--font-sans), system-ui, sans-serif;
+  --font-gloock: var(--font-gloock), Georgia, serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Google Sans Flex', 'Google Sans', system-ui, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
   overflow-x: hidden;
 }
 
@@ -42,26 +43,36 @@ body {
    ──────────────────────────────────────────────────────────────────────── */
 
 h1, h2, h3, h4 {
-  font-family: 'Google Sans Flex', 'Google Sans', system-ui, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
   color: var(--color-title);
 }
 
-/* Display — "Hi, I'm Pavel. I turn complexity…" */
+/* Gloock serif accent — used for one italic word in display headlines (Perry Wang device) */
+.font-gloock {
+  font-family: var(--font-gloock), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.1;
+  padding-bottom: 0.05em; /* descender clearance for g, p, y, q */
+  display: inline-block;
+}
+
+/* Display — "Designing in London…" */
 h1 {
   font-weight: 700;
   font-size: clamp(2.5rem, 2rem + 4.5vw, 5rem); /* 40px → 80px */
-  line-height: 1.04;
-  letter-spacing: -0.03em;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
 }
 
 /* Section label — "ABOUT", "WORK", "TOOL STACK" (all h2s are uppercase labels) */
 h2 {
   font-weight: 600;
-  font-size: 2rem; /* 32px */
+  font-size: 0.6875rem; /* 11px */
   line-height: 1.2;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #6b7280;
+  color: rgba(255, 255, 255, 0.35);
 }
 
 /* h2 used as a content heading (not a label) — opt-in with .h2-heading */
@@ -92,47 +103,47 @@ h4 {
   color: #6b7280;
 }
 
-/* Body — comfortable reading size matching Ben Roach's ~18-20px paragraphs */
+/* Body */
 body {
-  font-size: 1.0625rem; /* 17px base */
+  font-size: 1rem; /* 16px base */
   line-height: 1.65;
-  font-weight: 450;
+  font-weight: 400;
 }
 
 p, li {
   font-size: inherit;
   line-height: 1.65;
-  font-weight: 450;
+  font-weight: 400;
   max-width: 68ch;
 }
 
 p, span, a, li, label, input, textarea, button {
-  font-family: 'Google Sans Flex', 'Google Sans', system-ui, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
 }
 
 /* Utility classes kept for components that reference them */
 .text-body-lg {
   font-size: 1.125rem;
   line-height: 1.65;
-  font-weight: 450;
+  font-weight: 400;
 }
 
 .text-body {
   font-size: 1rem;
   line-height: 1.65;
-  font-weight: 450;
+  font-weight: 400;
 }
 
 .text-small {
   font-size: 0.875rem;
   line-height: 1.5;
-  font-weight: 450;
+  font-weight: 400;
 }
 
 .text-caption {
   font-size: 0.75rem;
   line-height: 1.4;
-  font-weight: 450;
+  font-weight: 400;
   letter-spacing: 0.04em;
 }
 

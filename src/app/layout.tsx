@@ -1,10 +1,25 @@
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans, Gloock } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import StarfieldBackground from "@/components/StarfieldBackground";
 import JarvisChat from "@/components/JarvisChat";
 import ThemeProvider from "@/components/ThemeProvider";
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const gloock = Gloock({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-gloock",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.justpaveldesign.com"),
@@ -72,14 +87,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full antialiased" data-theme="dark" suppressHydrationWarning>
+    <html lang="en" className={`h-full antialiased ${plusJakartaSans.variable} ${gloock.variable}`} data-theme="dark" suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@100..900&display=swap"
-          rel="stylesheet"
-        />
         {/* Prevent flash of wrong theme on first load */}
         <script
           dangerouslySetInnerHTML={{
@@ -106,7 +115,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-black text-white" style={{ fontFamily: "'Google Sans Flex', 'Google Sans', system-ui, sans-serif", fontWeight: 450 }}>
+      <body className="min-h-full flex flex-col bg-black text-white">
         <ThemeProvider>
           <StarfieldBackground />
           <div className="relative z-10 flex min-h-full flex-1 flex-col">

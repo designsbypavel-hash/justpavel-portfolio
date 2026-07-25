@@ -28,13 +28,14 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
           variants={fadeInUp}
-          className="mb-12 font-(family-name:--font-heading) text-[42px]! font-extrabold leading-[1.05] sm:text-[56px]! md:text-[80px]!"
+          className="mb-12 font-(family-name:--font-heading) text-[42px]! font-bold leading-[1.06] tracking-[-0.025em] sm:text-[56px]! md:text-[80px]!"
         >
           Designing in London
           <br />
           <GradientWordLoop />
           <br />
-          Built with clarity
+          Built with{" "}
+          <span className="font-gloock">clarity</span>
           <br />
           Measured by impact
         </motion.h1>
