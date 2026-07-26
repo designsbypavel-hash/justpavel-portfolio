@@ -240,11 +240,11 @@ export const projects: Project[] = [
           "3 out of 4 companies in advanced talks had paused at exactly this point.",
         ],
         video: "/site-assets/case-studies/agent-ai/research-context.mp4",
+        grayscale: true,
       },
       {
         heading: "Five Roles, One Workspace",
         image: "/site-assets/case-studies/agent-ai/img-02.png",
-        grayscale: true,
         paragraphs: [
           "Trainer, ops manager, IT admin, viewer, super admin each with a different definition of ready to go live. The design had to serve all of them without adding a separate flow for each.",
         ],

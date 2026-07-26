@@ -39,7 +39,7 @@ export function ChallengeSection({ sections }: { sections: Section[] }) {
             )}
             {section.video && (
               <div className="mt-6 w-full overflow-hidden rounded-xl" style={{ border: `1px solid ${cs.border}` }}>
-                <video src={section.video} autoPlay loop muted playsInline className="block h-auto w-full" />
+                <video src={section.video} autoPlay loop muted playsInline className="block h-auto w-full" style={section.grayscale ? { filter: "grayscale(100%)" } : undefined} />
               </div>
             )}
           </div>
