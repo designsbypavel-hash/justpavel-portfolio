@@ -3,9 +3,9 @@ import { Gloock } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import StarfieldBackground from "@/components/StarfieldBackground";
 import JarvisChat from "@/components/JarvisChat";
 import ThemeProvider from "@/components/ThemeProvider";
+import StarfieldBackground from "@/components/StarfieldBackground";
 
 // Gloock via next/font (accent serif only — used for one italic word in headlines)
 const gloock = Gloock({

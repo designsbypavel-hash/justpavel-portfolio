@@ -12,7 +12,7 @@ const heroStats = [
   },
   {
     value: "20%",
-    description: "Led end-to-end UX for an enterprise AI platform (Aruva) at AWTG, reducing delivery time by 20% across discovery, prototyping, and delivery.",
+    description: "Led end-to-end UX for an enterprise AI platform (Kai) at AWTG, reducing delivery time by 20% across discovery, prototyping, and delivery.",
   },
   {
     value: "75%",

@@ -35,7 +35,7 @@ export default function ContactPage() {
         <div className="mx-auto max-w-6xl">
           <div className="max-w-3xl">
             <h1 className="mb-6">Let&apos;s build something</h1>
-            <p className="mb-8 text-lg text-white/70">
+            <p className="mb-8 text-lg text-white/50">
               I&apos;m always open to hearing about new projects, mentoring opportunities, and
               conversations about AI-first product design. Whether you&apos;re shipping a B2B SaaS
               platform or a conversion-focused mobile experience, I&apos;d love to hear about it.
@@ -46,7 +46,7 @@ export default function ContactPage() {
             </h2>
             <ul className="mb-8 space-y-3">
               {topics.map((topic) => (
-                <li key={topic.label} className="flex gap-2 text-white/70">
+                <li key={topic.label} className="flex gap-2 text-white/50">
                   <span aria-hidden className="text-white/60">
                     •
                   </span>
@@ -58,7 +58,7 @@ export default function ContactPage() {
               ))}
             </ul>
 
-            <p className="text-lg text-white/80">Let&apos;s talk.</p>
+            <p className="text-lg text-white/50">Let&apos;s talk.</p>
           </div>
         </div>
       </div>

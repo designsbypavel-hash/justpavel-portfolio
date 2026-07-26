@@ -93,7 +93,7 @@ export default function MentoringPage() {
               <h1 className="mb-2">
                 Mentoring for designers who want real progress
               </h1>
-              <p className="max-w-2xl text-white/70">
+              <p className="max-w-2xl text-white/50">
                 Coaching on portfolio storytelling, interview walkthroughs, and practical AI workflows.
               </p>
             </div>
@@ -125,14 +125,14 @@ export default function MentoringPage() {
         </FadeInSection>
 
         <FadeInSection>
-          <h2 className="mb-8 uppercase">
-            Mentee Ratings
+          <h2 className="mb-8">
+            Mentee ratings
           </h2>
           <div className="mb-16 grid gap-6 sm:grid-cols-2">
             {skillRatings.map((skill) => (
               <div key={skill.label}>
                 <div className="mb-2 flex justify-between text-sm">
-                  <span className="text-white/70">{skill.label}</span>
+                  <span className="text-white/60">{skill.label}</span>
                   <span className="text-white/50">{skill.value}%</span>
                 </div>
                 <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/10">
@@ -148,8 +148,8 @@ export default function MentoringPage() {
 
         <FadeInSection>
           <div className="mb-16">
-            <h2 className="mb-4 uppercase">
-              People Often Say
+            <h2 className="mb-4">
+              People often say
             </h2>
             <div className="flex flex-wrap gap-2">
               {tags.map((tag) => (
@@ -165,7 +165,7 @@ export default function MentoringPage() {
         </FadeInSection>
 
         <FadeInSection>
-          <h2 className="mb-8 uppercase">Mentee Testimonials</h2>
+          <h2 className="mb-8">Mentee testimonials</h2>
           <div className="mb-16 grid gap-6 sm:grid-cols-2">
             {testimonials.map((t) => (
               <div

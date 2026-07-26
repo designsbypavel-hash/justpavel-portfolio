@@ -31,8 +31,8 @@ export default function YoutubePage() {
   return (
     <div className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <h1 className="mb-16 uppercase">
-          Youtube
+        <h1 className="mb-16">
+          YouTube
         </h1>
         <div className="grid gap-8 sm:grid-cols-2">
           {videos.map((video) => (

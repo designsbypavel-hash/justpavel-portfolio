@@ -40,7 +40,7 @@ const testimonials = [
 export default function Testimonials() {
   return (
     <section className="mb-16">
-      <h2 className="mb-10 uppercase">What People Say</h2>
+      <h2 className="mb-10">What people say</h2>
       <div className="flex flex-col gap-4">
         {testimonials.map((t) => (
           <div

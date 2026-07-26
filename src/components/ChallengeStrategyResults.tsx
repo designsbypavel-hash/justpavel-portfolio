@@ -22,7 +22,7 @@ export function ChallengeSection({ sections }: { sections: Section[] }) {
   if (sections.length === 0) return null;
   return (
     <section className="mb-12">
-      <h2 className="mb-8 uppercase">Challenge</h2>
+      <h2 className="mb-8">Challenge</h2>
       <div className="space-y-10">
         {sections.map((section) => (
           <div key={section.heading}>
@@ -34,7 +34,7 @@ export function ChallengeSection({ sections }: { sections: Section[] }) {
             </div>
             {section.image && (
               <div className="mt-6 w-full overflow-hidden rounded-xl" style={{ border: `1px solid ${cs.border}` }}>
-                <Image src={section.image} alt={section.heading} width={1920} height={1080} quality={100} sizes="100vw" className="block h-auto w-full" />
+                <Image src={section.image} alt={section.heading} width={1920} height={1080} quality={100} sizes="100vw" className={`block h-auto w-full${section.grayscale ? " grayscale" : ""}`} />
               </div>
             )}
             {section.video && (
@@ -106,7 +106,7 @@ export function StrategySection({ decisions }: { decisions: Decision[] }) {
   if (!hasPhases) {
     return (
       <section className="mb-12">
-        <h2 className="mb-8 uppercase">Strategy</h2>
+        <h2 className="mb-8">Strategy</h2>
         <div className="space-y-10">
           {decisions.map((decision, i) => (
             <DecisionCard key={decision.title} decision={decision} index={i} />

@@ -42,6 +42,7 @@ export type Section = {
   paragraphs: string[];
   image?: string;
   video?: string;
+  grayscale?: boolean;
 };
 
 export type JourneyStep = {
@@ -243,6 +244,7 @@ export const projects: Project[] = [
       {
         heading: "Five Roles, One Workspace",
         image: "/site-assets/case-studies/agent-ai/img-02.png",
+        grayscale: true,
         paragraphs: [
           "Trainer, ops manager, IT admin, viewer, super admin each with a different definition of ready to go live. The design had to serve all of them without adding a separate flow for each.",
         ],

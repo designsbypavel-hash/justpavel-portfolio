@@ -32,7 +32,7 @@ export default function ToolStack() {
 
   return (
     <section className="mb-24">
-      <h2 className="mb-4 uppercase">Tool Stack</h2>
+      <h2 className="mb-4">Tool stack</h2>
       <p className="mb-12 max-w-2xl text-white/55 leading-relaxed">
         AI has automated a lot of surface-level design work, so now the value lies in systems
         thinking and the ability to translate complexity into clarity. I am constantly exploring

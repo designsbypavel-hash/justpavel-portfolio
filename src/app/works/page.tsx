@@ -19,8 +19,8 @@ export default function WorksPage() {
   return (
     <div className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <h1 className="mb-16 uppercase">
-          All Projects
+        <h1 className="mb-16">
+          All projects
         </h1>
         <div className="space-y-16">
           {projects.map((project) => (
