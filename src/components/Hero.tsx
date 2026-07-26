@@ -35,7 +35,7 @@ export default function Hero() {
           <GradientWordLoop />
           <br />
           Built with{" "}
-          <span className="font-gloock">clarity</span>
+          clarity
           <br />
           Measured by impact
         </motion.h1>
