@@ -5,7 +5,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JarvisChat from "@/components/JarvisChat";
 import ThemeProvider from "@/components/ThemeProvider";
-import StarfieldBackground from "@/components/StarfieldBackground";
 
 // Gloock via next/font (accent serif only — used for one italic word in headlines)
 const gloock = Gloock({
@@ -113,8 +112,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-black text-white">
         <ThemeProvider>
-          <StarfieldBackground />
-          <div className="relative z-10 flex min-h-full flex-1 flex-col">
+<div className="relative z-10 flex min-h-full flex-1 flex-col">
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />
