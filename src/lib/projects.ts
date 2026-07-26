@@ -112,8 +112,6 @@ export const projects: Project[] = [
       "/site-assets/case-studies/agent-ai/img-03.png",
       "/site-assets/case-studies/agent-ai/img-04.png",
       "/site-assets/case-studies/agent-ai/img-05.png",
-      "/site-assets/case-studies/agent-ai/img-06.png",
-      "/site-assets/case-studies/agent-ai/img-07.png",
       "/site-assets/case-studies/agent-ai/img-08.png",
       "/site-assets/case-studies/agent-ai/img-09.png",
       "/site-assets/case-studies/agent-ai/img-10.png",
