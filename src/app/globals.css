@@ -123,10 +123,10 @@ h1 {
   letter-spacing: -0.025em;
 }
 
-/* Section heading — 32px, sentence case, white */
+/* Section heading — 48px, sentence case, white */
 h2 {
   font-weight: 600;
-  font-size: 2rem; /* 32px */
+  font-size: 3rem; /* 48px */
   line-height: 1.2;
   letter-spacing: -0.01em;
   text-transform: none;
