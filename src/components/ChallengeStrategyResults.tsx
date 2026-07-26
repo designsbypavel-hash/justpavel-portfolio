@@ -34,7 +34,7 @@ export function ChallengeSection({ sections }: { sections: Section[] }) {
             </div>
             {section.image && (
               <div className="mt-6 w-full overflow-hidden rounded-xl" style={{ border: `1px solid ${cs.border}` }}>
-                <Image src={section.image} alt={section.heading} width={1920} height={1080} quality={100} sizes="100vw" className={`block h-auto w-full${section.grayscale ? " grayscale" : ""}`} />
+                <Image src={section.image} alt={section.heading} width={1920} height={1080} quality={100} sizes="100vw" className="block h-auto w-full" style={section.grayscale ? { filter: "grayscale(100%)" } : undefined} />
               </div>
             )}
             {section.video && (
