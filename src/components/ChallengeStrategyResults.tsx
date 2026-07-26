@@ -54,7 +54,7 @@ function DecisionCard({ decision, index }: { decision: Decision; index: number }
           <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-emerald-400" />Shipped
         </span>
       </div>
-      <p className="mb-4 text-sm" style={{ color: cs.dim }}>
+      <p className="mb-4" style={{ color: cs.dim }}>
         <span className="font-semibold" style={{ color: cs.muted }}>Why: </span>{decision.why}
       </p>
       {decision.image && (
@@ -67,24 +67,24 @@ function DecisionCard({ decision, index }: { decision: Decision; index: number }
       {decision.alternativesConsidered && decision.alternativesConsidered.length > 0 && (
         <div className="mb-4 rounded-lg p-4" style={{ border: `1px solid ${cs.border}`, background: cs.cardBg }}>
           <p className="mb-2 text-xs font-semibold uppercase tracking-wide" style={{ color: cs.muted }}>Alternatives Considered</p>
-          <ul className="list-inside list-disc space-y-1 text-sm" style={{ color: cs.dim }}>
+          <ul className="list-inside list-disc space-y-1.5 text-sm" style={{ color: cs.dim }}>
             {decision.alternativesConsidered.map((alt, j) => <li key={j}>{alt}</li>)}
           </ul>
         </div>
       )}
-      <ul className="mb-4 list-inside list-disc space-y-1 text-sm" style={{ color: cs.body }}>
+      <ul className="mb-4 list-inside list-disc space-y-1.5" style={{ color: cs.body }}>
         {decision.whatChanged.map((item, j) => <li key={j}>{item}</li>)}
       </ul>
-      <p className="mb-4 text-sm" style={{ color: cs.strong }}>
+      <p className="mb-4" style={{ color: cs.strong }}>
         <span className="font-semibold" style={{ color: cs.muted }}>Result: </span>{decision.result}
       </p>
       {decision.tradeOff && (
-        <p className="mb-2 text-sm" style={{ color: cs.dim }}>
+        <p className="mb-2" style={{ color: cs.dim }}>
           <span className="font-semibold" style={{ color: cs.muted }}>Trade-off: </span>{decision.tradeOff}
         </p>
       )}
       {decision.businessReasoning && (
-        <p className="text-sm" style={{ color: cs.dim }}>
+        <p style={{ color: cs.dim }}>
           <span className="font-semibold" style={{ color: cs.muted }}>Business reasoning: </span>{decision.businessReasoning}
         </p>
       )}

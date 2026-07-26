@@ -153,25 +153,25 @@ h3 {
 
 /* Inline labels, meta */
 h4 {
-  font-weight: 500;
-  font-size: 0.75rem; /* 12px */
+  font-weight: 600; /* bumped from 500 — compensates for small 12px size */
+  font-size: 0.8125rem; /* 13px — just above uncomfortable small threshold */
   line-height: 1.4;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #6b7280;
 }
 
 /* Body */
 body {
-  font-size: 1rem; /* 16px base */
+  font-size: 1.0625rem; /* 17px — closer to Ben Roach's 20px benchmark, improves readability */
   line-height: 1.65;
-  font-weight: 400;
+  font-weight: 450;
 }
 
 p, li {
   font-size: inherit;
   line-height: 1.65;
-  font-weight: 400;
+  font-weight: 450;
   max-width: 68ch;
 }
 
@@ -183,19 +183,19 @@ p, span, a, li, label, input, textarea, button {
 .text-body-lg {
   font-size: 1.125rem;
   line-height: 1.65;
-  font-weight: 400;
+  font-weight: 450;
 }
 
 .text-body {
-  font-size: 1rem;
+  font-size: 1.0625rem;
   line-height: 1.65;
-  font-weight: 400;
+  font-weight: 450;
 }
 
 .text-small {
   font-size: 0.875rem;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 450;
 }
 
 .text-caption {
