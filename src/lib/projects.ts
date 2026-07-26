@@ -41,6 +41,7 @@ export type Section = {
   heading: string;
   paragraphs: string[];
   image?: string;
+  video?: string;
 };
 
 export type JourneyStep = {
@@ -237,6 +238,7 @@ export const projects: Project[] = [
           "8 interviews with enterprise customer support leads. Every session came back to the same question: \"What happens when Kai gets it wrong?\"",
           "3 out of 4 companies in advanced talks had paused at exactly this point.",
         ],
+        video: "/site-assets/case-studies/agent-ai/research-context.mp4",
       },
       {
         heading: "Five Roles, One Workspace",
