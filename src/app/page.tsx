@@ -69,7 +69,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl">
           <FadeInSection>
             <h2 className="mb-12">
-              YouTube
+              Thinking out loud
             </h2>
           </FadeInSection>
           <div className="grid gap-6 sm:grid-cols-2">
