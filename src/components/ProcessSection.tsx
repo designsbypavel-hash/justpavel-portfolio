@@ -11,8 +11,8 @@ export default function ProcessSection({
 
   return (
     <section className="mb-12">
-      <h2 className="mb-8 uppercase">
-        Process &amp; Visuals
+      <h2 className="mb-8">
+        Process &amp; visuals
       </h2>
       <div className="space-y-8">
         {images.map((src, i) => (

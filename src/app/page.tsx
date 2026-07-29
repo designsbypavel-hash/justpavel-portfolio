@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import ProjectCard from "@/components/ProjectCard";
 import CTASection from "@/components/CTASection";
 import FadeInSection from "@/components/FadeInSection";
+import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 
 const featuredSlugs = ["agent-ai", "sonyliv-ott-subscription", "sonyliv-check", "fintech-autonomous"];
 const featuredWorks = featuredSlugs.map((slug) => projects.find((p) => p.slug === slug)!);
@@ -48,7 +49,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl">
           <FadeInSection>
             <h2 className="mb-12">
-              Featured Works
+              Featured works
             </h2>
           </FadeInSection>
           <div className="space-y-16">
@@ -68,7 +69,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl">
           <FadeInSection>
             <h2 className="mb-12">
-              Youtube
+              YouTube
             </h2>
           </FadeInSection>
           <div className="grid gap-6 sm:grid-cols-2">
@@ -124,7 +125,7 @@ export default function Home() {
           <div className="mb-12 grid gap-8 sm:grid-cols-3">
             {stats.map((stat) => (
               <div key={stat.label} className="border-t border-white/30 pt-4">
-                <div className="font-(family-name:--font-heading) text-5xl font-extrabold">
+                <div className="font-(family-name:--font-heading) text-6xl font-extrabold tracking-tight" style={{ fontVariantNumeric: "tabular-nums" }}>
                   {stat.value}
                 </div>
                 <div className="mt-2 text-sm text-white/60">{stat.label}</div>
@@ -139,6 +140,8 @@ export default function Home() {
           />
         </div>
       </section>
+
+      <TestimonialsCarousel />
     </div>
   );
 }

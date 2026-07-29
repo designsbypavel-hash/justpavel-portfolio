@@ -13,7 +13,7 @@ export default function OutcomeSection({ sections }: { sections: Section[] }) {
   if (sections.length === 0) return null;
   return (
     <section className="mb-12">
-      <h2 className="mb-8 uppercase">Results</h2>
+      <h2 className="mb-8">Results</h2>
       <div className="space-y-10">
         {sections.map((section) => (
           <div key={section.heading}>

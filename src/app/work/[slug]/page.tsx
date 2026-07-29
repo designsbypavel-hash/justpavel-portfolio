@@ -105,7 +105,7 @@ export default async function ProjectPage({
 
         {/* TL;DR */}
         <section className="mb-12 rounded-xl border border-white/10 bg-white/5 p-6 sm:p-8">
-          <h2 className="mb-6 uppercase">
+          <h2 className="mb-6">
             TL;DR
           </h2>
           <div className="space-y-5">
@@ -159,13 +159,13 @@ export default async function ProjectPage({
 
         {project.opportunity && (
           <section className="mb-12">
-            <h2 className="mb-4 uppercase">Opportunity</h2>
+            <h2 className="mb-4">Opportunity</h2>
             <p className="text-white/70">{project.opportunity}</p>
           </section>
         )}
 
         {project.rejectedConcepts && project.rejectedConcepts.length > 0 && (
-          <RejectedConcepts heading="Concepts We Rejected" items={project.rejectedConcepts} />
+          <RejectedConcepts heading="Concepts we rejected" items={project.rejectedConcepts} />
         )}
 
         {project.hypothesis && <ProductHypothesis hypothesis={project.hypothesis} />}
@@ -177,14 +177,14 @@ export default async function ProjectPage({
         )}
 
         {project.automationScope && project.automationScope.length > 0 && (
-          <ChipList heading="What Kai Automates" chips={project.automationScope} />
+          <ChipList heading="What Kai automates" chips={project.automationScope} />
         )}
 
         {/* User Journey: Before vs After (visual, right after the challenge is explained) */}
         {project.journeySteps && project.journeySteps.length > 0 && (
           <section className="mb-12">
-            <h2 className="mb-8 uppercase">
-              User Journey: Before vs After
+            <h2 className="mb-8">
+              User journey: before vs after
             </h2>
             <div className="space-y-6">
               {project.journeySteps.map((step, i) => (

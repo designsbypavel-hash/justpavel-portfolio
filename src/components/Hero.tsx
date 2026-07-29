@@ -49,7 +49,7 @@ export default function Hero() {
           {heroStats.map((stat, i) => (
             <motion.div key={stat.value} variants={fadeInUp} className="h-full">
               <GlowCard delay={i * 3.5} className="flex h-full flex-col rounded-2xl p-6">
-                <div className="mb-3 font-(family-name:--font-heading) text-4xl font-extrabold">
+                <div className="mb-3 font-(family-name:--font-heading) text-5xl font-extrabold tracking-tight" style={{ fontVariantNumeric: "tabular-nums" }}>
                   {stat.value}
                 </div>
                 <p className="text-sm text-white/60">{stat.description}</p>

@@ -11,7 +11,7 @@ export default function RejectedConcepts({ heading, items }: { heading: string; 
   if (items.length === 0) return null;
   return (
     <section className="mb-12">
-      <h2 className="mb-6 uppercase">{heading}</h2>
+      <h2 className="mb-6">{heading}</h2>
       <div className="grid gap-3 sm:grid-cols-2">
         {items.map((item, i) => {
           const text = typeof item === "string" ? item : item.text;

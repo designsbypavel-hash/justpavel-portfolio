@@ -13,7 +13,7 @@ export default function ProductHypothesis({ hypothesis }: { hypothesis: Hypothes
   const muted = L ? "rgba(17,17,17,0.65)" : "rgba(255,255,255,0.65)";
   return (
     <section className="mb-12">
-      <h2 className="mb-6 uppercase">Product Hypothesis</h2>
+      <h2 className="mb-6">Product hypothesis</h2>
       <div className="rounded-xl p-6 sm:p-8" style={{ border: `1px solid ${border}`, background: cardBg }}>
         {[
           { label: "We believed:", value: hypothesis.weBelieved },

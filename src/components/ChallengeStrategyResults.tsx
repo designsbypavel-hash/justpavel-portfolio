@@ -129,7 +129,7 @@ export function StrategySection({ decisions }: { decisions: Decision[] }) {
 
   return (
     <section className="mb-12">
-      <h2 className="mb-8 uppercase">Strategy</h2>
+      <h2 className="mb-8">Strategy</h2>
       <div className="space-y-14">
         {phases.map((group) => (
           <div key={group.phase}>
