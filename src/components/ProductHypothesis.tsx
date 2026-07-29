@@ -2,6 +2,7 @@
 
 import type { Hypothesis } from "@/lib/projects";
 import { useTheme } from "@/components/ThemeProvider";
+import { highlightNumbers } from "@/components/HighlightNumbers";
 
 export default function ProductHypothesis({ hypothesis }: { hypothesis: Hypothesis }) {
   const { theme } = useTheme();
@@ -23,7 +24,7 @@ export default function ProductHypothesis({ hypothesis }: { hypothesis: Hypothes
         ].map(({ label, value }) => (
           <p key={label} className="mb-3" style={{ color: strong }}>
             <span className="font-semibold" style={{ color: muted }}>{label} </span>
-            {value}
+            {highlightNumbers(value)}
           </p>
         ))}
         {hypothesis.risks.length > 0 && (

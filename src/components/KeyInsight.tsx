@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useTheme } from "@/components/ThemeProvider";
+import { highlightNumbers } from "@/components/HighlightNumbers";
 
 export default function KeyInsight({ title, description, image }: { title: string; description: string; image?: string }) {
   const { theme } = useTheme();
@@ -14,7 +15,7 @@ export default function KeyInsight({ title, description, image }: { title: strin
       <div className="rounded-xl bg-gradient-to-br from-blue-500/[0.08] via-transparent to-orange-500/[0.08] p-6 sm:p-8" style={{ border: `1px solid ${border}` }}>
         <span className="mb-3 inline-block rounded-full px-3 py-1 text-xs uppercase tracking-widest" style={{ border: `1px solid ${border}`, color: dim }}>Key Insight</span>
         <h2 className="mb-3 h2-heading">{title}</h2>
-        <p style={{ color: body }}>{description}</p>
+        <p style={{ color: body }}>{highlightNumbers(description)}</p>
       </div>
       {image && (
         <div className="-mx-6 mt-4 flex justify-center sm:-mx-16">

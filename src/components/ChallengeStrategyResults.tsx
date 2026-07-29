@@ -3,6 +3,7 @@
 import Image from "next/image";
 import type { Decision, Section } from "@/lib/projects";
 import { useTheme } from "@/components/ThemeProvider";
+import { highlightNumbers } from "@/components/HighlightNumbers";
 
 function useCS() {
   const { theme } = useTheme();
@@ -29,7 +30,7 @@ export function ChallengeSection({ sections }: { sections: Section[] }) {
             <h3 className="mb-3" style={{ color: cs.strong }}>{section.heading}</h3>
             <div className="space-y-3">
               {section.paragraphs.map((p, i) => (
-                <p key={i} style={{ color: cs.body }}>{p}</p>
+                <p key={i} style={{ color: cs.body }}>{highlightNumbers(p)}</p>
               ))}
             </div>
             {section.image && (
@@ -60,7 +61,7 @@ function DecisionCard({ decision, index }: { decision: Decision; index: number }
         </span>
       </div>
       <p className="mb-4" style={{ color: cs.dim }}>
-        <span className="font-semibold" style={{ color: cs.muted }}>Why: </span>{decision.why}
+        <span className="font-semibold" style={{ color: cs.muted }}>Why: </span>{highlightNumbers(decision.why)}
       </p>
       {decision.image && (
         <div className="-mx-6 mb-4 sm:-mx-8">
@@ -73,24 +74,24 @@ function DecisionCard({ decision, index }: { decision: Decision; index: number }
         <div className="mb-4 rounded-lg p-4" style={{ border: `1px solid ${cs.border}`, background: cs.cardBg }}>
           <p className="mb-2 text-xs font-semibold uppercase tracking-wide" style={{ color: cs.muted }}>Alternatives Considered</p>
           <ul className="list-inside list-disc space-y-1.5 text-sm" style={{ color: cs.dim }}>
-            {decision.alternativesConsidered.map((alt, j) => <li key={j}>{alt}</li>)}
+            {decision.alternativesConsidered.map((alt, j) => <li key={j}>{highlightNumbers(alt)}</li>)}
           </ul>
         </div>
       )}
       <ul className="mb-4 list-inside list-disc space-y-1.5" style={{ color: cs.body }}>
-        {decision.whatChanged.map((item, j) => <li key={j}>{item}</li>)}
+        {decision.whatChanged.map((item, j) => <li key={j}>{highlightNumbers(item)}</li>)}
       </ul>
       <p className="mb-4" style={{ color: cs.strong }}>
-        <span className="font-semibold" style={{ color: cs.muted }}>Result: </span>{decision.result}
+        <span className="font-semibold" style={{ color: cs.muted }}>Result: </span>{highlightNumbers(decision.result)}
       </p>
       {decision.tradeOff && (
         <p className="mb-2" style={{ color: cs.dim }}>
-          <span className="font-semibold" style={{ color: cs.muted }}>Trade-off: </span>{decision.tradeOff}
+          <span className="font-semibold" style={{ color: cs.muted }}>Trade-off: </span>{highlightNumbers(decision.tradeOff)}
         </p>
       )}
       {decision.businessReasoning && (
         <p style={{ color: cs.dim }}>
-          <span className="font-semibold" style={{ color: cs.muted }}>Business reasoning: </span>{decision.businessReasoning}
+          <span className="font-semibold" style={{ color: cs.muted }}>Business reasoning: </span>{highlightNumbers(decision.businessReasoning)}
         </p>
       )}
     </div>

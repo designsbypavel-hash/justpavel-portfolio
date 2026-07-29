@@ -3,6 +3,7 @@
 import Image from "next/image";
 import type { Section } from "@/lib/projects";
 import { useTheme } from "@/components/ThemeProvider";
+import { highlightNumbers } from "@/components/HighlightNumbers";
 
 export default function OutcomeSection({ sections }: { sections: Section[] }) {
   const { theme } = useTheme();
@@ -20,7 +21,7 @@ export default function OutcomeSection({ sections }: { sections: Section[] }) {
             <h3 className="mb-3" style={{ color: strong }}>{section.heading}</h3>
             <div className="space-y-3">
               {section.paragraphs.map((p, i) => (
-                <p key={i} style={{ color: body }}>{p}</p>
+                <p key={i} style={{ color: body }}>{highlightNumbers(p)}</p>
               ))}
             </div>
             {section.image && (

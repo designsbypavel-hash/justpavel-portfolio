@@ -3,6 +3,7 @@
 import Image from "next/image";
 import type { ImpactCategory } from "@/lib/projects";
 import { useTheme } from "@/components/ThemeProvider";
+import { highlightNumbers } from "@/components/HighlightNumbers";
 
 export default function BusinessImpact({
   categories,
@@ -24,7 +25,7 @@ export default function BusinessImpact({
           <div key={cat.category} className="rounded-xl p-6" style={{ border: `1px solid ${L ? "rgba(0,0,0,0.10)" : "rgba(255,255,255,0.10)"}`, background: L ? "#ffffff" : "rgba(255,255,255,0.03)" }}>
             <h3 className="mb-3 text-sm uppercase tracking-wide" style={{ color: L ? "rgba(17,17,17,0.65)" : "rgba(255,255,255,0.50)" }}>{cat.category}</h3>
             <ul className="list-inside list-disc space-y-2 text-sm" style={{ color: L ? "#222222" : "rgba(255,255,255,0.75)" }}>
-              {cat.points.map((point, i) => <li key={i}>{point}</li>)}
+              {cat.points.map((point, i) => <li key={i}>{highlightNumbers(point)}</li>)}
             </ul>
           </div>
         ))}

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { highlightNumbers } from "@/components/HighlightNumbers";
 
 export default function DesignPrinciples({
   principles,
@@ -27,7 +28,7 @@ export default function DesignPrinciples({
               {i + 1}
             </span>
             <p className="text-sm" style={{ color: "rgba(255,255,255,0.75)" }}>
-              {principle}
+              {highlightNumbers(principle)}
             </p>
           </div>
         ))}
