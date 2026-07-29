@@ -100,7 +100,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "agent-ai",
-    title: "How do you trust an AI assistant before it goes live — when $3M+ in contracts depend on it?",
+    title: "How do you trust an AI assistant before it goes live, when $3M+ in contracts depend on it?",
     description:
       "Businesses wanted to use Kai to handle customer support. But they had no way to check if it was ready before switching it on. I designed the solution.",
     category: "B2B SaaS",
@@ -431,7 +431,7 @@ export const projects: Project[] = [
   },
   {
     slug: "sonyliv-check",
-    title: "Reducing payment hesitation at SonyLIV's most critical screen — driving a +28% lift in UPI adoption",
+    title: "Reducing payment hesitation at SonyLIV's most critical screen, driving a +28% lift in UPI adoption",
     description:
       "When a user decides to subscribe, the checkout screen should get out of the way. SonyLIV's didn't. I redesigned it to remove the friction that was turning intent into drop-off.",
     category: "B2C Mobile",
@@ -857,7 +857,7 @@ export const projects: Project[] = [
   },
   {
     slug: "sonyliv-ott-subscription",
-    title: "Turning a broken subscription funnel into SonyLIV’s biggest revenue lever — +22% paid subscribers",
+    title: "Turning a broken subscription funnel into SonyLIV’s biggest revenue lever, up +22% paid subscribers",
     description:
       "SonyLIV had 350M+ users and a growing content library, but the Android TV subscription flow was haemorrhaging revenue. Users reached the paywall, couldn’t make sense of the plans, and left. I redesigned the entire selection-to-checkout journey for a 10-foot, remote-control interface, and turned a conversion problem into a business win.",
     category: "B2C · OTT",
