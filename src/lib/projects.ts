@@ -100,7 +100,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "agent-ai",
-    title: "How do you trust an AI assistant before it goes live?",
+    title: "How do you trust an AI assistant before it goes live — when $3M+ in contracts depend on it?",
     description:
       "Businesses wanted to use Kai to handle customer support. But they had no way to check if it was ready before switching it on. I designed the solution.",
     category: "B2B SaaS",
@@ -431,7 +431,7 @@ export const projects: Project[] = [
   },
   {
     slug: "sonyliv-check",
-    title: "Reducing payment hesitation at SonyLIV's most critical screen",
+    title: "Reducing payment hesitation at SonyLIV's most critical screen — driving a +28% lift in UPI adoption",
     description:
       "When a user decides to subscribe, the checkout screen should get out of the way. SonyLIV's didn't. I redesigned it to remove the friction that was turning intent into drop-off.",
     category: "B2C Mobile",
@@ -682,7 +682,7 @@ export const projects: Project[] = [
   },
   {
     slug: "fintech-autonomous",
-    title: "Using AI to help AR analysts spend less time on admin and more time recovering debt",
+    title: "Using AI to cut 40% of AR admin so analysts could spend more time recovering debt",
     description:
       "Accounts receivable analysts were managing hundreds of accounts per cycle across disconnected tools. Every call left a trail of manual work. I redesigned the workflow to remove that overhead.",
     category: "B2B SaaS",
@@ -857,7 +857,7 @@ export const projects: Project[] = [
   },
   {
     slug: "sonyliv-ott-subscription",
-    title: "Turning a broken subscription funnel into SonyLIV’s biggest revenue lever",
+    title: "Turning a broken subscription funnel into SonyLIV’s biggest revenue lever — +22% paid subscribers",
     description:
       "SonyLIV had 350M+ users and a growing content library, but the Android TV subscription flow was haemorrhaging revenue. Users reached the paywall, couldn’t make sense of the plans, and left. I redesigned the entire selection-to-checkout journey for a 10-foot, remote-control interface, and turned a conversion problem into a business win.",
     category: "B2C · OTT",
@@ -1024,7 +1024,7 @@ export const projects: Project[] = [
 
   {
     slug: "sonyliv-search",
-    title: "Helping millions find something worth watching faster",
+    title: "Helping 350M+ users find something worth watching faster",
     description:
       "SonyLIV's catalogue kept growing. Search didn't keep up. Users were abandoning searches they should have been able to complete. I redesigned the experience to reduce that friction.",
     category: "B2C Mobile",

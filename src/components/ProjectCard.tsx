@@ -8,6 +8,7 @@ import type { Project } from "@/lib/projects";
 import { cardHover } from "@/lib/motion";
 import GlowCard from "@/components/GlowCard";
 import { playClickSound } from "@/lib/sound";
+import { highlightNumbers } from "@/components/HighlightNumbers";
 
 export default function ProjectCard({
   project,
@@ -46,12 +47,7 @@ export default function ProjectCard({
         </GlowCard>
         <div>
           <TitleTag className="mb-2 text-2xl font-semibold transition-colors duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-white/80">
-            {project.stats && project.stats[0] && (
-              <span className="font-(family-name:--font-heading) font-extrabold text-white" style={{ fontVariantNumeric: "tabular-nums" }}>
-                {project.stats[0].value}{" — "}
-              </span>
-            )}
-            {project.title}
+            {highlightNumbers(project.title)}
           </TitleTag>
           {project.readTime && (
             <p className="mb-3 text-sm text-white/60">{project.readTime} read</p>
