@@ -132,9 +132,7 @@ export default function LensGallery({ photos }: { photos: Photo[] }) {
         >
           {/* Hint */}
           <div className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 backdrop-blur-sm">
-            <span className="text-xs text-white/60">drag to rearrange</span>
-            <span className="text-white/20">·</span>
-            <span className="text-xs text-white/60">click to expand</span>
+            <span className="text-xs text-white/60">drag to rearrange, click to expand</span>
           </div>
 
           {photos.map((photo, i) => {
@@ -251,7 +249,7 @@ export default function LensGallery({ photos }: { photos: Photo[] }) {
               </p>
             </div>
             <p className="text-xs text-white/60">
-              {lightbox + 1} / {photos.length} &nbsp;·&nbsp; ← → to navigate
+              {lightbox + 1} / {photos.length} &nbsp;&nbsp; ← → to navigate
             </p>
           </figure>
         </div>

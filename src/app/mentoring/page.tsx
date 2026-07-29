@@ -176,7 +176,7 @@ export default function MentoringPage() {
                 <div>
                   <span className="block text-sm font-semibold text-white">{t.name}</span>
                   <span className="block text-xs text-white/60">
-                    {t.role} · {t.date}
+                    {t.role}, {t.date}
                   </span>
                 </div>
               </div>

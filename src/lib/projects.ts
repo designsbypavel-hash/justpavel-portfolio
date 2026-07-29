@@ -119,8 +119,8 @@ export const projects: Project[] = [
       "/site-assets/case-studies/agent-ai/img-10.png",
     ],
     role: "Lead Product Designer (End-to-end)",
-    platform: "Enterprise B2B SaaS · AI Agent",
-    team: "1 designer · 2 PMs · 3 engineers",
+    platform: "Enterprise B2B SaaS, AI Agent",
+    team: "1 designer, 2 PMs, 3 engineers",
     teamBreakdown: [
       { function: "Design", members: "1 Designer (me, end-to-end)" },
       { function: "Product", members: "2 PMs" },
@@ -860,7 +860,7 @@ export const projects: Project[] = [
     title: "Turning a broken subscription funnel into SonyLIV’s biggest revenue lever, up +22% paid subscribers",
     description:
       "SonyLIV had 350M+ users and a growing content library, but the Android TV subscription flow was haemorrhaging revenue. Users reached the paywall, couldn’t make sense of the plans, and left. I redesigned the entire selection-to-checkout journey for a 10-foot, remote-control interface, and turned a conversion problem into a business win.",
-    category: "B2C · OTT",
+    category: "B2C, OTT",
     readTime: "6 min",
     tags: ["Subscriptions", "Conversion", "Android TV", "10-foot UX"],
     image: "/site-assets/sonyliv-subscription.jpg",
@@ -874,8 +874,8 @@ export const projects: Project[] = [
       "/site-assets/case-studies/sonyliv-ott-subscription/img-07.jpg",
     ],
     role: "Product Designer (End-to-end)",
-    platform: "OTT · Android TV · B2C",
-    team: "1 Product Designer · 1 PM · 3 Engineers",
+    platform: "OTT, Android TV, B2C",
+    team: "1 Product Designer, 1 PM, 3 Engineers",
     teamBreakdown: [
       { function: "Design", members: "1 Product Designer (me, end-to-end)" },
       { function: "Product", members: "1 PM" },

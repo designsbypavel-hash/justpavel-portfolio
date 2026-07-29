@@ -43,7 +43,7 @@ export default function EcosystemDiagram({ diagram }: { diagram: EcosystemDiagra
           </div>
           <div className="mb-8 rounded-xl p-4" style={{ border: `1px solid ${border}`, background: cardBg }}>
             <p className="mb-2 text-xs font-semibold uppercase tracking-widest" style={{ color: muted }}>Data &amp; Analytics Layer</p>
-            <p className="text-sm" style={{ color: dim }}>{diagram.dataLayerItems.join(" · ")}</p>
+            <p className="text-sm" style={{ color: dim }}>{diagram.dataLayerItems.join(", ")}</p>
           </div>
           <div className="mb-3 text-xs font-semibold uppercase tracking-widest" style={{ color: muted }}>Business Impact</div>
           <div className="grid grid-cols-5 gap-2">

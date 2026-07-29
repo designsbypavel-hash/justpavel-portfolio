@@ -73,7 +73,7 @@ export default function AboutPage() {
               </div>
               <div className="px-4 py-3">
                 <p className="text-sm font-medium text-white/80">Pavel Mondal</p>
-                <p className="text-xs text-white/50">Senior Product Designer · London</p>
+                <p className="text-xs text-white/50">Senior Product Designer, London</p>
               </div>
             </div>
           </div>
