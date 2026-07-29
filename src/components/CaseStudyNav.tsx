@@ -78,7 +78,7 @@ export default function CaseStudyNav({ visibleIds }: { visibleIds?: string[] }) 
       className="hidden xl:block"
       style={{ position: "sticky", top: "6rem", alignSelf: "start" }}
     >
-      <p className="mb-4 text-[11px] font-semibold tracking-widest text-white/25">
+      <p className="mb-4 text-[11px] font-semibold tracking-widest text-white/50">
         ON THIS PAGE
       </p>
       <ul className="space-y-0.5">
@@ -100,7 +100,7 @@ export default function CaseStudyNav({ visibleIds }: { visibleIds?: string[] }) 
                     style={{
                       background: isActive
                         ? "rgba(255,255,255,0.7)"
-                        : "rgba(255,255,255,0.10)",
+                        : "rgba(255,255,255,0.20)",
                       transform: isActive ? "scaleY(1)" : "scaleY(0.5)",
                       transformOrigin: "top",
                     }}
@@ -110,7 +110,7 @@ export default function CaseStudyNav({ visibleIds }: { visibleIds?: string[] }) 
                 <span
                   className="text-[13px] leading-none transition-colors duration-200"
                   style={{
-                    color: isActive ? "rgba(255,255,255,0.90)" : "rgba(255,255,255,0.35)",
+                    color: isActive ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.55)",
                     fontWeight: isActive ? 500 : 400,
                   }}
                 >
