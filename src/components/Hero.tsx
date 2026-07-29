@@ -53,7 +53,7 @@ export default function Hero() {
                 <div className="mb-3 font-(family-name:--font-heading) text-5xl font-extrabold tracking-tight" style={{ fontVariantNumeric: "tabular-nums" }}>
                   {stat.value}
                 </div>
-                <p className="text-sm text-white/60">{highlightNumbers(stat.description)}</p>
+                <p className="text-sm text-white/60">{stat.description}</p>
               </GlowCard>
             </motion.div>
           ))}
