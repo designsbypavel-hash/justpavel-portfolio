@@ -201,7 +201,7 @@ export const projects: Project[] = [
       "LLM usage cost had to scale sustainably across many customer accounts, not just one pilot.",
     ],
     stats: [
-      { value: "$3M+", label: "Revenue backed by enterprise clients including British Council" },
+      { value: "40%", label: "Improvement in client retention after launch" },
       { value: "22%", label: "More queries resolved by AI after launch" },
       { value: "45s", label: "Average time to handle a customer query" },
       { value: "250k+", label: "Test sessions run every month" },
