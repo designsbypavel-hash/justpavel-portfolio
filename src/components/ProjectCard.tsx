@@ -45,11 +45,23 @@ export default function ProjectCard({
           )}
         </GlowCard>
         <div>
-          <TitleTag className="mb-2 text-2xl font-semibold transition-colors duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-white/80">
+          <TitleTag className="mb-3 text-2xl font-semibold transition-colors duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-white/80">
             {project.title}
           </TitleTag>
+          {project.stats && project.stats.length > 0 && (
+            <div className="mb-4 flex flex-wrap gap-x-5 gap-y-2 border-l-2 border-white/20 pl-4">
+              {project.stats.slice(0, 3).map((stat) => (
+                <div key={stat.label} className="flex flex-col">
+                  <span className="font-(family-name:--font-heading) text-xl font-extrabold tracking-tight text-white" style={{ fontVariantNumeric: "tabular-nums" }}>
+                    {stat.value}
+                  </span>
+                  <span className="text-[11px] leading-tight text-white/45">{stat.label}</span>
+                </div>
+              ))}
+            </div>
+          )}
           {project.readTime && (
-            <p className="mb-3 text-sm text-white/60">{project.readTime} read</p>
+            <p className="mb-3 text-sm text-white/50">{project.readTime} read</p>
           )}
           <p className="mb-4 text-white/60">{project.description}</p>
           <div className="flex flex-wrap gap-2">
