@@ -21,6 +21,7 @@ import ChipList from "@/components/ChipList";
 import RejectedConcepts from "@/components/RejectedConcepts";
 import EcosystemDiagram from "@/components/EcosystemDiagram";
 import ThemeVarProvider from "@/components/ThemeVarProvider";
+import CaseStudyNav from "@/components/CaseStudyNav";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -76,181 +77,220 @@ export default async function ProjectPage({
   );
   const remainingGalleryImages = project.galleryImages.filter((img) => !usedImages.has(img));
 
+  const visibleNavIds = [
+    "cs-overview",
+    project.keyInsight ? "cs-insight" : null,
+    project.opportunity ? "cs-opportunity" : null,
+    project.hypothesis ? "cs-hypothesis" : null,
+    "cs-challenge",
+    project.journeySteps && project.journeySteps.length > 0 ? "cs-journey" : null,
+    "cs-strategy",
+    (project.businessImpact && project.businessImpact.length > 0) ||
+    (project.successMetrics && project.successMetrics.length > 0)
+      ? "cs-impact"
+      : null,
+    "cs-outcome",
+  ].filter(Boolean) as string[];
+
   return (
     <ThemeVarProvider>
     <div className="px-6 py-24">
-      <div className="mx-auto max-w-4xl">
-        <CaseStudyHero
-          category={project.category}
-          title={project.title}
-          description={project.description}
-          readingTime={readingTime}
-        />
+      <div className="mx-auto max-w-6xl">
+        {/* Two-column layout: sticky nav left, content right */}
+        <div className="xl:grid xl:grid-cols-[160px_1fr] xl:gap-16">
 
-        {/* Visual: the headline numbers, right up top so the result is clear immediately */}
-        <MetricGrid stats={project.stats} />
+          {/* Left: sticky nav — hidden on mobile/tablet */}
+          <CaseStudyNav visibleIds={visibleNavIds} />
 
-        {project.teamBreakdown && <TeamComposition groups={project.teamBreakdown} platform={project.platform} />}
+          {/* Right: case study content */}
+          <div className="min-w-0 max-w-4xl">
+            <CaseStudyHero
+              category={project.category}
+              title={project.title}
+              description={project.description}
+              readingTime={readingTime}
+            />
 
-        <div className="mb-12 flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/60"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
+            {/* Visual: the headline numbers, right up top so the result is clear immediately */}
+            <MetricGrid stats={project.stats} />
 
-        {/* TL;DR */}
-        <section className="mb-12 rounded-xl border border-white/10 bg-white/5 p-6 sm:p-8">
-          <h2 className="mb-6">
-            TL;DR
-          </h2>
-          <div className="space-y-5">
-            <div>
-              <h3 className="mb-1 text-white/50">Problem</h3>
-              <p className="text-white/80">{project.tldrProblem}</p>
-            </div>
-            <div>
-              <h3 className="mb-1 text-white/50">What I did</h3>
-              <p className="text-white/80">{project.tldrWhatIDid}</p>
-            </div>
-            <div>
-              <h3 className="mb-1 text-white/50">Impact</h3>
-              <p className="text-white/80">{project.tldrImpact}</p>
-            </div>
-          </div>
-        </section>
+            {project.teamBreakdown && <TeamComposition groups={project.teamBreakdown} platform={project.platform} />}
 
-        {/* Visual: hero image, right after the intro is established */}
-        <div className="mb-12">
-          <DarkImageSection src={project.image} alt={project.title} priority aspect="16 / 10" />
-        </div>
-
-        {project.keyInsight && (
-          <KeyInsight
-            title={project.keyInsight.title}
-            description={project.keyInsight.description}
-            image={project.keyInsight.image}
-          />
-        )}
-
-        {project.ecosystemDiagramImage ? (
-          <section className="mb-12">
-            <div className="flex justify-center" style={{ marginLeft: "calc(50% - 50vw)", marginRight: "calc(50% - 50vw)" }}>
-              <div className="w-full max-w-5xl overflow-hidden rounded-xl border border-white/10 px-4">
-                <Image
-                  src={project.ecosystemDiagramImage}
-                  alt="SonyLIV subscription ecosystem diagram"
-                  width={1536}
-                  height={1024}
-                  quality={100}
-                  sizes="(min-width: 1024px) 1024px, 100vw"
-                  className="h-auto w-full"
-                />
-              </div>
-            </div>
-          </section>
-        ) : (
-          project.ecosystemDiagram && <EcosystemDiagram diagram={project.ecosystemDiagram} />
-        )}
-
-        {project.opportunity && (
-          <section className="mb-12">
-            <h2 className="mb-4">Opportunity</h2>
-            <p className="text-white/70">{project.opportunity}</p>
-          </section>
-        )}
-
-        {project.rejectedConcepts && project.rejectedConcepts.length > 0 && (
-          <RejectedConcepts heading="Concepts we rejected" items={project.rejectedConcepts} />
-        )}
-
-        {project.hypothesis && <ProductHypothesis hypothesis={project.hypothesis} />}
-
-        <ChallengeSection sections={project.context} />
-
-        {project.teamsHelped && project.teamsHelped.length > 0 && (
-          <TeamComposition groups={project.teamsHelped} />
-        )}
-
-        {project.automationScope && project.automationScope.length > 0 && (
-          <ChipList heading="What Kai automates" chips={project.automationScope} />
-        )}
-
-        {/* User Journey: Before vs After (visual, right after the challenge is explained) */}
-        {project.journeySteps && project.journeySteps.length > 0 && (
-          <section className="mb-12">
-            <h2 className="mb-8">
-              User journey: before vs after
-            </h2>
-            <div className="space-y-6">
-              {project.journeySteps.map((step, i) => (
-                <div key={step.label} className="rounded-xl border border-white/10 bg-white/[0.03] p-6">
-                  <div className="mb-4 flex items-center gap-3">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/20 text-xs font-semibold text-white/60">
-                      {i + 1}
-                    </span>
-                    <p className="text-sm font-semibold text-white/80">{step.label}</p>
-                  </div>
-                  <div className="grid items-stretch gap-3 sm:grid-cols-[1fr_auto_1fr]">
-                    <div className="rounded-lg border border-white/10 bg-black/40 p-4">
-                      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-white/55">
-                        Before
-                      </p>
-                      <p className="text-sm text-white/55">{step.before}</p>
-                    </div>
-                    <div className="flex items-center justify-center rotate-90 text-white/55 sm:rotate-0">
-                      <span aria-hidden className="text-lg">→</span>
-                    </div>
-                    <div className="rounded-lg border border-white/10 bg-gradient-to-br from-blue-500/[0.07] via-white/[0.03] to-orange-500/[0.07] p-4">
-                      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-white/50">
-                        After
-                      </p>
-                      <p className="text-sm text-white/80">{step.after}</p>
-                    </div>
-                  </div>
-                </div>
+            <div className="mb-12 flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/60"
+                >
+                  {tag}
+                </span>
               ))}
             </div>
-          </section>
-        )}
 
-        {project.designPrinciples && project.designPrinciples.length > 0 && (
-          <DesignPrinciples principles={project.designPrinciples} image={project.designPrinciplesImage} />
-        )}
+            {/* TL;DR */}
+            <section id="cs-overview" className="mb-12 rounded-xl border border-white/10 bg-white/5 p-6 sm:p-8">
+              <h2 className="mb-6">
+                TL;DR
+              </h2>
+              <div className="space-y-5">
+                <div>
+                  <h3 className="mb-1 text-white/50">Problem</h3>
+                  <p className="text-white/80">{project.tldrProblem}</p>
+                </div>
+                <div>
+                  <h3 className="mb-1 text-white/50">What I did</h3>
+                  <p className="text-white/80">{project.tldrWhatIDid}</p>
+                </div>
+                <div>
+                  <h3 className="mb-1 text-white/50">Impact</h3>
+                  <p className="text-white/80">{project.tldrImpact}</p>
+                </div>
+              </div>
+            </section>
 
-        {project.constraints && project.constraints.length > 0 && (
-          <DesignPrinciples principles={project.constraints} heading="Constraints That Shaped The Solution" />
-        )}
+            {/* Visual: hero image, right after the intro is established */}
+            <div className="mb-12">
+              <DarkImageSection src={project.image} alt={project.title} priority aspect="16 / 10" />
+            </div>
 
-        {project.escalationTriggers && project.escalationTriggers.length > 0 && (
-          <DesignPrinciples principles={project.escalationTriggers} heading="When Kai Escalates To A Human" />
-        )}
+            {project.keyInsight && (
+              <div id="cs-insight">
+                <KeyInsight
+                  title={project.keyInsight.title}
+                  description={project.keyInsight.description}
+                  image={project.keyInsight.image}
+                />
+              </div>
+            )}
 
-        <StrategySection decisions={project.decisions} />
+            {project.ecosystemDiagramImage ? (
+              <section className="mb-12">
+                <div className="flex justify-center" style={{ marginLeft: "calc(50% - 50vw)", marginRight: "calc(50% - 50vw)" }}>
+                  <div className="w-full max-w-5xl overflow-hidden rounded-xl border border-white/10 px-4">
+                    <Image
+                      src={project.ecosystemDiagramImage}
+                      alt="SonyLIV subscription ecosystem diagram"
+                      width={1536}
+                      height={1024}
+                      quality={100}
+                      sizes="(min-width: 1024px) 1024px, 100vw"
+                      className="h-auto w-full"
+                    />
+                  </div>
+                </div>
+              </section>
+            ) : (
+              project.ecosystemDiagram && <EcosystemDiagram diagram={project.ecosystemDiagram} />
+            )}
 
-        {/* Visual: the flow running, right after the decisions behind it are explained */}
-        {project.prototypeVideo && <PrototypeVideo src={project.prototypeVideo} />}
+            {project.opportunity && (
+              <section id="cs-opportunity" className="mb-12">
+                <h2 className="mb-4">Opportunity</h2>
+                <p className="text-white/70">{project.opportunity}</p>
+              </section>
+            )}
 
-        {project.businessImpact && project.businessImpact.length > 0 && (
-          <BusinessImpact categories={project.businessImpact} image={project.businessImpactImage} />
-        )}
+            {project.rejectedConcepts && project.rejectedConcepts.length > 0 && (
+              <RejectedConcepts heading="Concepts we rejected" items={project.rejectedConcepts} />
+            )}
 
-        {project.successMetrics && project.successMetrics.length > 0 && (
-          <BusinessImpact categories={project.successMetrics} heading="Success Metrics We Defined" />
-        )}
+            {project.hypothesis && (
+              <div id="cs-hypothesis">
+                <ProductHypothesis hypothesis={project.hypothesis} />
+              </div>
+            )}
 
-        {/* Remaining screens not already paired with specific copy above */}
-        {remainingGalleryImages.length > 0 && (
-          <ProcessSection title={project.title} images={remainingGalleryImages} />
-        )}
+            <div id="cs-challenge">
+              <ChallengeSection sections={project.context} />
+            </div>
 
-        <OutcomeSection sections={project.closingSections} />
+            {project.teamsHelped && project.teamsHelped.length > 0 && (
+              <TeamComposition groups={project.teamsHelped} />
+            )}
 
-        <NextProjectCTA slug={nextProject.slug} title={nextProject.title} />
+            {project.automationScope && project.automationScope.length > 0 && (
+              <ChipList heading="What Kai automates" chips={project.automationScope} />
+            )}
+
+            {/* User Journey: Before vs After (visual, right after the challenge is explained) */}
+            {project.journeySteps && project.journeySteps.length > 0 && (
+              <section id="cs-journey" className="mb-12">
+                <h2 className="mb-8">
+                  User journey: before vs after
+                </h2>
+                <div className="space-y-6">
+                  {project.journeySteps.map((step, i) => (
+                    <div key={step.label} className="rounded-xl border border-white/10 bg-white/[0.03] p-6">
+                      <div className="mb-4 flex items-center gap-3">
+                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/20 text-xs font-semibold text-white/60">
+                          {i + 1}
+                        </span>
+                        <p className="text-sm font-semibold text-white/80">{step.label}</p>
+                      </div>
+                      <div className="grid items-stretch gap-3 sm:grid-cols-[1fr_auto_1fr]">
+                        <div className="rounded-lg border border-white/10 bg-black/40 p-4">
+                          <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-white/55">
+                            Before
+                          </p>
+                          <p className="text-sm text-white/55">{step.before}</p>
+                        </div>
+                        <div className="flex items-center justify-center rotate-90 text-white/55 sm:rotate-0">
+                          <span aria-hidden className="text-lg">→</span>
+                        </div>
+                        <div className="rounded-lg border border-white/10 bg-gradient-to-br from-blue-500/[0.07] via-white/[0.03] to-orange-500/[0.07] p-4">
+                          <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-white/50">
+                            After
+                          </p>
+                          <p className="text-sm text-white/80">{step.after}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {project.designPrinciples && project.designPrinciples.length > 0 && (
+              <DesignPrinciples principles={project.designPrinciples} image={project.designPrinciplesImage} />
+            )}
+
+            {project.constraints && project.constraints.length > 0 && (
+              <DesignPrinciples principles={project.constraints} heading="Constraints That Shaped The Solution" />
+            )}
+
+            {project.escalationTriggers && project.escalationTriggers.length > 0 && (
+              <DesignPrinciples principles={project.escalationTriggers} heading="When Kai Escalates To A Human" />
+            )}
+
+            <div id="cs-strategy">
+              <StrategySection decisions={project.decisions} />
+            </div>
+
+            {/* Visual: the flow running, right after the decisions behind it are explained */}
+            {project.prototypeVideo && <PrototypeVideo src={project.prototypeVideo} />}
+
+            {(project.businessImpact && project.businessImpact.length > 0) && (
+              <div id="cs-impact">
+                <BusinessImpact categories={project.businessImpact} image={project.businessImpactImage} />
+              </div>
+            )}
+
+            {project.successMetrics && project.successMetrics.length > 0 && (
+              <BusinessImpact categories={project.successMetrics} heading="Success Metrics We Defined" />
+            )}
+
+            {/* Remaining screens not already paired with specific copy above */}
+            {remainingGalleryImages.length > 0 && (
+              <ProcessSection title={project.title} images={remainingGalleryImages} />
+            )}
+
+            <div id="cs-outcome">
+              <OutcomeSection sections={project.closingSections} />
+            </div>
+
+            <NextProjectCTA slug={nextProject.slug} title={nextProject.title} />
+          </div>
+        </div>
       </div>
     </div>
     </ThemeVarProvider>
