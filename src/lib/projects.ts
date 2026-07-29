@@ -100,7 +100,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "agent-ai",
-    title: "How do you trust an AI assistant before it goes live, when $3M+ in contracts depend on it?",
+    title: "How do you trust an AI assistant before it goes live, when it improved retention by 40%?",
     description:
       "Businesses wanted to use Kai to handle customer support. But they had no way to check if it was ready before switching it on. I designed the solution.",
     category: "B2B SaaS",
