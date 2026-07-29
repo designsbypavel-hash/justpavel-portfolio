@@ -54,7 +54,7 @@ function DecisionCard({ decision, index }: { decision: Decision; index: number }
   return (
     <div className="rounded-xl p-6 sm:p-8" style={{ border: `1px solid ${cs.border}` }}>
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <h3 className="mb-0">Decision {index + 1}: {decision.title}</h3>
+        <h3 className="mb-0">{decision.title}</h3>
         <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs font-medium text-emerald-500">
           <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-emerald-400" />Shipped
         </span>
