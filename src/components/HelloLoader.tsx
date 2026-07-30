@@ -1,44 +1,55 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Roboto } from "next/font/google";
+import { Caveat } from "next/font/google";
 
-const roboto = Roboto({
-  subsets: ["latin", "cyrillic", "devanagari", "greek"],
-  weight: ["300", "400"],
-  display: "swap",
-});
+// Caveat covers Latin, Latin-ext, Cyrillic, Vietnamese — the closest web match to the reference
+const caveat = Caveat({ subsets: ["latin", "latin-ext", "cyrillic"], weight: ["400", "700"], display: "swap" });
 
-const COLORS = [
-  "#4DD0E1", "#EF5350", "#FFCA28", "#AB47BC", "#FF7043",
-  "#66BB6A", "#42A5F5", "#EC407A", "#80CBC4", "#FFA726",
-  "#F06292", "#AED581", "#4FC3F7", "#FFD54F", "#CE93D8",
+// Exact color palette from reference — vibrant, saturated, no washed-out tones
+const PALETTE = [
+  "#2BC4BA", // teal
+  "#F05050", // coral red
+  "#F9C234", // yellow
+  "#9B82F3", // soft purple
+  "#F07830", // deep orange
+  "#3DBF7A", // green
+  "#5BA6F0", // sky blue
+  "#E85CA0", // hot pink
+  "#50C8B0", // mint
+  "#F5894E", // warm orange
+  "#7EC8F5", // light blue
+  "#F07060", // salmon
+  "#A0D850", // lime green
+  "#C87CF0", // violet
+  "#F0C060", // gold
 ];
 
-const ALL_WORDS = [
-  "Hello", "Bonjour", "こんにちは", "안녕하세요", "Hola", "Ciao",
-  "Olá", "Привет", "नमस्ते", "你好", "Hallo", "Merhaba",
-  "Salut", "مرحبا", "Cześć", "Γεια", "Hei", "Hej",
-  "Ahoj", "Xin chào", "สวัสดี", "שלום", "Sawubona", "Dobar dan",
+// 24 greetings matching the reference image languages
+const WORDS = [
+  "merhaba",    "你好",       "привет",    "สวัสดี",
+  "ciao",       "नमस्ते",    "hello",     "dobar dan",  "hei",
+  "hallo",      "χαίρετε",   "ሰላም",      "ahoj",       "xin chào",
+  "cześć",      "hola",      "안녕하세요",  "bonjour",
+  "hey",        "こんにちは",  "helo",      "salut",      "merhaba",
+  "你好",        "Olá",       "Sawubona",  "Hej",        "שלום",
 ];
 
-// Build 5 rows, each starting at a different offset
-function makeRow(offset: number, count = 12) {
-  const words = [];
-  for (let i = 0; i < count; i++) {
-    const wi = (i + offset) % ALL_WORDS.length;
-    const ci = (i + offset * 3) % COLORS.length;
-    words.push({ text: ALL_WORDS[wi], color: COLORS[ci] });
-  }
-  return words;
+// Assign a color per word (cycling through palette)
+function coloredWords(startOffset: number, count: number) {
+  return Array.from({ length: count }, (_, i) => ({
+    text: WORDS[(i + startOffset) % WORDS.length],
+    color: PALETTE[(i + startOffset * 2) % PALETTE.length],
+  }));
 }
 
 const ROWS = [
-  { words: makeRow(0),  dir: "left",  dur: 14, offset: 0   },
-  { words: makeRow(5),  dir: "right", dur: 11, offset: -30 },
-  { words: makeRow(10), dir: "left",  dur: 16, offset: -10 },
-  { words: makeRow(15), dir: "right", dur: 12, offset: -50 },
-  { words: makeRow(3),  dir: "left",  dur: 13, offset: -20 },
+  { words: coloredWords(0,  18), dir: "left",  spd: 22 },
+  { words: coloredWords(5,  18), dir: "right", spd: 18 },
+  { words: coloredWords(10, 18), dir: "left",  spd: 25 },
+  { words: coloredWords(15, 18), dir: "right", spd: 20 },
+  { words: coloredWords(3,  18), dir: "left",  spd: 23 },
+  { words: coloredWords(8,  18), dir: "right", spd: 19 },
 ];
 
 export default function HelloLoader() {
@@ -63,11 +74,12 @@ export default function HelloLoader() {
         position: "fixed",
         inset: 0,
         zIndex: 9999,
-        background: "#0d0d12",
+        // Dark navy — matches reference, not pure black
+        background: "#0c0d18",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        gap: "clamp(14px, 2.2vw, 28px)",
+        gap: "clamp(4px, 1.2vw, 16px)",
         overflow: "hidden",
         opacity: exiting ? 0 : 1,
         transition: "opacity 1.2s ease-in",
@@ -75,22 +87,21 @@ export default function HelloLoader() {
       }}
     >
       <style>{`
-        @keyframes ml { from { transform: translateX(0) } to { transform: translateX(-50%) } }
-        @keyframes mr { from { transform: translateX(-50%) } to { transform: translateX(0) } }
+        @keyframes slide-left  { from { transform: translateX(0) }    to { transform: translateX(-50%) } }
+        @keyframes slide-right { from { transform: translateX(-50%) } to { transform: translateX(0) }   }
       `}</style>
 
       {ROWS.map((row, ri) => {
-        // Duplicate words for seamless loop
+        // Duplicate for seamless loop
         const items = [...row.words, ...row.words];
         return (
-          <div key={ri} style={{ overflow: "hidden", lineHeight: 1 }}>
+          <div key={ri} style={{ overflow: "hidden" }}>
             <div
               style={{
-                display: "flex",
-                gap: "clamp(20px, 3vw, 48px)",
+                display: "inline-flex",
+                gap: "clamp(16px, 2.8vw, 52px)",
                 whiteSpace: "nowrap",
-                animation: `${row.dir === "left" ? "ml" : "mr"} ${row.dur}s linear infinite`,
-                animationDelay: `${row.offset / 100 * row.dur}s`,
+                animation: `${row.dir === "left" ? "slide-left" : "slide-right"} ${row.spd}s linear infinite`,
                 willChange: "transform",
               }}
             >
@@ -98,12 +109,15 @@ export default function HelloLoader() {
                 <span
                   key={wi}
                   style={{
-                    fontFamily: roboto.style.fontFamily,
-                    fontWeight: 300,
-                    fontSize: "clamp(28px, 3.6vw, 58px)",
+                    fontFamily: caveat.style.fontFamily,
+                    fontWeight: 700,
+                    // Responsive size — matches the large dense type in the reference
+                    fontSize: "clamp(32px, 4.8vw, 72px)",
+                    lineHeight: 1.15,
                     color: w.color,
-                    letterSpacing: "0.02em",
                     flexShrink: 0,
+                    // Slight text shadow to add depth like in the reference
+                    textShadow: `0 0 24px ${w.color}33`,
                   }}
                 >
                   {w.text}
