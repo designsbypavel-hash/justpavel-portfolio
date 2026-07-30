@@ -62,9 +62,21 @@ export default function TestimonialsCarousel() {
         <h2 className="mb-12">What people say</h2>
 
         <div
-          className="relative rounded-2xl p-8 sm:p-10 transition-all duration-500"
+          className="relative rounded-2xl p-8 sm:p-10 transition-all duration-500 overflow-hidden"
           style={{ background: t.glow, border: `1px solid ${t.border}` }}
         >
+          {/* Corner glows */}
+          <div className="pointer-events-none absolute inset-0" aria-hidden>
+            <div
+              className="absolute -top-16 -left-16 h-56 w-56 rounded-full transition-all duration-700"
+              style={{ background: `radial-gradient(circle, ${t.accent}18 0%, transparent 70%)` }}
+            />
+            <div
+              className="absolute -bottom-16 -right-16 h-56 w-56 rounded-full transition-all duration-700"
+              style={{ background: `radial-gradient(circle, ${t.accent}14 0%, transparent 70%)` }}
+            />
+          </div>
+
           {/* Decorative quote mark */}
           <div
             className="absolute top-8 right-10 select-none pointer-events-none font-serif leading-none"
