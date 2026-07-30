@@ -857,9 +857,9 @@ export const projects: Project[] = [
   },
   {
     slug: "sonyliv-ott-subscription",
-    title: "Turning a broken subscription funnel into SonyLIV’s biggest revenue lever, up +22% paid subscribers",
+    title: "Turning a broken subscription funnel into SonyLIV's biggest revenue lever, up +22% paid subscribers",
     description:
-      "SonyLIV had 350M+ users and a growing content library, but the Android TV subscription flow was haemorrhaging revenue. Users reached the paywall, couldn’t make sense of the plans, and left. I redesigned the entire selection-to-checkout journey for a 10-foot, remote-control interface, and turned a conversion problem into a business win.",
+      "SonyLIV had 350M+ users and a growing content library, but the Android TV subscription flow was haemorrhaging revenue. Users reached the paywall, couldn't make sense of the plans, and left. I redesigned the entire selection-to-checkout journey for a 10-foot, remote-control interface, and turned a conversion problem into a business win.",
     category: "B2C, OTT",
     readTime: "6 min",
     tags: ["Subscriptions", "Conversion", "Android TV", "10-foot UX"],
@@ -888,7 +888,7 @@ export const projects: Project[] = [
       { value: "2x", label: "Engagement with plan selection" },
     ],
     tldrProblem:
-      "SonyLIV’s Android TV paywall was losing revenue every day, users hit plan selection, couldn’t tell what they were paying for, and left without subscribing.",
+      "SonyLIV's Android TV paywall was losing revenue every day, users hit plan selection, couldn't tell what they were paying for, and left without subscribing.",
     tldrWhatIDid:
       "I rethought the entire flow for a lean-back TV context: rebuilt plan comparison from scratch, collapsed a 5-step funnel to 3, and made pricing scannable with a remote in hand.",
     tldrImpact:
@@ -897,9 +897,18 @@ export const projects: Project[] = [
       {
         heading: "The business problem",
         paragraphs: [
-          "SonyLIV was growing fast. The platform had 350M+ registered users, a library expanding with cricket, originals, and international content, and a subscription model that was supposed to monetise that audience. It wasn’t working.",
-          "Our Android TV funnel was the worst offender. Session data showed that users who reached the subscription paywall were leaving at a rate that translated to millions of rupees in monthly lost revenue. The problem wasn’t awareness, it wasn’t content, and it wasn’t pricing, it was the moment users had to make a decision about what to buy.",
+          "SonyLIV was growing fast. The platform had 350M+ registered users, a library expanding with cricket, originals, and international content, and a subscription model that was supposed to monetise that audience. It wasn't working.",
+          "Our Android TV funnel was the worst offender. Session data showed that users who reached the subscription paywall were leaving at a rate that translated to millions of rupees in monthly lost revenue. The problem wasn't awareness, it wasn't content, and it wasn't pricing, it was the moment users had to make a decision about what to buy.",
           "The PM framing was stark: the funnel was technically functional, but functionally broken. We needed to fix it.",
+        ],
+      },
+      {
+        heading: "Mapping the problem before designing anything",
+        image: "/site-assets/case-studies/sonyliv-ott-subscription/workshop.webp",
+        paragraphs: [
+          "Before touching a single frame, the team ran a structured journey-mapping workshop. We put every touchpoint on the wall — what the user does, what the advisor does, what the system does — and physically arranged them as a flow using sticky notes.",
+          "The exercise surfaced something quickly: the subscription path wasn't one flow, it was three overlapping ones depending on how the user arrived. Someone coming from a content recommendation behaved differently to someone who had directly searched for a plan. The existing UI treated them identically.",
+          "That session also revealed a cluster of steps that existed purely for technical reasons, not user reasons. Steps that engineers had added to satisfy backend constraints but that added zero clarity for the person holding a remote. Those became the first candidates for removal.",
         ],
       },
       {
@@ -907,41 +916,41 @@ export const projects: Project[] = [
         image: "/site-assets/case-studies/sonyliv-ott-subscription/img-03.jpg",
         paragraphs: [
           "I started with session recordings and ran remote usability sessions with a panel of Android TV users. The same pattern emerged again and again. Users would reach the plan selection screen, slow down, start pressing directional keys back and forth, and eventually back out entirely.",
-          "In their own words: “I couldn’t work out what I was actually getting with the more expensive plan” and “I wanted to just click Subscribe but I had to go through too many screens first.”",
+          "In their own words: 'I couldn\'t work out what I was actually getting with the more expensive plan' and 'I wanted to just click Subscribe but I had to go through too many screens first.'",
           "The plans were presented as a flat list. Feature differences were described in small-print labels that were almost unreadable at TV viewing distance. Pricing per duration was buried. There was no hierarchy, every plan looked equally weighted, which meant users had to do the comparison work themselves, with a remote control, from across the room.",
-          "On a mobile touch interface, this might have been manageable. On a 10-foot interface with directional navigation, it created decision paralysis. Every second of uncertainty on a TV is more costly than on a phone, users can’t just quickly re-scan; they have to navigate to re-read.",
+          "On a mobile touch interface, this might have been manageable. On a 10-foot interface with directional navigation, it created decision paralysis. Every second of uncertainty on a TV is more costly than on a phone, users can't just quickly re-scan; they have to navigate to re-read.",
         ],
       },
       {
         heading: "The design constraint nobody planned for",
         image: "/site-assets/case-studies/sonyliv-ott-subscription/img-04.jpg",
         paragraphs: [
-          "Android TV is a categorically different medium. Users are seated 8–10 feet from the screen, using a directional remote with 4-way navigation. There’s no tap, no pinch, no scroll-by-thumb. Every interaction is deliberate.",
-          "This meant that design patterns borrowed from SonyLIV’s mobile subscription flow, which the team had been working from as a template, were fundamentally wrong for this surface. A 5-tap mobile flow becomes a 15-key-press TV ordeal. Dense comparison tables that feel fine on a phone become walls of text across the room.",
-          "My first task was convincing the team that we couldn’t iterate on the existing TV flow, we had to start from the TV context and reason upward from there.",
+          "Android TV is a categorically different medium. Users are seated 8–10 feet from the screen, using a directional remote with 4-way navigation. There's no tap, no pinch, no scroll-by-thumb. Every interaction is deliberate.",
+          "This meant that design patterns borrowed from SonyLIV's mobile subscription flow, which the team had been working from as a template, were fundamentally wrong for this surface. A 5-tap mobile flow becomes a 15-key-press TV ordeal. Dense comparison tables that feel fine on a phone become walls of text across the room.",
+          "My first task was convincing the team that we couldn't iterate on the existing TV flow, we had to start from the TV context and reason upward from there.",
         ],
       },
     ],
     keyInsight: {
-      title: "Confusion isn’t a preference problem, it’s a design problem",
+      title: "Confusion isn't a preference problem, it's a design problem",
       description:
-        "Users weren’t indecisive about subscribing. They were indecisive because the UI made the decision hard. Once we realised the drop-off was confusion-driven (not price-sensitivity), the design direction became obvious: make the right plan obvious at a glance, from 10 feet away.",
+        "Users weren't indecisive about subscribing. They were indecisive because the UI made the decision hard. Once we realised the drop-off was confusion-driven (not price-sensitivity), the design direction became obvious: make the right plan obvious at a glance, from 10 feet away.",
       image: "/site-assets/case-studies/sonyliv-ott-subscription/img-05.jpg",
     },
     designPrinciples: [
       "One clear recommendation per screen, never make users compare more than 3 options at once on a TV",
       "Scannable at 10 feet, key information must be readable from the couch without leaning in",
-      "Every key press earns its place, if a step doesn’t advance the decision, it doesn’t exist",
-      "Surface the value, not the features, lead with what you unlock, not a checklist of what’s included",
+      "Every key press earns its place, if a step doesn't advance the decision, it doesn't exist",
+      "Surface the value, not the features, lead with what you unlock, not a checklist of what's included",
     ],
     decisions: [
       {
         title: "Rebuild plan comparison from the TV viewport up",
         image: "/site-assets/case-studies/sonyliv-ott-subscription/img-06.jpg",
-        why: "The existing plan list was a direct port from the mobile UI, flat, text-heavy, with no visual hierarchy. At TV distance, users couldn’t tell the plans apart or understand the value difference.",
+        why: "The existing plan list was a direct port from the mobile UI, flat, text-heavy, with no visual hierarchy. At TV distance, users couldn't tell the plans apart or understand the value difference.",
         whatChanged: [
           "Redesigned plans as distinct visual cards with a recommended plan visually elevated and pre-selected",
-          "Feature differences expressed as benefit statements (‘Watch live cricket on any device’) not capability labels (‘Multi-device streaming’)",
+          "Feature differences expressed as benefit statements ('Watch live cricket on any device') not capability labels ('Multi-device streaming')",
           "Pricing per month shown in large type; annual vs monthly toggle prominent at the top of the screen",
           "Removed 2 plans that had been creating unnecessary choice paralysis, worked with PM to consolidate",
         ],
@@ -961,9 +970,9 @@ export const projects: Project[] = [
       {
         title: "Introduce a recommended plan signal",
         image: "/site-assets/case-studies/sonyliv-ott-subscription/img-07.jpg",
-        why: "Without a clear default, users felt the weight of the decision entirely. Adding a ‘Most Popular’ or recommended signal gives users a socially-validated anchor, particularly important in a lean-back context where the cognitive cost of deliberation is higher.",
+        why: "Without a clear default, users felt the weight of the decision entirely. Adding a 'Most Popular' or recommended signal gives users a socially-validated anchor, particularly important in a lean-back context where the cognitive cost of deliberation is higher.",
         whatChanged: [
-          "Added a ‘Most popular’ badge to the mid-tier plan (the plan with highest purchase volume)",
+          "Added a 'Most popular' badge to the mid-tier plan (the plan with highest purchase volume)",
           "Pre-highlighted the recommended plan on page load, remote focus starts there, not at the cheapest option",
           "Visual weight designed so the recommended plan reads as the default, not an upsell trick",
         ],
@@ -976,15 +985,15 @@ export const projects: Project[] = [
         whatChanged: [
           "Payment failure now surfaces inline with a retry prompt and an alternative payment method suggestion, no navigation away from the payment screen",
           "Clear error copy written for each failure type (insufficient funds, wrong UPI PIN, timeout) with specific recovery instructions",
-          "Auto-retry for transient failures with a countdown, user doesn’t have to manually retry within 10 seconds",
+          "Auto-retry for transient failures with a countdown, user doesn't have to manually retry within 10 seconds",
         ],
         result: "Payment retry success rate improved. A segment of users who previously abandoned after first-attempt payment failure were completing subscriptions on retry.",
       },
     ],
     rejectedConcepts: [
       "A full-screen comparison table with all plans side-by-side, looks clean in Figma, unreadable at TV distance with 9pt labels",
-      "Gamified upsell (‘Upgrade now to unlock 4K’) overlay between plan selection and payment, tested as high-pressure and caused distrust in usability sessions",
-      "Single-plan ‘smart recommendation’ flow where only the recommended plan is shown and others are hidden, removed too much user agency; felt like the app was hiding options",
+      "Gamified upsell ('Upgrade now to unlock 4K') overlay between plan selection and payment, tested as high-pressure and caused distrust in usability sessions",
+      "Single-plan 'smart recommendation' flow where only the recommended plan is shown and others are hidden, removed too much user agency; felt like the app was hiding options",
       "Persistent side-panel showing plan summary during payment, complex focus management on TV navigation, frequent focus-trap bugs in prototype, removed in favour of a simpler back-navigation pattern",
     ],
     closingSections: [
@@ -1006,9 +1015,9 @@ export const projects: Project[] = [
         ],
       },
       {
-        heading: "What I’d do differently",
+        heading: "What I'd do differently",
         paragraphs: [
-          "The plan consolidation decision, removing two of the original five plans, was the right call, but I’d push for it earlier and harder. We spent two weeks designing for five plans before the PM data confirmed that two of them had combined purchase share below 4%. That’s two weeks of layout work that never shipped.",
+          "The plan consolidation decision, removing two of the original five plans, was the right call, but I'd push for it earlier and harder. We spent two weeks designing for five plans before the PM data confirmed that two of them had combined purchase share below 4%. That's two weeks of layout work that never shipped.",
           "I also underestimated how differently Android TV users think about payment. Mobile payment flows assume familiarity with UPI and digital wallets. Our TV audience skewed older, with higher rates of net banking preference, and we found this out halfway through engineering, forcing a late-stage redesign of the payment screen. Earlier research specifically scoped to payment behaviour on TV would have caught it.",
         ],
       },
@@ -1016,7 +1025,7 @@ export const projects: Project[] = [
         heading: "What this project taught me about platform-specific design",
         paragraphs: [
           "Every medium has a cognitive tax. Mobile is high attention, high interaction, users expect to tap quickly and get feedback instantly. TV is low attention, low interaction, users expect to make one considered choice per screen, then lean back. The same information architecture that feels appropriately detailed on mobile feels overwhelming on TV.",
-          "The lesson isn’t that TV UX needs to be simpler. It’s that simplicity means something different depending on the context in which a decision is made. In a darkened living room with a remote, clarity is the product.",
+          "The lesson isn't that TV UX needs to be simpler. It's that simplicity means something different depending on the context in which a decision is made. In a darkened living room with a remote, clarity is the product.",
         ],
       },
     ],
