@@ -62,25 +62,41 @@ export default function TestimonialsCarousel() {
         <h2 className="mb-12">What people say</h2>
 
         <div
-          className="relative rounded-2xl p-8 sm:p-10 transition-all duration-500 overflow-hidden"
-          style={{ background: t.glow, border: `1px solid ${t.border}` }}
+          className="relative rounded-2xl p-8 sm:p-10 transition-all duration-700 overflow-hidden"
+          style={{
+            background: `linear-gradient(135deg, ${t.accent}08 0%, transparent 50%, ${t.accent}05 100%)`,
+            border: `1px solid ${t.accent}28`,
+            boxShadow: `0 0 0 1px ${t.accent}10, 0 8px 40px -8px ${t.accent}20, inset 0 1px 0 ${t.accent}18`,
+          }}
         >
           {/* Corner glows */}
           <div className="pointer-events-none absolute inset-0" aria-hidden>
+            {/* Top-left bloom */}
             <div
-              className="absolute -top-16 -left-16 h-56 w-56 rounded-full transition-all duration-700"
-              style={{ background: `radial-gradient(circle, ${t.accent}18 0%, transparent 70%)` }}
+              className="absolute -top-24 -left-24 h-80 w-80 rounded-full transition-all duration-700"
+              style={{ background: `radial-gradient(circle, ${t.accent}30 0%, ${t.accent}08 45%, transparent 70%)` }}
             />
+            {/* Bottom-right bloom */}
             <div
-              className="absolute -bottom-16 -right-16 h-56 w-56 rounded-full transition-all duration-700"
-              style={{ background: `radial-gradient(circle, ${t.accent}14 0%, transparent 70%)` }}
+              className="absolute -bottom-24 -right-24 h-80 w-80 rounded-full transition-all duration-700"
+              style={{ background: `radial-gradient(circle, ${t.accent}28 0%, ${t.accent}06 45%, transparent 70%)` }}
+            />
+            {/* Subtle top-right accent */}
+            <div
+              className="absolute -top-8 -right-8 h-40 w-40 rounded-full transition-all duration-700"
+              style={{ background: `radial-gradient(circle, ${t.accent}15 0%, transparent 65%)` }}
+            />
+            {/* Center bottom ambient */}
+            <div
+              className="absolute bottom-0 left-1/2 -translate-x-1/2 h-32 w-96 transition-all duration-700"
+              style={{ background: `radial-gradient(ellipse, ${t.accent}10 0%, transparent 70%)` }}
             />
           </div>
 
           {/* Decorative quote mark */}
           <div
             className="absolute top-8 right-10 select-none pointer-events-none font-serif leading-none"
-            style={{ fontSize: 120, lineHeight: 1, color: t.accent, opacity: 0.08 }}
+            style={{ fontSize: 120, lineHeight: 1, color: t.accent, opacity: 0.12 }}
             aria-hidden
           >
             &ldquo;
