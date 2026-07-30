@@ -49,8 +49,8 @@ export default function HelloLoader() {
     if (sessionStorage.getItem("hello-shown")) { setDone(true); return; }
     sessionStorage.setItem("hello-shown", "1");
 
-    const t1 = setTimeout(() => setExiting(true), 3000);
-    const t2 = setTimeout(() => setDone(true), 3750);
+    const t1 = setTimeout(() => setExiting(true), 7000);
+    const t2 = setTimeout(() => setDone(true), 8200);
     return () => { clearTimeout(t1); clearTimeout(t2); };
   }, []);
 
@@ -70,7 +70,7 @@ export default function HelloLoader() {
         gap: "clamp(14px, 2.2vw, 28px)",
         overflow: "hidden",
         opacity: exiting ? 0 : 1,
-        transition: "opacity 0.7s ease",
+        transition: "opacity 1.2s ease-in",
         pointerEvents: exiting ? "none" : "auto",
       }}
     >
