@@ -3,64 +3,25 @@
 import { useEffect, useState } from "react";
 import { Caveat } from "next/font/google";
 
-const caveat = Caveat({ subsets: ["latin", "latin-ext", "cyrillic"], weight: ["700"], display: "swap" });
-
-const WORDS = [
-  "hello",      "bonjour",    "こんにちは",  "안녕하세요",
-  "hola",       "ciao",       "мerhaba",    "नमस्ते",
-  "你好",        "Olá",        "hallo",      "привет",
-  "xin chào",   "שלום",       "χαίρετε",   "hello",
-];
-
-const SHOW_MS  = 600;  // how long each word is fully visible
-const FADE_MS  = 400;  // ease-in fade duration
+const caveat = Caveat({ subsets: ["latin"], weight: ["700"], display: "swap" });
 
 export default function HelloLoader() {
-  const [index,   setIndex]   = useState(0);
-  const [opacity, setOpacity] = useState(0);   // start invisible, ease-in
-  const [exiting, setExiting] = useState(false);
-  const [done,    setDone]    = useState(false);
+  const [phase, setPhase] = useState<"in" | "hold" | "out" | "done">("in");
 
   useEffect(() => {
-    if (sessionStorage.getItem("hello-shown")) { setDone(true); return; }
+    if (sessionStorage.getItem("hello-shown")) { setPhase("done"); return; }
     sessionStorage.setItem("hello-shown", "1");
 
-    let i = 0;
-    let cancelled = false;
-
-    const showWord = () => {
-      if (cancelled) return;
-      setIndex(i);
-      setOpacity(1); // ease-in on mount of each word
-
-      const holdTimer = setTimeout(() => {
-        if (cancelled) return;
-        setOpacity(0); // ease-out before switching
-
-        const nextTimer = setTimeout(() => {
-          if (cancelled) return;
-          i++;
-          if (i >= WORDS.length) {
-            // All done — fade overlay
-            setExiting(true);
-            setTimeout(() => setDone(true), 1200);
-          } else {
-            showWord();
-          }
-        }, FADE_MS);
-
-        return () => clearTimeout(nextTimer);
-      }, SHOW_MS + FADE_MS);
-
-      return () => clearTimeout(holdTimer);
-    };
-
-    // Small delay before first word appears
-    const start = setTimeout(showWord, 150);
-    return () => { cancelled = true; clearTimeout(start); };
+    // ease-in → hold → ease-in out
+    const t1 = setTimeout(() => setPhase("hold"), 900);   // fade-in done
+    const t2 = setTimeout(() => setPhase("out"),  2800);  // start fade-out
+    const t3 = setTimeout(() => setPhase("done"), 4000);  // unmount
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, []);
 
-  if (done) return null;
+  if (phase === "done") return null;
+
+  const visible = phase === "in" || phase === "hold";
 
   return (
     <div
@@ -73,25 +34,30 @@ export default function HelloLoader() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        opacity: exiting ? 0 : 1,
-        transition: exiting ? "opacity 1.2s ease-in" : undefined,
-        pointerEvents: exiting ? "none" : "auto",
+        // Overlay itself fades out last
+        opacity: phase === "out" ? 0 : 1,
+        transition: phase === "out" ? "opacity 1.2s ease-in" : undefined,
+        pointerEvents: phase === "out" ? "none" : "auto",
       }}
     >
       <span
         style={{
           fontFamily: caveat.style.fontFamily,
           fontWeight: 700,
-          fontSize: "clamp(56px, 9vw, 112px)",
-          color: "#ffffff",
-          letterSpacing: "0.01em",
-          lineHeight: 1.1,
-          opacity,
-          transition: `opacity ${FADE_MS}ms ease-in`,
+          fontSize: "clamp(72px, 12vw, 140px)",
+          color: "#fff",
+          letterSpacing: "-0.01em",
+          lineHeight: 1,
           userSelect: "none",
+          // Fade-in with a gentle upward drift — matches Apple's motion
+          opacity: visible ? 1 : 0,
+          transform: visible ? "translateY(0) scale(1)" : "translateY(10px) scale(0.97)",
+          transition: visible
+            ? "opacity 0.9s ease-in, transform 0.9s ease-in"
+            : undefined,
         }}
       >
-        {WORDS[index]}
+        hello
       </span>
     </div>
   );
