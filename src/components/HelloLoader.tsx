@@ -1,74 +1,60 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Great_Vibes } from "next/font/google";
+import { Roboto } from "next/font/google";
 
-const script = Great_Vibes({ subsets: ["latin"], weight: "400" });
+const roboto = Roboto({
+  subsets: ["latin", "cyrillic", "devanagari", "greek"],
+  weight: ["300", "400"],
+  display: "swap",
+});
 
-const WORDS = [
-  { text: "Hello",      lang: "en" },
-  { text: "Bonjour",    lang: "fr" },
-  { text: "こんにちは",   lang: "ja" },
-  { text: "안녕하세요",   lang: "ko" },
-  { text: "مرحبًا",     lang: "ar" },
-  { text: "Hola",       lang: "es" },
-  { text: "Ciao",       lang: "it" },
-  { text: "Olá",        lang: "pt" },
-  { text: "Привет",     lang: "ru" },
-  { text: "नमस्ते",      lang: "hi" },
-  { text: "你好",        lang: "zh" },
-  { text: "Hallo",      lang: "de" },
-  { text: "مرحبا",      lang: "ar" },
-  { text: "Hello",      lang: "en" },
+const COLORS = [
+  "#4DD0E1", "#EF5350", "#FFCA28", "#AB47BC", "#FF7043",
+  "#66BB6A", "#42A5F5", "#EC407A", "#80CBC4", "#FFA726",
+  "#F06292", "#AED581", "#4FC3F7", "#FFD54F", "#CE93D8",
 ];
 
-const WORD_MS   = 620;  // total time each word occupies
-const FADE_MS   = 220;  // css transition duration
+const ALL_WORDS = [
+  "Hello", "Bonjour", "こんにちは", "안녕하세요", "Hola", "Ciao",
+  "Olá", "Привет", "नमस्ते", "你好", "Hallo", "Merhaba",
+  "Salut", "مرحبا", "Cześć", "Γεια", "Hei", "Hej",
+  "Ahoj", "Xin chào", "สวัสดี", "שלום", "Sawubona", "Dobar dan",
+];
+
+// Build 5 rows, each starting at a different offset
+function makeRow(offset: number, count = 12) {
+  const words = [];
+  for (let i = 0; i < count; i++) {
+    const wi = (i + offset) % ALL_WORDS.length;
+    const ci = (i + offset * 3) % COLORS.length;
+    words.push({ text: ALL_WORDS[wi], color: COLORS[ci] });
+  }
+  return words;
+}
+
+const ROWS = [
+  { words: makeRow(0),  dir: "left",  dur: 14, offset: 0   },
+  { words: makeRow(5),  dir: "right", dur: 11, offset: -30 },
+  { words: makeRow(10), dir: "left",  dur: 16, offset: -10 },
+  { words: makeRow(15), dir: "right", dur: 12, offset: -50 },
+  { words: makeRow(3),  dir: "left",  dur: 13, offset: -20 },
+];
 
 export default function HelloLoader() {
-  const [index, setIndex]     = useState(0);
-  const [visible, setVisible] = useState(true);   // word opacity
-  const [exiting, setExiting] = useState(false);  // overlay fade-out
-  const [done, setDone]       = useState(false);  // unmount
+  const [exiting, setExiting] = useState(false);
+  const [done, setDone]       = useState(false);
 
   useEffect(() => {
-    // Only show once per session
-    if (sessionStorage.getItem("hello-shown")) {
-      setDone(true);
-      return;
-    }
+    if (sessionStorage.getItem("hello-shown")) { setDone(true); return; }
     sessionStorage.setItem("hello-shown", "1");
 
-    let i = 0;
-    // Cycle through words
-    const cycle = () => {
-      setVisible(false);
-      setTimeout(() => {
-        i++;
-        if (i >= WORDS.length) {
-          // All done — fade out overlay
-          setTimeout(() => {
-            setExiting(true);
-            setTimeout(() => setDone(true), 700);
-          }, 200);
-          return;
-        }
-        setIndex(i);
-        setVisible(true);
-        setTimeout(cycle, WORD_MS);
-      }, FADE_MS);
-    };
-
-    // Show first word, then start cycling
-    setVisible(true);
-    const first = setTimeout(cycle, WORD_MS);
-    return () => clearTimeout(first);
+    const t1 = setTimeout(() => setExiting(true), 3000);
+    const t2 = setTimeout(() => setDone(true), 3750);
+    return () => { clearTimeout(t1); clearTimeout(t2); };
   }, []);
 
   if (done) return null;
-
-  const word = WORDS[index];
-  const isLatin = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/.test(word.text);
 
   return (
     <div
@@ -77,33 +63,56 @@ export default function HelloLoader() {
         position: "fixed",
         inset: 0,
         zIndex: 9999,
-        background: "#000",
+        background: "#0d0d12",
         display: "flex",
-        alignItems: "center",
+        flexDirection: "column",
         justifyContent: "center",
+        gap: "clamp(14px, 2.2vw, 28px)",
+        overflow: "hidden",
         opacity: exiting ? 0 : 1,
-        transition: exiting ? "opacity 0.65s ease" : undefined,
+        transition: "opacity 0.7s ease",
         pointerEvents: exiting ? "none" : "auto",
       }}
     >
-      <span
-        lang={word.lang}
-        style={{
-          fontSize: "clamp(52px, 8vw, 96px)",
-          fontFamily: isLatin
-            ? `${script.style.fontFamily}, cursive`
-            : "system-ui, sans-serif",
-          fontWeight: isLatin ? 400 : 300,
-          color: "#ffffff",
-          letterSpacing: isLatin ? "0.01em" : "0.05em",
-          opacity: visible ? 1 : 0,
-          transition: `opacity ${FADE_MS}ms ease`,
-          userSelect: "none",
-          lineHeight: 1.2,
-        }}
-      >
-        {word.text}
-      </span>
+      <style>{`
+        @keyframes ml { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+        @keyframes mr { from { transform: translateX(-50%) } to { transform: translateX(0) } }
+      `}</style>
+
+      {ROWS.map((row, ri) => {
+        // Duplicate words for seamless loop
+        const items = [...row.words, ...row.words];
+        return (
+          <div key={ri} style={{ overflow: "hidden", lineHeight: 1 }}>
+            <div
+              style={{
+                display: "flex",
+                gap: "clamp(20px, 3vw, 48px)",
+                whiteSpace: "nowrap",
+                animation: `${row.dir === "left" ? "ml" : "mr"} ${row.dur}s linear infinite`,
+                animationDelay: `${row.offset / 100 * row.dur}s`,
+                willChange: "transform",
+              }}
+            >
+              {items.map((w, wi) => (
+                <span
+                  key={wi}
+                  style={{
+                    fontFamily: roboto.style.fontFamily,
+                    fontWeight: 300,
+                    fontSize: "clamp(28px, 3.6vw, 58px)",
+                    color: w.color,
+                    letterSpacing: "0.02em",
+                    flexShrink: 0,
+                  }}
+                >
+                  {w.text}
+                </span>
+              ))}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
