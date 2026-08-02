@@ -978,17 +978,6 @@ export const projects: Project[] = [
         ],
         result: "Mid-tier plan selection increased by 2x. Users who previously selected the cheapest plan and then upgraded were now committing to the recommended tier on first pass.",
       },
-      {
-        title: "Handle payment failure in-flow instead of starting over",
-        image: "/site-assets/case-studies/sonyliv-ott-subscription/img-01.png",
-        why: "Session recordings showed a painful pattern: users who hit a UPI or card failure were being dropped back to the plan selection screen. Starting over completely was killing a significant number of nearly-completed purchases.",
-        whatChanged: [
-          "Payment failure now surfaces inline with a retry prompt and an alternative payment method suggestion, no navigation away from the payment screen",
-          "Clear error copy written for each failure type (insufficient funds, wrong UPI PIN, timeout) with specific recovery instructions",
-          "Auto-retry for transient failures with a countdown, user doesn't have to manually retry within 10 seconds",
-        ],
-        result: "Payment retry success rate improved. A segment of users who previously abandoned after first-attempt payment failure were completing subscriptions on retry.",
-      },
     ],
     rejectedConcepts: [
       "A full-screen comparison table with all plans side-by-side, looks clean in Figma, unreadable at TV distance with 9pt labels",
