@@ -26,7 +26,7 @@ export default function Hero() {
       <div className="mx-auto max-w-6xl">
 
         {/* Top row: headline left, photo right */}
-        <div className="mb-14 flex items-start justify-between gap-10">
+        <div className="mb-14 flex items-center justify-between gap-10">
           <motion.h1
             initial="hidden"
             animate="visible"
