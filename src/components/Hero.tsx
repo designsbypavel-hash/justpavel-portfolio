@@ -24,43 +24,46 @@ export default function Hero() {
   return (
     <section className="px-6 pt-28 pb-20">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-12 flex items-start justify-between gap-8">
+
+        {/* Top row: headline left, photo right */}
+        <div className="mb-14 flex items-start justify-between gap-10">
           <motion.h1
             initial="hidden"
             animate="visible"
             variants={fadeInUp}
-            className="font-(family-name:--font-heading) text-[42px]! font-bold leading-[1.06] tracking-[-0.025em] sm:text-[56px]! md:text-[80px]!"
+            className="font-(family-name:--font-heading) text-[38px]! font-bold leading-[1.06] tracking-[-0.025em] sm:text-[48px]! md:text-[64px]!"
           >
             Pavel is a designer
             <br />
             who builds.
           </motion.h1>
 
-          {/* Polaroid photo */}
+          {/* Polaroid */}
           <motion.div
-            initial={{ opacity: 0, y: 16, rotate: 2 }}
+            initial={{ opacity: 0, y: 20, rotate: 2 }}
             animate={{ opacity: 1, y: 0, rotate: 2 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.25, ease: "easeOut" }}
             className="hidden shrink-0 md:block"
             style={{
               background: "white",
-              padding: "10px 10px 32px 10px",
-              boxShadow: "0 8px 32px rgba(0,0,0,0.35)",
+              padding: "10px 10px 44px 10px",
+              boxShadow: "0 12px 40px rgba(0,0,0,0.30)",
               borderRadius: 2,
             }}
           >
-            <div className="relative h-56 w-44 overflow-hidden">
+            <div className="relative overflow-hidden" style={{ width: 260, height: 320 }}>
               <Image
                 src="/site-assets/about-lens/headshot-new.jpg"
                 alt="Pavel Mondal"
                 fill
                 className="object-cover object-top"
-                sizes="176px"
+                sizes="260px"
               />
             </div>
           </motion.div>
         </div>
 
+        {/* Stat cards */}
         <motion.div
           initial="hidden"
           animate="visible"
@@ -78,6 +81,7 @@ export default function Hero() {
             </motion.div>
           ))}
         </motion.div>
+
       </div>
     </section>
   );
