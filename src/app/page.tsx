@@ -49,7 +49,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl">
           <FadeInSection>
             <h2 className="mb-12">
-              Featured works
+              Selected works
             </h2>
           </FadeInSection>
           <div className="space-y-16">
