@@ -31,17 +31,7 @@ export default function Hero() {
         >
           Pavel is a designer
           <br />
-          who{" "}
-          <em
-            className="not-italic"
-            style={{
-              fontFamily: "var(--font-gloock), Georgia, serif",
-              fontStyle: "italic",
-              fontWeight: 400,
-            }}
-          >
-            builds.
-          </em>
+          who builds.
         </motion.h1>
 
         <motion.div
