@@ -2,9 +2,7 @@
 
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
-import GradientWordLoop from "@/components/GradientWordLoop";
 import GlowCard from "@/components/GlowCard";
-import { highlightNumbers } from "@/components/HighlightNumbers";
 
 const heroStats = [
   {
@@ -31,14 +29,19 @@ export default function Hero() {
           variants={fadeInUp}
           className="mb-12 font-(family-name:--font-heading) text-[42px]! font-bold leading-[1.06] tracking-[-0.025em] sm:text-[56px]! md:text-[80px]!"
         >
-          Designing in London
+          Pavel is a designer
           <br />
-          <GradientWordLoop />
-          <br />
-          Built with{" "}
-          clarity
-          <br />
-          Measured by impact
+          who{" "}
+          <em
+            className="not-italic"
+            style={{
+              fontFamily: "var(--font-gloock), Georgia, serif",
+              fontStyle: "italic",
+              fontWeight: 400,
+            }}
+          >
+            builds.
+          </em>
         </motion.h1>
 
         <motion.div
