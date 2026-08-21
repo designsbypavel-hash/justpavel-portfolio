@@ -52,12 +52,23 @@ export default function YoutubePage() {
             </a>
           ))}
         </div>
-        <div className="mt-12">
-          <CTASection
+        <div className="mt-12 flex justify-center">
+          <a
             href="https://www.youtube.com/@DesignWithPavel"
-            label="Visit My Channel"
-            external
-          />
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 rounded-full px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-px hover:shadow-[0_8px_28px_-4px_rgba(255,0,0,0.55)]"
+            style={{ background: "#FF0000" }}
+          >
+            <Image
+              src="/site-assets/logos/youtube.webp"
+              alt="YouTube"
+              width={22}
+              height={22}
+              className="object-contain"
+            />
+            Visit My Channel
+          </a>
         </div>
       </div>
     </div>
