@@ -98,15 +98,15 @@ export default function AboutPage() {
         {/* Tool Stack full-width marquee */}
         <ToolStack />
 
+        {/* Testimonials */}
+        <TestimonialsCarousel />
+
         {/* From My Lens */}
         <div>
           <h2 className="mb-2">From My Lens</h2>
           <p className="mb-10 text-base text-white/50">I notice patterns, details, and flow in cities, spaces, and products.</p>
         </div>
         <LensGallery photos={lensPhotos} />
-
-        {/* Testimonials */}
-        <TestimonialsCarousel />
 
       </div>
     </div>
