@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { Metadata } from "next";
-import Testimonials from "@/components/Testimonials";
+import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import ToolStack from "@/components/ToolStack";
 import LensGallery from "@/components/LensGallery";
 
@@ -106,7 +106,7 @@ export default function AboutPage() {
         <LensGallery photos={lensPhotos} />
 
         {/* Testimonials */}
-        <Testimonials />
+        <TestimonialsCarousel />
 
       </div>
     </div>
