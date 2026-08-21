@@ -118,20 +118,31 @@ export default function Hero() {
         >
           {heroStats.map((stat, i) => (
             <motion.div key={stat.value} variants={fadeInUp} className="h-full">
-              <GlowCard delay={i * 3.5} className="relative flex h-full flex-col rounded-2xl p-6">
-                {/* Logo — top right, contained, not decorative clutter */}
-                <div className="absolute top-5 right-5 flex items-center justify-center" style={{ width: 36, height: 36 }}>
-                  <Image
-                    src={stat.logo}
-                    alt={stat.logoAlt}
-                    width={36}
-                    height={36}
-                    className="object-contain"
-                    style={{ opacity: 0.75 }}
-                  />
-                </div>
-                <div className="mb-3 font-(family-name:--font-heading) text-5xl font-extrabold tracking-tight" style={{ fontVariantNumeric: "tabular-nums" }}>
-                  {stat.value}
+              <GlowCard delay={i * 3.5} className="flex h-full flex-col rounded-2xl p-6">
+                {/* Top row: stat + logo aligned on same baseline */}
+                <div className="mb-4 flex items-start justify-between gap-3">
+                  <div className="font-(family-name:--font-heading) text-5xl font-extrabold tracking-tight leading-none" style={{ fontVariantNumeric: "tabular-nums" }}>
+                    {stat.value}
+                  </div>
+                  {/* Logo badge — frosted pill so any logo reads on dark */}
+                  <div
+                    className="shrink-0 flex items-center justify-center rounded-xl"
+                    style={{
+                      background: "rgba(255,255,255,0.08)",
+                      border: "1px solid rgba(255,255,255,0.10)",
+                      padding: "8px",
+                      width: 52,
+                      height: 52,
+                    }}
+                  >
+                    <Image
+                      src={stat.logo}
+                      alt={stat.logoAlt}
+                      width={32}
+                      height={32}
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
                 <p className="text-sm text-white/60">{stat.description}</p>
               </GlowCard>
