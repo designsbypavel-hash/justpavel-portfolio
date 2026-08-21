@@ -9,14 +9,20 @@ const heroStats = [
   {
     value: "350M+",
     description: "Contributed to a cross-platform design system at SonyLIV supporting 350M+ users across web, mobile, and TV.",
+    logo: "/site-assets/logos/sonyliv.png",
+    logoAlt: "SonyLIV",
   },
   {
     value: "20%",
     description: "Led end-to-end UX for an enterprise AI platform (Kai) at AWTG, reducing delivery time by 20% across discovery, prototyping, and delivery.",
+    logo: "/site-assets/logos/awtg.png",
+    logoAlt: "AWTG Kai",
   },
   {
     value: "75%",
     description: "Designed AI-driven workflows at HighRadius enabling 75% faster receivables recovery.",
+    logo: "/site-assets/logos/highradius.png",
+    logoAlt: "HighRadius",
   },
 ];
 
@@ -112,7 +118,18 @@ export default function Hero() {
         >
           {heroStats.map((stat, i) => (
             <motion.div key={stat.value} variants={fadeInUp} className="h-full">
-              <GlowCard delay={i * 3.5} className="flex h-full flex-col rounded-2xl p-6">
+              <GlowCard delay={i * 3.5} className="relative flex h-full flex-col rounded-2xl p-6">
+                {/* Logo — top right, contained, not decorative clutter */}
+                <div className="absolute top-5 right-5 flex items-center justify-center" style={{ width: 36, height: 36 }}>
+                  <Image
+                    src={stat.logo}
+                    alt={stat.logoAlt}
+                    width={36}
+                    height={36}
+                    className="object-contain"
+                    style={{ opacity: 0.75 }}
+                  />
+                </div>
                 <div className="mb-3 font-(family-name:--font-heading) text-5xl font-extrabold tracking-tight" style={{ fontVariantNumeric: "tabular-nums" }}>
                   {stat.value}
                 </div>
