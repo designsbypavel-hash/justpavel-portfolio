@@ -57,14 +57,13 @@ export default function YoutubePage() {
             href="https://www.youtube.com/@DesignWithPavel"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 rounded-full px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-px hover:shadow-[0_8px_28px_-4px_rgba(255,0,0,0.55)]"
-            style={{ background: "#FF0000" }}
+            className="flex min-h-11 items-center justify-center gap-2.5 rounded-full border border-white/30 px-6 py-3 text-sm font-medium transition-colors duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-white hover:text-black hover:shadow-[0_12px_30px_-12px_rgba(255,255,255,0.25)]"
           >
             <Image
               src="/site-assets/logos/youtube.webp"
               alt="YouTube"
-              width={22}
-              height={22}
+              width={20}
+              height={20}
               className="object-contain"
             />
             Visit My Channel
