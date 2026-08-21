@@ -38,27 +38,67 @@ export default function Hero() {
             who builds.
           </motion.h1>
 
-          {/* Polaroid */}
+          {/* Polaroid with ambient glow */}
           <motion.div
             initial={{ opacity: 0, y: 20, rotate: 2 }}
             animate={{ opacity: 1, y: 0, rotate: 2 }}
             transition={{ duration: 0.6, delay: 0.25, ease: "easeOut" }}
             className="hidden shrink-0 md:block"
-            style={{
-              background: "white",
-              padding: "10px 10px 44px 10px",
-              boxShadow: "0 12px 40px rgba(0,0,0,0.30)",
-              borderRadius: 2,
-            }}
+            style={{ position: "relative" }}
           >
-            <div className="relative overflow-hidden" style={{ width: 260, height: 320 }}>
-              <Image
-                src="/site-assets/about-lens/headshot-new.jpg"
-                alt="Pavel Mondal"
-                fill
-                className="object-cover object-top"
-                sizes="260px"
-              />
+            {/* Animated ambient glow behind the polaroid */}
+            <style>{`
+              @keyframes ambientShift {
+                0%   { background-position: 0% 50%; }
+                50%  { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+              }
+              .polaroid-glow {
+                animation: ambientShift 6s ease infinite;
+                background: linear-gradient(
+                  135deg,
+                  #c084fc,
+                  #818cf8,
+                  #38bdf8,
+                  #34d399,
+                  #fb923c,
+                  #f472b6,
+                  #c084fc
+                );
+                background-size: 300% 300%;
+                filter: blur(28px);
+                opacity: 0.55;
+              }
+            `}</style>
+            <div
+              className="polaroid-glow"
+              style={{
+                position: "absolute",
+                inset: -16,
+                borderRadius: 8,
+                zIndex: 0,
+              }}
+            />
+            {/* Polaroid frame */}
+            <div
+              style={{
+                position: "relative",
+                zIndex: 1,
+                background: "white",
+                padding: "10px 10px 44px 10px",
+                boxShadow: "0 12px 40px rgba(0,0,0,0.30)",
+                borderRadius: 2,
+              }}
+            >
+              <div className="relative overflow-hidden" style={{ width: 260, height: 320 }}>
+                <Image
+                  src="/site-assets/about-lens/headshot-new.jpg"
+                  alt="Pavel Mondal"
+                  fill
+                  className="object-cover object-top"
+                  sizes="260px"
+                />
+              </div>
             </div>
           </motion.div>
         </div>
