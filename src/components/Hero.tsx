@@ -22,8 +22,8 @@ const heroStats = [
 
 export default function Hero() {
   return (
-    <section className="px-6 pt-28 pb-20">
-      <div className="mx-auto max-w-6xl">
+    <section className="pt-28 pb-20">
+      <div className="mx-auto max-w-6xl px-6">
 
         {/* Top row: headline left, photo right */}
         <div className="mb-14 flex items-center justify-between gap-10">
