@@ -27,7 +27,7 @@ export default function Header() {
             playClickSound();
             setOpen(false);
           }}
-          className="font-(family-name:--font-heading) text-lg font-extrabold tracking-tight transition-opacity duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] hover:opacity-70"
+          className="font-(family-name:--font-heading) text-lg font-extrabold tracking-[0.06em] transition-opacity duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] hover:opacity-70"
         >
           PAVEL
         </Link>

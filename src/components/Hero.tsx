@@ -37,7 +37,7 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
             variants={fadeInUp}
-            className="font-(family-name:--font-heading) text-[38px]! font-bold leading-[1.06] tracking-[-0.025em] sm:text-[48px]! md:text-[64px]!"
+            className="font-(family-name:--font-heading) text-[38px]! font-bold leading-[1.06] tracking-[0.01em] sm:text-[48px]! md:text-[64px]!"
           >
             Pavel is a designer
             <br />
@@ -121,7 +121,7 @@ export default function Hero() {
               <GlowCard delay={i * 3.5} className="flex h-full flex-col rounded-2xl p-6">
                 {/* Top row: stat + logo aligned on same baseline */}
                 <div className="mb-4 flex items-start justify-between gap-3">
-                  <div className="font-(family-name:--font-heading) text-5xl font-extrabold tracking-tight leading-none" style={{ fontVariantNumeric: "tabular-nums" }}>
+                  <div className="font-(family-name:--font-heading) text-5xl font-extrabold leading-none tracking-[0.02em]" style={{ fontVariantNumeric: "tabular-nums" }}>
                     {stat.value}
                   </div>
                   {/* Logo badge — frosted pill so any logo reads on dark */}

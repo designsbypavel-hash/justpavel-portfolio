@@ -46,7 +46,7 @@ export default function AboutPage() {
           {/* Left: intro text */}
           <div className="flex-1">
             <p className="mb-5 text-xs uppercase tracking-widest text-white/45">About</p>
-            <h1 className="mb-8 text-5xl font-bold leading-[1.06] tracking-tight sm:text-6xl lg:text-7xl">
+            <h1 className="mb-8 text-5xl font-bold leading-[1.06] tracking-[0.01em] sm:text-6xl lg:text-7xl">
               Hi, I&rsquo;m Pavel, a Senior Product Designer with 8 years building digital products people actually understand.
             </h1>
             <p className="text-lg leading-relaxed text-white/50">
