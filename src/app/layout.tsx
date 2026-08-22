@@ -102,13 +102,16 @@ export default function RootLayout({
         />
       <style>{`
         *, *::before, *::after {
-          letter-spacing: 0.06em !important;
+          letter-spacing: 0.1em !important;
         }
-        h1, h2, h3 {
-          letter-spacing: 0.01em !important;
+        h1 {
+          letter-spacing: 0.02em !important;
+        }
+        h2, h3 {
+          letter-spacing: 0.03em !important;
         }
         .tracking-widest {
-          letter-spacing: 0.12em !important;
+          letter-spacing: 0.18em !important;
         }
       `}</style>
       </head>

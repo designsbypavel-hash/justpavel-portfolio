@@ -87,8 +87,12 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: 'Neue Montreal', system-ui, sans-serif;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em !important;
   overflow-x: hidden;
+}
+
+* {
+  letter-spacing: inherit;
 }
 
 /* ─── Typography hierarchy (modelled on benroachdesign.com) ────────────────
