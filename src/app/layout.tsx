@@ -102,7 +102,7 @@ export default function RootLayout({
         />
       <style>{`
         *, *::before, *::after {
-          letter-spacing: 0.02em !important;
+          letter-spacing: 0.05em !important;
         }
         h1, h2, h3, h4, h5, h6 {
           letter-spacing: -0.01em !important;
