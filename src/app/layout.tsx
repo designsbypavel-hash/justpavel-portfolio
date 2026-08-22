@@ -104,11 +104,11 @@ export default function RootLayout({
         *, *::before, *::after {
           letter-spacing: normal !important;
         }
+        h1, h2, h3, h4, h5, h6 {
+          letter-spacing: -0.025em !important;
+        }
         .tracking-widest {
           letter-spacing: 0.1em !important;
-        }
-        body {
-          outline: 3px solid red;
         }
       `}</style>
       </head>
