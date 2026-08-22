@@ -95,7 +95,8 @@ export default function TestimonialsCarousel() {
 
           {/* Decorative quote mark */}
           <div
-            className="absolute top-8 right-10 select-none pointer-events-none font-serif leading-none"
+            className="absolute top-8 right-10 select-none pointer-events-none leading-none"
+            style={{ fontFamily: "'Neue Montreal', system-ui, sans-serif" }}
             style={{ fontSize: 120, lineHeight: 1, color: t.accent, opacity: 0.12 }}
             aria-hidden
           >

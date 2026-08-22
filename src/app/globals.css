@@ -81,13 +81,13 @@
   --color-title: var(--color-title);
   --font-sans: 'Neue Montreal', system-ui, sans-serif;
   --font-heading: 'Neue Montreal', system-ui, sans-serif;
-  --font-gloock: var(--font-gloock), Georgia, serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: 'Neue Montreal', system-ui, sans-serif;
+  letter-spacing: 0.01em;
   overflow-x: hidden;
 }
 
@@ -105,15 +105,6 @@ h1, h2, h3, h4 {
   color: var(--color-title);
 }
 
-/* Gloock serif accent — used for one italic word in display headlines (Perry Wang device) */
-.font-gloock {
-  font-family: var(--font-gloock), Georgia, serif;
-  font-style: italic;
-  font-weight: 400;
-  line-height: 1.1;
-  padding-bottom: 0.05em; /* descender clearance for g, p, y, q */
-  display: inline-block;
-}
 
 /* Display — "Designing in London…" */
 h1 {
