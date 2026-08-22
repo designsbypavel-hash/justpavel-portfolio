@@ -13,7 +13,7 @@ export default function MetricGrid({ stats }: { stats: ImpactStat[] }) {
     <div className={`mb-12 grid gap-4 ${gridCols}`}>
       {stats.map((stat, i) => (
         <GlowCard key={`${stat.label}-${i}`} delay={i * 3.5} className="rounded-2xl p-5">
-          <div className="font-(family-name:--font-heading) text-5xl font-extrabold tracking-tight" style={{ fontVariantNumeric: "tabular-nums" }}>{stat.value}</div>
+          <div className="font-(family-name:--font-heading) text-5xl font-extrabold tracking-[0.02em]" style={{ fontVariantNumeric: "tabular-nums" }}>{stat.value}</div>
           <div className="mt-2 text-sm" style={{ color: L ? "rgba(17,17,17,0.60)" : "rgba(255,255,255,0.55)" }}>{stat.label}</div>
         </GlowCard>
       ))}

@@ -131,7 +131,7 @@ export default function JarvisChat() {
           {/* Header */}
           <div className="flex items-center justify-between px-5 py-4" style={{ borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
             <div className="flex items-center gap-3">
-              <span className="text-base font-bold tracking-tight text-gray-900">Ask Jarvis</span>
+              <span className="text-base font-bold tracking-[0.02em] text-gray-900">Ask Jarvis</span>
             </div>
             <div className="flex items-center gap-1">
               <button

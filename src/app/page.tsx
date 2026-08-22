@@ -133,7 +133,7 @@ export default function Home() {
           <div className="mb-12 grid gap-8 sm:grid-cols-3">
             {stats.map((stat) => (
               <div key={stat.label} className="border-t border-white/30 pt-4">
-                <div className="font-(family-name:--font-heading) text-6xl font-extrabold tracking-tight" style={{ fontVariantNumeric: "tabular-nums" }}>
+                <div className="font-(family-name:--font-heading) text-6xl font-extrabold tracking-[0.02em]" style={{ fontVariantNumeric: "tabular-nums" }}>
                   {stat.value}
                 </div>
                 <div className="mt-2 text-sm text-white/60">{stat.label}</div>

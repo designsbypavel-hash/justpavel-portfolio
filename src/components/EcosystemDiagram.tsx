@@ -49,7 +49,7 @@ export default function EcosystemDiagram({ diagram }: { diagram: EcosystemDiagra
           <div className="grid grid-cols-5 gap-2">
             {diagram.impactStats.map((stat) => (
               <div key={stat.label} className="rounded-xl p-4" style={{ border: `1px solid ${border}`, background: cardBg }}>
-                <p className="mb-1 font-(family-name:--font-heading) text-2xl font-extrabold tracking-tight" style={{ color: strong, fontVariantNumeric: "tabular-nums" }}>{stat.value}</p>
+                <p className="mb-1 font-(family-name:--font-heading) text-2xl font-extrabold tracking-[0.02em]" style={{ color: strong, fontVariantNumeric: "tabular-nums" }}>{stat.value}</p>
                 <p className="text-xs" style={{ color: dim }}>{stat.label}</p>
               </div>
             ))}

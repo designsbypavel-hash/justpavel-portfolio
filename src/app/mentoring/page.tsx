@@ -115,7 +115,7 @@ export default function MentoringPage() {
           <div className="mb-16 grid gap-8 border-y border-white/10 py-10 sm:grid-cols-3">
             {stats.map((stat) => (
               <div key={stat.label} className="border-t border-white/30 pt-4 first:border-t-0 sm:border-t sm:first:border-t-white/30">
-                <div className="font-(family-name:--font-heading) text-6xl font-extrabold tracking-tight" style={{ fontVariantNumeric: "tabular-nums" }}>
+                <div className="font-(family-name:--font-heading) text-6xl font-extrabold tracking-[0.02em]" style={{ fontVariantNumeric: "tabular-nums" }}>
                   {stat.value}
                 </div>
                 <div className="mt-2 text-sm text-white/60">{stat.label}</div>
