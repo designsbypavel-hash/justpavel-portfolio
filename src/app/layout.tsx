@@ -107,6 +107,9 @@ export default function RootLayout({
         .tracking-widest {
           letter-spacing: 0.1em !important;
         }
+        body {
+          outline: 3px solid red;
+        }
       `}</style>
       </head>
       <body className="min-h-full flex flex-col bg-black text-white">
