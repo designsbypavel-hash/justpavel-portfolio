@@ -100,8 +100,19 @@ export default function RootLayout({
             }),
           }}
         />
+      <style>{`
+        *, *::before, *::after {
+          letter-spacing: 0.06em !important;
+        }
+        h1, h2, h3 {
+          letter-spacing: 0.01em !important;
+        }
+        .tracking-widest {
+          letter-spacing: 0.12em !important;
+        }
+      `}</style>
       </head>
-      <body className="min-h-full flex flex-col bg-black text-white" style={{ letterSpacing: "0.12em" }}>
+      <body className="min-h-full flex flex-col bg-black text-white">
         <ThemeProvider>
 <div className="relative z-10 flex min-h-full flex-1 flex-col">
             <Header />
