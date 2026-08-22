@@ -101,7 +101,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-black text-white" style={{ letterSpacing: "0.06em" }}>
+      <body className="min-h-full flex flex-col bg-black text-white" style={{ letterSpacing: "0.12em" }}>
         <ThemeProvider>
 <div className="relative z-10 flex min-h-full flex-1 flex-col">
             <Header />
