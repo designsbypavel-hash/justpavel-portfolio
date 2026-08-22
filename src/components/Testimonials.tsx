@@ -51,8 +51,7 @@ export default function Testimonials() {
             {/* Decorative quote */}
             <div
               className="absolute top-4 right-6 select-none pointer-events-none leading-none"
-              style={{ fontFamily: "'Neue Montreal', system-ui, sans-serif" }}
-              style={{ fontSize: 80, color: t.accent, opacity: 0.07 }}
+              style={{ fontFamily: "'Neue Montreal', system-ui, sans-serif", fontSize: 80, color: t.accent, opacity: 0.07 }}
               aria-hidden
             >
               &ldquo;
