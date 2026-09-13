@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { playClickSound } from "@/lib/sound";
 import { useTheme } from "@/components/ThemeProvider";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const navLinks = [
   { href: "/works", label: "Work" },
@@ -53,6 +54,11 @@ export default function Header() {
           ))}
         </nav>
 
+        {/* Theme toggle — desktop */}
+        <div className="hidden md:flex items-center">
+          <ThemeToggle />
+        </div>
+
 <button
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -86,6 +92,10 @@ export default function Header() {
             className="overflow-hidden border-t border-white/10 md:hidden"
           >
             <div className="flex flex-col px-6 py-2">
+              <div className="flex items-center justify-between border-b border-white/5 py-3">
+                <span className="text-sm text-white/50">Theme</span>
+                <ThemeToggle />
+              </div>
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
