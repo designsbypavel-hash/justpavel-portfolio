@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { playClickSound } from "@/lib/sound";
 import { useTheme } from "@/components/ThemeProvider";
 
 const navLinks = [
   { href: "/works", label: "Work" },
+  { href: "/games", label: "Games" },
   { href: "/youtube", label: "Youtube" },
   { href: "/mentoring", label: "Mentoring" },
   { href: "/about", label: "About" },
@@ -17,6 +19,12 @@ const navLinks = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const { theme } = useTheme();
+  const pathname = usePathname();
+
+  // /games is a full-bleed embed of a standalone app (Glow Rush) - it owns
+  // its own chrome, so the site header would just be duplicate navigation
+  // sitting on top of a game HUD that already has its own controls.
+  if (pathname?.startsWith("/games")) return null;
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur">

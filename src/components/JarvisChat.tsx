@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import { usePathname } from "next/navigation";
 import { getJarvisReply, suggestedQuestions, type JarvisMessage } from "@/lib/jarvis";
 import { playClickSound } from "@/lib/sound";
 
 export default function JarvisChat() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<JarvisMessage[]>([]);
   const [input, setInput] = useState("");
@@ -71,6 +73,10 @@ export default function JarvisChat() {
     setVoiceOn((v) => !v);
     setSpeaking(false);
   }
+
+  // /games is a full-bleed embedded app with its own UI - a floating chat
+  // trigger on top of it would sit above the game's own HUD for no reason.
+  if (pathname?.startsWith("/games")) return null;
 
   return (
     <>

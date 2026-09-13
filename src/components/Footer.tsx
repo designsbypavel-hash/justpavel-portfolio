@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import SocialLinks from "@/components/SocialLinks";
 import { playClickSound } from "@/lib/sound";
 
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/works", label: "Works" },
+  { href: "/games", label: "Games" },
   { href: "/youtube", label: "YouTube" },
   { href: "/mentoring", label: "Mentoring" },
   { href: "/about", label: "About" },
@@ -15,6 +17,9 @@ const navLinks = [
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const pathname = usePathname();
+
+  if (pathname?.startsWith("/games")) return null;
 
   return (
     <footer className="bg-black px-6 py-12">
