@@ -11,6 +11,7 @@ const testimonials = [
     accent: "#c7d2fe",
     glow: "rgba(199,210,254,0.06)",
     border: "rgba(199,210,254,0.12)",
+    avatar: "/site-assets/testimonials/peter.jpeg",
   },
   {
     name: "Aislinn Finnegan",
@@ -20,6 +21,7 @@ const testimonials = [
     accent: "#ddd6fe",
     glow: "rgba(221,214,254,0.06)",
     border: "rgba(221,214,254,0.12)",
+    avatar: "/site-assets/testimonials/aislinn.png",
   },
   {
     name: "Prachi Chougule",
@@ -29,6 +31,7 @@ const testimonials = [
     accent: "#fed7aa",
     glow: "rgba(254,215,170,0.06)",
     border: "rgba(254,215,170,0.12)",
+    avatar: "/site-assets/testimonials/prachi.jpeg",
   },
   {
     name: "Sayali Mangate",
@@ -38,6 +41,7 @@ const testimonials = [
     accent: "#99f6e4",
     glow: "rgba(153,246,228,0.06)",
     border: "rgba(153,246,228,0.12)",
+    avatar: "/site-assets/testimonials/sayali.jpeg",
   },
 ];
 
@@ -57,8 +61,8 @@ export default function TestimonialsCarousel() {
   const t = testimonials[active];
 
   return (
-    <section className="px-6 py-24" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
-      <div className="mx-auto max-w-6xl">
+    <section className="py-24" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+      <div className="mx-auto max-w-6xl px-6">
         <h2 className="mb-12">What people say</h2>
 
         <div
@@ -103,26 +107,27 @@ export default function TestimonialsCarousel() {
           </div>
 
           {/* Quote text */}
-          <p className="relative mb-10 text-lg leading-relaxed sm:text-xl" style={{ color: "rgba(255,255,255,0.82)", maxWidth: "72ch" }}>
+          <p className="relative mb-10 text-lg leading-relaxed sm:text-xl" style={{ color: "var(--t-quote)", maxWidth: "72ch" }}>
             &ldquo;{t.text}&rdquo;
           </p>
 
           {/* Author row */}
-          <div className="flex items-center justify-between gap-6 border-t pt-6" style={{ borderColor: "rgba(255,255,255,0.07)" }}>
+          <div className="flex items-center justify-between gap-6 border-t pt-6" style={{ borderColor: "var(--t-divider)" }}>
             <div className="flex items-center gap-4">
               {/* Avatar */}
               <div
-                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-sm font-bold tracking-wide"
-                style={{ background: `${t.accent}22`, color: t.accent, border: `1px solid ${t.accent}33` }}
+                className="h-11 w-11 shrink-0 rounded-full overflow-hidden"
+                style={{ border: `1px solid ${t.accent}33` }}
               >
-                {t.name.charAt(0)}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={t.avatar} alt={t.name} className="h-full w-full object-cover" />
               </div>
               {/* Name + role */}
               <div>
                 <p className="text-sm font-semibold text-white leading-tight">{t.name}</p>
-                <p className="mt-0.5 text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>
+                <p className="mt-0.5 text-xs" style={{ color: "var(--t-role)" }}>
                   {t.role}
-                  <span className="mx-2" style={{ color: "rgba(255,255,255,0.2)" }}>—</span>
+                  <span className="mx-2" style={{ color: "var(--t-sep)" }}>-</span>
                   {t.date}
                 </p>
               </div>
@@ -134,9 +139,9 @@ export default function TestimonialsCarousel() {
                 onClick={prev}
                 aria-label="Previous testimonial"
                 className="flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200"
-                style={{ border: "1px solid rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.4)" }}
+                style={{ border: "1px solid var(--t-nav-border)", color: "var(--t-nav-color)" }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = t.accent + "66"; (e.currentTarget as HTMLButtonElement).style.color = t.accent; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.12)"; (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.4)"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--t-nav-border)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--t-nav-color)"; }}
               >
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                   <path d="M9 2L4 7L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -146,9 +151,9 @@ export default function TestimonialsCarousel() {
                 onClick={next}
                 aria-label="Next testimonial"
                 className="flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200"
-                style={{ border: "1px solid rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.4)" }}
+                style={{ border: "1px solid var(--t-nav-border)", color: "var(--t-nav-color)" }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = t.accent + "66"; (e.currentTarget as HTMLButtonElement).style.color = t.accent; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.12)"; (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.4)"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--t-nav-border)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--t-nav-color)"; }}
               >
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                   <path d="M5 2L10 7L5 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -170,7 +175,7 @@ export default function TestimonialsCarousel() {
                 width: i === active ? 20 : 6,
                 height: 6,
                 borderRadius: 3,
-                background: i === active ? item.accent : "rgba(255,255,255,0.15)",
+                background: i === active ? item.accent : "var(--t-dot-inactive)",
               }}
             />
           ))}

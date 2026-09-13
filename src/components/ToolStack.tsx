@@ -32,14 +32,9 @@ export default function ToolStack() {
 
   return (
     <section className="mb-24">
-      <h2 className="mb-4">Tool Stack</h2>
-      <p className="mb-12 max-w-2xl text-white/55 leading-relaxed">
-        AI has automated a lot of surface-level design work, so now the value lies in systems
-        thinking and the ability to translate complexity into clarity. I am constantly exploring
-        and mastering new tools. Here&rsquo;s my current rotation.
-      </p>
+      <h2 className="mb-4">Tool stack</h2>
 
-      <div className="group relative overflow-hidden">
+<div className="group relative overflow-hidden">
         <div aria-hidden className="marquee-fade-l pointer-events-none absolute inset-y-0 left-0 z-10 w-16 sm:w-28" />
         <div aria-hidden className="marquee-fade-r pointer-events-none absolute inset-y-0 right-0 z-10 w-16 sm:w-28" />
 

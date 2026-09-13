@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useTheme } from "@/components/ThemeProvider";
 
 interface NavItem {
   id: string;
@@ -20,6 +21,16 @@ const NAV_ITEMS: NavItem[] = [
 ];
 
 export default function CaseStudyNav({ visibleIds }: { visibleIds?: string[] }) {
+  const { theme } = useTheme();
+  const L = theme === "light";
+
+  // Color tokens — dark default, light override
+  const labelMeta = L ? "rgba(17,17,17,0.45)" : "rgba(255,255,255,0.50)";
+  const trackInactive = L ? "rgba(17,17,17,0.18)" : "rgba(255,255,255,0.20)";
+  const trackActive = L ? "rgba(17,17,17,0.80)" : "rgba(255,255,255,0.70)";
+  const textInactive = L ? "rgba(17,17,17,0.45)" : "rgba(255,255,255,0.55)";
+  const textActive = L ? "rgba(17,17,17,0.95)" : "rgba(255,255,255,0.95)";
+
   const [active, setActive] = useState<string>("");
   const observerRef = useRef<IntersectionObserver | null>(null);
 
@@ -78,7 +89,7 @@ export default function CaseStudyNav({ visibleIds }: { visibleIds?: string[] }) 
       className="hidden xl:block"
       style={{ position: "sticky", top: "6rem", alignSelf: "start" }}
     >
-      <p className="mb-4 text-[11px] font-semibold tracking-widest text-white/50">
+      <p className="mb-4 text-[11px] font-semibold tracking-widest" style={{ color: labelMeta }}>
         ON THIS PAGE
       </p>
       <ul className="space-y-0.5">
@@ -98,9 +109,7 @@ export default function CaseStudyNav({ visibleIds }: { visibleIds?: string[] }) 
                   <span
                     className="absolute inset-0 rounded-full transition-all duration-300"
                     style={{
-                      background: isActive
-                        ? "rgba(255,255,255,0.7)"
-                        : "rgba(255,255,255,0.20)",
+                      background: isActive ? trackActive : trackInactive,
                       transform: isActive ? "scaleY(1)" : "scaleY(0.5)",
                       transformOrigin: "top",
                     }}
@@ -110,7 +119,7 @@ export default function CaseStudyNav({ visibleIds }: { visibleIds?: string[] }) 
                 <span
                   className="text-[13px] leading-none transition-colors duration-200"
                   style={{
-                    color: isActive ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.55)",
+                    color: isActive ? textActive : textInactive,
                     fontWeight: isActive ? 500 : 400,
                   }}
                 >

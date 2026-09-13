@@ -7,6 +7,7 @@ const testimonials = [
     accent: "#c7d2fe",
     bg: "rgba(199,210,254,0.04)",
     border: "rgba(199,210,254,0.12)",
+    avatar: "/site-assets/testimonials/peter.jpeg",
   },
   {
     name: "Aislinn Finnegan",
@@ -16,6 +17,7 @@ const testimonials = [
     accent: "#ddd6fe",
     bg: "rgba(221,214,254,0.04)",
     border: "rgba(221,214,254,0.12)",
+    avatar: "/site-assets/testimonials/aislinn.png",
   },
   {
     name: "Prachi Chougule",
@@ -25,6 +27,7 @@ const testimonials = [
     accent: "#fed7aa",
     bg: "rgba(255,237,213,0.04)",
     border: "rgba(254,215,170,0.12)",
+    avatar: "/site-assets/testimonials/prachi.jpeg",
   },
   {
     name: "Sayali Mangate",
@@ -34,6 +37,7 @@ const testimonials = [
     accent: "#99f6e4",
     bg: "rgba(204,251,241,0.04)",
     border: "rgba(153,246,228,0.12)",
+    avatar: "/site-assets/testimonials/sayali.jpeg",
   },
 ];
 
@@ -56,21 +60,22 @@ export default function Testimonials() {
             >
               &ldquo;
             </div>
-            <p className="relative mb-6 text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.80)" }}>
+            <p className="relative mb-6 text-base leading-relaxed" style={{ color: "var(--t-quote)" }}>
               &ldquo;{t.text}&rdquo;
             </p>
-            <div className="flex items-center gap-3 border-t pt-5" style={{ borderColor: "rgba(255,255,255,0.07)" }}>
+            <div className="flex items-center gap-3 border-t pt-5" style={{ borderColor: "var(--t-divider)" }}>
               <div
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-bold"
-                style={{ background: `${t.accent}22`, color: t.accent, border: `1px solid ${t.accent}33` }}
+                className="h-9 w-9 shrink-0 rounded-full overflow-hidden"
+                style={{ border: `1px solid ${t.accent}33` }}
               >
-                {t.name.charAt(0)}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={t.avatar} alt={t.name} className="h-full w-full object-cover" />
               </div>
               <div>
                 <p className="text-sm font-semibold text-white">{t.name}</p>
-                <p className="text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>
+                <p className="text-xs" style={{ color: "var(--t-role)" }}>
                   {t.role}
-                  <span className="mx-2" style={{ color: "rgba(255,255,255,0.2)" }}>—</span>
+                  <span className="mx-2" style={{ color: "var(--t-sep)" }}>-</span>
                   {t.date}
                 </p>
               </div>

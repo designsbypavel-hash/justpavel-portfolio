@@ -34,13 +34,23 @@ export function ChallengeSection({ sections }: { sections: Section[] }) {
               ))}
             </div>
             {section.image && (
-              <div className="mt-6 w-full overflow-hidden rounded-xl" style={{ border: `1px solid ${cs.border}` }}>
-                <Image src={section.image} alt={section.heading} width={1920} height={1080} quality={100} sizes="100vw" className="block h-auto w-full" style={section.grayscale ? { filter: "grayscale(100%)" } : undefined} />
+              <div className="mt-6 w-full">
+                <div className="overflow-hidden rounded-xl" style={{ border: `1px solid ${cs.border}` }}>
+                  <Image src={section.image} alt={section.heading} width={1920} height={1080} quality={100} sizes="100vw" className="block h-auto w-full" style={section.grayscale ? { filter: "grayscale(100%)" } : undefined} />
+                </div>
+                {section.caption && (
+                  <p className="mt-2 text-xs leading-relaxed" style={{ color: cs.muted }}>↳ {section.caption}</p>
+                )}
               </div>
             )}
             {section.video && (
-              <div className="mt-6 w-full overflow-hidden rounded-xl" style={{ border: `1px solid ${cs.border}` }}>
-                <video src={section.video} autoPlay loop muted playsInline className="block h-auto w-full" style={section.grayscale ? { filter: "grayscale(100%)" } : undefined} />
+              <div className="mt-6 w-full">
+                <div className="overflow-hidden rounded-xl" style={{ border: `1px solid ${cs.border}` }}>
+                  <video src={section.video} autoPlay loop muted playsInline className="block h-auto w-full" style={section.grayscale ? { filter: "grayscale(100%)" } : undefined} />
+                </div>
+                {section.caption && (
+                  <p className="mt-2 text-xs leading-relaxed" style={{ color: cs.muted }}>↳ {section.caption}</p>
+                )}
               </div>
             )}
           </div>

@@ -22,8 +22,8 @@ export default function Footer() {
   if (pathname?.startsWith("/games")) return null;
 
   return (
-    <footer className="bg-black px-6 py-12">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-start justify-between gap-10">
+    <footer className="bg-black py-12">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-start justify-between gap-10 px-6">
         <div className="w-full sm:w-auto">
           <span className="mb-6 block font-(family-name:--font-heading) text-lg font-extrabold lowercase">
             pavel

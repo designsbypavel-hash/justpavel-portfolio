@@ -1,9 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import GlowCard from "@/components/GlowCard";
+import { useTheme } from "@/components/ThemeProvider";
+
+const PHRASES = ["Problem solver.", "Systems thinker.", "Product designer."];
 
 const heroStats = [
   {
@@ -27,22 +31,72 @@ const heroStats = [
 ];
 
 export default function Hero() {
+  const { theme } = useTheme();
+  const isLight = theme === "light";
+  const [phraseIdx, setPhraseIdx] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setPhraseIdx(i => (i + 1) % PHRASES.length), 2800);
+    return () => clearInterval(id);
+  }, []);
+
   return (
     <section className="pt-28 pb-20">
       <div className="mx-auto max-w-6xl px-6">
 
-        {/* Top row: headline left, photo right */}
+        {/* Top row: headline + intro left, photo right */}
         <div className="mb-14 flex items-center justify-between gap-10">
-          <motion.h1
-            initial="hidden"
-            animate="visible"
-            variants={fadeInUp}
-            className="font-(family-name:--font-heading) text-[38px]! font-bold leading-[1.06] tracking-[0.01em] sm:text-[48px]! md:text-[64px]!"
-          >
-            Pavel is a designer
-            <br />
-            who builds.
-          </motion.h1>
+          <div>
+            <h1 className="font-(family-name:--font-heading) text-[38px]! font-bold leading-[1.12] tracking-[0.01em] sm:text-[48px]! md:text-[64px]!">
+              {/* Static anchor line */}
+              <motion.span
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.55, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+                style={{ display: "block" }}
+              >
+                I&rsquo;m Pavel.
+              </motion.span>
+
+              {/* Cycling phrase — same line, fades in/out, animated gradient */}
+              <span style={{ display: "block", minHeight: "1.12em" }}>
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.span
+                    key={PHRASES[phraseIdx]}
+                    initial={{ opacity: 0, y: 14 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -14 }}
+                    transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                    className="hero-cycle-gradient"
+                    style={{ display: "block" }}
+                  >
+                    {PHRASES[phraseIdx]}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
+            </h1>
+
+            {/* Intro line — sits directly under headline */}
+            <motion.p
+              initial="hidden"
+              animate="visible"
+              variants={fadeInUp}
+              className="mt-6 max-w-xl text-base leading-relaxed"
+              style={{ color: isLight ? "rgba(17,17,17,0.55)" : "rgba(255,255,255,0.55)" }}
+            >
+              Right now, I&rsquo;m leading UX for{" "}
+              <a
+                href="https://awtg.ai/home-2/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 transition-opacity hover:opacity-70"
+                style={{ color: "inherit" }}
+              >
+                Kai at AWTG
+              </a>
+              , an enterprise AI platform that helps teams build and validate AI assistants before they go live.
+            </motion.p>
+          </div>
 
           {/* Polaroid with ambient glow */}
           <motion.div
@@ -52,30 +106,7 @@ export default function Hero() {
             className="hidden shrink-0 md:block"
             style={{ position: "relative" }}
           >
-            {/* Animated ambient glow behind the polaroid */}
-            <style>{`
-              @keyframes ambientShift {
-                0%   { background-position: 0% 50%; }
-                50%  { background-position: 100% 50%; }
-                100% { background-position: 0% 50%; }
-              }
-              .polaroid-glow {
-                animation: ambientShift 6s ease infinite;
-                background: linear-gradient(
-                  135deg,
-                  #c084fc,
-                  #818cf8,
-                  #38bdf8,
-                  #34d399,
-                  #fb923c,
-                  #f472b6,
-                  #c084fc
-                );
-                background-size: 300% 300%;
-                filter: blur(28px);
-                opacity: 0.55;
-              }
-            `}</style>
+            {/* Animated ambient glow behind the polaroid — styles in globals.css */}
             <div
               className="polaroid-glow"
               style={{
@@ -128,7 +159,7 @@ export default function Hero() {
                   <div
                     className="shrink-0 flex items-center justify-center rounded-xl"
                     style={{
-                      background: "rgba(255,255,255,0.92)",
+                      background: "var(--surface-pill)",
                       padding: "8px",
                       width: 52,
                       height: 52,

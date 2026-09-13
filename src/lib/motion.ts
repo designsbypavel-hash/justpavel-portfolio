@@ -31,11 +31,9 @@ export const sectionReveal: Variants = {
 };
 
 export const cardHover = {
-  rest: { y: 0, scale: 1, boxShadow: "0 0px 0px 0 rgba(0,0,0,0)" },
+  rest: { scale: 1 },
   hover: {
-    y: -4,
-    scale: 1.01,
-    boxShadow: "0 20px 40px -20px rgba(0,0,0,0.5)",
+    scale: 1.015,
     transition: { duration: 0.4, ease: premiumEase },
   },
 };

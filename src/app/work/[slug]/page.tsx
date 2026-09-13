@@ -22,6 +22,8 @@ import RejectedConcepts from "@/components/RejectedConcepts";
 import EcosystemDiagram from "@/components/EcosystemDiagram";
 import ThemeVarProvider from "@/components/ThemeVarProvider";
 import CaseStudyNav from "@/components/CaseStudyNav";
+import ConceptComparison from "@/components/ConceptComparison";
+import KeyMomentCallout from "@/components/KeyMomentCallout";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -109,6 +111,7 @@ export default async function ProjectPage({
               title={project.title}
               description={project.description}
               readingTime={readingTime}
+              gif={project.gif}
             />
 
             {/* Visual: the headline numbers, right up top so the result is clear immediately */}
@@ -120,7 +123,8 @@ export default async function ProjectPage({
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/60"
+                  className="rounded-full px-3 py-1 text-xs"
+                  style={{ border: "1px solid var(--cs-border)", color: "var(--cs-text-dim)" }}
                 >
                   {tag}
                 </span>
@@ -128,22 +132,22 @@ export default async function ProjectPage({
             </div>
 
             {/* TL;DR */}
-            <section id="cs-overview" className="mb-12 rounded-xl border border-white/10 bg-white/5 p-6 sm:p-8">
+            <section id="cs-overview" className="mb-12 rounded-xl p-6 sm:p-8" style={{ border: "1px solid var(--cs-border)", background: "var(--cs-card-bg)" }}>
               <h2 className="mb-6">
                 TL;DR
               </h2>
               <div className="space-y-5">
                 <div>
-                  <h3 className="mb-1 text-white/50">Problem</h3>
-                  <p className="text-white/80">{project.tldrProblem}</p>
+                  <h3 className="mb-1" style={{ color: "var(--cs-text-muted)" }}>Problem</h3>
+                  <p style={{ color: "var(--cs-text-body)" }}>{project.tldrProblem}</p>
                 </div>
                 <div>
-                  <h3 className="mb-1 text-white/50">What I did</h3>
-                  <p className="text-white/80">{project.tldrWhatIDid}</p>
+                  <h3 className="mb-1" style={{ color: "var(--cs-text-muted)" }}>What I did</h3>
+                  <p style={{ color: "var(--cs-text-body)" }}>{project.tldrWhatIDid}</p>
                 </div>
                 <div>
-                  <h3 className="mb-1 text-white/50">Impact</h3>
-                  <p className="text-white/80">{project.tldrImpact}</p>
+                  <h3 className="mb-1" style={{ color: "var(--cs-text-muted)" }}>Impact</h3>
+                  <p style={{ color: "var(--cs-text-body)" }}>{project.tldrImpact}</p>
                 </div>
               </div>
             </section>
@@ -166,7 +170,7 @@ export default async function ProjectPage({
             {project.ecosystemDiagramImage ? (
               <section className="mb-12">
                 <div className="flex justify-center" style={{ marginLeft: "calc(50% - 50vw)", marginRight: "calc(50% - 50vw)" }}>
-                  <div className="w-full max-w-5xl overflow-hidden rounded-xl border border-white/10 px-4">
+                  <div className="w-full max-w-5xl overflow-hidden rounded-xl px-4" style={{ border: "1px solid var(--cs-border)" }}>
                     <Image
                       src={project.ecosystemDiagramImage}
                       alt="SonyLIV subscription ecosystem diagram"
@@ -183,10 +187,19 @@ export default async function ProjectPage({
               project.ecosystemDiagram && <EcosystemDiagram diagram={project.ecosystemDiagram} />
             )}
 
+            {project.slug === "bestway-loyalty" && (
+              <KeyMomentCallout
+                accent={project.logo?.accent}
+                label="System thinking"
+                headline="I mapped the system before I mapped the screens."
+                detail="Understanding how loyalty connected to purchasing, ordering, and account hierarchy shaped every decision that followed. Without that picture, the design would have solved the wrong surface."
+              />
+            )}
+
             {project.opportunity && (
               <section id="cs-opportunity" className="mb-12">
                 <h2 className="mb-4">Opportunity</h2>
-                <p className="text-white/70">{project.opportunity}</p>
+                <p style={{ color: "var(--cs-text-body)" }}>{project.opportunity}</p>
               </section>
             )}
 
@@ -198,6 +211,15 @@ export default async function ProjectPage({
               <div id="cs-hypothesis">
                 <ProductHypothesis hypothesis={project.hypothesis} />
               </div>
+            )}
+
+            {project.slug === "bestway-loyalty" && (
+              <KeyMomentCallout
+                accent={project.logo?.accent}
+                label="Design decision"
+                headline="I wrote a hypothesis before opening Figma."
+                detail="Framing the problem as a testable belief gave the PM and me a shared definition of what success actually meant. It stopped the project from drifting into 'make it nicer' territory."
+              />
             )}
 
             <div id="cs-challenge">
@@ -220,28 +242,28 @@ export default async function ProjectPage({
                 </h2>
                 <div className="space-y-6">
                   {project.journeySteps.map((step, i) => (
-                    <div key={step.label} className="rounded-xl border border-white/10 bg-white/[0.03] p-6">
+                    <div key={step.label} className="rounded-xl p-6" style={{ border: "1px solid var(--cs-border)", background: "var(--cs-card-bg)" }}>
                       <div className="mb-4 flex items-center gap-3">
-                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/20 text-xs font-semibold text-white/60">
+                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-semibold" style={{ border: "1px solid var(--cs-border)", color: "var(--cs-text-dim)" }}>
                           {i + 1}
                         </span>
-                        <p className="text-sm font-semibold text-white/80">{step.label}</p>
+                        <p className="text-sm font-semibold" style={{ color: "var(--cs-text-body)" }}>{step.label}</p>
                       </div>
                       <div className="grid items-stretch gap-3 sm:grid-cols-[1fr_auto_1fr]">
-                        <div className="rounded-lg border border-white/10 bg-black/40 p-4">
-                          <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-white/55">
+                        <div className="rounded-lg p-4" style={{ border: "1px solid var(--cs-border)", background: "var(--cs-bg-inset)" }}>
+                          <p className="mb-1 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--cs-text-muted)" }}>
                             Before
                           </p>
-                          <p className="text-sm text-white/55">{step.before}</p>
+                          <p className="text-sm" style={{ color: "var(--cs-text-dim)" }}>{step.before}</p>
                         </div>
-                        <div className="flex items-center justify-center rotate-90 text-white/55 sm:rotate-0">
+                        <div className="flex items-center justify-center rotate-90 sm:rotate-0" style={{ color: "var(--cs-text-dim)" }}>
                           <span aria-hidden className="text-lg">→</span>
                         </div>
-                        <div className="rounded-lg border border-white/10 bg-gradient-to-br from-blue-500/[0.07] via-white/[0.03] to-orange-500/[0.07] p-4">
-                          <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-white/50">
+                        <div className="rounded-lg bg-gradient-to-br from-blue-500/[0.07] via-transparent to-orange-500/[0.07] p-4" style={{ border: "1px solid var(--cs-border)" }}>
+                          <p className="mb-1 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--cs-text-muted)" }}>
                             After
                           </p>
-                          <p className="text-sm text-white/80">{step.after}</p>
+                          <p className="text-sm" style={{ color: "var(--cs-text-body)" }}>{step.after}</p>
                         </div>
                       </div>
                     </div>
@@ -266,6 +288,70 @@ export default async function ProjectPage({
               <StrategySection decisions={project.decisions} />
             </div>
 
+            {project.conceptComparison && project.conceptComparison.length > 0 && (
+              <ConceptComparison concepts={project.conceptComparison} />
+            )}
+
+            {project.slug === "bestway-loyalty" && (
+              <KeyMomentCallout
+                accent={project.logo?.accent}
+                label="Collaboration"
+                headline="I showed all three directions to the PM, not just the one I preferred."
+                detail="Presenting the discarded concepts alongside the final direction made the rationale visible. The PM understood the trade-offs and the decision felt shared, not handed down."
+              />
+            )}
+
+            {project.userTesting && (
+              <section className="mb-16">
+                <h2 className="mb-6">Testing with real customers</h2>
+
+                {/* First image: prototype test flows */}
+                <div className="mb-8 overflow-hidden rounded-2xl" style={{ border: "1px solid var(--cs-border)" }}>
+                  <Image
+                    src={project.userTesting.images[0]}
+                    alt="User test flows: Purchase Power, Joining Reward Club, Rewards Points"
+                    width={1400}
+                    height={700}
+                    className="w-full"
+                  />
+                </div>
+
+                {/* Narrative */}
+                <div className="mb-8 space-y-4">
+                  {project.userTesting.narrative.slice(0, 2).map((p, i) => (
+                    <p key={i} style={{ color: "var(--cs-text-body)" }}>{p}</p>
+                  ))}
+                </div>
+
+                {/* Second image: live session screenshot */}
+                <div className="mb-8 overflow-hidden rounded-2xl" style={{ border: "1px solid var(--cs-border)" }}>
+                  <Image
+                    src={project.userTesting.images[1]}
+                    alt="Remote user testing session with a Bestway customer over video call"
+                    width={1400}
+                    height={788}
+                    className="w-full"
+                  />
+                </div>
+
+                {/* Rest of narrative */}
+                <div className="space-y-4">
+                  {project.userTesting.narrative.slice(2).map((p, i) => (
+                    <p key={i} style={{ color: "var(--cs-text-body)" }}>{p}</p>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {project.slug === "bestway-loyalty" && project.userTesting && (
+              <KeyMomentCallout
+                accent={project.logo?.accent}
+                label="Evidence-based"
+                headline="User feedback changed a core assumption."
+                detail="Customers did not just want a points balance. They wanted the balance to tell them what to do next. That reframing drove the contextual loyalty design and is the most important thing testing gave us."
+              />
+            )}
+
             {/* Visual: the flow running, right after the decisions behind it are explained */}
             {project.prototypeVideo && <PrototypeVideo src={project.prototypeVideo} />}
 
@@ -287,6 +373,12 @@ export default async function ProjectPage({
             <div id="cs-outcome">
               <OutcomeSection sections={project.closingSections} />
             </div>
+
+            {project.gif && (
+              <div className="mb-16 overflow-hidden rounded-2xl">
+                <img src={project.gif} alt={`${project.title} prototype`} className="w-full" />
+              </div>
+            )}
 
             <NextProjectCTA slug={nextProject.slug} title={nextProject.title} />
           </div>

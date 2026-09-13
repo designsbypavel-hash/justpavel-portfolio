@@ -19,15 +19,15 @@ export default function DesignPrinciples({
           <div
             key={i}
             className="flex gap-3 rounded-xl p-4"
-            style={{ border: "1px solid rgba(255,255,255,0.10)", background: "#1c1c1e" }}
+            style={{ border: "1px solid var(--cs-border)", background: "var(--cs-card-bg)" }}
           >
             <span
               className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-semibold"
-              style={{ border: "1px solid rgba(255,255,255,0.20)", color: "rgba(255,255,255,0.50)" }}
+              style={{ border: "1px solid var(--cs-border)", color: "var(--cs-text-muted)" }}
             >
               {i + 1}
             </span>
-            <p className="text-sm" style={{ color: "rgba(255,255,255,0.75)" }}>
+            <p className="text-sm" style={{ color: "var(--cs-text-body)" }}>
               {highlightNumbers(principle)}
             </p>
           </div>
@@ -35,7 +35,7 @@ export default function DesignPrinciples({
       </div>
       {image && (
         <div className="-mx-6 mt-4 flex justify-center sm:-mx-16">
-          <div className="overflow-hidden rounded-xl border border-white/10 bg-white/[0.03]">
+          <div className="overflow-hidden rounded-xl" style={{ border: "1px solid var(--cs-border)", background: "var(--cs-card-bg)" }}>
             <Image src={image} alt="Design principle trade-offs" width={1920} height={1080} quality={100} className="block h-auto max-h-[640px] w-auto max-w-full" />
           </div>
         </div>

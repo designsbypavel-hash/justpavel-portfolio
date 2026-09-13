@@ -31,8 +31,8 @@ const topics = [
 export default function ContactPage() {
   return (
     <div>
-      <div className="px-6 pt-28 pb-16">
-        <div className="mx-auto max-w-6xl">
+      <div className="pt-28 pb-16">
+        <div className="mx-auto max-w-6xl px-6">
           <div className="max-w-3xl">
             <h1 className="mb-6">Let&apos;s build something</h1>
             <p className="mb-8 text-lg text-white/50">
@@ -63,8 +63,8 @@ export default function ContactPage() {
         </div>
       </div>
 
-      <div className="px-6 py-16">
-        <div className="mx-auto grid max-w-6xl gap-12 sm:grid-cols-2">
+      <div className="py-16">
+        <div className="mx-auto grid max-w-6xl gap-12 px-6 sm:grid-cols-2">
           <div>
             <h2 className="mb-8 h2-heading">Get in touch</h2>
             <a

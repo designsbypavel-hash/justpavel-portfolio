@@ -7,7 +7,7 @@ import CTASection from "@/components/CTASection";
 import FadeInSection from "@/components/FadeInSection";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 
-const featuredSlugs = ["agent-ai", "sonyliv-ott-subscription", "sonyliv-check", "fintech-autonomous"];
+const featuredSlugs = ["agent-ai", "sonyliv-ott-subscription", "bestway-loyalty", "fintech-autonomous"];
 const featuredWorks = featuredSlugs.map((slug) => projects.find((p) => p.slug === slug)!);
 
 const videos = [
@@ -37,7 +37,7 @@ const mentoringOffers = [
 const stats = [
   { value: "450h+", label: "Total mentoring time" },
   { value: "15+", label: "Sessions completed" },
-  { value: "100%", label: "Average attendance" },
+  { value: "96%", label: "Average attendance" },
 ];
 
 export default function Home() {
@@ -45,8 +45,8 @@ export default function Home() {
     <div>
       <Hero />
 
-      <section id="works" className="px-6 py-24">
-        <div className="mx-auto max-w-6xl">
+      <section id="works" className="py-24">
+        <div className="mx-auto max-w-6xl px-6">
           <FadeInSection>
             <h2 className="mb-12">
               Selected works
@@ -60,13 +60,13 @@ export default function Home() {
             ))}
           </div>
           <div className="mt-16">
-            <CTASection href="/works" label="View All Project" />
+            <CTASection href="/works" label="View All Projects" />
           </div>
         </div>
       </section>
 
-      <section id="youtube" className="px-6 py-24">
-        <div className="mx-auto max-w-6xl">
+      <section id="youtube" className="py-24">
+        <div className="mx-auto max-w-6xl px-6">
           <FadeInSection>
             <h2 className="mb-12">
               Thinking out loud
@@ -102,9 +102,9 @@ export default function Home() {
 
       <section
         id="mentoring"
-        className="bg-gradient-to-b from-indigo-950 via-indigo-950/60 to-black px-6 py-24"
+        className="border-t border-white/[0.06] bg-black"
       >
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-6xl px-6 py-24">
           <FadeInSection>
             <div className="mb-12 flex flex-wrap items-center gap-6">
               <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full border-2 border-white/20 shadow-[0_0_0_6px_rgba(255,255,255,0.04)]">

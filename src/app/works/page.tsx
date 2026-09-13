@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 
 export default function WorksPage() {
   return (
-    <div className="px-6 py-24">
-      <div className="mx-auto max-w-6xl">
+    <div className="py-24">
+      <div className="mx-auto max-w-6xl px-6">
         <h1 className="mb-16">
           All projects
         </h1>

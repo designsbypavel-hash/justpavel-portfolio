@@ -14,7 +14,7 @@ export default function DarkImageSection({
   return (
     <div className="rounded-2xl bg-gradient-to-b from-white/[0.04] to-black/40 p-3 sm:p-5">
       <div
-        className="relative w-full overflow-hidden rounded-xl shadow-[0_20px_60px_-20px_rgba(0,0,0,0.6)]"
+        className="relative w-full overflow-hidden rounded-xl"
         style={{ aspectRatio: aspect }}
       >
         <Image

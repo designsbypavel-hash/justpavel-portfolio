@@ -10,6 +10,24 @@ import GlowCard from "@/components/GlowCard";
 import { playClickSound } from "@/lib/sound";
 import { highlightNumbers } from "@/components/HighlightNumbers";
 
+function ProjectLogo({ src, alt }: { src: string; alt: string; accent?: string }) {
+  return (
+    <div className="mb-4 inline-flex">
+      <div
+        className="flex items-center justify-center rounded-lg px-3 py-2"
+        style={{ background: "var(--surface-pill)", backdropFilter: "blur(8px)" }}
+      >
+        <img
+          src={src}
+          alt={alt}
+          className="h-6 w-auto object-contain"
+          style={{ maxWidth: 110 }}
+        />
+      </div>
+    </div>
+  );
+}
+
 export default function ProjectCard({
   project,
   titleAs = "h3",
@@ -25,9 +43,9 @@ export default function ProjectCard({
       <Link
         href={`/work/${project.slug}`}
         onClick={playClickSound}
-        className="group grid gap-6 sm:grid-cols-2 sm:items-center"
+        className="group grid gap-6 sm:grid-cols-2 sm:items-start"
       >
-        <GlowCard className="relative aspect-video w-full overflow-hidden rounded-xl">
+        <GlowCard className="glow-card--hover-only relative aspect-video w-full overflow-hidden rounded-xl">
           <Image
             src={project.image}
             alt={project.title}
@@ -46,6 +64,9 @@ export default function ProjectCard({
           )}
         </GlowCard>
         <div>
+          {project.logo && (
+            <ProjectLogo src={project.logo.src} alt={project.logo.alt} accent={project.logo.accent} />
+          )}
           <TitleTag className="mb-2 text-2xl font-semibold transition-colors duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-white/80">
             {highlightNumbers(project.title)}
           </TitleTag>
