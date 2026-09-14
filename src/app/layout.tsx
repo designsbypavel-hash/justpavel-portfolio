@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "dialkit/styles.css";
 import { DialRoot } from "dialkit";
+import { Analytics } from "@vercel/analytics/next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JarvisChat from "@/components/JarvisChat";
@@ -112,6 +113,7 @@ export default function RootLayout({
           </div>
           <JarvisChat />
           <DialRoot />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
