@@ -10,7 +10,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 
 const navLinks = [
   { href: "/works", label: "Work" },
-  { href: "/games", label: "Games" },
+  { href: "/games", label: "Games", tag: "Play" },
   { href: "/youtube", label: "Youtube" },
   { href: "/mentoring", label: "Mentoring" },
   { href: "/about", label: "About" },
@@ -29,6 +29,18 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur">
+      <style>{`
+        @keyframes hdr-tag-breathe {
+          0%, 100% { opacity: 0.85; transform: scale(1); }
+          50%       { opacity: 1;    transform: scale(1.04); }
+        }
+        .hdr-nav-tag {
+          animation: hdr-tag-breathe 2.8s ease-in-out infinite;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .hdr-nav-tag { animation: none; }
+        }
+      `}</style>
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
         <Link
           href="/"
@@ -47,9 +59,21 @@ export default function Header() {
               key={link.href}
               href={link.href}
               onClick={playClickSound}
-              className="relative py-1 transition-colors duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-white after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-white after:transition-all after:duration-400 after:ease-[cubic-bezier(0.22,1,0.36,1)] hover:after:w-full"
+              className="relative flex items-center gap-1.5 py-1 transition-colors duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-white after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-white after:transition-all after:duration-400 after:ease-[cubic-bezier(0.22,1,0.36,1)] hover:after:w-full"
             >
               {link.label}
+              {link.tag && (
+                <span
+                  className="hdr-nav-tag inline-flex items-center rounded-full px-1.5 py-px text-[9px] font-semibold tracking-wide uppercase leading-none"
+                  style={{
+                    background: "rgba(255,180,50,0.18)",
+                    color: "#ffb432",
+                    border: "1px solid rgba(255,180,50,0.30)",
+                  }}
+                >
+                  {link.tag}
+                </span>
+              )}
             </Link>
           ))}
         </nav>
@@ -104,9 +128,21 @@ export default function Header() {
                     playClickSound();
                     setOpen(false);
                   }}
-                  className="flex min-h-[44px] items-center border-b border-white/5 text-base text-white/80 last:border-b-0 hover:text-white"
+                  className="flex min-h-[44px] items-center gap-2 border-b border-white/5 text-base text-white/80 last:border-b-0 hover:text-white"
                 >
                   {link.label}
+                  {link.tag && (
+                    <span
+                      className="hdr-nav-tag inline-flex items-center rounded-full px-1.5 py-px text-[9px] font-semibold tracking-wide uppercase leading-none"
+                      style={{
+                        background: "rgba(255,180,50,0.18)",
+                        color: "#ffb432",
+                        border: "1px solid rgba(255,180,50,0.30)",
+                      }}
+                    >
+                      {link.tag}
+                    </span>
+                  )}
                 </Link>
               ))}
             </div>

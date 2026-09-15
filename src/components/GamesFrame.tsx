@@ -37,7 +37,7 @@ export default function GamesFrame() {
 
   return (
     <div className="fixed inset-0 z-[60] flex flex-col bg-black">
-      <div className="flex h-11 shrink-0 items-center justify-between border-b border-white/10 bg-black/95 px-4">
+      <div data-theme="dark" className="flex h-11 shrink-0 items-center justify-between border-b border-white/10 bg-black/95 px-4">
         <Link
           href="/"
           onClick={playClickSound}
