@@ -37,15 +37,16 @@ export default function GamesFrame() {
 
   return (
     <div className="fixed inset-0 z-[60] flex flex-col bg-black">
-      <div data-theme="dark" className="flex h-11 shrink-0 items-center justify-between border-b border-white/10 bg-black/95 px-4">
+      <div className="flex h-11 shrink-0 items-center justify-between px-4" style={{ background: "rgba(0,0,0,0.95)", borderBottom: "1px solid rgba(255,255,255,0.10)" }}>
         <Link
           href="/"
           onClick={playClickSound}
-          className="font-(family-name:--font-heading) text-xs font-extrabold tracking-[0.06em] text-white/70 transition-colors duration-300 hover:text-white"
+          className="font-(family-name:--font-heading) text-xs font-extrabold tracking-[0.06em] transition-opacity duration-300 hover:opacity-100"
+          style={{ color: "rgba(255,255,255,0.70)" }}
         >
           &larr; PAVEL
         </Link>
-        <span className="text-[11px] text-white/35">Glow Rush</span>
+        <span className="text-[11px]" style={{ color: "rgba(255,255,255,0.35)" }}>Glow Rush</span>
       </div>
 
       <div className="relative flex-1">
