@@ -47,6 +47,23 @@ export const buttonHover = {
   tap: { scale: 0.98 },
 };
 
+// Page-level transition — used by PageTransition component in layout
+export const pageVariants: Variants = {
+  initial: { opacity: 0, y: 18, filter: "blur(3px)" },
+  enter: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.45, ease: premiumEase },
+  },
+  exit: {
+    opacity: 0,
+    y: -10,
+    filter: "blur(2px)",
+    transition: { duration: 0.28, ease: [0.36, 0, 0.66, 0] },
+  },
+};
+
 export const gradientWordLoop: Variants = {
   initial: { opacity: 0, y: 14 },
   animate: {

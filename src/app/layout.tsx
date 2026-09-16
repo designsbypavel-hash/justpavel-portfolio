@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JarvisChat from "@/components/JarvisChat";
 import ThemeProvider from "@/components/ThemeProvider";
+import PageTransition from "@/components/PageTransition";
 
 // Neue Montreal is self-hosted via @font-face in globals.css
 
@@ -108,7 +109,9 @@ export default function RootLayout({
         <ThemeProvider>
 <div className="relative z-10 flex min-h-full flex-1 flex-col">
             <Header />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1">
+              <PageTransition>{children}</PageTransition>
+            </main>
             <Footer />
           </div>
           <JarvisChat />
