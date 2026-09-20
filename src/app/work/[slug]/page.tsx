@@ -167,6 +167,29 @@ export default async function ProjectPage({
               </div>
             )}
 
+            {project.slug === "agent-ai" && (
+              <section className="mb-16">
+                <div className="overflow-hidden rounded-2xl" style={{ border: "1px solid var(--cs-border)", background: "var(--cs-card-bg)" }}>
+                  <div className="relative flex items-center justify-center" style={{ background: "radial-gradient(ellipse at 50% 60%, rgba(129,140,248,0.10) 0%, transparent 70%)" }}>
+                    <img
+                      src="/site-assets/case-studies/agent-ai/kai-voice.gif"
+                      alt="Kai Voice — the AI assistant in active listening mode, mid-conversation with a customer"
+                      className="w-full max-w-sm mx-auto"
+                      style={{ display: "block" }}
+                    />
+                  </div>
+                  <div className="px-6 pb-6 pt-4 sm:px-8 sm:pb-8">
+                    <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: "var(--cs-accent, #818cf8)" }}>
+                      The product
+                    </p>
+                    <p className="text-sm leading-relaxed" style={{ color: "var(--cs-text-body)" }}>
+                      Kai Voice — the AI assistant in active listening mode. This is what businesses were deploying to their customers. The orb pulses when it is processing. The waveform confirms it is hearing the right things. The question every enterprise buyer was asking was simple: how do I know it is ready before a real customer sees this?
+                    </p>
+                  </div>
+                </div>
+              </section>
+            )}
+
             {project.ecosystemDiagramImage ? (
               <section className="mb-12">
                 <div className="flex justify-center" style={{ marginLeft: "calc(50% - 50vw)", marginRight: "calc(50% - 50vw)" }}>
