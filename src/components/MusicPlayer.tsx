@@ -207,7 +207,7 @@ export default function MusicPlayer() {
   const apiSlot     = useRef<HTMLDivElement>(null);
   const iframeMO    = useRef<MutationObserver | null>(null);
   const lastLoaded  = useRef(-1);
-  const seekPending = useRef(true); // seek to 0 on first playback_update after load
+  const seekPending = useRef(false); // true only when switching to a new track
   const posRef     = useRef({ ms: 0, at: 0, playing: false });
   const rafId      = useRef(0);
   const mx         = useMotionValue(24);
