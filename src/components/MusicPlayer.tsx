@@ -58,7 +58,7 @@ const TRACKS = [
   },
 ] as const;
 
-const POS_KEY  = "mp-pos-v31";
+const POS_KEY  = "mp-pos-v32";
 
 function getDims(vpW: number) {
   const W       = Math.min(340, vpW - 32);
@@ -235,9 +235,9 @@ export default function MusicPlayer() {
         mx.set(Math.max(16, Math.min(x, window.innerWidth  - W      - 16)));
         my.set(Math.max(16, Math.min(y, window.innerHeight - CARD_H - 16)));
       } else {
-        // Default: right side, upper-middle — below the nav, well above Jarvis chatbot
+        // Default: top-right, just below the nav bar
         mx.set(window.innerWidth - W - 24);
-        my.set(Math.round(window.innerHeight * 0.28));
+        my.set(100);
       }
     } catch { /* no-op */ }
 
