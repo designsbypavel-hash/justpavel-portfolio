@@ -203,10 +203,11 @@ export default function MusicPlayer() {
   const [posMs,     setPosMs]     = useState(0);
   const [durMs,     setDurMs]     = useState(0);
 
-  const ctrl       = useRef<SpotifyController | null>(null);
-  const apiSlot    = useRef<HTMLDivElement>(null);
-  const iframeMO   = useRef<MutationObserver | null>(null);
-  const lastLoaded = useRef(-1);
+  const ctrl        = useRef<SpotifyController | null>(null);
+  const apiSlot     = useRef<HTMLDivElement>(null);
+  const iframeMO    = useRef<MutationObserver | null>(null);
+  const lastLoaded  = useRef(-1);
+  const seekPending = useRef(true); // seek to 0 on first playback_update after load
   const posRef     = useRef({ ms: 0, at: 0, playing: false });
   const rafId      = useRef(0);
   const mx         = useMotionValue(24);
@@ -291,6 +292,13 @@ export default function MusicPlayer() {
             const isPaused = typeof inner.isPaused === "boolean" ? inner.isPaused : null;
             const position = typeof inner.position === "number" ? inner.position : 0;
             const duration = typeof inner.duration === "number" ? inner.duration : 0;
+            if (seekPending.current && duration > 0) {
+              seekPending.current = false;
+              controller.seekTo(0);
+              setPosMs(0);
+              posRef.current = { ms: 0, at: Date.now(), playing: false };
+              return;
+            }
             if (isPaused !== null) {
               setIsPlaying(!isPaused);
               posRef.current = { ms: position, at: Date.now(), playing: !isPaused };
@@ -323,6 +331,7 @@ export default function MusicPlayer() {
   useEffect(() => {
     if (!sdkReady || !ctrl.current || lastLoaded.current === idx) return;
     lastLoaded.current = idx;
+    seekPending.current = true;
     ctrl.current.loadUri(`spotify:track:${TRACKS[idx].id}`);
     setIsPlaying(false); setPosMs(0); setDurMs(0);
     posRef.current = { ms: 0, at: Date.now(), playing: false };
