@@ -273,6 +273,11 @@ export default function MusicPlayer() {
             // and watch for SDK resets with a MutationObserver.
             const frame = document.querySelector('iframe[src*="spotify"]') as HTMLIFrameElement | null;
             if (frame) {
+              // Grant full DRM permissions so the browser allows encrypted-media
+              // (without this the SDK falls back to the 30-second non-DRM preview)
+              frame.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
+              frame.setAttribute("allowfullscreen", "");
+
               const enforce = () => {
                 const h = getDims(window.innerWidth).CARD_H;
                 frame.style.setProperty("height", `${h}px`, "important");
