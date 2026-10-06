@@ -55,40 +55,36 @@ const TRACKS = [
   },
 ] as const;
 
-const POS_KEY = "mp-pos-v33";
-const DISC_D  = 172;   // disc diameter px
-const W       = 204;   // widget width px
+const POS_KEY  = "mp-pos-v35";
+const DISC_D   = 116;          // disc diameter
+const LABEL_D  = 72;           // center label diameter (holds album art + controls)
+const W        = 148;          // widget width
+const ARC_R    = 40;           // progress arc radius (just outside label edge)
 
 function fmt(ms: number): string {
   const s = Math.max(0, Math.floor(ms / 1000));
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 }
 
-// ─── Icons ───────────────────────────────────────────────────────────────────
-const SkipBackIco = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/>
-  </svg>
-);
-const SkipFwdIco = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
-  </svg>
-);
-const PlayIco = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M8 5v14l11-7z"/>
-  </svg>
-);
-const PauseIco = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-  </svg>
-);
+// Arc circumference
+const ARC_C = 2 * Math.PI * ARC_R; // ≈ 251.3
 
-// ─── Vinyl disc ───────────────────────────────────────────────────────────────
-function VinylDisc({ artSrc, artAlt }: { artSrc: string; artAlt: string }) {
-  const labelD = 72; // center label diameter
+// ─── Vinyl disc with embedded controls ───────────────────────────────────────
+function VinylDisc({
+  artSrc, artAlt, pct,
+  onPrev, onPlay, onNext, isPlaying,
+  onArcClick,
+}: {
+  artSrc: string; artAlt: string; pct: number;
+  onPrev: () => void; onPlay: () => void; onNext: () => void; isPlaying: boolean;
+  onArcClick: (e: React.MouseEvent<SVGCircleElement>) => void;
+}) {
+  const cx = DISC_D / 2;  // 58
+  const cy = DISC_D / 2;  // 58
+
+  // dashoffset: full circle at 0%, empty at 100% — start from top (rotate -90°)
+  const dashOffset = ARC_C * (1 - pct / 100);
+
   return (
     <>
       <style>{`
@@ -96,115 +92,192 @@ function VinylDisc({ artSrc, artAlt }: { artSrc: string; artAlt: string }) {
           from { transform: rotate(0deg); }
           to   { transform: rotate(360deg); }
         }
-        .mp-disc-spin {
-          animation: disc-spin 3.2s linear infinite;
-          will-change: transform;
-        }
+        .mp-disc { animation: disc-spin 3s linear infinite; will-change: transform; }
+        .mp-ctrl-btn { transition: opacity 0.12s ease, transform 0.1s ease; }
+        .mp-ctrl-btn:hover { opacity: 1 !important; }
+        .mp-ctrl-btn:active { transform: scale(0.82); }
       `}</style>
 
-      <div
-        className="mp-disc-spin"
-        style={{
-          width:  DISC_D,
-          height: DISC_D,
-          borderRadius: "50%",
-          position: "relative",
-          flexShrink: 0,
-          // Dark vinyl base
-          background: "#111111",
-          // Groove rings via box-shadow
-          boxShadow: [
-            "0 0 0 5px  #1c1c1c",
-            "0 0 0 9px  #111111",
-            "0 0 0 13px #1d1d1d",
-            "0 0 0 17px #111111",
-            "0 0 0 21px #1e1e1e",
-            "0 0 0 25px #111111",
-            "0 0 0 29px #1e1e1e",
-            "0 0 0 33px #111111",
-            "0 0 0 37px #1d1d1d",
-            "0 0 0 41px #111111",
-            "0 0 0 45px #1c1c1c",
-            "0 0 0 49px #111111",
-            "0 0 0 53px #1d1d1d",
-            "0 0 0 57px #111111",
-            // outer edge gleam
-            "0 8px 32px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.5)",
-          ].join(", "),
-        }}
-      >
-        {/* Specular sheen over the grooves */}
-        <div style={{
-          position: "absolute", inset: 0, borderRadius: "50%",
-          background: "conic-gradient(from 120deg, rgba(255,255,255,0.06) 0deg, transparent 60deg, rgba(255,255,255,0.03) 180deg, transparent 240deg, rgba(255,255,255,0.06) 360deg)",
-          pointerEvents: "none",
-        }} />
+      {/* Spinning vinyl */}
+      <div style={{ position: "relative", width: DISC_D, height: DISC_D, flexShrink: 0 }}>
 
-        {/* Center label with album art */}
-        <div style={{
-          position: "absolute",
-          top:  "50%", left: "50%",
-          transform: "translate(-50%, -50%)",
-          width:  labelD,
-          height: labelD,
-          borderRadius: "50%",
-          overflow: "hidden",
-          border: "2px solid rgba(255,255,255,0.12)",
-          boxShadow: "0 0 0 1px rgba(0,0,0,0.5)",
-        }}>
-          <img
-            src={artSrc}
-            alt={artAlt}
-            width={labelD}
-            height={labelD}
-            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-          />
+        {/* The spinning disc */}
+        <div
+          className="mp-disc"
+          style={{
+            width: DISC_D, height: DISC_D,
+            borderRadius: "50%",
+            background: "#070707",
+            // Deep groove rings — tight alternation of near-black and jet black
+            boxShadow: [
+              "0 0 0 2px  #1a1a1a",
+              "0 0 0 4px  #060606",
+              "0 0 0 6px  #1c1c1c",
+              "0 0 0 8px  #060606",
+              "0 0 0 10px #1b1b1b",
+              "0 0 0 12px #060606",
+              "0 0 0 14px #1c1c1c",
+              "0 0 0 16px #060606",
+              "0 0 0 18px #1a1a1a",
+              "0 0 0 20px #060606",
+              "0 0 0 22px #1b1b1b",
+              "0 0 0 24px #060606",
+              "0 0 0 26px #191919",
+              "0 0 0 28px #060606",
+              "0 0 0 30px #181818",
+              "0 0 0 32px #060606",
+              // Outer rim gleam — bright highlight ring
+              "0 0 0 33px rgba(255,255,255,0.07)",
+              // Depth shadows
+              "0 8px 32px rgba(0,0,0,0.85), 0 2px 8px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04)",
+            ].join(", "),
+            position: "relative",
+          }}
+        >
+          {/* Rotating specular — simulates the vinyl catching light */}
+          <div style={{
+            position: "absolute", inset: 0, borderRadius: "50%",
+            background: [
+              "conic-gradient(from 80deg,",
+              "  rgba(255,255,255,0.10) 0deg,",
+              "  transparent           40deg,",
+              "  rgba(255,255,255,0.04) 90deg,",
+              "  transparent           140deg,",
+              "  rgba(255,255,255,0.08) 200deg,",
+              "  transparent           260deg,",
+              "  rgba(255,255,255,0.12) 310deg,",
+              "  transparent           350deg,",
+              "  rgba(255,255,255,0.10) 360deg",
+              ")",
+            ].join(""),
+          }} />
+          {/* Radial hot-spot — brighter centre reflection */}
+          <div style={{
+            position: "absolute", inset: 0, borderRadius: "50%",
+            background: "radial-gradient(ellipse 60% 40% at 35% 30%, rgba(255,255,255,0.09) 0%, transparent 70%)",
+          }} />
+
+          {/* Center label — album art */}
+          <div style={{
+            position: "absolute",
+            top: "50%", left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: LABEL_D, height: LABEL_D,
+            borderRadius: "50%",
+            overflow: "hidden",
+            border: "1.5px solid rgba(255,255,255,0.10)",
+          }}>
+            <img
+              src={artSrc} alt={artAlt}
+              width={LABEL_D} height={LABEL_D}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
+            {/* Dark scrim so controls read clearly */}
+            <div style={{
+              position: "absolute", inset: 0,
+              background: "rgba(0,0,0,0.42)",
+              borderRadius: "50%",
+            }} />
+          </div>
         </div>
 
-        {/* Spindle hole */}
-        <div style={{
-          position: "absolute",
-          top: "50%", left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: 6, height: 6,
-          borderRadius: "50%",
-          background: "rgba(0,0,0,0.8)",
-          border: "1px solid rgba(255,255,255,0.15)",
-          zIndex: 2,
-        }} />
+        {/* SVG overlay — progress arc + controls (does NOT spin) */}
+        <svg
+          width={DISC_D} height={DISC_D}
+          viewBox={`0 0 ${DISC_D} ${DISC_D}`}
+          style={{ position: "absolute", top: 0, left: 0, pointerEvents: "none" }}
+        >
+          {/* Arc track (background) */}
+          <circle
+            cx={cx} cy={cy} r={ARC_R}
+            fill="none"
+            stroke="rgba(255,255,255,0.12)"
+            strokeWidth={2.5}
+          />
+          {/* Arc fill (progress) — clickable */}
+          <circle
+            cx={cx} cy={cy} r={ARC_R}
+            fill="none"
+            stroke="rgba(255,255,255,0.72)"
+            strokeWidth={2.5}
+            strokeLinecap="round"
+            strokeDasharray={ARC_C}
+            strokeDashoffset={dashOffset}
+            transform={`rotate(-90 ${cx} ${cy})`}
+            style={{ transition: "stroke-dashoffset 0.95s linear", pointerEvents: "stroke", cursor: "pointer" }}
+            onClick={(e) => { e.stopPropagation(); onArcClick(e); }}
+          />
+        </svg>
+
+        {/* Controls inside the label — absolute over the whole disc, no spin */}
+        <div
+          style={{
+            position: "absolute", top: "50%", left: "50%",
+            transform: "translate(-50%, -50%)",
+            display: "flex", alignItems: "center", gap: 6,
+            pointerEvents: "auto",
+            zIndex: 2,
+          }}
+          onPointerDown={(e) => e.stopPropagation()}
+        >
+          {/* Skip back */}
+          <button
+            className="mp-ctrl-btn"
+            onClick={(e) => { e.stopPropagation(); onPrev(); }}
+            onPointerDown={(e) => e.stopPropagation()}
+            style={{
+              background: "none", border: "none", padding: 0,
+              cursor: "pointer", opacity: 0.7,
+              color: "#fff", display: "flex", alignItems: "center",
+            }}
+          >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/>
+            </svg>
+          </button>
+
+          {/* Play / Pause — central spindle button */}
+          <button
+            className="mp-ctrl-btn"
+            onClick={(e) => { e.stopPropagation(); onPlay(); }}
+            onPointerDown={(e) => e.stopPropagation()}
+            style={{
+              width: 26, height: 26,
+              borderRadius: "50%",
+              background: "rgba(255,255,255,0.18)",
+              border: "1px solid rgba(255,255,255,0.28)",
+              backdropFilter: "blur(6px)",
+              WebkitBackdropFilter: "blur(6px)",
+              cursor: "pointer",
+              color: "#fff",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              flexShrink: 0,
+            }}
+          >
+            {isPlaying
+              ? <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              : <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            }
+          </button>
+
+          {/* Skip forward */}
+          <button
+            className="mp-ctrl-btn"
+            onClick={(e) => { e.stopPropagation(); onNext(); }}
+            onPointerDown={(e) => e.stopPropagation()}
+            style={{
+              background: "none", border: "none", padding: 0,
+              cursor: "pointer", opacity: 0.7,
+              color: "#fff", display: "flex", alignItems: "center",
+            }}
+          >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+            </svg>
+          </button>
+        </div>
       </div>
     </>
-  );
-}
-
-// ─── Control button ───────────────────────────────────────────────────────────
-function Btn({ onClick, color, children }: {
-  onClick: () => void;
-  color: string;
-  children: React.ReactNode;
-}) {
-  const [act, setAct] = useState(false);
-  return (
-    <button
-      onClick={(e) => { e.stopPropagation(); onClick(); }}
-      onMouseDown={(e) => { e.stopPropagation(); setAct(true); }}
-      onMouseUp={() => setAct(false)}
-      onMouseLeave={() => setAct(false)}
-      onPointerDown={(e) => e.stopPropagation()}
-      style={{
-        background: "none", border: "none",
-        padding: "6px 8px",
-        cursor: "pointer",
-        color,
-        transform: act ? "scale(0.82)" : "scale(1)",
-        transition: "transform 0.08s ease, opacity 0.1s ease",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        borderRadius: 6, flexShrink: 0,
-        opacity: act ? 0.6 : 1,
-      }}
-    >
-      {children}
-    </button>
   );
 }
 
@@ -232,23 +305,19 @@ export default function MusicPlayer() {
   const mx          = useMotionValue(24);
   const my          = useMotionValue(0);
 
-  // Widget height (disc + info panel)
-  const INFO_H = 148; // title + artist + controls + progress + dots
-  const CARD_H = 16 + DISC_D + 14 + INFO_H + 16;
+  // Widget dimensions — disc only
+  const CARD_H = DISC_D;
 
-  // Design tokens — inverted: white card on dark site
-  const bg       = isDark ? "rgba(18,18,20,0.92)"   : "rgba(255,255,255,0.92)";
-  const textMain = isDark ? "rgba(255,255,255,0.95)" : "rgba(10,10,12,0.95)";
-  const textSub  = isDark ? "rgba(255,255,255,0.45)" : "rgba(10,10,12,0.45)";
-  const ctrlCol  = isDark ? "rgba(255,255,255,0.70)" : "rgba(10,10,12,0.70)";
-  const barBg    = isDark ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.12)";
-  const barFill  = isDark ? "rgba(255,255,255,0.60)" : "rgba(0,0,0,0.55)";
-  const dotCol   = isDark ? "rgba(255,255,255,0.18)" : "rgba(0,0,0,0.18)";
-  const dotAct   = isDark ? "rgba(255,255,255,0.85)" : "rgba(0,0,0,0.75)";
-  const shadow   = isDark
-    ? "0 20px 60px rgba(0,0,0,0.7), 0 4px 16px rgba(0,0,0,0.5)"
-    : "0 20px 60px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.10)";
-  const border   = isDark ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.07)";
+  // Tokens — inverted: dark site → near-white glass; light site → dark glass
+  const bg      = isDark ? "rgba(16,16,18,0.88)"   : "rgba(248,248,250,0.90)";
+  const txtMain = isDark ? "rgba(255,255,255,0.92)" : "rgba(8,8,12,0.92)";
+  const txtSub  = isDark ? "rgba(255,255,255,0.38)" : "rgba(8,8,12,0.38)";
+  const dotCol  = isDark ? "rgba(255,255,255,0.16)" : "rgba(0,0,0,0.16)";
+  const dotAct  = isDark ? "rgba(255,255,255,0.82)" : "rgba(0,0,0,0.72)";
+  const border  = isDark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)";
+  const shadow  = isDark
+    ? "0 16px 48px rgba(0,0,0,0.72), 0 2px 8px rgba(0,0,0,0.48)"
+    : "0 16px 48px rgba(0,0,0,0.14), 0 2px 8px rgba(0,0,0,0.08)";
 
   // ── Mount + restore position ────────────────────────────────────────────────
   useEffect(() => {
@@ -317,11 +386,11 @@ export default function MusicPlayer() {
             setSdkReady(true);
           });
           controller.addListener("playback_update", (raw) => {
-            const d      = raw as Record<string, unknown>;
-            const inner  = (d.data ?? d) as Record<string, unknown>;
-            const isPaused  = typeof inner.isPaused  === "boolean" ? inner.isPaused  : null;
-            const position  = typeof inner.position  === "number"  ? inner.position  : 0;
-            const duration  = typeof inner.duration  === "number"  ? inner.duration  : 0;
+            const d     = raw as Record<string, unknown>;
+            const inner = (d.data ?? d) as Record<string, unknown>;
+            const isPaused = typeof inner.isPaused === "boolean" ? inner.isPaused : null;
+            const position = typeof inner.position === "number"  ? inner.position : 0;
+            const duration = typeof inner.duration === "number"  ? inner.duration : 0;
             if (seekPending.current && duration > 0) {
               seekPending.current = false;
               controller.seekTo(0);
@@ -381,11 +450,17 @@ export default function MusicPlayer() {
   const prev = useCallback(() => setIdx(i => (i - 1 + TRACKS.length) % TRACKS.length), []);
   const next = useCallback(() => setIdx(i => (i + 1) % TRACKS.length),                 []);
 
-  const handleSeek = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+  const handleArcClick = useCallback((e: React.MouseEvent<SVGCircleElement>) => {
     if (!ctrl.current || durMs === 0) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const pct  = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-    const ms   = Math.floor(pct * durMs);
+    // Map click angle (relative to disc center) to progress pct
+    const svgEl  = (e.currentTarget as SVGCircleElement).ownerSVGElement!;
+    const rect   = svgEl.getBoundingClientRect();
+    const dx     = e.clientX - (rect.left + rect.width  / 2);
+    const dy     = e.clientY - (rect.top  + rect.height / 2);
+    // atan2 from top = angle from 12 o'clock
+    let angle = Math.atan2(dx, -dy) / (2 * Math.PI);
+    if (angle < 0) angle += 1;
+    const ms = Math.floor(angle * durMs);
     ctrl.current.seekTo(ms);
     setPosMs(ms);
     posRef.current = { ms, at: Date.now(), playing: isPlaying };
@@ -404,7 +479,7 @@ export default function MusicPlayer() {
 
   return (
     <>
-      {/* Spotify audio engine — outside the motion.div so transforms don't affect its fixed position */}
+      {/* Spotify audio engine — outside the motion.div (CSS transform would trap fixed children) */}
       <div
         ref={apiSlot}
         style={{
@@ -416,145 +491,51 @@ export default function MusicPlayer() {
         }}
       />
 
-    <motion.div
-      drag
-      dragMomentum={false}
-      dragElastic={0}
-      dragConstraints={{
-        top:    16,
-        left:   16,
-        right:  (vpW || window.innerWidth)  - W      - 16,
-        bottom: (vpH || window.innerHeight) - CARD_H - 16,
-      }}
-      onDragEnd={savePos}
-      style={{
-        position: "fixed", top: 0, left: 0,
-        x: mx, y: my,
-        zIndex: 9000,
-        width: W,
-        cursor: "grab",
-        touchAction: "none",
-        userSelect: "none",
-      }}
-    >
-
-      {/* Visible disc UI */}
-      <div
-        style={{
-          position: "relative",
-          zIndex: 1,
-          background: bg,
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          borderRadius: 24,
-          border: `1px solid ${border}`,
-          boxShadow: shadow,
-          padding: "16px 16px 16px 16px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: 0,
+      <motion.div
+        drag
+        dragMomentum={false}
+        dragElastic={0}
+        dragConstraints={{
+          top:    16,
+          left:   16,
+          right:  (vpW || window.innerWidth)  - W      - 16,
+          bottom: (vpH || window.innerHeight) - CARD_H - 16,
         }}
-        onPointerDown={(e) => e.stopPropagation()}
+        onDragEnd={savePos}
+        style={{
+          position: "fixed", top: 0, left: 0,
+          x: mx, y: my,
+          zIndex: 9000,
+          width: W,
+          cursor: "grab",
+          touchAction: "none",
+          userSelect: "none",
+        }}
       >
-        {/* Vinyl disc */}
-        <VinylDisc artSrc={track.art} artAlt={track.title} />
-
-        {/* Track info */}
-        <div style={{ marginTop: 14, width: "100%", textAlign: "center" }}>
-          <div style={{
-            fontSize: 14, fontWeight: 700, color: textMain,
-            lineHeight: 1.2, letterSpacing: -0.2,
-            whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
-          }}>
-            {track.title}
-          </div>
-          <div style={{
-            fontSize: 11, color: textSub, marginTop: 3,
-            whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
-          }}>
-            {track.artist}
-          </div>
-        </div>
-
-        {/* Transport controls */}
         <div
-          onPointerDown={(e) => e.stopPropagation()}
           style={{
-            display: "flex", alignItems: "center", justifyContent: "center",
-            gap: 4, marginTop: 10,
+            background: "transparent",
+            padding: 0,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
-        >
-          <Btn onClick={prev} color={ctrlCol}><SkipBackIco /></Btn>
-
-          {/* Play/Pause — larger pill */}
-          <button
-            onClick={(e) => { e.stopPropagation(); togglePlay(); }}
-            onPointerDown={(e) => e.stopPropagation()}
-            style={{
-              width: 38, height: 38,
-              borderRadius: "50%",
-              border: `1px solid ${border}`,
-              background: isDark ? "rgba(255,255,255,0.10)" : "rgba(0,0,0,0.07)",
-              color: textMain,
-              display: "flex", alignItems: "center", justifyContent: "center",
-              cursor: "pointer",
-              flexShrink: 0,
-              transition: "background 0.12s ease",
-            }}
-          >
-            {isPlaying ? <PauseIco /> : <PlayIco />}
-          </button>
-
-          <Btn onClick={next} color={ctrlCol}><SkipFwdIco /></Btn>
-        </div>
-
-        {/* Progress bar */}
-        <div style={{ width: "100%", marginTop: 10 }}>
-          <div
-            onClick={handleSeek}
-            onPointerDown={(e) => e.stopPropagation()}
-            style={{
-              height: 3, background: barBg,
-              borderRadius: 2, cursor: "pointer", position: "relative",
-            }}
-          >
-            <div style={{
-              position: "absolute", left: 0, top: 0,
-              height: "100%", width: `${pct}%`,
-              background: barFill, borderRadius: 2,
-              transition: "width 0.95s linear",
-            }} />
-          </div>
-          <div style={{ display: "flex", justifyContent: "space-between", marginTop: 5 }}>
-            <span style={{ fontSize: 9, color: textSub, fontVariantNumeric: "tabular-nums" }}>
-              {fmt(posMs)}
-            </span>
-            <span style={{ fontSize: 9, color: textSub, fontVariantNumeric: "tabular-nums" }}>
-              -{fmt(rem)}
-            </span>
-          </div>
-        </div>
-
-        {/* Track dots */}
-        <div
           onPointerDown={(e) => e.stopPropagation()}
-          style={{ display: "flex", justifyContent: "center", gap: 5, marginTop: 10 }}
         >
-          {TRACKS.map((_, i) => (
-            <button key={i}
-              onClick={(e) => { e.stopPropagation(); setIdx(i); }}
-              style={{
-                width: i === idx ? 14 : 5, height: 5,
-                borderRadius: 99, border: "none", padding: 0, cursor: "pointer",
-                background: i === idx ? dotAct : dotCol,
-                transition: "width 0.18s ease, background 0.18s ease",
-              }}
-            />
-          ))}
+          {/* Vinyl disc with embedded controls */}
+          <VinylDisc
+            artSrc={track.art}
+            artAlt={track.title}
+            pct={pct}
+            onPrev={prev}
+            onPlay={togglePlay}
+            onNext={next}
+            isPlaying={isPlaying}
+            onArcClick={handleArcClick}
+          />
+
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
     </>
   );
 }
