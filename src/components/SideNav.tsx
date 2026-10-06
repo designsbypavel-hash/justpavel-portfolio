@@ -15,6 +15,7 @@ import {
 import { playClickSound } from "@/lib/sound";
 import ThemeToggle from "@/components/ThemeToggle";
 import { useTheme } from "@/components/ThemeProvider";
+import SidebarScene from "@/components/SidebarScene";
 
 const W_COLLAPSED = 60;
 const W_EXPANDED  = 210;
@@ -163,6 +164,9 @@ export default function SideNav() {
             );
           })}
         </nav>
+
+        {/* Walking scene */}
+        <SidebarScene expanded={expanded} />
 
         {/* Bottom: theme toggle */}
         <div className={`shrink-0 border-t px-2 py-3 ${T.divider}`}>
