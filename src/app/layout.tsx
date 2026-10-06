@@ -3,7 +3,7 @@ import "./globals.css";
 import "dialkit/styles.css";
 import { DialRoot } from "dialkit";
 import { Analytics } from "@vercel/analytics/next";
-import Header from "@/components/Header";
+import SideNav from "@/components/SideNav";
 import Footer from "@/components/Footer";
 import JarvisChat from "@/components/JarvisChat";
 import ThemeProvider from "@/components/ThemeProvider";
@@ -109,8 +109,11 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-black text-white">
         <ThemeProvider>
           <MusicProvider>
-            <div className="relative z-10 flex min-h-full flex-1 flex-col">
-              <Header />
+            <SideNav />
+            {/* Offset main content by sidebar width on desktop; add bottom padding for mobile tab bar */}
+            <div
+              className="relative z-10 flex min-h-full flex-1 flex-col transition-[margin] duration-[220ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:ml-[var(--sidebar-w,60px)] pb-[60px] md:pb-0"
+            >
               <main className="flex-1">{children}</main>
               <Footer />
             </div>
