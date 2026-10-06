@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useMotionValue, motion } from "framer-motion";
+import { useTheme } from "@/components/ThemeProvider";
 
 // ─── Spotify iFrame API types ────────────────────────────────────────────────
 interface SpotifyController {
@@ -26,92 +27,37 @@ declare global {
   }
 }
 
-// ─── Tracks — Viva La Vida first ─────────────────────────────────────────────
+// ─── Tracks ───────────────────────────────────────────────────────────────────
 const TRACKS = [
   {
     id:     "6WrUT7FOAlDscRWU7ndmyd",
     title:  "Viva La Vida",
     artist: "Coldplay",
-    album:  "Viva la Vida or Death and All His Friends",
     art:    "https://i.scdn.co/image/ab67616d0000b2732c8b5698137791e36e19a6a6",
   },
   {
     id:     "5r5cp9IpziiIsR6b93vcnQ",
     title:  "Walking On A Dream",
     artist: "Empire of the Sun",
-    album:  "Walking on a Dream",
     art:    "https://i.scdn.co/image/ab67616d0000b273f3aa0e6ca22a382007f61e4d",
   },
   {
     id:     "3KkXRkHbMCARz0aVfEt68P",
     title:  "Sunflower",
     artist: "Post Malone, Swae Lee",
-    album:  "Spider-Man: Into the Spider-Verse",
     art:    "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
   },
   {
     id:     "5JVbvCHX10U2pLa5DEqGav",
     title:  "Safe and Sound",
     artist: "Capital Cities",
-    album:  "In a Tidal Wave of Mystery",
     art:    "https://i.scdn.co/image/ab67616d0000b273b03e92f4e7dcd9db3a06c869",
   },
 ] as const;
 
-const POS_KEY  = "mp-pos-v32";
-
-function getDims(vpW: number) {
-  const W       = Math.min(340, vpW - 32);
-  const compact = W < 280;
-  const PAD     = compact ? 14 : 18;
-  const ART     = compact ? 64 : 80;
-  const mBar    = compact ? 12 : 16;
-  const mTs     = compact ? 5  : 6;
-  const mDots   = compact ? 10 : 12;
-  const CARD_H  = PAD + ART + mBar + 3 + mTs + 13 + mDots + 5 + PAD;
-  return { W, PAD, ART, CARD_H, mBar, mTs, mDots };
-}
-
-// ─── Design tokens (INVERTED) ────────────────────────────────────────────────
-// dark site  → white card (matches screenshot)
-// light site → dark card
-type Tk = {
-  bg: string; border: string; shadow: string;
-  title: string; sub: string;
-  ctrl: string; ctrlHov: string;
-  barBg: string; barFill: string;
-  ts: string; dot: string; dotActive: string;
-};
-
-const FOR_DARK_SITE: Tk = {
-  bg:        "#ffffff",
-  border:    "rgba(0,0,0,0.07)",
-  shadow:    "0 12px 48px rgba(0,0,0,0.16), 0 2px 8px rgba(0,0,0,0.08)",
-  title:     "#0d0d0f",
-  sub:       "#8a8a8a",
-  ctrl:      "#3d3d3d",
-  ctrlHov:   "#000000",
-  barBg:     "#e5e5e5",
-  barFill:   "#777777",
-  ts:        "#b0b0b0",
-  dot:       "rgba(0,0,0,0.15)",
-  dotActive: "rgba(0,0,0,0.65)",
-};
-
-const FOR_LIGHT_SITE: Tk = {
-  bg:        "#111113",
-  border:    "rgba(255,255,255,0.08)",
-  shadow:    "0 12px 48px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4)",
-  title:     "#ffffff",
-  sub:       "rgba(255,255,255,0.44)",
-  ctrl:      "rgba(255,255,255,0.65)",
-  ctrlHov:   "#ffffff",
-  barBg:     "rgba(255,255,255,0.12)",
-  barFill:   "rgba(255,255,255,0.5)",
-  ts:        "rgba(255,255,255,0.32)",
-  dot:       "rgba(255,255,255,0.22)",
-  dotActive: "rgba(255,255,255,0.8)",
-};
+const POS_KEY = "mp-pos-v33";
+const DISC_D  = 172;   // disc diameter px
+const W       = 204;   // widget width px
 
 function fmt(ms: number): string {
   const s = Math.max(0, Math.floor(ms / 1000));
@@ -120,71 +66,141 @@ function fmt(ms: number): string {
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
 const SkipBackIco = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
     <path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/>
   </svg>
 );
 const SkipFwdIco = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
     <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
   </svg>
 );
 const PlayIco = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
     <path d="M8 5v14l11-7z"/>
   </svg>
 );
 const PauseIco = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
     <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
   </svg>
 );
 
-// ─── Animated bars ────────────────────────────────────────────────────────────
-function LiveBars() {
+// ─── Vinyl disc ───────────────────────────────────────────────────────────────
+function VinylDisc({ artSrc, artAlt }: { artSrc: string; artAlt: string }) {
+  const labelD = 72; // center label diameter
   return (
     <>
       <style>{`
-        @keyframes mpBar {
-          0%   { transform: scaleY(0.25); }
-          100% { transform: scaleY(1); }
+        @keyframes disc-spin {
+          from { transform: rotate(0deg); }
+          to   { transform: rotate(360deg); }
+        }
+        .mp-disc-spin {
+          animation: disc-spin 3.2s linear infinite;
+          will-change: transform;
         }
       `}</style>
-      <div style={{ display: "flex", gap: 3, alignItems: "flex-end", height: 12 }}>
-        {[0, 1, 2].map((i) => (
-          <div key={i} style={{
-            width: 3, height: "100%", borderRadius: 2,
-            background: "rgba(255,255,255,0.88)",
-            animation: `mpBar ${0.55 + i * 0.12}s ease-in-out infinite alternate`,
-            animationDelay: `${i * 0.1}s`,
-          }} />
-        ))}
+
+      <div
+        className="mp-disc-spin"
+        style={{
+          width:  DISC_D,
+          height: DISC_D,
+          borderRadius: "50%",
+          position: "relative",
+          flexShrink: 0,
+          // Dark vinyl base
+          background: "#111111",
+          // Groove rings via box-shadow
+          boxShadow: [
+            "0 0 0 5px  #1c1c1c",
+            "0 0 0 9px  #111111",
+            "0 0 0 13px #1d1d1d",
+            "0 0 0 17px #111111",
+            "0 0 0 21px #1e1e1e",
+            "0 0 0 25px #111111",
+            "0 0 0 29px #1e1e1e",
+            "0 0 0 33px #111111",
+            "0 0 0 37px #1d1d1d",
+            "0 0 0 41px #111111",
+            "0 0 0 45px #1c1c1c",
+            "0 0 0 49px #111111",
+            "0 0 0 53px #1d1d1d",
+            "0 0 0 57px #111111",
+            // outer edge gleam
+            "0 8px 32px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.5)",
+          ].join(", "),
+        }}
+      >
+        {/* Specular sheen over the grooves */}
+        <div style={{
+          position: "absolute", inset: 0, borderRadius: "50%",
+          background: "conic-gradient(from 120deg, rgba(255,255,255,0.06) 0deg, transparent 60deg, rgba(255,255,255,0.03) 180deg, transparent 240deg, rgba(255,255,255,0.06) 360deg)",
+          pointerEvents: "none",
+        }} />
+
+        {/* Center label with album art */}
+        <div style={{
+          position: "absolute",
+          top:  "50%", left: "50%",
+          transform: "translate(-50%, -50%)",
+          width:  labelD,
+          height: labelD,
+          borderRadius: "50%",
+          overflow: "hidden",
+          border: "2px solid rgba(255,255,255,0.12)",
+          boxShadow: "0 0 0 1px rgba(0,0,0,0.5)",
+        }}>
+          <img
+            src={artSrc}
+            alt={artAlt}
+            width={labelD}
+            height={labelD}
+            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+          />
+        </div>
+
+        {/* Spindle hole */}
+        <div style={{
+          position: "absolute",
+          top: "50%", left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: 6, height: 6,
+          borderRadius: "50%",
+          background: "rgba(0,0,0,0.8)",
+          border: "1px solid rgba(255,255,255,0.15)",
+          zIndex: 2,
+        }} />
       </div>
     </>
   );
 }
 
 // ─── Control button ───────────────────────────────────────────────────────────
-function Btn({ onClick, tk, children }: { onClick: () => void; tk: Tk; children: React.ReactNode }) {
-  const [hov, setHov] = useState(false);
+function Btn({ onClick, color, children }: {
+  onClick: () => void;
+  color: string;
+  children: React.ReactNode;
+}) {
   const [act, setAct] = useState(false);
   return (
     <button
       onClick={(e) => { e.stopPropagation(); onClick(); }}
-      onMouseEnter={() => setHov(true)}
-      onMouseLeave={() => { setHov(false); setAct(false); }}
       onMouseDown={(e) => { e.stopPropagation(); setAct(true); }}
       onMouseUp={() => setAct(false)}
+      onMouseLeave={() => setAct(false)}
       onPointerDown={(e) => e.stopPropagation()}
       style={{
         background: "none", border: "none",
-        padding: "6px 7px",
+        padding: "6px 8px",
         cursor: "pointer",
-        color: hov ? tk.ctrlHov : tk.ctrl,
-        transform: act ? "scale(0.84)" : "scale(1)",
-        transition: "transform 0.08s ease, color 0.1s ease",
+        color,
+        transform: act ? "scale(0.82)" : "scale(1)",
+        transition: "transform 0.08s ease, opacity 0.1s ease",
         display: "flex", alignItems: "center", justifyContent: "center",
         borderRadius: 6, flexShrink: 0,
+        opacity: act ? 0.6 : 1,
       }}
     >
       {children}
@@ -194,6 +210,9 @@ function Btn({ onClick, tk, children }: { onClick: () => void; tk: Tk; children:
 
 // ─── Main component ───────────────────────────────────────────────────────────
 export default function MusicPlayer() {
+  const { theme } = useTheme();
+  const isDark = theme !== "light";
+
   const [mounted,   setMounted]   = useState(false);
   const [vpW,       setVpW]       = useState(0);
   const [vpH,       setVpH]       = useState(0);
@@ -207,26 +226,40 @@ export default function MusicPlayer() {
   const apiSlot     = useRef<HTMLDivElement>(null);
   const iframeMO    = useRef<MutationObserver | null>(null);
   const lastLoaded  = useRef(-1);
-  const seekPending = useRef(false); // true only when switching to a new track
-  const posRef     = useRef({ ms: 0, at: 0, playing: false });
-  const rafId      = useRef(0);
-  const mx         = useMotionValue(24);
-  const my         = useMotionValue(0);
+  const seekPending = useRef(false);
+  const posRef      = useRef({ ms: 0, at: 0, playing: false });
+  const rafId       = useRef(0);
+  const mx          = useMotionValue(24);
+  const my          = useMotionValue(0);
 
+  // Widget height (disc + info panel)
+  const INFO_H = 148; // title + artist + controls + progress + dots
+  const CARD_H = 16 + DISC_D + 14 + INFO_H + 16;
 
-  // ── Mount + restore position ──────────────────────────────────────────────
+  // Design tokens — inverted: white card on dark site
+  const bg       = isDark ? "rgba(18,18,20,0.92)"   : "rgba(255,255,255,0.92)";
+  const textMain = isDark ? "rgba(255,255,255,0.95)" : "rgba(10,10,12,0.95)";
+  const textSub  = isDark ? "rgba(255,255,255,0.45)" : "rgba(10,10,12,0.45)";
+  const ctrlCol  = isDark ? "rgba(255,255,255,0.70)" : "rgba(10,10,12,0.70)";
+  const barBg    = isDark ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.12)";
+  const barFill  = isDark ? "rgba(255,255,255,0.60)" : "rgba(0,0,0,0.55)";
+  const dotCol   = isDark ? "rgba(255,255,255,0.18)" : "rgba(0,0,0,0.18)";
+  const dotAct   = isDark ? "rgba(255,255,255,0.85)" : "rgba(0,0,0,0.75)";
+  const shadow   = isDark
+    ? "0 20px 60px rgba(0,0,0,0.7), 0 4px 16px rgba(0,0,0,0.5)"
+    : "0 20px 60px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.10)";
+  const border   = isDark ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.07)";
+
+  // ── Mount + restore position ────────────────────────────────────────────────
   useEffect(() => {
     const snap = () => {
-      const { W, CARD_H } = getDims(window.innerWidth);
       setVpW(window.innerWidth);
       setVpH(window.innerHeight);
       mx.set(Math.max(16, Math.min(mx.get(), window.innerWidth  - W      - 16)));
       my.set(Math.max(16, Math.min(my.get(), window.innerHeight - CARD_H - 16)));
     };
-
     setMounted(true);
     try {
-      const { W, CARD_H } = getDims(window.innerWidth);
       setVpW(window.innerWidth);
       setVpH(window.innerHeight);
       const s = localStorage.getItem(POS_KEY);
@@ -235,17 +268,16 @@ export default function MusicPlayer() {
         mx.set(Math.max(16, Math.min(x, window.innerWidth  - W      - 16)));
         my.set(Math.max(16, Math.min(y, window.innerHeight - CARD_H - 16)));
       } else {
-        // Default: top-right, just below the nav bar
         mx.set(window.innerWidth - W - 24);
         my.set(100);
       }
     } catch { /* no-op */ }
-
     window.addEventListener("resize", snap);
     return () => window.removeEventListener("resize", snap);
-  }, [mx, my]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  // ── RAF smooth progress ───────────────────────────────────────────────────
+  // ── RAF smooth progress ─────────────────────────────────────────────────────
   useEffect(() => {
     const tick = () => {
       const { ms, at, playing } = posRef.current;
@@ -256,34 +288,26 @@ export default function MusicPlayer() {
     return () => cancelAnimationFrame(rafId.current);
   }, []);
 
-  // ── Spotify SDK ───────────────────────────────────────────────────────────
+  // ── Spotify SDK ─────────────────────────────────────────────────────────────
   useEffect(() => {
     if (!mounted) return;
-
     const init = (API: SpotifyIFrameAPI) => {
       const el = apiSlot.current;
       if (!el || ctrl.current) return;
       API.createController(
         el,
-        { uri: `spotify:track:${TRACKS[0].id}`, width: "100%", height: getDims(window.innerWidth).CARD_H },
+        { uri: `spotify:track:${TRACKS[0].id}`, width: "100%", height: CARD_H },
         (controller) => {
           ctrl.current = controller;
           controller.addListener("ready", () => {
-            // Cross-origin iframes escape CSS overflow:hidden in compositor layers.
-            // Only reliable fix: physically constrain the iframe's layout height via JS,
-            // and watch for SDK resets with a MutationObserver.
             const frame = document.querySelector('iframe[src*="spotify"]') as HTMLIFrameElement | null;
             if (frame) {
-              // Grant full DRM permissions so the browser allows encrypted-media
-              // (without this the SDK falls back to the 30-second non-DRM preview)
               frame.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
               frame.setAttribute("allowfullscreen", "");
-
               const enforce = () => {
-                const h = getDims(window.innerWidth).CARD_H;
-                frame.style.setProperty("height", `${h}px`, "important");
-                frame.style.setProperty("max-height", `${h}px`, "important");
-                if (frame.height !== String(h)) frame.height = String(h);
+                frame.style.setProperty("height", `${CARD_H}px`, "important");
+                frame.style.setProperty("max-height", `${CARD_H}px`, "important");
+                if (frame.height !== String(CARD_H)) frame.height = String(CARD_H);
               };
               enforce();
               iframeMO.current?.disconnect();
@@ -293,11 +317,11 @@ export default function MusicPlayer() {
             setSdkReady(true);
           });
           controller.addListener("playback_update", (raw) => {
-            const d   = raw as Record<string, unknown>;
-            const inner = (d.data ?? d) as Record<string, unknown>;
-            const isPaused = typeof inner.isPaused === "boolean" ? inner.isPaused : null;
-            const position = typeof inner.position === "number" ? inner.position : 0;
-            const duration = typeof inner.duration === "number" ? inner.duration : 0;
+            const d      = raw as Record<string, unknown>;
+            const inner  = (d.data ?? d) as Record<string, unknown>;
+            const isPaused  = typeof inner.isPaused  === "boolean" ? inner.isPaused  : null;
+            const position  = typeof inner.position  === "number"  ? inner.position  : 0;
+            const duration  = typeof inner.duration  === "number"  ? inner.duration  : 0;
             if (seekPending.current && duration > 0) {
               seekPending.current = false;
               controller.seekTo(0);
@@ -315,14 +339,10 @@ export default function MusicPlayer() {
         }
       );
     };
-
     if (window.SpotifyIframeApi) {
       init(window.SpotifyIframeApi);
     } else {
-      window.onSpotifyIframeApiReady = (api) => {
-        window.SpotifyIframeApi = api;
-        init(api);
-      };
+      window.onSpotifyIframeApiReady = (api) => { window.SpotifyIframeApi = api; init(api); };
       if (!document.querySelector('script[src*="spotify.com/embed/iframe-api"]')) {
         const s = document.createElement("script");
         s.src   = "https://open.spotify.com/embed/iframe-api/v1";
@@ -331,19 +351,20 @@ export default function MusicPlayer() {
       }
     }
     return () => { iframeMO.current?.disconnect(); };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mounted]);
 
-  // ── Track switching ───────────────────────────────────────────────────────
+  // ── Track switching ─────────────────────────────────────────────────────────
   useEffect(() => {
     if (!sdkReady || !ctrl.current || lastLoaded.current === idx) return;
-    lastLoaded.current = idx;
+    lastLoaded.current  = idx;
     seekPending.current = true;
     ctrl.current.loadUri(`spotify:track:${TRACKS[idx].id}`);
     setIsPlaying(false); setPosMs(0); setDurMs(0);
     posRef.current = { ms: 0, at: Date.now(), playing: false };
   }, [idx, sdkReady]);
 
-  // ── Controls ──────────────────────────────────────────────────────────────
+  // ── Controls ────────────────────────────────────────────────────────────────
   const togglePlay = useCallback(() => {
     if (!ctrl.current || !sdkReady) return;
     if (isPlaying) {
@@ -358,7 +379,7 @@ export default function MusicPlayer() {
   }, [isPlaying, sdkReady]);
 
   const prev = useCallback(() => setIdx(i => (i - 1 + TRACKS.length) % TRACKS.length), []);
-  const next = useCallback(() => setIdx(i => (i + 1) % TRACKS.length), []);
+  const next = useCallback(() => setIdx(i => (i + 1) % TRACKS.length),                 []);
 
   const handleSeek = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (!ctrl.current || durMs === 0) return;
@@ -377,14 +398,24 @@ export default function MusicPlayer() {
 
   if (!mounted) return null;
 
-  const { W, PAD, ART, CARD_H, mBar, mTs, mDots } = getDims(vpW || window.innerWidth);
-
-  const tk    = FOR_DARK_SITE;
   const track = TRACKS[idx];
   const pct   = durMs > 0 ? Math.min(100, (posMs / durMs) * 100) : 0;
   const rem   = Math.max(0, durMs - posMs);
 
   return (
+    <>
+      {/* Spotify audio engine — outside the motion.div so transforms don't affect its fixed position */}
+      <div
+        ref={apiSlot}
+        style={{
+          position: "fixed",
+          top: -9999, left: -9999,
+          width: W, height: CARD_H,
+          pointerEvents: "none",
+          visibility: "hidden",
+        }}
+      />
+
     <motion.div
       drag
       dragMomentum={false}
@@ -401,119 +432,105 @@ export default function MusicPlayer() {
         x: mx, y: my,
         zIndex: 9000,
         width: W,
-        height: CARD_H,
-        borderRadius: 20,
-        overflow: "hidden",
-        boxShadow: tk.shadow,
-        border: `1px solid ${tk.border}`,
         cursor: "grab",
         touchAction: "none",
         userSelect: "none",
       }}
     >
-      {/* Spotify audio engine mounting point */}
-      <div
-        ref={apiSlot}
-        style={{
-          position: "absolute", top: 0, left: 0,
-          width: W, height: CARD_H,
-          pointerEvents: "none",
-          zIndex: 0,
-        }}
-      />
 
-      {/* Visible card UI — absolute so it overlaps the iframe at top:0 */}
+      {/* Visible disc UI */}
       <div
         style={{
-          position: "absolute", top: 0, left: 0,
+          position: "relative",
           zIndex: 1,
-          width: W, height: CARD_H,
-          background: tk.bg,
-          padding: PAD,
-          boxSizing: "border-box",
+          background: bg,
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          borderRadius: 24,
+          border: `1px solid ${border}`,
+          boxShadow: shadow,
+          padding: "16px 16px 16px 16px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 0,
         }}
         onPointerDown={(e) => e.stopPropagation()}
       >
-        {/* Art + Meta row */}
-        <div style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
+        {/* Vinyl disc */}
+        <VinylDisc artSrc={track.art} artAlt={track.title} />
 
-          {/* Album art */}
-          <div style={{ position: "relative", flexShrink: 0, width: ART, height: ART }}>
-            <img
-              src={track.art}
-              alt={track.title}
-              width={ART} height={ART}
-              style={{
-                width: ART, height: ART,
-                borderRadius: 10,
-                objectFit: "cover",
-                display: "block",
-              }}
-            />
-            {isPlaying && (
-              <div style={{
-                position: "absolute", inset: 0, borderRadius: 10,
-                background: "rgba(0,0,0,0.32)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-              }}>
-                <LiveBars />
-              </div>
-            )}
+        {/* Track info */}
+        <div style={{ marginTop: 14, width: "100%", textAlign: "center" }}>
+          <div style={{
+            fontSize: 14, fontWeight: 700, color: textMain,
+            lineHeight: 1.2, letterSpacing: -0.2,
+            whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
+          }}>
+            {track.title}
           </div>
-
-          {/* Title + artist + transport */}
-          <div style={{ flex: 1, minWidth: 0, paddingTop: 2 }}>
-            <div style={{
-              fontSize: 16, fontWeight: 700, color: tk.title,
-              lineHeight: 1.2, letterSpacing: -0.3,
-              whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
-            }}>
-              {track.title}
-            </div>
-
-            <div style={{
-              fontSize: 12, color: tk.sub, marginTop: 3, lineHeight: 1.35,
-              whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
-            }}>
-              {track.artist} · {track.album}
-            </div>
-
-            {/* Transport controls */}
-            <div
-              onPointerDown={(e) => e.stopPropagation()}
-              style={{ display: "flex", alignItems: "center", marginTop: 10 }}
-            >
-              <Btn onClick={prev} tk={tk}><SkipBackIco /></Btn>
-              <Btn onClick={togglePlay} tk={tk}>
-                {isPlaying ? <PauseIco /> : <PlayIco />}
-              </Btn>
-              <Btn onClick={next} tk={tk}><SkipFwdIco /></Btn>
-            </div>
+          <div style={{
+            fontSize: 11, color: textSub, marginTop: 3,
+            whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
+          }}>
+            {track.artist}
           </div>
         </div>
 
+        {/* Transport controls */}
+        <div
+          onPointerDown={(e) => e.stopPropagation()}
+          style={{
+            display: "flex", alignItems: "center", justifyContent: "center",
+            gap: 4, marginTop: 10,
+          }}
+        >
+          <Btn onClick={prev} color={ctrlCol}><SkipBackIco /></Btn>
+
+          {/* Play/Pause — larger pill */}
+          <button
+            onClick={(e) => { e.stopPropagation(); togglePlay(); }}
+            onPointerDown={(e) => e.stopPropagation()}
+            style={{
+              width: 38, height: 38,
+              borderRadius: "50%",
+              border: `1px solid ${border}`,
+              background: isDark ? "rgba(255,255,255,0.10)" : "rgba(0,0,0,0.07)",
+              color: textMain,
+              display: "flex", alignItems: "center", justifyContent: "center",
+              cursor: "pointer",
+              flexShrink: 0,
+              transition: "background 0.12s ease",
+            }}
+          >
+            {isPlaying ? <PauseIco /> : <PlayIco />}
+          </button>
+
+          <Btn onClick={next} color={ctrlCol}><SkipFwdIco /></Btn>
+        </div>
+
         {/* Progress bar */}
-        <div style={{ marginTop: mBar }}>
+        <div style={{ width: "100%", marginTop: 10 }}>
           <div
             onClick={handleSeek}
             onPointerDown={(e) => e.stopPropagation()}
             style={{
-              height: 3, background: tk.barBg,
+              height: 3, background: barBg,
               borderRadius: 2, cursor: "pointer", position: "relative",
             }}
           >
             <div style={{
               position: "absolute", left: 0, top: 0,
               height: "100%", width: `${pct}%`,
-              background: tk.barFill, borderRadius: 2,
+              background: barFill, borderRadius: 2,
               transition: "width 0.95s linear",
             }} />
           </div>
-          <div style={{ display: "flex", justifyContent: "space-between", marginTop: mTs }}>
-            <span style={{ fontSize: 10, color: tk.ts, fontVariantNumeric: "tabular-nums" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", marginTop: 5 }}>
+            <span style={{ fontSize: 9, color: textSub, fontVariantNumeric: "tabular-nums" }}>
               {fmt(posMs)}
             </span>
-            <span style={{ fontSize: 10, color: tk.ts, fontVariantNumeric: "tabular-nums" }}>
+            <span style={{ fontSize: 9, color: textSub, fontVariantNumeric: "tabular-nums" }}>
               -{fmt(rem)}
             </span>
           </div>
@@ -522,7 +539,7 @@ export default function MusicPlayer() {
         {/* Track dots */}
         <div
           onPointerDown={(e) => e.stopPropagation()}
-          style={{ display: "flex", justifyContent: "center", gap: 5, marginTop: mDots }}
+          style={{ display: "flex", justifyContent: "center", gap: 5, marginTop: 10 }}
         >
           {TRACKS.map((_, i) => (
             <button key={i}
@@ -530,7 +547,7 @@ export default function MusicPlayer() {
               style={{
                 width: i === idx ? 14 : 5, height: 5,
                 borderRadius: 99, border: "none", padding: 0, cursor: "pointer",
-                background: i === idx ? tk.dotActive : tk.dot,
+                background: i === idx ? dotAct : dotCol,
                 transition: "width 0.18s ease, background 0.18s ease",
               }}
             />
@@ -538,5 +555,6 @@ export default function MusicPlayer() {
         </div>
       </div>
     </motion.div>
+    </>
   );
 }
