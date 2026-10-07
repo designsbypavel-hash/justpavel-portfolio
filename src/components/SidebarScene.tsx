@@ -1,291 +1,184 @@
-"use client";
-
 // ─── Sidebar walking scene ────────────────────────────────────────────────────
-// Headless figure (inspired by the Android-Mobile illustration aesthetic)
-// walks in front of a dense, zoomed-in city that scrolls endlessly.
-// All inline SVG — zero external assets.
+// A boy walks in place while a line-art street scrolls endlessly behind him.
+// Treadmill technique: two identical street tiles sit side by side and the
+// track slides left by exactly one tile, so the loop never shows a seam.
+// All inline SVG, drawn in currentColor so it follows the sidebar theme.
+// Styles live in globals.css under "Sidebar walking scene".
 
-export default function SidebarScene({ expanded }: { expanded: boolean }) {
+const TILE_W = 320;
+
+export default function SidebarScene({ isDark }: { isDark: boolean }) {
   return (
     <div
       aria-hidden="true"
-      style={{
-        width: "100%",
-        height: 128,
-        position: "relative",
-        overflow: "hidden",
-        flexShrink: 0,
-        opacity: expanded ? 1 : 0,
-        transition: "opacity 0.22s ease",
-        pointerEvents: "none",
-        userSelect: "none",
-      }}
+      className={`sbw-scene ${isDark ? "text-white/85" : "text-zinc-800"}`}
+      style={{ ["--sbw-bg" as string]: isDark ? "#0b0b0c" : "#ffffff" }}
     >
-      <style>{`
-        /* ── City scroll ─────────────────────────────────────────── */
-        @keyframes sb-city {
-          from { transform: scale(2.8) translateX(0%)   translateY(6px); }
-          to   { transform: scale(2.8) translateX(-50%) translateY(6px); }
-        }
-        .sb-city-track {
-          position: absolute;
-          bottom: 0; left: 0;
-          width: 200%;
-          height: 100%;
-          display: flex;
-          flex-direction: row;
-          align-items: flex-end;
-          transform-origin: 0 100%;
-          animation: sb-city 22s linear infinite;
-          will-change: transform;
-        }
-
-        /* ── Figure bob ──────────────────────────────────────────── */
-        @keyframes sb-bob {
-          0%,100% { transform: translate(-50%, 0px); }
-          50%      { transform: translate(-50%, -2px); }
-        }
-        .sb-figure {
-          position: absolute;
-          bottom: 0px;
-          left: 42%;
-          transform: translateX(-50%);
-          z-index: 3;
-          animation: sb-bob 0.6s ease-in-out infinite;
-          width: 26px;
-          height: 52px;
-        }
-
-        /* ── Limb animations — CSS rotate around explicit SVG point ─ */
-        @keyframes sb-arm-l {
-          0%,100% { transform: rotate(-22deg); }
-          50%      { transform: rotate(22deg);  }
-        }
-        @keyframes sb-arm-r {
-          0%,100% { transform: rotate(22deg);  }
-          50%      { transform: rotate(-22deg); }
-        }
-        @keyframes sb-leg-l {
-          0%,100% { transform: rotate(-18deg); }
-          50%      { transform: rotate(18deg);  }
-        }
-        @keyframes sb-leg-r {
-          0%,100% { transform: rotate(18deg);  }
-          50%      { transform: rotate(-18deg); }
-        }
-
-        .sb-arm-l { transform-origin: 7px 10px;  animation: sb-arm-l 0.6s ease-in-out infinite; }
-        .sb-arm-r { transform-origin: 19px 10px; animation: sb-arm-r 0.6s ease-in-out infinite; }
-        .sb-leg-l { transform-origin: 10px 26px; animation: sb-leg-l 0.6s ease-in-out infinite; }
-        .sb-leg-r { transform-origin: 16px 26px; animation: sb-leg-r 0.6s ease-in-out infinite; }
-
-        /* Ground line */
-        .sb-ground {
-          position: absolute;
-          bottom: 18px; left: 0; right: 0;
-          height: 1px;
-          background: rgba(255,255,255,0.14);
-        }
-      `}</style>
-
-      {/* ── Scrolling city ──────────────────────────────────────────────────── */}
-      <div className="sb-city-track">
-        {/* Block A */}
-        <CityBlock />
-        {/* Block B — seamless duplicate */}
-        <CityBlock />
+      <div className="sbw-track" style={{ width: TILE_W * 2 }}>
+        <StreetTile />
+        <StreetTile />
       </div>
 
-      {/* ── Ground line ─────────────────────────────────────────────────────── */}
-      <div className="sb-ground" />
-
-      {/* ── Walking figure ──────────────────────────────────────────────────── */}
-      <svg
-        className="sb-figure"
-        viewBox="0 0 26 52"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* Collar — top of headless body */}
-        <path d="M9 4 Q13 2 17 4" stroke="rgba(255,255,255,0.7)" strokeWidth="1.2" strokeLinecap="round"/>
-
-        {/* Torso / jacket */}
-        <path
-          d="M9,4 L6,22 Q13,24 20,22 L17,4 Z"
-          stroke="rgba(255,255,255,0.88)" strokeWidth="1.3"
-          strokeLinejoin="round"
-        />
-        {/* Jacket centre seam */}
-        <line x1="13" y1="4" x2="13" y2="22" stroke="rgba(255,255,255,0.22)" strokeWidth="0.8" strokeDasharray="1.5 2.5"/>
-
-        {/* Backpack */}
-        <rect x="17" y="6" width="6" height="10" rx="1.5"
-          stroke="rgba(255,255,255,0.5)" strokeWidth="1"
-        />
-
-        {/* Left arm */}
-        <line
-          className="sb-arm-l"
-          x1="7" y1="10" x2="2" y2="20"
-          stroke="rgba(255,255,255,0.85)" strokeWidth="1.4" strokeLinecap="round"
-        />
-        {/* Right arm */}
-        <line
-          className="sb-arm-r"
-          x1="19" y1="10" x2="24" y2="20"
-          stroke="rgba(255,255,255,0.85)" strokeWidth="1.4" strokeLinecap="round"
-        />
-
-        {/* Left leg (upper + lower) */}
-        <path
-          className="sb-leg-l"
-          d="M10,26 L8,37 L7,46"
-          stroke="rgba(255,255,255,0.85)" strokeWidth="1.4" strokeLinecap="round"
-        />
-        {/* Right leg */}
-        <path
-          className="sb-leg-r"
-          d="M16,26 L18,37 L19,46"
-          stroke="rgba(255,255,255,0.85)" strokeWidth="1.4" strokeLinecap="round"
-        />
-      </svg>
+      <div className="sbw-walker">
+        <Boy />
+      </div>
     </div>
   );
 }
 
-// ─── City block — one seamless 700-unit-wide SVG panel ───────────────────────
-function CityBlock() {
-  const s  = "rgba(255,255,255,0.70)";  // stroke color
-  const sw = "1";                        // stroke width
+// ─── Boy — side profile, backpack, hands in hoodie pocket, stepped leg cycle ──
+function Boy() {
+  const ink = { stroke: "currentColor", strokeWidth: 1.6, strokeLinejoin: "round" as const, strokeLinecap: "round" as const };
+  const tint = "color-mix(in oklab, currentColor 16%, var(--sbw-bg))";
+  const pack = "color-mix(in oklab, currentColor 42%, var(--sbw-bg))";
+
+  return (
+    <svg className="sbw-boy" viewBox="0 0 60 90" width="84" height="126" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Far leg */}
+      <g transform="translate(32 57)">
+        <Leg fill="color-mix(in oklab, currentColor 26%, var(--sbw-bg))" className="sbw-leg sbw-leg--far" ink={ink} />
+      </g>
+      {/* Near leg */}
+      <g transform="translate(29 57)">
+        <Leg fill="var(--sbw-bg)" className="sbw-leg" ink={ink} />
+      </g>
+
+      {/* Backpack */}
+      <path d="M22 35.5 C13 34.5 9.5 38.5 9.5 45 V52 C9.5 56.5 13 58 22 57.5 Z" fill={pack} {...ink} />
+      <path d="M15 35.8 q1.5 -3.4 4.5 -1.2" {...ink} strokeWidth={1.2} />
+      <rect x="12" y="46.5" width="7" height="7.5" rx="2" {...ink} strokeWidth={1.1} />
+
+      {/* Hood bunched at the nape */}
+      <path d="M26 33 C20 30.5 16 34 18 40 C21 38 24 36 26 33 Z" fill={tint} {...ink} />
+      {/* Hoodie body */}
+      <path
+        d="M25 33.5 C18.5 36 16.5 48 18.5 60 Q30 63.5 42.5 60 C44 51 43 40 38.5 34 Q32 36.5 25 33.5 Z"
+        fill={tint}
+        {...ink}
+      />
+      {/* Backpack strap over the shoulder */}
+      <path d="M29.5 35.2 C26.5 40 24.5 47 22.5 55" {...ink} strokeWidth={2.4} />
+      {/* Sleeve, hand tucked in the pocket */}
+      <path
+        d="M29 38 C25.5 44 26 52 32 55 C35 56 38.5 54.5 39 52 C37 50 35 49.5 33.5 49.5 C33 45 33.5 41 34.5 38"
+        fill={tint}
+        {...ink}
+      />
+      <path d="M36.5 50 L41.5 49" {...ink} strokeWidth={1.2} />
+
+      {/* Head */}
+      <circle cx="32" cy="20" r="14" fill="var(--sbw-bg)" {...ink} />
+      {/* Hair */}
+      <path
+        d="M17.5 21 C16 9 26 3.5 34 4.5 C42 5.5 47.5 11 46.5 18 C43 14.5 38 13 33.5 13.5 C32.5 17.5 29.5 20 26 20.5 C26.5 24 25 27.5 22 29.5 C19.5 27.5 17.8 24.5 17.5 21 Z"
+        fill="currentColor"
+        {...ink}
+      />
+      <path d="M30 5 q2 -4 6.5 -3" {...ink} />
+      {/* Ear, eye, mouth */}
+      <path d="M28.5 22 q-2.5 1.6 0 4.2" {...ink} strokeWidth={1.2} />
+      <ellipse cx="40.5" cy="21.5" rx="1.3" ry="2" fill="currentColor" />
+      <path d="M39.5 28 q2 1.2 3.6 0" {...ink} strokeWidth={1.2} />
+    </svg>
+  );
+}
+
+// One leg, drawn hanging straight down from the hip at (0,0).
+function Leg({
+  fill,
+  className,
+  ink,
+}: {
+  fill: string;
+  className: string;
+  ink: React.SVGProps<SVGPathElement>;
+}) {
+  return (
+    <g className={className}>
+      <g className="sbw-thigh">
+        <g className="sbw-shin">
+          <rect x="-4.8" y="11" width="9.6" height="14" rx="3.5" fill={fill} {...(ink as React.SVGProps<SVGRectElement>)} />
+          <path d="M-5.5 23.5 H5 C9 23.5 11.5 25.5 11.5 28 V29 H-5.5 Z" fill={fill} {...ink} />
+        </g>
+        <rect x="-5.5" y="-1" width="11" height="16" rx="4" fill={fill} {...(ink as React.SVGProps<SVGRectElement>)} />
+      </g>
+    </g>
+  );
+}
+
+// ─── Street tile — left and right edges match so two tiles join seamlessly ────
+function StreetTile() {
+  const s = { stroke: "currentColor", strokeWidth: 1, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
 
   return (
     <svg
-      viewBox="0 0 700 90"
-      preserveAspectRatio="xMinYMax meet"
+      className="sbw-tile"
+      viewBox={`0 0 ${TILE_W} 48`}
+      width={TILE_W}
+      height="48"
+      fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      style={{ flex: "0 0 50%", height: "100%", display: "block" }}
     >
-      {/* ── Tall glass tower ──────────────────────────────── */}
-      <rect x="10" y="8"  width="34" height="82" stroke={s} strokeWidth={sw} fill="none"/>
-      {/* horizontal floors */}
-      {[20,32,44,56,68].map(y => (
-        <line key={y} x1="10" y1={y} x2="44" y2={y} stroke={s} strokeWidth="0.5" strokeOpacity="0.4"/>
-      ))}
-      {/* window columns */}
-      {[16,22,28,36].map(x => (
-        [14,26,38,50,62,74].map(y => (
-          <rect key={`${x}-${y}`} x={x} y={y} width="4" height="4"
-            stroke={s} strokeWidth="0.6" fill="none" strokeOpacity="0.5"/>
-        ))
-      ))}
+      {/* Ground */}
+      <path d={`M0 44 H${TILE_W}`} {...s} />
 
-      {/* ── Antenna ───────────────────────────────────────── */}
-      <line x1="27" y1="8" x2="27" y2="0" stroke={s} strokeWidth={sw} strokeOpacity="0.6"/>
-      <circle cx="27" cy="0" r="1.2" stroke={s} strokeWidth={sw} fill="none" strokeOpacity="0.5"/>
+      {/* Overhead wire, pole to pole, carried across the tile edges */}
+      <path d="M-146 15 Q-66 25 14 15 Q94 25 174 15 Q254 25 334 15" {...s} strokeWidth={0.7} />
 
-      {/* ── Mid-rise office ───────────────────────────────── */}
-      <rect x="58" y="28" width="56" height="62" stroke={s} strokeWidth={sw} fill="none"/>
-      {[38,48,58,68,78].map(y => (
-        <line key={y} x1="58" y1={y} x2="114" y2={y} stroke={s} strokeWidth="0.4" strokeOpacity="0.35"/>
-      ))}
-      {[63,71,79,87,95,103].map(x => (
-        [31,41,51,61,71,81].map(y => (
-          <rect key={`${x}-${y}`} x={x} y={y} width="5" height="5"
-            stroke={s} strokeWidth="0.6" fill="none" strokeOpacity="0.45"/>
-        ))
-      ))}
+      {/* Utility pole */}
+      <path d="M14 10 V44 M9 15 H19 M10 19 H18" {...s} />
 
-      {/* ── Lamp post ─────────────────────────────────────── */}
-      <line x1="130" y1="52" x2="130" y2="90" stroke={s} strokeWidth={sw} strokeOpacity="0.7"/>
-      <path d="M130,52 Q138,48 146,50" stroke={s} strokeWidth={sw} fill="none" strokeOpacity="0.7"/>
-      <circle cx="146" cy="50" r="2" stroke={s} strokeWidth={sw} fill="none" strokeOpacity="0.6"/>
+      {/* Apartment block */}
+      <rect x="24" y="16" width="28" height="28" {...s} />
+      {[21, 28, 35].map((y) =>
+        [29, 36, 43].map((x) => <rect key={`${x}-${y}`} x={x} y={y} width="4" height="4" {...s} strokeWidth={0.7} />),
+      )}
 
-      {/* ── Townhouse with triangular roof ────────────────── */}
-      <rect x="160" y="54" width="44" height="36" stroke={s} strokeWidth={sw} fill="none"/>
-      <polygon points="160,54 182,36 204,54" stroke={s} strokeWidth={sw} fill="none"/>
-      <rect x="174" y="66" width="14" height="24" stroke={s} strokeWidth={sw} fill="none" strokeOpacity="0.7"/>
-      <rect x="165" y="58" width="8" height="7" stroke={s} strokeWidth="0.7" fill="none" strokeOpacity="0.5"/>
-      <rect x="191" y="58" width="8" height="7" stroke={s} strokeWidth="0.7" fill="none" strokeOpacity="0.5"/>
+      {/* Corner shop with awning */}
+      <rect x="58" y="28" width="26" height="16" {...s} />
+      <path d="M56 28 H86 L84 32 H58 Z" {...s} />
+      <rect x="62" y="35" width="7" height="9" {...s} strokeWidth={0.7} />
+      <rect x="73" y="35" width="8" height="5" {...s} strokeWidth={0.7} />
 
-      {/* ── Tree ──────────────────────────────────────────── */}
-      <line x1="222" y1="62" x2="222" y2="90" stroke={s} strokeWidth={sw} strokeOpacity="0.55"/>
-      <ellipse cx="222" cy="52" rx="11" ry="13" stroke={s} strokeWidth={sw} fill="none" strokeOpacity="0.45"/>
+      {/* Parked bicycle */}
+      <circle cx="98" cy="40" r="4" {...s} strokeWidth={0.8} />
+      <circle cx="111" cy="40" r="4" {...s} strokeWidth={0.8} />
+      <path d="M98 40 L103 33 H108 L111 40 M103 33 L105 40 H98 M107 31 H110" {...s} strokeWidth={0.8} />
 
-      {/* ── Skinny tower ──────────────────────────────────── */}
-      <rect x="242" y="18" width="22" height="72" stroke={s} strokeWidth={sw} fill="none"/>
-      {[30,42,54,66,78].map(y => (
-        <line key={y} x1="242" y1={y} x2="264" y2={y} stroke={s} strokeWidth="0.4" strokeOpacity="0.35"/>
-      ))}
-      <rect x="249" y="22" width="5" height="5" stroke={s} strokeWidth="0.7" fill="none" strokeOpacity="0.5"/>
-      <rect x="258" y="22" width="5" height="5" stroke={s} strokeWidth="0.7" fill="none" strokeOpacity="0.5"/>
+      {/* Tree */}
+      <path d="M130 34 V44" {...s} />
+      <circle cx="130" cy="27" r="8" {...s} />
 
-      {/* ── Lamp post 2 ───────────────────────────────────── */}
-      <line x1="280" y1="54" x2="280" y2="90" stroke={s} strokeWidth={sw} strokeOpacity="0.7"/>
-      <path d="M280,54 Q288,50 296,52" stroke={s} strokeWidth={sw} fill="none" strokeOpacity="0.7"/>
-      <circle cx="296" cy="52" r="2" stroke={s} strokeWidth={sw} fill="none" strokeOpacity="0.6"/>
+      {/* Lamp post */}
+      <path d="M150 22 V44 M150 22 Q154 19 158 21" {...s} />
+      <circle cx="158" cy="22.5" r="1.5" {...s} strokeWidth={0.8} />
 
-      {/* ── Wide low industrial ───────────────────────────── */}
-      <rect x="308" y="44" width="80" height="46" stroke={s} strokeWidth={sw} fill="none"/>
-      {/* Roof details */}
-      <line x1="308" y1="44" x2="388" y2="44" stroke={s} strokeWidth="0.5" strokeOpacity="0.4"/>
-      <rect x="328" y="34" width="14" height="10" stroke={s} strokeWidth="0.7" fill="none" strokeOpacity="0.5"/>
-      <rect x="354" y="30" width="14" height="14" stroke={s} strokeWidth="0.7" fill="none" strokeOpacity="0.5"/>
-      {/* Windows */}
-      {[315,332,349,366].map(x => (
-        [50,62,74].map(y => (
-          <rect key={`${x}-${y}`} x={x} y={y} width="10" height="8"
-            stroke={s} strokeWidth="0.6" fill="none" strokeOpacity="0.45"/>
-        ))
+      {/* Utility pole */}
+      <path d="M174 10 V44 M169 15 H179 M170 19 H178" {...s} />
+
+      {/* House with pitched roof */}
+      <rect x="186" y="27" width="28" height="17" {...s} />
+      <path d="M184 27 L200 16 L216 27" {...s} />
+      <rect x="197" y="34" width="6" height="10" {...s} strokeWidth={0.7} />
+      <rect x="189" y="31" width="5" height="5" {...s} strokeWidth={0.7} />
+      <rect x="206" y="31" width="5" height="5" {...s} strokeWidth={0.7} />
+
+      {/* Tall block with rooftop tank */}
+      <rect x="224" y="12" width="24" height="32" {...s} />
+      <path d="M230 12 V7 H238 V12" {...s} strokeWidth={0.8} />
+      {[17, 24, 31, 38].map((y) =>
+        [228, 234, 240].map((x) => <rect key={`${x}-${y}`} x={x} y={y} width="3.5" height="3.5" {...s} strokeWidth={0.7} />),
+      )}
+
+      {/* Fence */}
+      <path d="M254 37 H290 M254 41 H290" {...s} strokeWidth={0.8} />
+      {[256, 263, 270, 277, 284].map((x) => (
+        <path key={x} d={`M${x} 35 V44`} {...s} strokeWidth={0.8} />
       ))}
 
-      {/* ── Tree 2 ────────────────────────────────────────── */}
-      <line x1="408" y1="64" x2="408" y2="90" stroke={s} strokeWidth={sw} strokeOpacity="0.55"/>
-      <ellipse cx="408" cy="54" rx="9" ry="11" stroke={s} strokeWidth={sw} fill="none" strokeOpacity="0.45"/>
-
-      {/* ── Apartment block ───────────────────────────────── */}
-      <rect x="426" y="22" width="58" height="68" stroke={s} strokeWidth={sw} fill="none"/>
-      <line x1="455" y1="22" x2="455" y2="90" stroke={s} strokeWidth="0.5" strokeOpacity="0.3"/>
-      {[32,44,56,68,80].map(y => (
-        <line key={y} x1="426" y1={y} x2="484" y2={y} stroke={s} strokeWidth="0.4" strokeOpacity="0.3"/>
-      ))}
-      {[430,438,446,460,468,476].map(x => (
-        [26,38,50,62,74].map(y => (
-          <rect key={`${x}-${y}`} x={x} y={y} width="5" height="7"
-            stroke={s} strokeWidth="0.55" fill="none" strokeOpacity="0.4"/>
-        ))
-      ))}
-
-      {/* ── Billboard ─────────────────────────────────────── */}
-      <rect x="500" y="44" width="46" height="26" stroke={s} strokeWidth={sw} fill="none" strokeOpacity="0.8"/>
-      <line x1="500" y1="50" x2="546" y2="50" stroke={s} strokeWidth="0.5" strokeOpacity="0.3"/>
-      <line x1="523" y1="70" x2="523" y2="90" stroke={s} strokeWidth={sw} strokeOpacity="0.6"/>
-      {/* billboard content lines */}
-      <line x1="505" y1="46" x2="536" y2="46" stroke={s} strokeWidth="1.2" strokeOpacity="0.5" strokeLinecap="round"/>
-      <line x1="505" y1="54" x2="528" y2="54" stroke={s} strokeWidth="0.8" strokeOpacity="0.35" strokeLinecap="round"/>
-      <line x1="505" y1="60" x2="534" y2="60" stroke={s} strokeWidth="0.8" strokeOpacity="0.35" strokeLinecap="round"/>
-
-      {/* ── Lamp post 3 ───────────────────────────────────── */}
-      <line x1="560" y1="50" x2="560" y2="90" stroke={s} strokeWidth={sw} strokeOpacity="0.7"/>
-      <path d="M560,50 Q568,46 576,48" stroke={s} strokeWidth={sw} fill="none" strokeOpacity="0.7"/>
-      <circle cx="576" cy="48" r="2" stroke={s} strokeWidth={sw} fill="none" strokeOpacity="0.6"/>
-
-      {/* ── Corner shop / low building ────────────────────── */}
-      <rect x="592" y="58" width="50" height="32" stroke={s} strokeWidth={sw} fill="none"/>
-      <rect x="598" y="63" width="10" height="10" stroke={s} strokeWidth="0.7" fill="none" strokeOpacity="0.5"/>
-      <rect x="616" y="63" width="10" height="10" stroke={s} strokeWidth="0.7" fill="none" strokeOpacity="0.5"/>
-      <rect x="634" y="63" width="6" height="20" stroke={s} strokeWidth="0.7" fill="none" strokeOpacity="0.5"/>
-
-      {/* ── Tall tower (end) ──────────────────────────────── */}
-      <rect x="654" y="4" width="30" height="86" stroke={s} strokeWidth={sw} fill="none"/>
-      {[16,28,40,52,64,76].map(y => (
-        <line key={y} x1="654" y1={y} x2="684" y2={y} stroke={s} strokeWidth="0.4" strokeOpacity="0.3"/>
-      ))}
-      {[658,664,670,676].map(x => (
-        [8,20,32,44,56,68,80].map(y => (
-          <rect key={`${x}-${y}`} x={x} y={y} width="4" height="5"
-            stroke={s} strokeWidth="0.55" fill="none" strokeOpacity="0.4"/>
-        ))
-      ))}
+      {/* Narrow tower */}
+      <rect x="296" y="22" width="16" height="22" {...s} />
+      <path d="M296 28 H312 M296 34 H312 M304 22 V17" {...s} strokeWidth={0.7} />
     </svg>
   );
 }

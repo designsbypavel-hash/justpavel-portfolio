@@ -166,7 +166,7 @@ export default function SideNav() {
         </nav>
 
         {/* Walking scene */}
-        <SidebarScene expanded={expanded} />
+        <SidebarScene isDark={isDark} />
 
         {/* Bottom: theme toggle */}
         <div className={`shrink-0 border-t px-2 py-3 ${T.divider}`}>
